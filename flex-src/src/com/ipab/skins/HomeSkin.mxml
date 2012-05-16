@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" 
+		xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:view="com.ipab.view.*">
+	<!-- host component -->
+	<fx:Metadata>
+		[HostComponent("com.ipab.view.Home")]
+	</fx:Metadata>
+	
+	<s:Group width="100%" height="100%">
+		<s:Rect width="100%" height="100%">
+			<s:fill>
+				<s:SolidColor color="#514040"/>
+			</s:fill>
+		</s:Rect>
+		
+		<s:VGroup width="100%" height="100%">
+			<view:ApplicationHeader width="100%" height="80" 
+									skinClass="com.ipab.skins.ApplicationHeaderSkin"/>
+			<view:MainContent width="100%" height="100%" skinClass="com.ipab.skins.MainContentSkin"/>
+			<view:ApplicationFooter width="100%" height="80"
+									skinClass="com.ipab.skins.ApplicationFooterSkin"/>
+		</s:VGroup>
+		
+		
+	</s:Group>
+	
+	
+</s:Skin>
