@@ -1,7 +1,9 @@
 package com.ipab.view
 {
 	import mx.collections.XMLListCollection;
+	import mx.controls.Alert;
 	import mx.controls.MenuBar;
+	import mx.events.MenuEvent;
 	
 	import spark.components.supportClasses.SkinnableComponent;
 	
@@ -50,7 +52,13 @@ package com.ipab.view
 			{
 				menuBarCollection = new XMLListCollection(menubarXML);
 				mainMenu.dataProvider = menuBarCollection;
+				mainMenu.addEventListener(MenuEvent.ITEM_CLICK, menuItemClicked);
 			}
+		}
+		
+		private function menuItemClicked(evt:MenuEvent):void
+		{
+			trace("" + evt);
 		}
 		
 		override protected function partRemoved(partName:String, instance:Object):void
