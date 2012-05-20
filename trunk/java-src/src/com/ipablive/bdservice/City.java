@@ -94,28 +94,60 @@ public class City
 		  }
 		  finally
 		  {
-			    try 
-			    {
-			    	ConnectionFactory.closeConnection(conn);
-				} 
-			    catch (SQLException e) 
-				{
-					e.printStackTrace();
-				}
+			  closeConnection();
 		  }
 		  return cities;
 	  }
 	  
-	  public void getBd_cityByID(String itemID) 
+	  public CityVO getBdCityByID(int itemID) 
 	  {
-		  
+		  CityVO cVo = new CityVO();
+		  try
+		  {
+			  Statement stmt = conn.createStatement();
+			  ResultSet rs = stmt.executeQuery(BribeConstants.GET_CITY + itemID);
+			  while(rs.next())
+			  {
+				  cVo.setId(rs.getInt(1));
+				  cVo.setState(rs.getInt(2));
+				  cVo.setCityName(rs.getString(3));
+			  }
+		  }
+		  catch(SQLException e)
+		  {
+			e.printStackTrace();  
+		  }
+		  catch(Exception ex)
+		  {
+			  ex.printStackTrace();
+		  }
+		  finally
+		  {
+			  closeConnection();
+		  }
+		  return cVo;
+	  }
+	  
+	  private void closeConnection()
+	  {
+		  try 
+		    {
+		    	ConnectionFactory.closeConnection(conn);
+			} 
+		    catch (SQLException e) 
+			{
+				e.printStackTrace();
+			}
 	  }
 
 	  // please comment main after testing. This is test Purpose ONLY.
 	  public static void main(String[] args) 
 	  {
 		City s = City.getInstance();
-		ArrayList<CityVO> cities = s.getAllBdCities();
-		System.out.println(cities.size() + "  SIZE");
+		//ArrayList<CityVO> cities = s.getAllBdCities();
+		//System.out.println(cities.size() + "  SIZE");
+		//=====================================
+		CityVO cv = s.getBdCityByID(1);
+		System.out.println("City Name :: "+cv.getCityName());
 	}
 }
