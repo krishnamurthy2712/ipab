@@ -10,7 +10,8 @@ public class BribeConstants
 	 *  1) City Service
 	 *  
 	 **/
-	
+	// Table Name: bd_city
 	public static String GET_ALL_CITIES = "SELECT * FROM bd_city";
+	public static String GET_CITY = "SELECT * FROM bd_city where Id=";
 	
 }
