@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-
+import com.ipablive.vo.MostBribeCityVO;
 import com.ipablive.datasource.ConnectionFactory;
 import com.ipablive.utils.BribeConstants;
 import com.ipablive.vo.CityVO;
@@ -105,7 +105,7 @@ public class City
 		  try
 		  {
 			  Statement stmt = conn.createStatement();
-			  ResultSet rs = stmt.executeQuery(BribeConstants.GET_CITY + itemID);
+			  ResultSet rs = stmt.executeQuery(BribeConstants.GET_CITY_BY_ID + itemID);
 			  while(rs.next())
 			  {
 				  cVo.setId(rs.getInt(1));
@@ -127,6 +127,136 @@ public class City
 		  }
 		  return cVo;
 	  }
+
+	  public int getCount() 
+	  {
+		  int count = 0;
+		  try
+		  {
+			  Statement stmt = conn.createStatement();
+			  ResultSet rs = stmt.executeQuery(BribeConstants.GET_CITY_COUNT);
+			  while(rs.next())
+			  {
+				  count = rs.getInt(1);
+			  }
+		  }
+		  catch(SQLException e)
+		  {
+			e.printStackTrace();  
+		  }
+		  catch(Exception ex)
+		  {
+			  ex.printStackTrace();
+		  }
+		  finally
+		  {
+			  closeConnection();
+		  }
+		  
+		  return count;
+	  }
+	  
+	  public ArrayList<CityVO> getBdCityPaged(int startIndex, int numItems)
+	  {
+		  ArrayList<CityVO> cities = new ArrayList<CityVO>();
+		  try
+		  {
+			  Statement stmt = conn.createStatement();
+			  String limit = startIndex +","+numItems; 
+			  ResultSet rs = stmt.executeQuery(BribeConstants.GET_CITY_PAGED+limit);
+			  while(rs.next())
+			  {
+				  CityVO cVO = new CityVO();
+				  cVO.setId(rs.getInt(1));
+				  cVO.setState(rs.getInt(2));
+				  cVO.setCityName(rs.getString(3));
+				  
+				  cities.add(cVO);
+			  }
+		  }
+		  catch(SQLException e)
+		  {
+			e.printStackTrace();  
+		  }
+		  catch(Exception ex)
+		  {
+			  ex.printStackTrace();
+		  }
+		  finally
+		  {
+			  closeConnection();
+		  }
+		  return cities;
+	  }
+	  
+	  public ArrayList<MostBribeCityVO> getMostBribed() 
+	  {
+		  ArrayList<MostBribeCityVO> analysis = new ArrayList<MostBribeCityVO>();
+		  try
+		  {
+			  Statement stmt = conn.createStatement();
+			  ResultSet rs = stmt.executeQuery(BribeConstants.GET_CITY_MOST_BRIBED);
+			  while(rs.next())
+			  {
+				  MostBribeCityVO mbVO = new MostBribeCityVO();
+				  mbVO.setId(rs.getInt(1));
+				  mbVO.setCityName(rs.getString(2));
+				  mbVO.setBribedCount(rs.getInt(3));
+				  mbVO.setBribedTotal(rs.getInt(4));
+				  mbVO.setBribedAverage(rs.getInt(5));
+				  mbVO.setNotBribed(rs.getInt(6));
+				  mbVO.setNoBribe(rs.getInt(7));
+				  
+				  analysis.add(mbVO);
+			  }
+		  }
+		  catch(SQLException e)
+		  {
+			e.printStackTrace();  
+		  }
+		  catch(Exception ex)
+		  {
+			  ex.printStackTrace();
+		  }
+		  finally
+		  {
+			  closeConnection();
+		  }
+		  return analysis;
+	  }
+	  
+	  public MostBribeCityVO getBribedByDept(int deptID) 
+	  {
+		  MostBribeCityVO mcVo = new MostBribeCityVO();
+		  try
+		  {
+			  String query = "SELECT Id as id, city_name as name, " + 
+						"(SELECT COUNT(id) FROM bd_paid_bribe where c_dept = "+deptID+" and c_city = bd_city.Id AND approved = 1) AS BribedCount" +
+						"FROM bd_city ORDER BY BribedCount DESC";
+			  Statement stmt = conn.createStatement();
+			  ResultSet rs = stmt.executeQuery(query);
+			  while(rs.next())
+			  {
+				  mcVo.setId(rs.getInt(1));
+				  mcVo.setCityName(rs.getString(2));
+				  mcVo.setBribedCount(rs.getInt(3));
+			  }
+		  }
+		  catch(SQLException e)
+		  {
+			e.printStackTrace();  
+		  }
+		  catch(Exception ex)
+		  {
+			  ex.printStackTrace();
+		  }
+		  finally
+		  {
+			  closeConnection();
+		  }
+		  
+		  return mcVo;
+	  }
 	  
 	  private void closeConnection()
 	  {
@@ -147,7 +277,10 @@ public class City
 		//ArrayList<CityVO> cities = s.getAllBdCities();
 		//System.out.println(cities.size() + "  SIZE");
 		//=====================================
-		CityVO cv = s.getBdCityByID(1);
-		System.out.println("City Name :: "+cv.getCityName());
+		//CityVO cv = s.getBdCityByID(1);
+		//System.out.println("City Name :: "+cv.getCityName());
+		//=====================================
+		ArrayList<MostBribeCityVO> count = s.getMostBribed();
+		System.out.println(count.size() + "" );
 	}
 }
