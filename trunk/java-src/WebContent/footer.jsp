@@ -16,7 +16,30 @@
 	   </div>
 </div>
 
-<!--<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js"></script>-->
+
+<!-- Stack tool bar -->
+   
+<div class="stack addthis_toolbox">
+    <img src="${pageContext.request.contextPath}/theme/images/stack/stack.png" alt="stack"/>
+    <ul id="stack" class="custom_images">
+        <li><a class="addthis_button_more"><span>More...</span>
+        <img src="${pageContext.request.contextPath}/theme/images/stack/addthis.png" alt="More..." /></a></li>
+        <li><a class="addthis_button_stumbleupon"><span>StumbleUpon</span>
+        <img src="${pageContext.request.contextPath}/theme/images/stack/stumbleupon.png" alt="Stumble It" /></a></li>
+        <li><a class="addthis_button_reddit"><span>Reddit</span>
+        <img src="${pageContext.request.contextPath}/theme/images/stack/reddit.png" alt="Share to Reddit" /></a></li>
+        <li><a class="addthis_button_digg"><span>Delicious</span>
+        <img src="${pageContext.request.contextPath}/theme/images/stack/digg.png" alt="Share to Digg" /></a></li>
+        <li><a class="addthis_button_twitter"><span>Twitter</span>
+        <img src="${pageContext.request.contextPath}/theme/images/stack/twitter.png" alt="Share to Twitter" /></a></li>
+        <li><a class="addthis_button_facebook"><span>Facebook</span>
+        <img src="${pageContext.request.contextPath}/theme/images/stack/facebook.png" alt="Share to Facebook" /></a></li>
+     </ul>
+</div>    
+
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/theme/js/jquery.js"></script>
+<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js"></script>
 <script type="text/javascript">
 $(function () { 
 	// Stack initialize
@@ -51,4 +74,4 @@ $(function () {
 		$("span",this).animate({marginRight: '0'});
 	});
 });
-</script>  
+</script>
