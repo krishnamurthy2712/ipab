@@ -1,17 +1,46 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@taglib uri="http://jakarta.apache.org/struts/tags-html" prefix="html"%>
-<html>
+
+<%@page import="com.ipablive.core.IPaidBribe"%>
+<%@page import="java.util.ArrayList"%><html>
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     <title>I Paid a Bribe</title>
     <link type="text/css" href="${pageContext.request.contextPath}/theme/css/menu.css" rel="stylesheet" />
     <script type="text/javascript" src="${pageContext.request.contextPath}/theme/js/jquery.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/theme/js/menu.js"></script>
+	<script type="text/javascript">
+
+	function getTransactions()
+	{
+         // get the form values
+         var dept = document.getElementById("department").value;
+		$.ajax({
+			  type: 'GET',
+			  url: 'getTransactions.jsp',
+			  data: "dept=" + dept,
+			  beforeSend:function(){
+			    // this is where we append a loading image
+			    $('#transactionsDisplay').html('<div class="loading"><img src="/images/loading.gif" alt="Loading..." /></div>');
+			  },
+			  success:function(response){
+			    // successful request; do something with the data
+			    $('#transactionsDisplay').empty();
+			    $('#transactionsDisplay').append(response);
+			  },
+			  error:function(){
+			    // failed request; give feedback to user
+			    $('#transactionsDisplay').html('<p><font color="red"><strong>Oops!</strong> Unable to load transactions.</font></p>');
+			  }
+			});
+	}
+	
+	</script>
 </head>
 <body>
 <%@include file="../header.jsp" %>
 <div id="mainContent">
-	
+<% IPaidBribe ipb = IPaidBribe.getInstance(); %>	
  <html:form action="/iPaid.do" >
         <table>
             <tr>
@@ -20,15 +49,90 @@
                 </td>
                 <td>
                     <html:select property="cCity" >
-					<html:option value="" >Select County</html:option><html:option value="1">Baringo</html:option><html:option value="2">Bomet</html:option><html:option value="3">Bungoma</html:option><html:option value="4">Busia</html:option><html:option value="5">Elgeyo Marakwet</html:option><html:option value="6">Embu</html:option><html:option value="7">Garissa</html:option><html:option value="8">Homa Bay</html:option><html:option value="9">Isiolo</html:option><html:option value="46">Kajiado</html:option><html:option value="10">Kakamega</html:option><html:option value="11">Kericho</html:option><html:option value="12">Kiambu</html:option><html:option value="13">Kilifi</html:option><html:option value="14">Kirinyaga</html:option><html:option value="15">Kisii</html:option><html:option value="16">Kisumu</html:option><html:option value="45">Kitui</html:option><html:option value="17">Kwale</html:option><html:option value="18">Laikipia</html:option><html:option value="19">Lamu</html:option><html:option value="20">Machakos</html:option><html:option value="21">Makueni</html:option><html:option value="22">Mandera</html:option><html:option value="23">Marsabit</html:option><html:option value="24">Meru</html:option><html:option value="25">Migori</html:option><html:option value="26">Mombasa</html:option><html:option value="27">Muranga</html:option><html:option value="28">Nairobi</html:option><html:option value="29">Nakuru</html:option><html:option value="30">Nandi</html:option><html:option value="31">Narok</html:option><html:option value="32">Nyamira</html:option><html:option value="33">Nyandarua</html:option><html:option value="34">Nyeri</html:option><html:option value="35">Samburu</html:option><html:option value="36">Siaya</html:option><html:option value="37">Taita Taveta</html:option><html:option value="38">Tana River</html:option><html:option value="39">Tharaka Nithi</html:option><html:option value="40">Trans Nzoia</html:option><html:option value="41">Turkana</html:option><html:option value="42">Uasin Gishu</html:option><html:option value="43">Vihiga</html:option><html:option value="44">Wajir</html:option><html:option value="47">West Pokot</html:option>
+					<html:option value="" >Select County</html:option>
+				<%
+
+ ArrayList<String> counties = ipb.getCounties();
+ for(int i=0 ;i<counties.size();i++)
+ {	 
+	 String s = (i+1) + "";
+%>
+					<html:option value="<%=s %>" ><%=counties.get(i)%></html:option>
+<%
+ }
+%>
 					</html:select>
+                </td>
+</tr><tr>
+<td>
+                    <label for="cDept">Department  </label>
                 </td>
 				<td>
-                    <html:select property="cDept" >
-					<html:option value="" >Select Department</html:option><html:option value="1">Baringo</html:option><html:option value="2">Bomet</html:option><html:option value="3">Bungoma</html:option><html:option value="4">Busia</html:option><html:option value="5">Elgeyo Marakwet</html:option><html:option value="6">Embu</html:option><html:option value="7">Garissa</html:option><html:option value="8">Homa Bay</html:option><html:option value="9">Isiolo</html:option><html:option value="46">Kajiado</html:option><html:option value="10">Kakamega</html:option><html:option value="11">Kericho</html:option><html:option value="12">Kiambu</html:option><html:option value="13">Kilifi</html:option><html:option value="14">Kirinyaga</html:option><html:option value="15">Kisii</html:option><html:option value="16">Kisumu</html:option><html:option value="45">Kitui</html:option><html:option value="17">Kwale</html:option><html:option value="18">Laikipia</html:option><html:option value="19">Lamu</html:option><html:option value="20">Machakos</html:option><html:option value="21">Makueni</html:option><html:option value="22">Mandera</html:option><html:option value="23">Marsabit</html:option><html:option value="24">Meru</html:option><html:option value="25">Migori</html:option><html:option value="26">Mombasa</html:option><html:option value="27">Muranga</html:option><html:option value="28">Nairobi</html:option><html:option value="29">Nakuru</html:option><html:option value="30">Nandi</html:option><html:option value="31">Narok</html:option><html:option value="32">Nyamira</html:option><html:option value="33">Nyandarua</html:option><html:option value="34">Nyeri</html:option><html:option value="35">Samburu</html:option><html:option value="36">Siaya</html:option><html:option value="37">Taita Taveta</html:option><html:option value="38">Tana River</html:option><html:option value="39">Tharaka Nithi</html:option><html:option value="40">Trans Nzoia</html:option><html:option value="41">Turkana</html:option><html:option value="42">Uasin Gishu</html:option><html:option value="43">Vihiga</html:option><html:option value="44">Wajir</html:option><html:option value="47">West Pokot</html:option>
-					</html:select>
+                    <select onchange="getTransactions()" id="department">
+					<option value="" >Select Department</option>
+<%
+ ArrayList<String> depts = ipb.getDepartments();
+ for(int i=0 ;i<depts.size();i++)
+ {	 
+	 String s = (i+1) + "";
+%>
+					<option value="<%=s %>" ><%=depts.get(i)%></option>
+<%
+ }
+%>
+					</select>
                 </td>
             </tr>
+<tr>
+<td>
+                    <label for="cTransaction">Transactions  </label>
+                </td>
+				<td>
+					<div id="transactionsDisplay"></div>
+                </td>
+            </tr>
+
+<tr>
+<td><label for="c_amt_paid">Amount Paid</label></td>
+<td></td>
+</tr>
+
+<tr>
+<td><label for="c_date_paid">Date Paid</label></td>
+<td></td>
+</tr>
+
+<tr>
+<td><label for="other_location">Office Location</label></td>
+<td></td>
+</tr>
+
+<tr>
+<td><label for="c_bribe_type">Bribe Type</label></td>
+<td>
+	<select class="sleft" name="c_bribe_type" id="c_bribe_type">
+    	<option value="personal">Personal</option>
+        <option value="corporate">Corporate</option>
+    </select>
+</td>
+</tr>
+
+<tr>
+<td><label for="c_payment_method">Payment Method</label></td>
+<td>
+	<select class="sleft" name="c_payment_method" id="c_payment_method">
+		<option value="" selected="selected">Select Option</option>
+        <option value="cash">Cash</option>
+        <option value="mpesa">M-Pesa</option>
+        <option value="airtelmoney">Airtel Money</option>
+        <option value="yucash">Yu Cash</option>
+        <option value="cards">Credit/Debit Card</option>
+        <option value="bykind">By Kind</option>
+        <option value="other">Other</option>
+	</select>
+</td>
+</tr>
+
         </table>
         </html:form>
 </div>
