@@ -1,5 +1,5 @@
 @CHARSET "ISO-8859-1";
-form .big,.form-item{width:525px; margin-bottom:13px;}
+form .big,.form-item{width:470px; margin-bottom:13px;}
 .tabl-width
 {width: 200px;}
 .mainContent
@@ -8,4 +8,9 @@ form .big,.form-item{width:525px; margin-bottom:13px;}
 	padding:5px 5px 5px 5px;
 	border: 1px solid;
 	background-color: #DBD7D7;
+}
+
+.sleft
+{
+	width: 180px;
 }

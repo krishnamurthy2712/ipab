@@ -5,7 +5,7 @@
 	int dept_id = Integer.parseInt(dept);
 	IPaidBribe ipb = IPaidBribe.getInstance();
 	ArrayList<String> trans = ipb.getTransactions(dept_id);
-	out.write("<select>");
+	out.write("<select styleClass='sleft'>");
 	for(int i=0; i<trans.size();i++)
 	{
 		out.write("<option value="+i+">"+trans.get(i)+"</option>");
