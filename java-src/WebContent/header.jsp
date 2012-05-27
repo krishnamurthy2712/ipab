@@ -16,9 +16,9 @@ div#copyright a:hover { color:#222; }
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;
 <%
-	String logo = "/theme/images/Ipablogo.png";
+	String logo = "/theme/images/logo.png";
 %>
-<img src="${pageContext.request.contextPath}<%=logo %>" width="100" height="50">
+<img src="${pageContext.request.contextPath}<%=logo %>" height="50">
 
 <div id="menu">
     <ul class="menu">
