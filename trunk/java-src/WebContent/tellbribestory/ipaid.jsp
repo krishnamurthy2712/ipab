@@ -58,7 +58,7 @@
                     <label for="cCity">County  </label>
                 </td>
                 <td class="tabl-width">
-                    <html:select property="cCity" >
+                    <html:select property="cCity" styleClass="sleft">
 					<html:option value="" >Select County</html:option>
 				<%
 
@@ -78,7 +78,7 @@
                     <label for="cDept">Department  </label>
                 </td>
 				<td class="tabl-width">
-                    <select onchange="getTransactions()" id="department">
+                    <select onchange="getTransactions()" id="department" class="sleft">
 					<option value="" >Select Department</option>
 <%
  ArrayList<String> depts = ipb.getDepartments();
@@ -109,7 +109,7 @@
 
 <tr>
 <td class="tabl-width"><label for="c_date_paid">Date Paid</label></td>
-<td class="tabl-width"><input type="text" name="c_date_paid" id="c_date_paid" value="" /></td>
+<td class="tabl-width"><input type="text" name="c_date_paid" id="c_date_paid" value="" class="sleft"/></td>
 </tr>
 
 <tr>
@@ -162,6 +162,8 @@
         </table>
 
         </html:form>
+</div>
+<div>
 </div>
 <%@include file="../footer.jsp" %>
 </body>
