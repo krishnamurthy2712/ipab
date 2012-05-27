@@ -2,14 +2,22 @@
 <%@taglib uri="http://jakarta.apache.org/struts/tags-html" prefix="html"%>
 <html:html>
 <head>
-    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
-    <title>I Paid a Bribe</title>
-    <link type="text/css" href="${pageContext.request.contextPath}/theme/css/menu.css" rel="stylesheet" />
-    <script type="text/javascript" src="${pageContext.request.contextPath}/theme/js/jquery.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/theme/js/menu.js"></script>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<title>I Paid a Bribe</title>
+<link type="text/css"
+	href="${pageContext.request.contextPath}/theme/css/menu.css"
+	rel="stylesheet" />
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/theme/js/jquery.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/theme/js/menu.js"></script>
+<link type="text/css"
+	href="${pageContext.request.contextPath}/theme/css/style.css"
+	rel="stylesheet" />
 </head>
 <body>
-<%@include file="header.jsp" %>
-<%@include file="footer.jsp" %>
+<%@include file="header.jsp"%>
+<div class="pageHeader"></div>
+<%@include file="footer.jsp"%>
 </body>
 </html:html>

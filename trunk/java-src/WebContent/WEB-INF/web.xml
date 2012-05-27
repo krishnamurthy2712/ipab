@@ -17,9 +17,35 @@
         </init-param>
         <load-on-startup>2</load-on-startup>
         </servlet>
+    <servlet>
+    	<description>
+    	</description>
+    	<display-name>
+    	CaptchaServlet</display-name>
+    	<servlet-name>CaptchaServlet</servlet-name>
+    	<servlet-class>
+    	com.ipablive.core.CaptchaServlet</servlet-class>
+    </servlet>
+    <servlet>
+    	<description>
+    	</description>
+    	<display-name>
+    	IPaid</display-name>
+    	<servlet-name>IPaid</servlet-name>
+    	<servlet-class>
+    	IPaid</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>action</servlet-name>
         <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>CaptchaServlet</servlet-name>
+    	<url-pattern>/getCaptcha.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>IPaid</servlet-name>
+    	<url-pattern>/IPaid.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

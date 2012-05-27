@@ -1,4 +1,54 @@
-<div id="copyright" align="center">
-	Copyright &copy; 2012 
-	<a href="http://google.com">ipaidabribe.com</a>
+<div class="footer">
+	<ul id="footer_links">
+        <li><a href="#" title="About Us">About Us</a></li>
+        <li><a href="#" title="Contact Us">Contact Us</a></li>
+        <li><a href="#" title="Privacy Policy">Privacy Policy</a></li>
+        <li><a href="#" title="Register for Updates">Register for Updates</a></li>
+       </ul>
+       
+       <div class="copyrights" >
+		<a href="http://www.facebook.com/ipabkenya" target="_blank" title="Facebook"></a>
+		<a class="twitter_bot" href="http://twitter.com/ipaidabribe_ke" target="_blank" title="Twitter"></a>
+		<a class="youtube_bot" href="http://www.youtube.com/user/" target="_blank" title="You Tube"></a>
+		<a class="orkut_bot" href="http://www.orkut.co.in/Main#Community?cmm=" target="_blank" title="Orkut"></a>
+       
+       	<p>&copy; 2011,  All rights Reserved<br />I Paid A Bribe</p>
+	   </div>
 </div>
+
+<!--<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js"></script>-->
+<script type="text/javascript">
+$(function () { 
+	// Stack initialize
+	var openspeed = 300;
+	var closespeed = 300;
+	$('.stack>img').toggle(function(){
+		var vertical = 0;
+		var horizontal = 0;
+		var $el=$(this);
+		$el.next().children().each(function(){
+			$(this).animate({top: '-' + vertical + 'px', left: horizontal + 'px'}, openspeed);
+			vertical = vertical + 55;
+			horizontal = (horizontal+.75)*2;
+		});
+		$el.next().animate({top: '-50px', left: '10px'}, openspeed).addClass('openStack')
+		   .find('li a>img').animate({width: '50px', marginLeft: '9px'}, openspeed);
+		$el.animate({paddingTop: '0'});
+	}, function(){
+		//reverse above
+		var $el=$(this);
+		$el.next().removeClass('openStack').children('li').animate({top: '55px', left: '-10px'}, closespeed);
+		$el.next().find('li a>img').animate({width: '79px', marginLeft: '0'}, closespeed);
+		$el.animate({paddingTop: '35px'});
+	});
+	
+	// Stacks additional animation
+	$('.stack li a').hover(function(){
+		$("img",this).animate({width: '56px'}, 100);
+		$("span",this).animate({marginRight: '30px'});
+	},function(){
+		$("img",this).animate({width: '50px'}, 100);
+		$("span",this).animate({marginRight: '0'});
+	});
+});
+</script>  
