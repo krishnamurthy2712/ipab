@@ -7,10 +7,20 @@
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     <title>I Paid a Bribe</title>
     <link type="text/css" href="${pageContext.request.contextPath}/theme/css/menu.css" rel="stylesheet" />
+	<link type="text/css" href="${pageContext.request.contextPath}/theme/css/style.css" rel="stylesheet" />
     <script type="text/javascript" src="${pageContext.request.contextPath}/theme/js/jquery.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/theme/js/menu.js"></script>
-	<script type="text/javascript">
+	<script type="text/javascript" src="${pageContext.request.contextPath}/theme/js/jquery.ui.datepicker.js"></script>
 
+	<script type="text/javascript">
+	$(function() {
+		$("#c_date_paid").datepicker({
+			changeMonth: true,
+			changeYear: true,
+			yearRange: '2000:2012'
+		});
+	});
+	
 	function getTransactions()
 	{
          // get the form values
@@ -39,15 +49,15 @@
 </head>
 <body>
 <%@include file="../header.jsp" %>
-<div id="mainContent">
+<div id="mainContent" class="mainContent">
 <% IPaidBribe ipb = IPaidBribe.getInstance(); %>	
  <html:form action="/iPaid.do" >
         <table>
             <tr>
-                <td>
+                <td class="tabl-width">
                     <label for="cCity">County  </label>
                 </td>
-                <td>
+                <td class="tabl-width">
                     <html:select property="cCity" >
 					<html:option value="" >Select County</html:option>
 				<%
@@ -64,10 +74,10 @@
 					</html:select>
                 </td>
 </tr><tr>
-<td>
+<td class="tabl-width">
                     <label for="cDept">Department  </label>
                 </td>
-				<td>
+				<td class="tabl-width">
                     <select onchange="getTransactions()" id="department">
 					<option value="" >Select Department</option>
 <%
@@ -84,42 +94,42 @@
                 </td>
             </tr>
 <tr>
-<td>
+<td class="tabl-width">
                     <label for="cTransaction">Transactions  </label>
                 </td>
-				<td>
+				<td class="tabl-width">
 					<div id="transactionsDisplay"></div>
                 </td>
             </tr>
 
 <tr>
-<td><label for="c_amt_paid">Amount Paid</label></td>
-<td></td>
+<td class="tabl-width"><label for="c_amt_paid">Amount Paid</label></td>
+<td class="tabl-width"></td>
 </tr>
 
 <tr>
-<td><label for="c_date_paid">Date Paid</label></td>
-<td></td>
+<td class="tabl-width"><label for="c_date_paid">Date Paid</label></td>
+<td class="tabl-width"><input type="text" name="c_date_paid" id="c_date_paid" value="" /></td>
 </tr>
 
 <tr>
-<td><label for="other_location">Office Location</label></td>
-<td></td>
+<td class="tabl-width"><label for="other_location">Office Location</label></td>
+<td class="tabl-width"></td>
 </tr>
 
 <tr>
-<td><label for="c_bribe_type">Bribe Type</label></td>
-<td>
+<td class="tabl-width"><label for="c_bribe_type">Bribe Type</label></td>
+<td class="tabl-width">
 	<select class="sleft" name="c_bribe_type" id="c_bribe_type">
     	<option value="personal">Personal</option>
         <option value="corporate">Corporate</option>
     </select>
-</td>
+</td class="tabl-width">
 </tr>
 
 <tr>
-<td><label for="c_payment_method">Payment Method</label></td>
-<td>
+<td class="tabl-width"><label for="c_payment_method">Payment Method</label></td>
+<td class="tabl-width">
 	<select class="sleft" name="c_payment_method" id="c_payment_method">
 		<option value="" selected="selected">Select Option</option>
         <option value="cash">Cash</option>
@@ -133,7 +143,24 @@
 </td>
 </tr>
 
+<tr>
+<td class="tabl-width"> <label for="c_name">Title your story</label></td>
+</tr>
+<tr><td colspan="4" ><textarea class="big" name="c_name" id="c_name"  rows="2" style="height:20px;" cols="4" ></textarea></td></tr>
+<tr>
+<td class="tabl-width"> <label for="c_addi_info">Tell us your story</label>
+           </td>
+</tr>
+<tr><td colspan="2">"Please do NOT report names." We aim to change processes not target individuals</td></tr>
+<tr><td colspan="4"><textarea class="big" name="c_addi_info" id="c_addi_info"  rows="10" cols="4"></textarea></td></tr>
+<tr>
+<td><label for="security_code">Please enter the security code</label></td>
+<td></td>
+</tr>
+<tr><td class="tabl-width"><input name="t_and_c" id="t_and_c" type="checkbox" value="1" class="no" />&nbsp;&nbsp;&nbsp;&nbsp;I agree to the <a href="/privacy-policy" target="_blank"> terms and conditions</a> </td></tr>
+
         </table>
+
         </html:form>
 </div>
 <%@include file="../footer.jsp" %>
