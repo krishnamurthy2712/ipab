@@ -11,7 +11,10 @@ form .big,.form-item{width:470px; margin-bottom:13px;}
 	width: 490px;
 	height:100%;
 	margin: 5px 0px 10px 10px;
-	padding:5px 5px 5px 5px;
+	padding-top: 5px; 
+	padding-right: 5px; 
+	padding-bottom: 5px; 
+	padding-left: 5px; 
 	border: 1px solid;
 	background-color: #DBD7D7;
 }
@@ -20,9 +23,82 @@ form .big,.form-item{width:470px; margin-bottom:13px;}
 {
 	float: left; 
 	margin: 5px 0px 10px 10px;
-	padding:5px 5px 5px 5px;
+	padding-top: 5px; 
+	padding-right: 5px; 
+	padding-bottom: 5px; 
+	padding-left: 5px; 
 	border: 1px solid;
 	background-color: #DBD7D7;
+}
+
+.privacyContent
+{
+	float: left; 
+	height:100%;
+	margin: 0px 5px 0px 5px;
+	padding-top: 5px; 
+	padding-right: 5px; 
+	padding-bottom: 10px; 
+	padding-left: 5px; 
+	border: 1px solid;
+	background-color: #DBD7D7;
+}
+
+.privacyHeaders
+{
+	padding-top: 5px; 
+	padding-right: 5px; 
+	padding-bottom: 5px; 
+	padding-left: 5px; 
+	margin-top: 5px; 
+	margin-right: 0px; 
+	margin-bottom: 5px; 
+	margin-left: 0px; 
+	border-bottom-style: none; 
+	border-bottom-width: initial; 
+	border-bottom-color: initial; 
+	text-align: left; 
+	font-size: 13px; 
+	font-weight: bold; 
+	color: rgb(81, 64, 64); 
+	font-family: Verdana, Geneva, sans-serif; 
+	font-style: normal; 
+	font-variant: normal; 
+	letter-spacing: normal; 
+	line-height: normal; 
+	orphans: 2; 
+	text-indent: 0px; 
+	text-transform: none; 
+	white-space: normal; 
+	widows: 2; 
+	word-spacing: 0px;  
+}
+
+.privacyContents
+{
+	padding-top: 0px; 
+	padding-right: 5px; 
+	padding-bottom: 0px; 
+	padding-left: 5px; 
+	margin-top: 5px; 
+	margin-right: 0px; 
+	margin-bottom: 5px; 
+	margin-left: 0px; 
+	text-align: left; 
+	font-size: 12px; 
+	color: rgb(81, 64, 64); 
+	line-height: 1.3; 
+	font-family: Verdana, Geneva, sans-serif; 
+	font-style: normal; 
+	font-variant: normal; 
+	font-weight: normal; 
+	letter-spacing: normal; 
+	orphans: 2; 
+	text-indent: 0px; 
+	text-transform: none; 
+	white-space: normal; 
+	widows: 2; 
+	word-spacing: 0px; 
 }
 
 .sleft
@@ -47,10 +123,12 @@ form .big,.form-item{width:470px; margin-bottom:13px;}
 	border-color: red;
 }
 
-.pageHeader{
+.pageHeader
+{
 	width:100%;
 	padding-bottom:20px;
 	background:#981C1F;
+	margin: 0px 0px 0px 5px;
 	color:#271911;
 	float:left;
 	min-height: 60px;
@@ -150,3 +228,12 @@ form .big,.form-item{width:470px; margin-bottom:13px;}
 	text-align: left; 
 	padding-left: 100px;
 }
+
+.submitButton
+{
+	width: 100px;
+}
+
+
+
+

@@ -11,34 +11,31 @@
 <link type="text/css"
 	href="${pageContext.request.contextPath}/theme/css/style.css"
 	rel="stylesheet" />
+<link type="text/css"
+	href="${pageContext.request.contextPath}/theme/css/ui.datepicker.css"
+	rel="stylesheet" />
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/theme/js/jquery.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/theme/js/menu.js"></script>
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/theme/js/jquery.ui.datepicker.js"></script>
+	src="${pageContext.request.contextPath}/theme/js/datepicker.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/theme/js/validation.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/theme/js/jcarousellite_1.0.1c4.js"></script>
 <script type="text/javascript">
-	$(function() {
-		$("#c_date_paid").datepicker({
-			changeMonth: true,
-			changeYear: true,
-			yearRange: '2000:2012'
-		});
+var d = new Date();
+var yr = d.getFullYear();
+$(function() {
+	
+	$("#asdf").datepicker({
+		changeMonth: true,
+		changeYear: true,
+		yearRange: '2000:'+yr
 	});
+});
+</script>
 
-	 $(document).ready(function(){    
-         var sudoSlider = $("#slider").sudoSlider({
-             autowidth:false,
-             slideCount:3,
-             continuous:false,
-				auto: false, 
-
-         });
-     });    
-     
+<script type="text/javascript">
 	function getTransactions()
 	{
          // get the form values
@@ -66,6 +63,11 @@
 
 	function validate_m()
 	{
+		checkEmptyAll('c_name','Please enter title');
+		checkEmptyAll('c_city','Please select city');
+		checkEmptyAll('deprtment','Please select the department');
+		checkEmptyAll('c_transaction','Please select transaction');
+		/*
 		var county,dept,transaction,amount;
 		county = document.getElementById("cCity").value;
 		dept = document.getElementById("department").value;
@@ -91,8 +93,22 @@
 		{
 			document.getElementById("validationMessages").innerHTML="<center>Please enter amount.</center>";
 			return false;
-		}
+		}*/
 		return true;
+	}
+
+	function privacyChecked()
+	{
+		var cbs = document.forms['fm'].elements['t_and_c'];
+		  if(cbs.checked)
+		  {
+			  document.forms['fm'].elements['submit'].disabled = false;
+		  }
+		  else
+		  {
+		      document.forms['fm'].elements['submit'].disabled = true;
+		  }
+				  
 	}
 	
 	</script>
@@ -102,7 +118,7 @@
 <div class="pageHeader"><center><br><h2 class="pageHeaderH2">I Paid a Bribe</h2></center></div>
 <div id="mainContent" class="mainContent">
 <% IPaidBribe ipb = IPaidBribe.getInstance(); %>
-<form action="IPaid.do" onsubmit="return validate_m();" method="post">
+<form action="IPaid.do" onsubmit="return validate_m();" method="post" name="fm">
 <table>
 	<tr>
 		<td>
@@ -161,8 +177,8 @@
 
 	<tr>
 		<td class="tabl-width"><label for="c_date_paid">Date Paid</label></td>
-		<td class="tabl-width"><input type="text" name="c_date_paid"
-			id="c_date_paid" value="" class="sleft" /></td>
+		<td class="tabl-width"><input type="text" name="asdf"
+			id="asdf" value="" class="sleft" /></td>
 	</tr>
 
 	<tr>
@@ -227,13 +243,12 @@
 	</tr>
 	<tr>
 		<td colspan="3"><input name="t_and_c" id="t_and_c"
-			type="checkbox" />&nbsp;&nbsp;&nbsp;&nbsp;I agree to the <a
-			href="${pageContext.request.contextPath}/privacy-policy" target="_blank"> terms and conditions</a></td>
+			type="checkbox" onchange="privacyChecked()"/>&nbsp;&nbsp;&nbsp;&nbsp;I agree to the <a
+			href="${pageContext.request.contextPath}/privacyPolicy.jsp" target="_blank"> terms and conditions</a></td>
 	</tr>
 	<tr>
-		<td><input type="image"
-			src="${pageContext.request.contextPath}/theme/images/submit.png"
-			name="submit" id="submit" value="Submit" />
+		<td><input type="submit"
+			name="submit" id="submit" value="Submit" disabled="disabled" class="submitButton"/>
 		</td>
 	</tr>
 </table>
