@@ -1,7 +1,3 @@
-/*
-Custom JS - validation functions.
-Author :: Dharmendra Patri
-*/
 
 var error_container_id = 'validation_errors';//not required if you want to Alert.
 
