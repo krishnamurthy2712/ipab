@@ -237,3 +237,540 @@ form .big,.form-item{width:470px; margin-bottom:13px;}
 
 
 
+
+
+
+/***   CONTENT   ***/
+
+.wraperTop {
+	background: url(http://localhost:8080/ipab-java/theme/images/bgWrapper.png);
+	height: 315px;
+	
+}
+
+.grid {
+	width:300px;
+	margin:15px 0px 0px 19px;
+	float:left;
+}
+.longGrid{
+	width:619px;
+	margin:15px 0px 0px 19px;
+	float:left;
+	background: url(http://localhost:8080/ipab-java/theme/images/bgLongGrid.png) no-repeat;
+}
+.bribe_box{
+	float:left;
+	color:#ffffff;
+	margin-bottom:20px;
+}
+.bribe_box a {
+	color: #ffd200;
+	display: block;
+	text-align: center;
+	text-decoration: underline;
+	margin-top: 2px;
+}
+.report {
+	background: url(http://localhost:8080/ipab-java/theme/images/bgReportBribe.png) ;
+	height: 281px;
+	width: 300px;
+}
+.report strong {
+	color: #ffd200;
+	font-size: 18px;
+}
+.report_bribe{
+	padding: 7px 15px 15px 15px;
+}
+.report_bribe b a, .analytics b, .analytics b a {
+	font-size: 10px;
+}
+.analytics b a {
+	color: #9B1B1A;
+}
+.report_bribe p{
+	text-align:center;
+}
+.report_bribe p a img{
+	margin-top:20px;
+	margin-bottom:17px;
+}
+.report_bribe p span{
+	font-size: 13px;
+}
+.report_bribe p span a {
+	color:#271a12;
+}
+.analytics_div{
+	color:#271a12;
+}
+.analytics_div a {
+	color:#4b1b05;
+	font-size: 11px;
+	text-decoration: underline;
+	text-align: center;
+	display: block;
+}
+.analytics {
+	height: 281px;
+	width: 295px;
+	padding: 10px 5px 10px 10px;
+	text-align: center;
+}
+.analytics .graph {
+	margin: 0 0 10px 0;
+}
+.analytics .analytics_div p {
+	text-align: center;
+}
+
+.analytics h6, .tadaysHighlight h6 {
+	font-size:18px;
+	color:#4b1b05;
+}
+.analytics_div_report{
+	width:100%;
+	float:left;
+	font-size:11px;
+	font-weight:bold;
+	color: #4b1b05;
+}
+.analytics_div_report .val-1 {
+	float: left;
+}
+.analytics_div_report .val-2 {
+	float: right;
+}
+.analytics_div_report, .analytics .graph h4, .analytics_div_report_top5 {
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+}
+.analytics .line {
+	border-bottom: 1px dashed #1f110a;
+}
+.analytics_div_report .ana_color, .analytics .graph span {
+	color: #9b1b1a;
+}
+.ana_bold_none{
+	font-weight:normal;
+	color:#cebaa8;
+}
+.graph h4, .tadaysHighlight h4 {
+	font-size:13px;
+	font-weight:bold;
+	color: #FFF;
+}
+#graph_reports{
+	margin-top: 15px;
+}
+#graph_reports li{
+	list-style:none;
+	width:100%;
+	font-size:10px;
+	font-weight:bold;
+	margin-bottom:5px;
+	float:left;
+}
+#graph_reports li span{
+	width:35px;
+	float:left;
+	color: #4b1b05;
+	text-align:right;
+	margin-right:7px;
+	padding-top:2px;
+	font-weight:bold;
+}
+#graph_reports li div{
+	width:218px;
+	float:left;
+	background:#4b1b05;
+	padding-left:12px;
+	padding-top:2px;
+	color:#FFF;
+	padding-bottom:2px;
+}
+.analytics_div a img {
+	margin-top: 10px; 
+}
+.tadaysHighlight {
+	height: 281px;
+	width: 280px;
+	padding: 10px;
+	color: #FFF;
+	margin-bottom:20px;
+	margin:0 0 0 7px;
+	float:left;
+}
+.tadaysHighlight div {
+	text-align: center;
+}
+.tadaysHighlight div.tadaysHighlightContent {
+	background: #280f00;
+	position: relative;
+	float: left;
+	bottom: 91px;
+	opacity:0.7;
+	filter:alpha(opacity=70);
+	padding: 0 5px 5px 5px;
+	text-align: left;
+	width: 270px;
+}
+.tadaysHighlight div.tadaysHighlightContent td {
+	height: 84px;
+}
+.tadaysHighlight div.tadaysHighlightContent .decp {
+	font-size: 12px;
+	text-align: left;
+}
+.tadaysHighlight .hilighiImg img {
+	border: 1px solid #835336;
+}
+.tadaysHighlightContent a {
+	color: #FFF;
+	text-decoration: none;
+}
+.tadaysHighlight h6 {
+	margin-bottom: 10px;
+	color: #4b1b05;
+	text-align: center;
+}
+.tadaysHighlight h4, .tadaysHighlight p {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	text-align: left;
+}
+
+
+<!- -->
+.news_box{
+	width:280px;
+	float:left;
+	padding: 10px;
+	margin-bottom: 20px;
+	background:#eadacd;
+	color:#271a12;
+}
+.news_box .seeAll {
+	margin-top: 0;
+}
+.news_box .newsSub, .news_box .newsTitle, .thought_box .newsSub, .thought_box .newsTitle {
+	padding-bottom: 5px;
+}
+.news_box .newsSub span, .thought_box .newsSub a, .news_for_thought, .news_for_thought a {
+	color:#5d2a15;
+}
+.news_for_thought {
+	margin: 10px 0;
+}
+.news_box .newsSub, .thought_box .newsSub, .news_for_thought .newsSub {
+	color:#a44f1f;
+}
+.news_box .newsTitle a, .news_box .newsTeaser, .thought_box .newsTitle, .thought_box .newsTitle a, .thought_box .newsTeaser {
+	color: #644e3c;
+}
+.news_box ul li{
+	list-style:none;
+	margin-bottom: 10px;
+}
+.news_box ul li p{
+	width:100%;
+	color:#271a12;
+	line-height:1.3;
+	margin-top:12px;
+}
+.news_box .newsTitle {
+	font-weight:bold;
+}
+.news_box ul li a {
+	list-style:none;
+	color:#644e3c;
+	font-size:13px;
+	text-decoration:none;
+}
+.news_box ul li a span{
+	font-size:12px;
+}
+.cq_box{
+	width:280px;
+	float:left;
+	padding: 10px;
+	background:#eadacd;
+	color:#4b1b05;
+}
+.cq_box .cq_box_content{
+	padding: 10px;
+	background:#ceb9a7;
+}
+.cq_box a{
+	color:#4b1b05;
+	font-weight:bold;
+	margin-top:10px;
+	display: block;
+}
+.tabcontent,.new{
+	float:left;
+}
+ul.tabs,ul.new {
+	margin: 0;
+	padding: 0;
+	float: left;
+	list-style: none;
+	height: 32px;
+	width: 100%;
+}
+
+ul.tabs li,ul.new li {
+	float: left;
+	margin: 0;
+	padding: 0;
+	height: 32px;
+	line-height: 31px;
+	background: #271911;
+	overflow: hidden;
+	position: relative;
+	width: 150px;
+	text-align: center;
+}
+ul.tabs li.last, ul.new li.last {
+	margin-right:0;
+	float: right;
+}
+ul.tabs li a,ul.new li a {
+	text-decoration: none;
+	color: #e7ad23;
+	display: block;
+	font-size: 15px;
+	padding: 0 15px;
+	outline: none;
+}
+ul.tabs li.active a,ul.new li.active a{
+	color:#4b1b05;
+	font-weight:bold;
+}
+html ul.tabs li.active, html ul.tabs li.active a:hover,html ul.new li.active, html ul.new li.active a:hover  {
+	background: #eadacd;
+}
+
+.tab_container {
+	border-top: none;
+	clear: both;
+	float: left;
+	margin-bottom:20px;
+	background:#eadacd;
+	padding: 10px;
+	width: 280px;
+}
+.bribeFighters {
+	border-top: none;
+	clear: both;
+	margin-bottom:20px;
+	background:#ecba43;
+	margin-top: 6px;
+}
+.bribeFighters .bribeItems {
+	margin-bottom: 10px;
+	padding-bottom: 5px;
+	border-bottom: 1px dashed #644e3c;
+}
+.bribeFighters .popularCity, .bribeFighters .popularTitle a {
+	color: #4b1b05;
+}
+.bribeFighters .popularTitle, .tab_container .popularTitle {
+	font-size: 12px;
+	line-height:1.4;	
+}
+.bribeFighters .popularCity a {
+	color: #9b1b1a;
+}
+.bribeFighters .all_categories {
+	background: #e7ad23;
+	padding: 10px;
+	color: #4b1b05;
+	margin-bottom: 0;
+}
+.moreAnalysis {
+	background: url("../images/seeAll.png") no-repeat scroll 100% 5px transparent;
+    margin-top: 10px;
+    padding-right: 15px;
+    text-align: right;
+}
+.moreAnalysis a {
+	color: #9B1B1A;
+}
+.bribeFighters .all_categories .categoryHead {
+	margin-bottom: 8px;
+	font-weight: bold;
+	font-size: 13px;
+}
+.bribeFighters .seeAll {
+	margin-bottom: 10px;
+}
+.bribeFighters div span {
+	width:106%;
+	color:#271911;
+	margin-top:2px;
+	font-size:10px;
+}
+.bribeFighters div p a {
+	color:#271911;
+}
+.bribeFighters div.bribeFightersContent {
+	padding: 10px;
+	width: 280px;
+}
+.home_bribeFighters_h2 {
+	font-size:20px;
+	color: #ffffff;
+	margin-bottom: 5px;
+	background: #271911;
+	padding: 6px 10px;
+}
+.home_bribeFighters_h2 span {
+	color: #e7ad23;
+}
+.tab_content .popularCity, .bribeFighters .popularCity {
+	font-size: 12px;
+}
+
+.tab_bottom{
+	float:left;
+	width:445px;
+	border-right:2px solid #453536;
+	border-bottom:2px solid #453536;
+	background:#cfbaa9;
+	height:15px;
+}
+.tab_content div,.bribeFighters div{
+	margin-bottom: 5px;
+}
+.tab_content div, .bribeFighters div.all_categories {
+	margin-bottom: 0;
+}
+.tab_content .bribeItems {
+	margin-bottom: 5px;
+	padding-bottom: 5px;
+	border-bottom: 1px dashed #644e3c;
+}
+.tab_content .popularCity {
+	color: #5d2a15;
+}
+.tab_content .popularCity span {
+	white-space: nowrap;
+}
+.tab_content .popularCity a {
+	color: #9b1b1a;
+}
+.tab_content .popularDate {
+	color:#a44f1f;
+	font-size:10px;
+	margin: 5px 0;
+}
+.tab_content .popularTitle a {
+	color:#644e3c;
+}
+.tab_content .all_categories {
+	background: #ceb9a7;
+	padding: 10px;
+	color: #5d2a15;
+}
+.tab_content .all_categories .categoryHead {
+	margin-bottom: 10px;
+	font-size: 12px;
+}
+.tab_content .seeAll {
+	margin-bottom: 10px;
+}
+.all_categories .categoryList a {
+	color: #981c1f;
+}
+
+.tab_content div span a,.bribeFighters div span a{
+	color:#5e5f5f;
+	text-decoration:none;
+}
+
+.viewmore{
+	width:100%;
+	float:left;
+	font-size:12px;
+	text-align:center;
+	margin-top:20px;
+	margin-bottom:35px;
+}
+.viewmore a{
+	color:#000;
+	font-size:11px;
+	font-weight:bold;
+	text-decoration:underline;
+}
+.latest_videos {
+	background:#eadacd;
+    color:#271A12;
+    float:left;
+    width:280px;
+	margin-bottom:27px;
+	padding: 10px;
+	text-align: center;
+}
+.latest_videos #video-title {
+	margin: 8px 0;
+	font-size: 11px;
+}
+.latest_videos #video-title a {
+	color: #9B1B1A;
+}
+.latest_videos .update-thumbnail-img img {
+	width: 280px;
+}
+.latest_videos div {
+	text-align: center;
+}
+.latest_videos .seeAll {
+	margin-top: -17px;
+}
+.latest_videos div.seeAll {
+	text-align: right;
+}
+.latest_videos_more{
+	float:left;
+    width:276px;
+	text-align:right;
+	margin-top:2px;
+}
+.latest_videos_more a{
+	font-size:9px;
+	color:#e8ac22;
+}
+#slider {
+	height:120px!important;
+}
+.latest_videos ul {
+	margin:5px 0 0 0;
+	padding:0;
+	list-style-type: none;
+	text-align: center;
+}
+.latest_videos li {
+	display: inline;
+}
+.video_img{
+	width:120px;
+	height:70px;
+	overflow:hidden;
+	float:left;
+	margin-bottom:2px;
+	border:1px solid #755556;
+}
+.video_img img{
+	margin-top:-10px;
+}
+.graphic {
+	margin:0;
+	padding:0;
+	overflow:hidden;
+	text-indent:-8000px;
+}
+.latest_videos #controls {
+	display: none;
+}
