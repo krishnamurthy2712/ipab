@@ -20,6 +20,6 @@
 			<view:BribeAnalysis width="70%" height="80%" skinClass="com.ipab.skins.BribeAnalysisSkin"/>
 		</s:HGroup>
 		
-		
+		<view:BribeReports width="100%" height="100%" skinClass="com.ipab.skins.BribeReportsSkin"/>
 	</s:VGroup>
 </s:Skin>
