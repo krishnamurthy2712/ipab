@@ -774,3 +774,354 @@ html ul.tabs li.active, html ul.tabs li.active a:hover,html ul.new li.active, ht
 .latest_videos #controls {
 	display: none;
 }
+
+.error
+{
+	color: red;
+	font-weight: bold;
+}
+
+/* Datepicker
+----------------------------------*/
+.ui-datepicker { width: 18em; padding: .2em .2em 0; background-color: #FFFFFF;}
+.ui-datepicker .ui-datepicker-header { position:relative; padding:.2em 0; background-color: #CCCCCC }
+.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next { position:absolute; top: 2px; width: 1.8em; height: 1.8em; }
+.ui-datepicker .ui-datepicker-prev-hover, .ui-datepicker .ui-datepicker-next-hover { top: 1px; }
+.ui-datepicker .ui-datepicker-prev { left:8px; }
+.ui-datepicker .ui-datepicker-next { right:12px;}
+.ui-datepicker .ui-datepicker-prev-hover { left:0px; }
+.ui-datepicker .ui-datepicker-next-hover { right:0px; }
+.ui-datepicker .ui-datepicker-prev span, .ui-datepicker .ui-datepicker-next span { display: block; position: absolute; left: 50%; margin-left: -8px; top: 50%; margin-top: -8px;  }
+.ui-datepicker .ui-datepicker-title { margin: 0 2.3em; line-height: 1.8em; text-align: center; }
+.ui-datepicker .ui-datepicker-title select { font-size:1em; margin:1px 0; }
+.ui-datepicker select.ui-datepicker-month-year {width: 100%;}
+.ui-datepicker select.ui-datepicker-month, 
+.ui-datepicker select.ui-datepicker-year { width: 49%;}
+.ui-datepicker table {width: 100%; font-size: .9em; border-collapse: collapse; margin:0 0 .4em; }
+.ui-datepicker th { padding: .7em .3em; text-align: center; font-weight: bold; border: 0;  }
+.ui-datepicker td { border: 0; padding: 1px; }
+.ui-datepicker td span, .ui-datepicker td a { display: block; padding: .2em; text-align: right; text-decoration: none; }
+.ui-datepicker .ui-datepicker-buttonpane { background-image: none; margin: .7em 0 0 0; padding:0 .2em; border-left: 0; border-right: 0; border-bottom: 0; }
+.ui-datepicker .ui-datepicker-buttonpane button { float: right; margin: .5em .2em .4em; cursor: pointer; padding: .2em .6em .3em .6em; width:auto; overflow:visible; }
+.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current { float:left; }
+
+/* with multiple calendars */
+.ui-datepicker.ui-datepicker-multi { width:auto; }
+.ui-datepicker-multi .ui-datepicker-group { float:left; }
+.ui-datepicker-multi .ui-datepicker-group table { width:95%; margin:0 auto .4em; }
+.ui-datepicker-multi-2 .ui-datepicker-group { width:50%; }
+.ui-datepicker-multi-3 .ui-datepicker-group { width:33.3%; }
+.ui-datepicker-multi-4 .ui-datepicker-group { width:25%; }
+.ui-datepicker-multi .ui-datepicker-group-last .ui-datepicker-header { border-left-width:0; }
+.ui-datepicker-multi .ui-datepicker-group-middle .ui-datepicker-header { border-left-width:0; }
+.ui-datepicker-multi .ui-datepicker-buttonpane { clear:left; }
+.ui-datepicker-row-break { clear:both; width:100%; }
+
+/* RTL support */
+.ui-datepicker-rtl { direction: rtl; }
+.ui-datepicker-rtl .ui-datepicker-prev { right: 2px; left: auto; }
+.ui-datepicker-rtl .ui-datepicker-next { left: 2px; right: auto; }
+.ui-datepicker-rtl .ui-datepicker-prev:hover { right: 1px; left: auto; }
+.ui-datepicker-rtl .ui-datepicker-next:hover { left: 1px; right: auto; }
+.ui-datepicker-rtl .ui-datepicker-buttonpane { clear:right; }
+.ui-datepicker-rtl .ui-datepicker-buttonpane button { float: left;}
+.ui-datepicker-rtl .ui-datepicker-buttonpane button.ui-datepicker-current { float:right; }
+.ui-datepicker-rtl .ui-datepicker-group { float:right; background-color: #CCCCC0;}
+.ui-datepicker-rtl .ui-datepicker-group-last .ui-datepicker-header { border-right-width:0; border-left-width:1px; }
+.ui-datepicker-rtl .ui-datepicker-group-middle .ui-datepicker-header { border-right-width:0; border-left-width:1px; }
+
+/* IE6 IFRAME FIX (taken from datepicker 1.5.3 */
+.ui-datepicker-cover {
+    display: none; /*sorry for IE5*/
+    display/**/: block; /*sorry for IE5*/
+    position: absolute; /*must have*/
+    z-index: -1; /*must have*/
+    filter: mask(); /*must have*/
+    top: -4px; /*must have*/
+    left: -4px; /*must have*/
+    width: 200px; /*must have*/
+    height: 200px; /*must have*/
+}
+
+
+/*  error
+*/
+.error{
+	font-size:13px;
+	color:#000;
+	border-color: red;
+	width: 100%;
+	min-height: 50px;
+	text-shadow: aqua;
+}
+
+/*tabs*/
+.tabcontent
+{
+    float: left;
+}
+
+.home_h2 {
+    color: #FFFFFF;
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+.home_h2 span {
+    color: #E7AD23;
+}
+.news_box {
+    background: none repeat scroll 0 0 #EADACD;
+    color: #271A12;
+    float: left;
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 280px;
+}
+.news_box .seeAll {
+    margin-top: 0;
+}
+.news_box .newsSub, .news_box .newsTitle, .thought_box .newsSub, .thought_box .newsTitle {
+    padding-bottom: 5px;
+}
+.news_box .newsSub span, .thought_box .newsSub a, .news_for_thought, .news_for_thought a {
+    color: #5D2A15;
+}
+.news_for_thought {
+    margin: 10px 0;
+}
+.news_box .newsSub, .thought_box .newsSub, .news_for_thought .newsSub {
+    color: #A44F1F;
+}
+.news_box .newsTitle a, .news_box .newsTeaser, .thought_box .newsTitle, .thought_box .newsTitle a, .thought_box .newsTeaser {
+    color: #644E3C;
+}
+.news_box ul li {
+    list-style: none outside none;
+    margin-bottom: 10px;
+}
+.news_box ul li p {
+    color: #271A12;
+    line-height: 1.3;
+    margin-top: 12px;
+    width: 100%;
+}
+.news_box .newsTitle {
+    font-weight: bold;
+}
+.news_box ul li a {
+    color: #644E3C;
+    font-size: 13px;
+    list-style: none outside none;
+    text-decoration: none;
+}
+.news_box ul li a span {
+    font-size: 12px;
+}
+.cq_box {
+    background: none repeat scroll 0 0 #EADACD;
+    color: #4B1B05;
+    float: left;
+    padding: 10px;
+    width: 280px;
+}
+.cq_box .cq_box_content {
+    background: none repeat scroll 0 0 #CEB9A7;
+    padding: 10px;
+}
+.cq_box a {
+    color: #4B1B05;
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.tabcontent, .new {
+    float: left;
+}
+ul.tabs, ul.new {
+    float: left;
+    height: 32px;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+ul.tabs li, ul.new li {
+    background: none repeat scroll 0 0 #271911;
+    float: left;
+    height: 32px;
+    line-height: 31px;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    width: 150px;
+}
+ul.tabs li.last, ul.new li.last {
+    float: right;
+    margin-right: 0;
+}
+ul.tabs li a, ul.new li a {
+    color: #E7AD23;
+    display: block;
+    font-size: 15px;
+    outline: medium none;
+    padding: 0 15px;
+    text-decoration: none;
+}
+ul.tabs li.active a, ul.new li.active a {
+    color: #4B1B05;
+    font-weight: bold;
+}
+html ul.tabs li.active, html ul.tabs li.active a:hover, html ul.new li.active, html ul.new li.active a:hover {
+    background: none repeat scroll 0 0 #EADACD;
+}
+.tab_container {
+    background: none repeat scroll 0 0 #EADACD;
+    border-top: medium none;
+    clear: both;
+    float: left;
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 280px;
+}
+.bribeFighters {
+    background: none repeat scroll 0 0 #ECBA43;
+    border-top: medium none;
+    clear: both;
+    margin-bottom: 20px;
+    margin-top: 6px;
+}
+.bribeFighters .bribeItems {
+    border-bottom: 1px dashed #644E3C;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+.bribeFighters .popularCity, .bribeFighters .popularTitle a {
+    color: #4B1B05;
+}
+.bribeFighters .popularTitle, .tab_container .popularTitle {
+    font-size: 12px;
+    line-height: 1.4;
+}
+.bribeFighters .popularCity a {
+    color: #9B1B1A;
+}
+.bribeFighters .all_categories {
+    background: none repeat scroll 0 0 #E7AD23;
+    color: #4B1B05;
+    margin-bottom: 0;
+    padding: 10px;
+}
+.moreAnalysis {
+    background: url("../images/seeAll.png") no-repeat scroll 100% 5px transparent;
+    margin-top: 10px;
+    padding-right: 15px;
+    text-align: right;
+}
+.moreAnalysis a {
+    color: #9B1B1A;
+}
+.bribeFighters .all_categories .categoryHead {
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+.bribeFighters .seeAll {
+    margin-bottom: 10px;
+}
+.bribeFighters div span {
+    color: #271911;
+    font-size: 10px;
+    margin-top: 2px;
+    width: 106%;
+}
+.bribeFighters div p a {
+    color: #271911;
+}
+.bribeFighters div.bribeFightersContent {
+    padding: 10px;
+    width: 280px;
+}
+.home_bribeFighters_h2 {
+    background: none repeat scroll 0 0 #271911;
+    color: #FFFFFF;
+    font-size: 20px;
+    margin-bottom: 5px;
+    padding: 6px 10px;
+}
+.home_bribeFighters_h2 span {
+    color: #E7AD23;
+}
+.tab_content .popularCity, .bribeFighters .popularCity {
+    font-size: 12px;
+}
+.tab_bottom {
+    background: none repeat scroll 0 0 #CFBAA9;
+    border-bottom: 2px solid #453536;
+    border-right: 2px solid #453536;
+    float: left;
+    height: 15px;
+    width: 445px;
+}
+.tab_content div, .bribeFighters div {
+    margin-bottom: 5px;
+}
+.tab_content div, .bribeFighters div.all_categories {
+    margin-bottom: 0;
+}
+.tab_content .bribeItems {
+    border-bottom: 1px dashed #644E3C;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+}
+.tab_content .popularCity {
+    color: #5D2A15;
+}
+.tab_content .popularCity span {
+    white-space: nowrap;
+}
+.tab_content .popularCity a {
+    color: #9B1B1A;
+}
+.tab_content .popularDate {
+    color: #A44F1F;
+    font-size: 10px;
+    margin: 5px 0;
+}
+.tab_content .popularTitle a {
+    color: #644E3C;
+}
+.tab_content .all_categories {
+    background: none repeat scroll 0 0 #CEB9A7;
+    color: #5D2A15;
+    padding: 10px;
+}
+.tab_content .all_categories .categoryHead {
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+.tab_content .seeAll {
+    margin-bottom: 10px;
+}
+.all_categories .categoryList a {
+    color: #981C1F;
+}
+.tab_content div span a, .bribeFighters div span a {
+    color: #5E5F5F;
+    text-decoration: none;
+}
+.viewmore {
+    float: left;
+    font-size: 12px;
+    margin-bottom: 35px;
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+}
+.viewmore a {
+    color: #000000;
+    font-size: 11px;
+    font-weight: bold;
+    text-decoration: underline;
+}
