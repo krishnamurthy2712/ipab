@@ -37,8 +37,6 @@
      </ul>
 </div>    
 
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/theme/js/jquery.js"></script>
 <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js"></script>
 <script type="text/javascript">
 $(function () { 

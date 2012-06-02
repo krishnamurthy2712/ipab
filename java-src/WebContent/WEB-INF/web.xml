@@ -1,23 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <servlet>
-        <servlet-name>action</servlet-name>
-        <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
-        <init-param>
-            <param-name>config</param-name>
-            <param-value>/WEB-INF/struts-config.xml</param-value>
-        </init-param>
-        <init-param>
-            <param-name>debug</param-name>
-            <param-value>2</param-value>
-        </init-param>
-        <init-param>
-            <param-name>detail</param-name>
-            <param-value>2</param-value>
-        </init-param>
-        <load-on-startup>2</load-on-startup>
-        </servlet>
-    <servlet>
     	<description>
     	</description>
     	<display-name>
@@ -30,22 +13,57 @@
     	<description>
     	</description>
     	<display-name>
-    	IPaid</display-name>
-    	<servlet-name>IPaid</servlet-name>
+    	IPaidService</display-name>
+    	<servlet-name>IPaidService</servlet-name>
     	<servlet-class>
-    	IPaid</servlet-class>
+    	com.ipablive.services.IPaidService</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>action</servlet-name>
-        <url-pattern>*.do</url-pattern>
-    </servlet-mapping>
+    <servlet>
+    	<description>
+    	</description>
+    	<display-name>
+    	ValidateSecurityCode</display-name>
+    	<servlet-name>ValidateSecurityCode</servlet-name>
+    	<servlet-class>
+    	com.ipablive.services.ValidateSecurityCode</servlet-class>
+    </servlet>
+    <servlet>
+    	<description>
+    	</description>
+    	<display-name>
+    	IDidnotPaidService</display-name>
+    	<servlet-name>IDidnotPaidService</servlet-name>
+    	<servlet-class>
+    	com.ipablive.services.IDidnotPaidService</servlet-class>
+    </servlet>
+    <servlet>
+    	<description>
+    	</description>
+    	<display-name>
+    	IDontHavetoPayService</display-name>
+    	<servlet-name>IDontHavetoPayService</servlet-name>
+    	<servlet-class>
+    	com.ipablive.services.IDontHavetoPayService</servlet-class>
+    </servlet>
     <servlet-mapping>
     	<servlet-name>CaptchaServlet</servlet-name>
     	<url-pattern>/getCaptcha.do</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-    	<servlet-name>IPaid</servlet-name>
-    	<url-pattern>/IPaid.do</url-pattern>
+    	<servlet-name>IPaidService</servlet-name>
+    	<url-pattern>/tellbribestory/IPaid.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>ValidateSecurityCode</servlet-name>
+    	<url-pattern>/validateCode.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>IDidnotPaidService</servlet-name>
+    	<url-pattern>/IDidnotPaid.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>IDontHavetoPayService</servlet-name>
+    	<url-pattern>/dontHavetoPay.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -54,27 +72,5 @@
     </session-config>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
-        </welcome-file-list>
-    <jsp-config>
-        <taglib>
-            <taglib-uri>/WEB-INF/struts-bean.tld</taglib-uri>
-            <taglib-location>/WEB-INF/struts-bean.tld</taglib-location>
-        </taglib>
-        <taglib>
-            <taglib-uri>/WEB-INF/struts-html.tld</taglib-uri>
-            <taglib-location>/WEB-INF/struts-html.tld</taglib-location>
-        </taglib>
-        <taglib>
-            <taglib-uri>/WEB-INF/struts-logic.tld</taglib-uri>
-            <taglib-location>/WEB-INF/struts-logic.tld</taglib-location>
-        </taglib>
-        <taglib>
-            <taglib-uri>/WEB-INF/struts-nested.tld</taglib-uri>
-            <taglib-location>/WEB-INF/struts-nested.tld</taglib-location>
-        </taglib>
-        <taglib>
-            <taglib-uri>/WEB-INF/struts-tiles.tld</taglib-uri>
-            <taglib-location>/WEB-INF/struts-tiles.tld</taglib-location>
-        </taglib>
-        </jsp-config>
+     </welcome-file-list>
     </web-app>
