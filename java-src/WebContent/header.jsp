@@ -1,15 +1,10 @@
 <style type="text/css">
-* { margin:0;
-    padding:0;
+* { margin:5;
+    padding:5;
 }
 body { background:rgb(74,81,85); }
-div#menu { margin:5px auto; }
-div#copyright {
-    font:11px 'Trebuchet MS';
-    color:#222;
-    text-indent:30px;
-    padding:40px 0 0 0;
-}
+div#menu { margin-left:10px auto; margin-right:10px auto;}
+
 div#copyright a { color:#000; }
 div#copyright a:hover { color:#222; }
 </style>

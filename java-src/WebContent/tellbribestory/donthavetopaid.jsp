@@ -1,8 +1,10 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@page import="com.ipablive.core.IPaidBribe"%>
 <%@page import="java.util.ArrayList"%>
 
-<%@page import="com.ipablive.core.CaptchaServlet"%><html>
+<%@page import="com.ipablive.core.CaptchaServlet"%>
+<%@page import="com.ipablive.commons.CommonOperations"%>
+<%@page import="com.ipablive.vo.CityVO"%>
+<%@page import="com.ipablive.vo.DepartmentVO"%><html>
 <head>
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <title>I Didn't Have To Pay A Bribe</title>
@@ -186,7 +188,7 @@
 </center>
 </div>
 <div id="mainContent" class="mainContent">
-<% IPaidBribe ipb = IPaidBribe.getInstance(); 
+<% CommonOperations ipb = CommonOperations.getInstance(); 
 	%>
 <div class="error">
 <div id="validationErrors"></div>
@@ -198,12 +200,13 @@
 	<option value="">Select County</option>
 	<%
 
- ArrayList<String> counties = ipb.getCounties();
+ ArrayList<CityVO> counties = ipb.getCounties();
  for(int i=0 ;i<counties.size();i++)
  {	 
 	 String s = (i+1) + "";
+	 CityVO cvo = counties.get(i);
 %>
-	<option value="<%=s %>"><%=counties.get(i)%></option>
+	<option value="<%=cvo.getId() %>"><%=cvo.getCityName()%></option>
 	<%
  }
 %>
@@ -212,12 +215,12 @@
 	onchange="getTransactions()" id="cDept" class="sleft">
 	<option value="">Select Department</option>
 	<%
- ArrayList<String> depts = ipb.getDepartments();
+ ArrayList<DepartmentVO> depts = ipb.getDepartments();
  for(int i=0 ;i<depts.size();i++)
  {	 
-	 String s = (i+1) + "";
+	 DepartmentVO dVo = depts.get(i);
 %>
-	<option value="<%=s %>"><%=depts.get(i)%></option>
+	<option value="<%=dVo.getDeptID() %>"><%=dVo.getDeptName()%></option>
 	<%
  }
 %>
