@@ -6,7 +6,7 @@
 <%@page import="com.ipablive.commons.CommonOperations"%><html>
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
-    <title>Awards</title>
+    <title>Contact Us</title>
 	<script src="${pageContext.request.contextPath}/theme/js/jquery.js"
 		type="text/javascript">
 		</script>
@@ -31,7 +31,7 @@
 <%@include file="../header.jsp" %>
 <div class="pageHeader">
 <center><br>
-<h2 class="pageHeaderH2">Awards</h2>
+<h2 class="pageHeaderH2">Contact Us</h2>
 </center>
 </div>
 <div id="mainContent" class="mainContent">

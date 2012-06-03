@@ -201,7 +201,7 @@ form .big,.form-item{width:470px; margin-bottom:13px;}
 }
 
 
-.stack { position: fixed; bottom: 0px; right: 40px; font: 13px "Trebuchet MS", Verdana, Helvetica, sans-serif; color: #666; }
+.stack { position: fixed; bottom: 0px; right: 70px; font: 13px "Trebuchet MS", Verdana, Helvetica, sans-serif; color: #666; }
 .stack * { margin: 0; padding: 0; }
 .stack > img { position: relative; cursor: pointer; padding-top: 35px; z-index: 2; }
 .stack ul { list-style: none; position: absolute; top: 5px; margin:0; cursor: pointer; z-index: 1; }

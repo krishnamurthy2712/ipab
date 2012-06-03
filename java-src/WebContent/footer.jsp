@@ -1,9 +1,9 @@
 <div class="footer">
 	<ul id="footer_links">
-        <li><a href="#" title="About Us">About Us</a></li>
-        <li><a href="#" title="Contact Us">Contact Us</a></li>
+        <li><a href="${pageContext.request.contextPath}/aboutus.jsp" title="About Us">About Us</a></li>
+        <li><a href="${pageContext.request.contextPath}/contactus.jsp" title="Contact Us">Contact Us</a></li>
         <li><a href="${pageContext.request.contextPath}/privacyPolicy.jsp" title="Privacy Policy">Privacy Policy</a></li>
-        <li><a href="#" title="Register for Updates">Register for Updates</a></li>
+        <li><a href="${pageContext.request.contextPath}/registerupdates.jsp" title="Register for Updates">Register for Updates</a></li>
        </ul>
        
        <div class="copyrights" >
