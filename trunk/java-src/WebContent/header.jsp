@@ -33,7 +33,7 @@ div#copyright a:hover { color:#222; }
             </ul>
         </li>
 		<li><a href="${pageContext.request.contextPath}/blog/blog.jsp"><span>Blog</span></a></li>
-		<li><a href="${pageContext.request.contextPath}/faqs/forum.jsp"><span>FAQs</span></a></li>
+		<li><a href="${pageContext.request.contextPath}/faqs/faqs.jsp"><span>FAQs</span></a></li>
         <li><a href="${pageContext.request.contextPath}/awards/awards.jsp"><span>Awards</span></a></li>
     </ul>
 </div>
