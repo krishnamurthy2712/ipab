@@ -13,6 +13,7 @@
 		<a class="orkut_bot" href="http://www.orkut.co.in/Main#Community?cmm=" target="_blank" title="Orkut"></a>
        
        	<p>&copy; 2011,  All rights Reserved<br />I Paid A Bribe</p>
+		<p id="bookmarkIpab"></p><br>
 	   </div>
 </div>
 
@@ -72,4 +73,42 @@ $(function () {
 		$("span",this).animate({marginRight: '0'});
 	});
 });
+
+function bookmarkIpab() 
+{ 
+	title = "IpaidBribe"; 
+	url = "http://localhost:8080/ipab";
+
+	if (window.sidebar) 
+	{ // Mozilla Firefox Bookmark
+		window.sidebar.addPanel(title, url,"");
+	} 
+	else if( window.external ) 
+	{ // IE Favorite
+		window.external.AddFavorite( url, title); 
+	}
+	else if(window.opera && window.print) 
+	{ // Opera Hotlist
+		return true; 
+	}
+}
+
+function addBookmarkLabel()
+{
+	var fav = document.getElementById("bookmarkIpab");
+	if (window.external) 
+	{
+	  fav.innerHTML = '<a href = "javaScript: bookmarkIpab()">Add to Favourites.</a>'; 
+	} 
+	else  if (window.sidebar) 
+	{
+		fav.innerHTML = '<a href = "javaScript: bookmarkIpab()">Bookmark IpaidBribe.</a>'; 
+    } 
+    else if (window.opera && window.print) 
+	{	
+    	fav.innerHTML = '<a href = "javaScript: bookmarkIpab()">Bookmark IpaidBribe.</a>';
+    } 
+	
+}
+
 </script>
