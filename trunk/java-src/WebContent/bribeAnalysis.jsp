@@ -1,10 +1,19 @@
-<div class="bribe_box analytics">
+<%
+	Home objHome = Home.getInstance();
+	ArrayList<BribeAnalysisVO> analysis = objHome.getBribeAnalysis();
+	ArrayList<TopCitiesVO> topCities = objHome.getTopCities();
+%>
+
+<%@page import="com.ipablive.core.Home"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.ipablive.vo.BribeAnalysisVO"%>
+<%@page import="com.ipablive.vo.TopCitiesVO"%><div class="bribe_box analytics">
 <h6>Bribe Analytics</h6>
 <div class="analytics_div">
 <div>
 <div class="analytics_div_report line">
-<div><span class="ana_color">Bribe Reports</span> 717 <span
-	class="ana_color">Value</span> KES. 27,907,710</div>
+<div><span class="ana_color">Bribe Reports</span> <%=analysis.get(0).getBribeReportsCount() %> <span
+	class="ana_color">Value</span> KES. <%=analysis.get(0).getTotalAmount() %></div>
 </div>
 <div class="analytics_div_report"><span class="ana_color">Top
 5</span> Counties(Bribe amount in '00 KES)</div>
@@ -12,21 +21,26 @@
 
 <div class="graph">
 	<ul id="graph_reports">
-		<li><span>80157</span>
-		<div style="width: 210px;">Nairobi</div>
+		<%
+		if(topCities.size()>0){
+			
+		
+		 for(int i=0; i<topCities.size();i++)
+		 {
+			 TopCitiesVO tvo = topCities.get(i);
+		%>
+		<li><span><%=tvo.getAmountPaid() %></span>
+		<div style="width: 210px;"><%=tvo.getCityName() %></div>
 		</li>
-		<li><span>16886</span>
-		<div style="width: 99px;">Mombasa</div>
-		</li>
-		<li><span>2791</span>
-		<div style="width: 75px;">Nakuru</div>
-		</li>
-		<li><span>2001</span>
-		<div style="width: 73px;">Baringo</div>
-		</li>
-		<li><span>1799</span>
-		<div style="width: 73px;">Kiambu</div>
-		</li>
+		<%
+		 }
+		}else
+		{
+			%>
+				<font color="red"><b>Unable to display data.</b></font>
+			<%
+		}
+		%>
 	</ul>
 <div class="clear"></div>
 </div>
