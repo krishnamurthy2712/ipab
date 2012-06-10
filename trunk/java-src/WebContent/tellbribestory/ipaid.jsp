@@ -208,6 +208,15 @@
 			$('#security_code').css('background',_noErrorColor);
 		}
 
+		if(showMessage())
+		{
+			return confirm("Please do NOT report names. We aim to change processes not target individuals.");
+		}
+		else
+		{
+			return false;
+		}
+		
 		return true;
 	}
 

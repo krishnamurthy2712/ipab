@@ -1,4 +1,4 @@
-package com.ipablive.core;
+package com.ipablive.services;
 
 /**
  * Servlet implementation class CaptchaServlet
@@ -25,7 +25,7 @@ import javax.servlet.http.HttpSession;
 
 
 
-    public class CaptchaServlet extends HttpServlet 
+    public class CaptchaService extends HttpServlet 
     {
       /**
 	 * 
