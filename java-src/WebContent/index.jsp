@@ -22,9 +22,9 @@
             <div class="report_bribe">
                 <p>
                     <br><strong>Bribed? Didn't Bribe?<br>Victimised? Angry?</strong>
-                    <a href="http://www.ipaidabribe.or.ke/sforms/register/complaints?CSRF_TOKEN=" onclick="aptesting('aG9tZXBhZ2Uy','MQ==')"><img src="I%20PAID%20A%20BRIBE_files/report_your_bribe_btn2.png" alt="REPORT YOUR BRIBE" border="0"></a>
+                    <a href=""><img src="${pageContext.request.contextPath}/theme/images/report_your_bribe_btn.png" alt="Report Your Bribe" border="0"></a>
                 <span>Tell us your story. Using your stories<br>we'll advocate with the government<br>for an improved system.</span><br><br>
-                    <b><a href="http://www.ipaidabribe.or.ke/node/77?CSRF_TOKEN=">What is I Paid A Bribe?</a></b>
+                    <b><a href="${pageContext.request.contextPath}/aboutus.jsp">What is I Paid A Bribe?</a></b>
                 </p>
             </div>
         </div>

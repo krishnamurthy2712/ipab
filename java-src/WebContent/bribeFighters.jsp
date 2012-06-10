@@ -1,6 +1,6 @@
 <div class="grid">
         <div class="bribeFighters">
-        <h2 class="home_bribeFighters_h2"><img src="I%20PAID%20A%20BRIBE_files/icon_bribe.png" align="absmiddle">ribe <span>Fighters</span></h2>
+        <h2 class="home_bribeFighters_h2"><img src="${pageContext.request.contextPath}/theme/images/bribe.png" align="absmiddle">ribe <span>Fighters</span></h2>
         	<div class="bribeFightersContent">
             	<div class="bribeReports">
 					                            

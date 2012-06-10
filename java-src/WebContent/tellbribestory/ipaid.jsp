@@ -1,7 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@page import="java.util.ArrayList"%>
-
-<%@page import="com.ipablive.core.CaptchaServlet"%>
 <%@page import="com.ipablive.commons.CommonOperations"%>
 <%@page import="com.ipablive.vo.CityVO"%>
 <%@page import="com.ipablive.vo.DepartmentVO"%><html>
@@ -34,7 +32,7 @@
 			function()
 			{
 				// binds form submission and fields to the validation engine
-				$( "#c_date_paid" ).datepicker();
+				$( "#c_date_paid" ).datepicker({dateFormat: 'dd-mm-yy',buttonImage: "/images/datepicker.gif"});
 				//$("#fm").validationEngine();
 			}
 	);
@@ -254,6 +252,7 @@
 			    // successful request; do something with the data
 			    //$('#transactionsDisplay').empty();
 			    $('#secCodeError').html(response);
+			    checkDeptOthers();
 			  },
 			  error:function(){
 			    // failed request; give feedback to user
@@ -261,7 +260,33 @@
 			  }
 		 });
 	}
-	
+
+	function checkDeptOthers()
+	{
+		alert($('#cDept').val());
+		if($('#cDept').val()==0)
+		{
+			$('#others_dept_cont').fadeIn();
+			$('#others_transaction_cont').fadeIn();
+		}
+		else
+		{
+			$('#others_dept_cont').fadeOut();
+			$('#others_transaction_cont').fadeOut();
+		}
+	}
+
+	function checkOthers()
+	{
+		if($('#c_transaction').val()==0)
+		{
+			$('#others_transaction_cont').fadeIn();
+		}
+		else
+		{
+			$('#others_transaction_cont').fadeOut();
+		}
+	}
 	
 	</script>
 </head>
@@ -278,7 +303,7 @@
 <div class="error">
 <div id="validationErrors"></div>
 </div>
-<form id="fm" method="post" action="IPaid.do"
+<form id="fm" method="post" action="RegisterIPaidComplaint.do"
 	onsubmit="return validateSubmission();">
 <div><label for="cCity">County </label> <select name="cCity"
 	class="sleft" id="cCity">
@@ -309,7 +334,9 @@
 		<%
 	 }
 %>
-</select></div>
+</select>
+<input type="text" name="others_dept" id="others_dept_cont" style="display:none;"  value="" />
+</div>
 <div><label for="cTransaction">Transactions </label>
 <div id="transactionsDisplay"></div>
 </div>

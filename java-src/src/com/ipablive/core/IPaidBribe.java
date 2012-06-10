@@ -104,6 +104,7 @@ public class IPaidBribe
 		  {
 			  String query = "";
 			  PreparedStatement pstmt;
+			  java.sql.Date sqlDate = new java.sql.Date(data.getCDatePaid().getTime());
 			  
 			  if(data.getCAmtPaid()>1000000)
 			  {
@@ -118,7 +119,7 @@ public class IPaidBribe
 				  pstmt.setString(5, data.getCTransaction());
 				  pstmt.setString(6, data.getOtherTransaction());
 				  pstmt.setInt(7, data.getCAmtPaid());
-				  pstmt.setDate(8, null); //set it later
+				  pstmt.setDate(8, sqlDate); //set it later
 				  pstmt.setString(9, data.getCBribeType());
 				  pstmt.setString(10, data.getCAddiInfo());
 				  pstmt.setString(11, data.getOfficeLocation());
@@ -138,7 +139,7 @@ public class IPaidBribe
 				  pstmt.setString(5, data.getCTransaction());
 				  pstmt.setString(6, data.getOtherTransaction());
 				  pstmt.setInt(7, data.getCAmtPaid());
-				  pstmt.setDate(8, null); //set it later
+				  pstmt.setDate(8, sqlDate); //set it later
 				  pstmt.setString(9, data.getCBribeType());
 				  pstmt.setString(10, data.getCAddiInfo());
 				  pstmt.setString(11, data.getOfficeLocation());
@@ -152,14 +153,46 @@ public class IPaidBribe
 			  if(i>0)
 			  {
 				  isStored = true;
+				  backUpStore(pstmt,data);
 			  }
 			  
 		  }
 		  catch(Exception e)
 		  {
 			  e.printStackTrace();
+			  isStored = false;
 		  }
 		  return isStored;
+	  }
+	  
+	  private void backUpStore(PreparedStatement pstmt,IPaidComplaintVO data )
+	  {
+		  String query = "insert into bd_paid_bribe_bkp (c_name,c_city,c_dept,others_dept,c_transaction," +
+	  		"others_transaction,c_amt_paid,c_date_paid,c_bribe_type,c_addi_info," +
+	  		"other_location,IP,filtered,approved) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		  try
+		  {
+			  pstmt = conn.prepareStatement(query);
+			  pstmt.setString(1, data.getCName());
+			  pstmt.setString(2, data.getCCity());
+			  pstmt.setString(3, data.getCDept());
+			  pstmt.setString(4, data.getOtherDept());
+			  pstmt.setString(5, data.getCTransaction());
+			  pstmt.setString(6, data.getOtherTransaction());
+			  pstmt.setInt(7, data.getCAmtPaid());
+			  pstmt.setDate(8, null); //set it later
+			  pstmt.setString(9, data.getCBribeType());
+			  pstmt.setString(10, data.getCAddiInfo());
+			  pstmt.setString(11, data.getOfficeLocation());
+			  pstmt.setString(12, data.getIpAddress());
+			  pstmt.setInt(13, 1);
+			  pstmt.setInt(14, 1);
+		  }
+		  catch (Exception e) 
+		  {
+			  e.printStackTrace();
+			  System.out.println("There is an error storing data in :: bd_paid_bribe_bkp table ");
+		  }
 	  }
 	  
 	  public PaidBribesVO viewDetailPaidBribes(int id)
