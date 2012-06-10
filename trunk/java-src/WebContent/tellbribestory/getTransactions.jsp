@@ -15,8 +15,16 @@
 	for(int i=0; i<trans.size();i++)
 	{
 		TransactionVO tVo = trans.get(i);
-		out.write("<option value="+(i+1)+">"+tVo.getTransactioName()+"</option>");
+		if(tVo.getTransactioName().equals("Others"))
+		{
+			out.write("<option value='0'>"+tVo.getTransactioName()+"</option>");
+		}else
+		{
+			out.write("<option value="+(i+1)+">"+tVo.getTransactioName()+"</option>");
+		}
+		
 		
 	}
 	out.write("</select>");
+	out.write(" <input type='text' name='others_transaction' style='display:none;' id='others_transaction_cont' value=''/>");
 %>

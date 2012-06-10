@@ -51,7 +51,7 @@
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>IPaidService</servlet-name>
-		<url-pattern>/tellbribestory/IPaid.do</url-pattern>
+		<url-pattern>/tellbribestory/RegisterIPaidComplaint.do</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ValidateSecurityCode</servlet-name>

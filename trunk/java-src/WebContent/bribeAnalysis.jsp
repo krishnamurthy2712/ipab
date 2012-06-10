@@ -45,7 +45,7 @@
 <div class="clear"></div>
 </div>
 <p><b><a
-	href="http://www.ipaidabribe.or.ke/bribepatterns/index.html?CSRF_TOKEN=">Detailed
+	href="#">Detailed
 analysis of the bribes reported so far</a></b></p>
 </div>
 </div>
