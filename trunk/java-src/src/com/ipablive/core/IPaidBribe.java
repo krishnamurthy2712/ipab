@@ -10,6 +10,7 @@ import com.ipablive.bdservice.City;
 import com.ipablive.datasource.ConnectionFactory;
 import com.ipablive.vo.IPaidComplaintVO;
 import com.ipablive.vo.PaidBribesVO;
+import com.ipablive.vo.ReportsCountVO;
 
 public class IPaidBribe 
 {
@@ -53,12 +54,12 @@ public class IPaidBribe
 	  {
 		  ArrayList<PaidBribesVO> paidBribes = new ArrayList<PaidBribesVO>();
 		  String searchCriteria="";
-		  if(criteria.equals("All"))
+		  if(criteria.equalsIgnoreCase("All"))
 		  {
 			  searchCriteria = "";
 		  }
 		  
-		  String query = "SELECT bc.*, ct.city_name AS c_city, bd.dept_name, bt.trans_name FROM bd_paid_bribe bc, bd_dept bd, bd_transactions bt, bd_city ct WHERE bc.c_dept=bd.id AND bc.c_transaction=bt.id and bc.c_city=ct.Id"+ searchCriteria +"order by bc.id desc";
+		  String query = "SELECT bc.*, ct.city_name AS c_city, bd.dept_name, bt.trans_name FROM bd_paid_bribe bc, bd_dept bd, bd_transactions bt, bd_city ct WHERE bc.c_dept=bd.id AND bc.c_transaction=bt.id and bc.c_city=ct.Id "+ searchCriteria +" order by bc.id desc";
 		  
 		  try
 		  {
@@ -68,7 +69,7 @@ public class IPaidBribe
 			  {
 				  PaidBribesVO pbv = new PaidBribesVO();
 				  pbv.setId(rs.getInt(1));
-				  //2
+				  pbv.setCName(rs.getString(2));
 				  pbv.setCDept(rs.getString(3));
 				  //4
 				  pbv.setOthersTransaction(rs.getString(5));
@@ -233,5 +234,28 @@ public class IPaidBribe
 		  
 		  
 		  return pbVo;
+	  }
+	  
+	  public ReportsCountVO getReportsCount()
+	  {
+		  ReportsCountVO count = new ReportsCountVO();
+		  
+		  String query = "SELECT  count(1) as BribeReportsCount, COUNT(DISTINCT bd.c_city) AS total_city, SUM(bd.c_amt_paid) AS total_amount FROM bd_paid_bribe bd WHERE bd.approved = 1";
+		  try
+		  {
+			  Statement stmt = conn.createStatement();
+			  ResultSet rs = stmt.executeQuery(query);
+			  while(rs.next())
+			  {
+				  count.setBribeReportsCount(rs.getInt(1));
+				  count.setTotalCity(rs.getInt(2));
+				  count.setTotalAmount(rs.getInt(3));
+			  }
+		  }catch(Exception e)
+		  {
+			  e.printStackTrace();
+		  }
+		  
+		  return count;
 	  }
 }
