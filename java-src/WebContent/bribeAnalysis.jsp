@@ -28,16 +28,14 @@
 		 for(int i=0; i<topCities.size();i++)
 		 {
 			 TopCitiesVO tvo = topCities.get(i);
-		%>
-		<li><span><%=tvo.getAmountPaid() %></span>
-		<div style="width: 210px;"><%=tvo.getCityName() %></div>
-		</li>
-		<%
+			 out.println("<li><span>"+tvo.getAmountPaid()+"</span>");
+			 out.println("<div style='width: "+(tvo.getAmountPaid()/100)*2+"px;'>"+ tvo.getCityName()+" </div>");
+			 out.println("</li>");
 		 }
 		}else
 		{
 			%>
-				<font color="red"><b>Unable to display data.</b></font>
+				<li><span><font color="red"><b>Unable to display data.</b></font></span>
 			<%
 		}
 		%>

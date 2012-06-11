@@ -25,6 +25,7 @@ public class PaidBribesVO
 	private int count;
 	private String deptName;
 	private String transName;
+	private String cName;
 	
 	public int getId() 
 	{
@@ -150,6 +151,15 @@ public class PaidBribesVO
 	public void setTransName(String transName) 
 	{
 		this.transName = transName;
+	}
+	
+	public String getCName() 
+	{
+		return cName;
+	}
+	public void setCName(String name) 
+	{
+		cName = name;
 	}
 	
 	

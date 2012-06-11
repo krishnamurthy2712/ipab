@@ -3,7 +3,10 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.ipablive.vo.CityVO"%>
 <%@page import="com.ipablive.vo.DepartmentVO"%>
-<%@page import="com.ipablive.commons.CommonOperations"%><html>
+<%@page import="com.ipablive.commons.CommonOperations"%>
+<%@page import="com.ipablive.core.IPaidBribe"%>
+<%@page import="com.ipablive.vo.ReportsCountVO"%>
+<%@page import="com.ipablive.vo.PaidBribesVO"%><html>
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     <title>Bribe Reports: 'I Paid a Bribe' Reports | I PAID A BRIBE</title>
@@ -65,7 +68,11 @@ function getTransactions()
 </center>
 </div>
 <div id="mainContent" class="reportContent">
-	<h1>Total reports: 408 and counting...</h1>
+<% IPaidBribe ipab = IPaidBribe.getInstance();
+   ReportsCountVO rptVo = ipab.getReportsCount();
+
+%>
+	<h1>Total reports: <%=rptVo.getBribeReportsCount() %> and counting...</h1>
 <br>
 			<form action="" method="post" name="myform">
 			<fieldset>
@@ -110,6 +117,44 @@ function getTransactions()
 
 </fieldset>
 </form>
+<% ArrayList<PaidBribesVO> pbVOs = ipab.viewPaidBribes("ALL");
+  if(pbVOs.size()>0)
+  {
+	for(int i=0;i<pbVOs.size();i++)
+	{
+		PaidBribesVO pbVo = new PaidBribesVO();
+%>
+<div class="report_reg">
+	<h2><%= pbVo.getCName() %></h2>
+	<div class="report_reg_det">
+		<strong>Reported :</strong> <%=pbVo.getCPaidDate() %> 
+		| <strong>City :</strong> <%=pbVo.getCCity() %>
+           <br /><strong>Paid On :</strong> <%=pbVo.getCCity() %> 
+		| <strong><%=pbVo.getDeptName() %></strong>
+	</div>
+
+	<div class="report_reg_paid">PAID<span><?php echo $row->c_amt_paid;?></span></div>
+
+    <div class="clear"></div>
+		<div id="more_link">
+			<div class="report_reg_more">
+            <a href="#" class="rad" onclick="show_more(''); return false;">Read More</a> 
+            <a href="#">Add Comment</a> 
+            <a href="#"><?php echo $num_comment;?> Comments</a>
+            <a href="http://www.facebook.com/share.php?u=" target="_blank" class="facebook_share_view"></a>
+            <a href="http://twitter.com/share?url=" target="_blank" class="tweet_share_view"></a>
+            <!--<span id="count<?php echo $row->id;?>_1"><?php echo $row->count;?></span> views-->
+            </div>
+		</div>
+	</div>
+<% }
+}else
+{
+%>
+<br><br><br>
+<div align="center"><span><font color="red"><b>Unable to display data.</b></font></span></div>
+<br><br><br>
+<%} %>
 </div>
 <div><%@include file="sideContents.jsp"%></div>
 
