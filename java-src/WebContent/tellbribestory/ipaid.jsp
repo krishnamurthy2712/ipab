@@ -40,7 +40,8 @@
 	function getTransactions()
 	{
          // get the form values
-         var dept = $('#cDept').val();
+        var dept = $('#cDept').find('option:selected').attr('id'); //$('#cDept').val();
+        alert($('#cDept').val());
 		 $.ajax({
 			  type: 'GET',
 			  url: 'getTransactions.jsp',
@@ -53,6 +54,7 @@
 			    // successful request; do something with the data
 			    //$('#transactionsDisplay').empty();
 			    $('#transactionsDisplay').html(response);
+			    checkDeptOthers();
 			  },
 			  error:function(){
 			    // failed request; give feedback to user
@@ -252,7 +254,6 @@
 			    // successful request; do something with the data
 			    //$('#transactionsDisplay').empty();
 			    $('#secCodeError').html(response);
-			    checkDeptOthers();
 			  },
 			  error:function(){
 			    // failed request; give feedback to user
@@ -263,11 +264,11 @@
 
 	function checkDeptOthers()
 	{
-		alert($('#cDept').val());
 		if($('#cDept').val()==0)
 		{
 			$('#others_dept_cont').fadeIn();
 			$('#others_transaction_cont').fadeIn();
+			$('#cTransactions').html("<option value='0'>Others</option>");
 		}
 		else
 		{
@@ -322,7 +323,7 @@
 %>
 </select></div>
 <div><label for="cDept">Department </label> <select
-	onchange="getTransactions()" id="cDept" class="sleft">
+	onchange="getTransactions()" id="cDept" name="cDept" class="sleft">
 	<option value="">Select Department</option>
 	<%
 	ArrayList<DepartmentVO> depts = ipb.getDepartments();
@@ -330,11 +331,12 @@
 	 {	 
 		 DepartmentVO dVo = depts.get(i);
 	%>
-		<option value="<%=dVo.getDeptID() %>"><%=dVo.getDeptName()%></option>
+		<option value="<%=dVo.getDeptID() %>" id="<%=dVo.getDeptID() %>" ><%=dVo.getDeptName() %></option>
 		<%
 	 }
 %>
 </select>
+    
 <input type="text" name="others_dept" id="others_dept_cont" style="display:none;"  value="" />
 </div>
 <div><label for="cTransaction">Transactions </label>

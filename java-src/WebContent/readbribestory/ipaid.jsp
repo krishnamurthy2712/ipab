@@ -55,6 +55,22 @@ function getTransactions()
 		  }
 	 });
 }
+
+function show_less(num)
+{
+	$('#more_link'+num).css('display','block');
+	$('#less_link'+num).css('display','none');		
+	$('#more_d_'+num).css('display','none');
+	$('#less_d_'+num).fadeIn();
+}
+
+function show_more(num)
+{
+	$('#less_link'+num).css('display','block');
+	$('#more_link'+num).css('display','none');			
+	$('#less_d_'+num).css('display','none');
+	$('#more_d_'+num).fadeIn();
+}	
 </script>
 
 </head>
@@ -122,7 +138,7 @@ function getTransactions()
   {
 	for(int i=0;i<pbVOs.size();i++)
 	{
-		PaidBribesVO pbVo = new PaidBribesVO();
+		PaidBribesVO pbVo = pbVOs.get(i);
 %>
 <div class="report_reg">
 	<h2><%= pbVo.getCName() %></h2>
@@ -133,7 +149,7 @@ function getTransactions()
 		| <strong><%=pbVo.getDeptName() %></strong>
 	</div>
 
-	<div class="report_reg_paid">PAID<span><?php echo $row->c_amt_paid;?></span></div>
+	<div class="report_reg_paid">PAID<span><%=pbVo.getCAmountPaid() %></span></div>
 
     <div class="clear"></div>
 		<div id="more_link">

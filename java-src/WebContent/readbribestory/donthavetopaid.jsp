@@ -3,7 +3,10 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.ipablive.commons.CommonOperations"%>
 <%@page import="com.ipablive.vo.CityVO"%>
-<%@page import="com.ipablive.vo.DepartmentVO"%><html>
+<%@page import="com.ipablive.vo.DepartmentVO"%>
+<%@page import="com.ipablive.core.IDontHavetoPay"%>
+<%@page import="com.ipablive.vo.ReportsCountVO"%>
+<%@page import="com.ipablive.vo.DontHavetoPayVO"%><html>
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     <title>Bribe Reports: 'I Din't Have to Pay a Bribe' Reports | I PAID A BRIBE</title>
@@ -52,6 +55,23 @@ function getTransactions()
 		  }
 	 });
 }
+
+function show_less(num)
+{
+	$('#more_link'+num).css('display','block');
+	$('#less_link'+num).css('display','none');		
+	$('#more_d_'+num).css('display','none');
+	$('#less_d_'+num).fadeIn();
+}
+
+function show_more(num)
+{
+	$('#less_link'+num).css('display','block');
+	$('#more_link'+num).css('display','none');			
+	$('#less_d_'+num).css('display','none');
+	$('#more_d_'+num).fadeIn();
+}
+
 </script>
 
 </head>
@@ -65,7 +85,12 @@ function getTransactions()
 </center>
 </div>
 <div id="mainContent" class="reportContent">
-	<h1>Total reports: 408 and counting...</h1>
+
+<%
+IDontHavetoPay ipab = IDontHavetoPay.getInstance();
+ReportsCountVO rptVo = ipab.getReportsCount();
+%>
+	<h1>Total reports: <%=rptVo.getBribeReportsCount() %> and counting...</h1>
 <br>
 			<form action="" method="post" name="myform">
 			<fieldset>
@@ -110,6 +135,44 @@ function getTransactions()
 
 </fieldset>
 </form>
+
+<% ArrayList<DontHavetoPayVO> bribes = ipab.viewDintHaveToPay("All");
+	if(bribes.size()>0)
+	{
+		for(int i=0;i<bribes.size();i++)
+		{
+			DontHavetoPayVO bribe = bribes.get(i);
+%>
+ <div class="report_reg">
+	<h2><%=bribe.getCName() %></h2>
+	<div class="report_reg_det">
+			<strong>Reported :</strong> NA 
+			| <strong>City :</strong> <%=bribe.getCCity() %>
+			| <strong><%=bribe.getCDept() %></strong>
+	</div>
+    <div class="clear"></div>
+		<div id="more_link<%=bribe.getId() %>" >
+			<div class="report_reg_more">
+            <a href="#" class="rad" onclick="show_more('<%=bribe.getId() %>'); return false;">Read More</a> 
+            <a href="#">Add Comment</a> 
+            <a href="#>">1 Comments</a>
+            <a href="http://www.facebook.com/share.php?u=" target="_blank" class="facebook_share_view"></a>
+            <a href="http://twitter.com/share?url=" target="_blank" class="tweet_share_view"></a> 
+            </div>
+			</div>
+		</div>
+<% 
+	
+	}
+	}
+	else
+	{
+	%>
+		<br><br><br>
+		<div align="center"><span><font color="red"><b>Unable to display data.</b></font></span></div>
+		<br><br><br>
+	<%} %>
+
 </div>
 
 

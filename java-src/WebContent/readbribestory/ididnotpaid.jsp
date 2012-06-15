@@ -3,7 +3,10 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.ipablive.vo.CityVO"%>
 <%@page import="com.ipablive.vo.DepartmentVO"%>
-<%@page import="com.ipablive.commons.CommonOperations"%><html>
+<%@page import="com.ipablive.commons.CommonOperations"%>
+<%@page import="com.ipablive.core.IDidnotPaid"%>
+<%@page import="com.ipablive.vo.ReportsCountVO"%>
+<%@page import="com.ipablive.vo.DidNotPaidBribesVO"%><html>
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     <title>Bribe Reports: 'I Din't Pay a Bribe' Reports | I PAID A BRIBE</title>
@@ -52,6 +55,22 @@ function getTransactions()
 		  }
 	 });
 }
+
+function show_less(num)
+{
+	$('#more_link'+num).css('display','block');
+	$('#less_link'+num).css('display','none');		
+	$('#more_d_'+num).css('display','none');
+	$('#less_d_'+num).fadeIn();
+}
+
+function show_more(num)
+{
+	$('#less_link'+num).css('display','block');
+	$('#more_link'+num).css('display','none');			
+	$('#less_d_'+num).css('display','none');
+	$('#more_d_'+num).fadeIn();
+}
 </script>
 
 </head>
@@ -59,58 +78,101 @@ function getTransactions()
 <% CommonOperations ipb = CommonOperations.getInstance(); 
 	%>
 <%@include file="../header.jsp" %>
-<div class="pageHeader">
-<center><br>
-<h2 class="pageHeaderH2">I Din't Pay a Bribe</h2>
-</center>
-</div>
-<div id="mainContent" class="reportContent">
-	<h1>Total reports: 408 and counting...</h1>
-<br>
-			<form action="" method="post" name="myform">
-			<fieldset>
-			<legend>FILTER RESULTS</legend>
-           <div><label for="cCity">County </label> <select name="cCity"
-	class="sleft" id="cCity">
-	<option value="">All</option>
-	<%
-
-	ArrayList<CityVO> counties = ipb.getCounties();
-	 for(int i=0 ;i<counties.size();i++)
-	 {	 
-		 String s = (i+1) + "";
-		 CityVO cvo = counties.get(i);
-	%>
-		<option value="<%=cvo.getId() %>"><%=cvo.getCityName()%></option>
-		<%
-	 }
-%>
-</select></div>
-<div><label for="cDept">Department </label> <select
-	onchange="getTransactions()" id="cDept" class="sleft">
-	<option value="">All</option>
-	<%
-	ArrayList<DepartmentVO> depts = ipb.getDepartments();
-	 for(int i=0 ;i<depts.size();i++)
-	 {	 
-		 DepartmentVO dVo = depts.get(i);
-	%>
-		<option value="<%=dVo.getDeptID() %>"><%=dVo.getDeptName()%></option>
-		<%
-	 }
-%>
-</select></div>
-<div><label for="cTransaction">Transactions </label>
-<div id="transactionsDisplay"></div>
-</div>
-
-	<div class="go_report">
-		<input src="${pageContext.request.contextPath}/theme/images/go.png" name="go" value="Go" type="image">            
+	<div class="pageHeader">
+		<center><br>
+		<h2 class="pageHeaderH2">I Din't Pay a Bribe</h2>
+		</center>
 	</div>
 
-</fieldset>
-</form>
-</div>
+	<div id="mainContent" class="reportContent">
+		<% IDidnotPaid  iDidntPay = IDidnotPaid.getInstance();
+		   ReportsCountVO rptVo = iDidntPay.getReportsCount();
+		
+		%>	
+		<h1>Total reports: <%=rptVo.getBribeReportsCount() %> and counting...</h1>
+		<br>
+		<form action="" method="post" name="myform">
+		<fieldset>
+		<legend>FILTER RESULTS</legend>
+	         <div><label for="cCity">County </label> <select name="cCity"
+			class="sleft" id="cCity">
+			<option value="">All</option>
+			<%
+		
+			ArrayList<CityVO> counties = ipb.getCounties();
+			 for(int i=0 ;i<counties.size();i++)
+			 {	 
+				 String s = (i+1) + "";
+				 CityVO cvo = counties.get(i);
+			%>
+				<option value="<%=cvo.getId() %>"><%=cvo.getCityName()%></option>
+				<%
+			 }
+		%>
+		</select></div>
+		<div><label for="cDept">Department </label> <select
+			onchange="getTransactions()" id="cDept" class="sleft">
+			<option value="">All</option>
+			<%
+			ArrayList<DepartmentVO> depts = ipb.getDepartments();
+			 for(int i=0 ;i<depts.size();i++)
+			 {	 
+				 DepartmentVO dVo = depts.get(i);
+			%>
+				<option value="<%=dVo.getDeptID() %>"><%=dVo.getDeptName()%></option>
+				<%
+			 }
+		%>
+		</select></div>
+		<div><label for="cTransaction">Transactions </label>
+		<div id="transactionsDisplay"></div>
+		</div>
+		
+			<div class="go_report">
+				<input src="${pageContext.request.contextPath}/theme/images/go.png" name="go" value="Go" type="image">            
+			</div>
+		
+		</fieldset>
+		</form>
+		
+		<% 
+			ArrayList<DidNotPaidBribesVO> bribes = iDidntPay.viewDintPay("ALL");
+			if(bribes.size()>0)
+			{
+				for(int i=0;i<bribes.size();i++)
+				{
+					DidNotPaidBribesVO bribe = bribes.get(i);
+		%>
+		 <div class="report_reg">
+			<h2><%=bribe.getCName() %></h2>
+			<div class="report_reg_det">
+					<strong>Reported :</strong> NA 
+					| <strong>City :</strong> <%=bribe.getCCity() %> 
+					| <strong><%=bribe.getCDept() %></strong>
+			</div>
+			<div id="more_link<%=bribe.getId() %>">
+				<div class="report_reg_more">
+		            <a href="#" class="rad" onclick="show_more('<%=bribe.getId() %>'); return false;">Read More</a> 
+		            <a href="#">Add Comment</a> 
+		            <a href="#"><?php echo $num_comment;?> Comments</a>
+		            <a href="http://www.facebook.com/share.php?u=" target="_blank" class="facebook_share_view"></a>
+		            <a href="http://twitter.com/share?url=" target="_blank" class="tweet_share_view"></a>
+		            <!--<span id="count<?php echo $row->id;?>_1"><?php echo $row->count;?></span> views-->
+	            </div>
+			</div>
+		</div>
+		<% 
+				}
+			}
+			else
+			{
+			%>
+			<br><br><br>
+			<div align="center"><span><font color="red"><b>Unable to display data.</b></font></span></div>
+			<br><br><br>
+			<%} %>
+		
+	</div>
 <div><%@include file="sideContents.jsp"%></div>
 
 

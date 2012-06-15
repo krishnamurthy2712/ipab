@@ -8,7 +8,7 @@
 	int dept_id = Integer.parseInt(dept);
 	CommonOperations ipb = CommonOperations.getInstance();
 	ArrayList<TransactionVO> trans = ipb.getTransactions(dept_id);
-	out.write("<select class='sleft' id='cTransactions'>");
+	out.write("<select class='sleft' id='cTransactions' name='cTransactions' onchange='checkOthers()'>");
 	out.write("<option value=\'\'>Select Transaction</option>");
 	System.out.println("trans.size() "+ trans.size());
 	
@@ -20,7 +20,7 @@
 			out.write("<option value='0'>"+tVo.getTransactioName()+"</option>");
 		}else
 		{
-			out.write("<option value="+(i+1)+">"+tVo.getTransactioName()+"</option>");
+			out.write("<option value="+tVo.getTransactionId()+">"+tVo.getTransactioName()+"</option>");
 		}
 		
 		
