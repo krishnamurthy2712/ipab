@@ -13,6 +13,7 @@ import com.ipablive.datasource.ConnectionFactory;
 import com.ipablive.vo.DidNotPaidBribesVO;
 import com.ipablive.vo.IDidnotPaidComplaintVO;
 import com.ipablive.vo.PaidBribesVO;
+import com.ipablive.vo.ReportsCountVO;
 
 /**
  * @author 
@@ -166,4 +167,26 @@ public class IDidnotPaid
 		  return pbVo;
 	  }
 	  
+	  public ReportsCountVO getReportsCount()
+	  {
+		  ReportsCountVO count = new ReportsCountVO();
+		  
+		  String query = "SELECT  count(1) as BribeReportsCount, COUNT(DISTINCT bd.c_city) AS total_city FROM bd_dint_bribe bd WHERE bd.approved = 1;";
+		  try
+		  {
+			  Statement stmt = conn.createStatement();
+			  ResultSet rs = stmt.executeQuery(query);
+			  while(rs.next())
+			  {
+				  count.setBribeReportsCount(rs.getInt(1));
+				  count.setTotalCity(rs.getInt(2));
+				  //count.setTotalAmount(rs.getInt(3));
+			  }
+		  }catch(Exception e)
+		  {
+			  e.printStackTrace();
+		  }
+		  
+		  return count;
+	  }
 }

@@ -1,7 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@page import="java.util.ArrayList"%>
 
-<%@page import="com.ipablive.core.CaptchaServlet"%>
 <%@page import="com.ipablive.commons.CommonOperations"%>
 <%@page import="com.ipablive.vo.CityVO"%>
 <%@page import="com.ipablive.vo.DepartmentVO"%><html>
@@ -30,14 +29,6 @@
 	rel="stylesheet" />
 
 <script type="text/javascript">
-	$(document).ready(
-			function()
-			{
-				// binds form submission and fields to the validation engine
-				$( "#c_date_paid" ).datepicker();
-				//$("#fm").validationEngine();
-			}
-	);
 
 	function getTransactions()
 	{
@@ -193,7 +184,7 @@
 <div class="error">
 <div id="validationErrors"></div>
 </div>
-<form id="fm" method="post" action="IPaid.do"
+<form id="fm" method="post" action="RegisterIDontHavePayComplaint.do"
 	onsubmit="return validateSubmission();">
 <div><label for="cCity">County </label> <select name="cCity"
 	class="sleft" id="cCity">
@@ -212,7 +203,7 @@
 %>
 </select></div>
 <div><label for="cDept">Department </label> <select
-	onchange="getTransactions()" id="cDept" class="sleft">
+	onchange="getTransactions()" id="cDept" name="cDept" class="sleft">
 	<option value="">Select Department</option>
 	<%
  ArrayList<DepartmentVO> depts = ipb.getDepartments();
@@ -235,6 +226,16 @@
 	<option value="corporate">Corporate</option>
 </select></div>
 <div><input type="radio" name="resisted_type" checked="checked" onclick="changeColor('govt_official','resisted_by');" id="govt_official" value="govt" /> <label id="govt_official_l" for="govt_official">Came accross</label> &nbsp;<strong>An honest goverment official.</strong></div>
+
+<div><label for="c_name">Title your story</label><br>
+<textarea class="big" name="c_name" id="c_name" rows="2"
+	style="height: 20px;" cols="4"></textarea></div>
+<div><label for="c_addi_info">Tell us your story</label><br>
+Please do NOT report names." We aim to change processes not target
+individuals<br>
+<textarea class="big" name="c_addi_info" id="c_addi_info" rows="10"
+	cols="4"></textarea></div>
+
 <div><label for="security_code">Please enter the security
 code</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img
 	src="${pageContext.request.contextPath}/getCaptcha.do" id="captcha">
@@ -254,7 +255,7 @@ code</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img
 </form>
 
 </div>
-
+<div><%@include file="sideContents.jsp"%></div>
 <%@include file="../footer.jsp"%>
 </body>
 </html>

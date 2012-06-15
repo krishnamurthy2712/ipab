@@ -22,7 +22,7 @@
             <div class="report_bribe">
                 <p>
                     <br><strong>Bribed? Didn't Bribe?<br>Victimised? Angry?</strong>
-                    <a href=""><img src="${pageContext.request.contextPath}/theme/images/report_your_bribe_btn.png" alt="Report Your Bribe" border="0"></a>
+                    <a href="${pageContext.request.contextPath}/tellbribestory/ipaid.jsp"><img src="${pageContext.request.contextPath}/theme/images/report_your_bribe_btn.png" alt="Report Your Bribe" border="0"></a>
                 <span>Tell us your story. Using your stories<br>we'll advocate with the government<br>for an improved system.</span><br><br>
                     <b><a href="${pageContext.request.contextPath}/aboutus.jsp">What is I Paid A Bribe?</a></b>
                 </p>

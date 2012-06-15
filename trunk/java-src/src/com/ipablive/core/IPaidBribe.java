@@ -70,23 +70,25 @@ public class IPaidBribe
 				  PaidBribesVO pbv = new PaidBribesVO();
 				  pbv.setId(rs.getInt(1));
 				  pbv.setCName(rs.getString(2));
-				  pbv.setCDept(rs.getString(3));
+				  //3
+				  pbv.setCDept(rs.getString(4));
 				  //4
-				  pbv.setOthersTransaction(rs.getString(5));
-				  pbv.setCAmountPaid(rs.getInt(6));
-				  pbv.setCPaidDate(rs.getDate(7));
-				  pbv.setCBribeType(rs.getString(8));
-				  pbv.setCValTran(rs.getString(9));
-				  pbv.setCAdditionalInfo(rs.getString(10));
-				  //11
-				  pbv.setOtherDept(rs.getString(12));
-				  //13
-				  pbv.setOtherLocation(rs.getString(14));
-				  //15,16,17
-				  pbv.setCount(rs.getInt(18));
-				  pbv.setCCity(rs.getString(19));
-				  pbv.setDeptName(rs.getString(20));
-				  pbv.setTransName(rs.getString(21));
+				  //5
+				  pbv.setOthersTransaction(rs.getString(6));
+				  pbv.setCAmountPaid(rs.getInt(7));
+				  pbv.setCPaidDate(rs.getDate(8));
+				  pbv.setCBribeType(rs.getString(9));
+				  //pbv.setCValTran(rs.getString(10));
+				  pbv.setCAdditionalInfo(rs.getString(11));
+				  //12
+				  pbv.setOtherDept(rs.getString(13));
+				  //14
+				  pbv.setOtherLocation(rs.getString(15));
+				  //16,17,18
+				  pbv.setCount(rs.getInt(19));
+				  pbv.setCCity(rs.getString(20));
+				  pbv.setDeptName(rs.getString(21));
+				  pbv.setTransName(rs.getString(22));
 				  
 				  paidBribes.add(pbv);
 			  }

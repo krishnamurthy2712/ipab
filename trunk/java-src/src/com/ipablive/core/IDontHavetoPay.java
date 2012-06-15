@@ -13,6 +13,7 @@ import com.ipablive.datasource.ConnectionFactory;
 import com.ipablive.vo.DidNotPaidBribesVO;
 import com.ipablive.vo.DidnotHaveToPayComplaintVO;
 import com.ipablive.vo.DontHavetoPayVO;
+import com.ipablive.vo.ReportsCountVO;
 
 /**
  * @author 
@@ -108,15 +109,15 @@ public class IDontHavetoPay
 			  String query = "";
 			  PreparedStatement pstmt;
 			  
-			  query = "insert into bd_dint_bribe (c_name,c_city,c_dept,others_dept,c_transaction,c_bribe_type," +
+			  query = "insert into bd_dint_have_to_bribe (c_name,c_city,c_dept,others_dept,c_bribe_type,c_transaction," +
 		  		"others_transaction,c_bribe_resisted_by,c_addi_info,IP) values (?,?,?,?,?,?,?,?,?,?)";
 			  pstmt = conn.prepareStatement(query);
 			  pstmt.setString(1, data.getCName());
 			  pstmt.setString(2, data.getCCity());
 			  pstmt.setString(3, data.getCDept());
 			  pstmt.setString(4, data.getOtherDept());
-			  pstmt.setString(5, data.getCTransaction());
-			  pstmt.setString(6, data.getCBribeType());
+			  pstmt.setString(5, data.getCBribeType());
+			  pstmt.setString(6, data.getCTransaction());
 			  pstmt.setString(7, data.getOtherTransaction());
 			  pstmt.setString(8, data.getCBribeResistedBy());
 			  pstmt.setString(9, data.getCAddiInfo());
@@ -171,4 +172,28 @@ public class IDontHavetoPay
 		  
 		  return dhpbv;
 	  }
+	  
+	  public ReportsCountVO getReportsCount()
+	  {
+		  ReportsCountVO count = new ReportsCountVO();
+		  
+		  String query = "SELECT  count(1) as BribeReportsCount, COUNT(DISTINCT bd.c_city) AS total_city FROM bd_dint_have_to_bribe bd WHERE bd.approved = 1";
+		  try
+		  {
+			  Statement stmt = conn.createStatement();
+			  ResultSet rs = stmt.executeQuery(query);
+			  while(rs.next())
+			  {
+				  count.setBribeReportsCount(rs.getInt(1));
+				  count.setTotalCity(rs.getInt(2));
+				  //count.setTotalAmount(rs.getInt(3));
+			  }
+		  }catch(Exception e)
+		  {
+			  e.printStackTrace();
+		  }
+		  
+		  return count;
+	  }
+	  
 }

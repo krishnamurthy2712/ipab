@@ -35,6 +35,9 @@
 </center>
 </div>
 <div id="mainContent" class="mainContent">
+<p >
+<center><b>This part is under construction.</b></center>
+<p>
 </div>
 <%@include file="../footer.jsp" %>
 </body>

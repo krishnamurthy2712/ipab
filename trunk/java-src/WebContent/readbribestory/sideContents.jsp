@@ -141,7 +141,7 @@
                                     </div>
                                                        	</div>
 					</div>
-                   <div class="moreAnalysis"><a href="/bribepatterns/index.html">Complete Analysis of Bribe Reports</a></div>                       
+                   <div class="moreAnalysis"><a href="/bribepatterns/index.jsp">Complete Analysis of Bribe Reports</a></div>                       
                 </div>
            </div>
                     
