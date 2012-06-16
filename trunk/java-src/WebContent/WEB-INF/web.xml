@@ -45,6 +45,15 @@
 		<servlet-class>
 		com.ipablive.services.IDontHavetoPayService</servlet-class>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>
+		ContactService</display-name>
+		<servlet-name>ContactService</servlet-name>
+		<servlet-class>
+		com.ipablive.services.ContactService</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>CaptchaServlet</servlet-name>
 		<url-pattern>/getCaptcha.do</url-pattern>
@@ -64,6 +73,10 @@
 	<servlet-mapping>
 		<servlet-name>IDontHavetoPayService</servlet-name>
 		<url-pattern>/tellbribestory/RegisterIDontHavePayComplaint.do</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ContactService</servlet-name>
+		<url-pattern>/contact.do</url-pattern>
 	</servlet-mapping>
 	
 	<welcome-file-list>
