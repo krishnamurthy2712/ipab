@@ -133,6 +133,7 @@ function show_more(num)
 
 </fieldset>
 </form>
+<br><br>
 <% ArrayList<PaidBribesVO> pbVOs = ipab.viewPaidBribes("ALL");
   if(pbVOs.size()>0)
   {
@@ -140,6 +141,7 @@ function show_more(num)
 	{
 		PaidBribesVO pbVo = pbVOs.get(i);
 %>
+
 <div class="report_reg">
 	<h2><%= pbVo.getCName() %></h2>
 	<div class="report_reg_det">
@@ -163,6 +165,8 @@ function show_more(num)
             </div>
 		</div>
 	</div>
+<div class="clear"></div>
+<br>
 <% }
 }else
 {

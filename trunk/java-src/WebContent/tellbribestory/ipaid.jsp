@@ -41,8 +41,8 @@
 	{
          // get the form values
         var dept = $('#cDept').find('option:selected').attr('id'); //$('#cDept').val();
-        alert($('#cDept').val());
-		 $.ajax({
+
+        $.ajax({
 			  type: 'GET',
 			  url: 'getTransactions.jsp',
 			  data: "dept=" + dept,
@@ -306,7 +306,7 @@
 </div>
 <form id="fm" method="post" action="RegisterIPaidComplaint.do"
 	onsubmit="return validateSubmission();">
-<div><label for="cCity">County </label> <select name="cCity"
+<div class="divContent"><label for="cCity">County </label> <select name="cCity"
 	class="sleft" id="cCity">
 	<option value="">Select County</option>
 	<%
@@ -322,7 +322,7 @@
 	 }
 %>
 </select></div>
-<div><label for="cDept">Department </label> <select
+<div class="divContent"><label for="cDept" >Department </label> <select
 	onchange="getTransactions()" id="cDept" name="cDept" class="sleft">
 	<option value="">Select Department</option>
 	<%
@@ -339,29 +339,29 @@
     
 <input type="text" name="others_dept" id="others_dept_cont" style="display:none;"  value="" />
 </div>
-<div><label for="cTransaction">Transactions </label>
+<div class="divContent"><label for="cTransaction">Transactions </label>
 <div id="transactionsDisplay"></div>
 </div>
 
-<div><label for="c_amt_paid">Amount Paid</label> <input
+<div class="divContent"><label for="c_amt_paid">Amount Paid</label> <input
 	type="text" name="c_amt_paid" id="c_amt_paid" value="" class="sleft" />
 </div>
 
-<div><label for="c_date_paid">Date </label> <input value=""
+<div class="divContent"><label for="c_date_paid">Date </label> <input value=""
 	class="text-input datepicker" type="text" name="c_date_paid"
 	id="c_date_paid" /></div>
 
-<div><label for="office_location">Office Location</label> <input
+<div class="divContent"><label for="office_location">Office Location</label> <input
 	type="text" name="office_location" id="office_location" value=""
 	class="sleft" /></div>
 
-<div><label for="c_bribe_type">Bribe Type</label> <select
+<div class="divContent"><label for="c_bribe_type">Bribe Type</label> <select
 	class="sleft" name="c_bribe_type" id="c_bribe_type">
 	<option value="personal">Personal</option>
 	<option value="corporate">Corporate</option>
 </select></div>
 
-<div><label for="c_payment_method">Payment Method</label> <select
+<div class="divContent"><label for="c_payment_method">Payment Method</label> <select
 	class="sleft" name="c_payment_method" id="c_payment_method">
 	<option value="" selected="selected">Select Option</option>
 	<option value="cash">Cash</option>
@@ -373,15 +373,15 @@
 	<option value="other">Other</option>
 </select></div>
 
-<div><label for="c_name">Title your story</label><br>
+<div class="divContent"><label for="c_name">Title your story</label><br>
 <textarea class="big" name="c_name" id="c_name" rows="2"
 	style="height: 20px;" cols="4"></textarea></div>
-<div><label for="c_addi_info">Tell us your story</label><br>
+<div class="divContent"><label for="c_addi_info">Tell us your story</label><br>
 Please do NOT report names." We aim to change processes not target
 individuals<br>
 <textarea class="big" name="c_addi_info" id="c_addi_info" rows="10"
 	cols="4"></textarea></div>
-<div><label for="security_code">Please enter the security
+<div class="divContent"><label for="security_code">Please enter the security
 code</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img
 	src="${pageContext.request.contextPath}/getCaptcha.do" id="captcha">
 <input type="text" name="security_code" id="security_code" value=""
@@ -389,7 +389,7 @@ code</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img
 <span id="secCodeError"></span>
 </div>
 
-<div><input name="t_and_c" id="t_and_c" type="checkbox"
+<div class="divContent"><input name="t_and_c" id="t_and_c" type="checkbox"
 	onchange="privacyChecked()" />&nbsp;&nbsp;&nbsp;&nbsp;I agree to the <a
 	href="${pageContext.request.contextPath}/privacyPolicy.jsp"
 	target="_blank"> terms and conditions</a></div>

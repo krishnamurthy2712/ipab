@@ -1,14 +1,14 @@
 @CHARSET "ISO-8859-1";
-form .big,.form-item{width:470px; margin-bottom:13px;}
+form .big,.form-item{width:525px; margin-bottom:13px;}
 .tabl-width
 {
-	width: 200px;
+	width: 100px;
 }
 	
 .mainContent
 {
 	float: left; 
-	width: 490px;
+	width: 590px;
 	height:100%;
 	margin: 0px 0px 10px 10px;
 	padding-top: 5px; 
@@ -117,12 +117,19 @@ form .big,.form-item{width:470px; margin-bottom:13px;}
 
 .sleft
 {
-	width: 180px;
+	width: 200px;
+	float: none;
+	margin-left: 10px;
+}
+
+.divContent
+{
+	padding: 3px;
 }
 
 .securityCode
 {
-	margin: 10px 10px 10px 10px;
+	margin: 10px 8px 10px 10px;
 }
 
 .submitButton
