@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ipablive.core.IPaidBribe;
+import com.ipablive.utils.BribeUtils;
 import com.ipablive.vo.IPaidComplaintVO;
 
 /**
@@ -48,6 +49,7 @@ public class IPaidService extends HttpServlet
 		String c_addi_info = request.getParameter("c_addi_info");
 		String others_dept = request.getParameter("others_dept");
 		String others_transaction = request.getParameter("others_transaction");
+		String ip = BribeUtils.getClientIpAddr(request);
 		
 		Date result = new Date();
 		DateFormat formatter;

@@ -40,7 +40,7 @@ public class Faqs
 	    if (_faqInstance == null) 
 	    {
 
-	      synchronized(Home.class) 
+	      synchronized(Faqs.class) 
 	      {
 
 	        if (_faqInstance == null) 

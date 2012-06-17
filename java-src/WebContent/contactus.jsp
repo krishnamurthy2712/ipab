@@ -30,8 +30,72 @@
 <script type="text/javascript">
 function validateSubmission()
 {
+	var name,email,subject,msgBody;
+	name = $('#nameEntered').val();
+	email = $('#emailAddr').val();
+	subject = $('#mailSubject').val();
+	msgBody = $('#mailBody').val();
+
+	if(name.length==0)
+	{
+		$('#validationErrors').show();
+		$('#validationErrors').html("<p class='display_info'>Please enter Name.</p>");
+		return false;
+	}
+	else if(email.length==0)
+	{
+		$('#validationErrors').show();
+		$('#validationErrors').html("<p class='display_info'>Please enter email.</p>");
+		return false;
+	}
+	else if(subject.length==0)
+	{
+		$('#validationErrors').show();
+		$('#validationErrors').html("<p class='display_info'>Please enter subject.</p>");
+		return false;
+	}
+	else if(msgBody.length==0)
+	{
+		$('#validationErrors').show();
+		$('#validationErrors').html("<p class='display_info'>Please enter your message to share with us.</p>");
+		return false;
+	}
+
+	if(email.length>0)
+	{
+		var asd = mailValidation();
+		if(asd)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
 	return true;
 }
+
+function mailValidation() 
+{
+	$('#validationErrors').hide();
+	   var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+	   var address = $('#emailAddr').val();
+	   if(reg.test(address) == false) 
+	   {
+		   $('#validationErrors').show();
+		   $('#validationErrors').html('<p class="display_info">Please enter valid Email Address</p>');
+	      return false;
+	   }
+	   return true;
+}
+
+function hideErrorMessage()
+{
+	$('#validationErrors').hide();
+}
+
 </script>
 
 </head>
@@ -44,7 +108,7 @@ function validateSubmission()
 </div>
 <div id="mainContent" class="mainContent">
 <div id="blog">
-    <div class="blog_container contact_ipab"><form action="contact.do"  accept-charset="UTF-8" method="post" id="contact-mail-page">
+    <div class="blog_container contact_ipab">
 <div><div class="contact">
 	<p>
 		<span>I Paid A Bribe</span><br />
@@ -62,21 +126,25 @@ function validateSubmission()
 </div>
 <h1>
 	You can leave a message using the contact form below.</h1>
+<br>
+<form action="contact.do"  accept-charset="UTF-8" method="post" id="contact-mail-page">
+<div align="center" id="validationErrors" ></div>
+<br>
 <div class="form-item" id="edit-name-wrapper">
  <label for="nameEntered">Your name: <span class="form-required" title="This field is required.">*</span></label>
- <input type="text" maxlength="255" name="name" id="nameEntered" size="60" value="" class="form-text required" />
+ <input type="text" maxlength="255" name="name" id="nameEntered" size="60" value="" class="form-text required" onkeydown="hideErrorMessage()" />
 </div>
 <div class="form-item" id="edit-mail-wrapper">
  <label for="emailAddr">Your e-mail address: <span class="form-required" title="This field is required.">*</span></label>
- <input type="text" maxlength="255" name="mail" id="emailAddr" size="60" value="" class="form-text required" />
+ <input type="text" maxlength="255" name="mail" id="emailAddr" size="60" value="" class="form-text required" onkeydown="hideErrorMessage()"/>
 </div>
 <div class="form-item" id="edit-subject">
  <label for="mailSubject">Subject: <span class="form-required" title="This field is required.">*</span></label>
- <input type="text" maxlength="255" name="subject" id="mailSubject" size="60" value="" class="form-text required" />
+ <input type="text" maxlength="255" name="subject" id="mailSubject" size="60" value="" class="form-text required" onkeydown="hideErrorMessage()"/>
 </div>
 <div class="form-item" id="edit-message">
  <label for="mailBody">Message: <span class="form-required" title="This field is required.">*</span></label>
- <textarea cols="60" rows="5" name="message" id="mailBody"  class="form-textarea resizable required"></textarea>
+ <textarea cols="60" rows="5" name="message" id="mailBody"  class="form-textarea resizable required" onkeydown="hideErrorMessage()"></textarea>
 </div>
 <input type="submit" value="Submit"	name="submit" id="submit" onclick="return validateSubmission();">
 <br>

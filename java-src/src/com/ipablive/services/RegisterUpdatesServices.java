@@ -8,20 +8,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ipablive.core.RegisterForUpdates;
 import com.ipablive.utils.BribeUtils;
 
 /**
- * Servlet implementation class ContactService
+ * Servlet implementation class RegisterUpdatesServices
  */
-public class ContactService extends HttpServlet 
+public class RegisterUpdatesServices extends HttpServlet 
 {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ContactService() 
+    public RegisterUpdatesServices() 
     {
+        super();
+        // TODO Auto-generated constructor stub
     }
 
 
@@ -30,14 +33,22 @@ public class ContactService extends HttpServlet
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		String name = request.getParameter("name");
-		String mail = request.getParameter("mail");
-		String subject = request.getParameter("subject");
-		String message = request.getParameter("message");
+		String email = request.getParameter("email");
 		String ip = BribeUtils.getClientIpAddr(request);
 		
+		RegisterForUpdates reg = RegisterForUpdates.getInstance();
+		
+		Boolean isBoolean = reg.registerForUpdates(email, ip);
 		ServletContext context = getServletContext();
-		context.getRequestDispatcher("/contactsuccess.jsp").forward(request, response);
+		
+		if(isBoolean)
+		{
+			context.getRequestDispatcher("/registerupdatessuccess.jsp").forward(request, response);
+		}else
+		{
+			context.getRequestDispatcher("/errors/ErrorDisplay.jsp").forward(request, response);
+		}
+		
 	}
 
 }

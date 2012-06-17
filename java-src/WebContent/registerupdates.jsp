@@ -30,8 +30,52 @@
 	<script type="text/javascript">
 	function validateSubmission()
 	{
+		$('#validationErrors').hide();
+		var email,secCode;
+		email = $('#email').val();
+		secCode = $('#security_code').val();
+
+		if(secCode.length==0)
+		{
+			 $('#validationErrors').show();
+			$('#validationErrors').html("<p class='display_info'>Please enter security code.</p>");
+			return false;
+		}
+		
+		if(email.length==0)
+		{
+			 $('#validationErrors').show();
+			$('#validationErrors').html("<p class='display_info'>Please enter email</p>");
+			return false;
+		}else
+		{
+			var asd = mailValidation();
+			if(asd)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		
 		return true;
 	}
+
+	function mailValidation() 
+	{
+		$('#validationErrors').hide();
+		   var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+		   var address = document.forms["fm"].elements["email"].value;
+		   if(reg.test(address) == false) 
+		   {
+			   $('#validationErrors').show();
+			   $('#validationErrors').html('<p class="display_info">Please enter valid Email Address</p>');
+		      return false;
+		   }
+		   return true;
+		}
 	</script>
 
 </head>
@@ -44,18 +88,16 @@
 </div>
 <div id="mainContent" class="mainContent">
 
-<div id="validation_errors" style="display:none;">
-</div>
-
+<div align="center" id="validationErrors" ></div>
 &nbsp;
 
 <div class="report_form">
-<form action="" onsubmit="return validateSubmission()" method="post">
+<form action="registerUpdates.do" onsubmit="return validateSubmission()" method="post" name="fm">
 
         	<div>  
 			<p><label for="EMail">EMail</label></p>
         	<div id="sub_transaction_con" class="inline_div">
-            <input type="text" name="email" id="email" style="width:150px"  value="" />         
+            <input type="text" name="email" id="email" style="width:250px"  value="" onblur="return mailValidation();"/>         
             </div>
             </div>  
             
@@ -65,7 +107,7 @@
             <p>
             	<img src="${pageContext.request.contextPath}/getCaptcha.do" alt="" />
             </p>
-        	<input type="text" name="security_code" style="width:150px" id="security_code" value="" />
+        	<input type="text" name="security_code" style="width:250px" id="security_code" value="" />
 			</div>
             <div class="report_form_button">  
 			<input type="submit" name="submit" id="submit" class="submit_btn" value="Submit" style="margin-left:2px;margin-top:5px;">
