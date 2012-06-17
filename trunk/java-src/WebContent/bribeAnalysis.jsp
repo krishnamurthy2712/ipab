@@ -16,7 +16,7 @@
 	class="ana_color">Value</span> KES. <%=analysis.get(0).getTotalAmount() %></div>
 </div>
 <div class="analytics_div_report"><span class="ana_color">Top
-5</span> Counties(Bribe amount in '00 KES)</div>
+5</span> Counties(Bribe amount in '00 GHS)</div>
 </div>
 
 <div class="graph">

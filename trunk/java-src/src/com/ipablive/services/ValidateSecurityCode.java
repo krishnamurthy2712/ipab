@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ipablive.core.CaptchaServlet;
-
 /**
  * Servlet implementation class ValidateSecurityCode
  */
@@ -31,7 +29,7 @@ public class ValidateSecurityCode extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		String code = request.getParameter("code");
-		String generatedCode = (String) request.getAttribute(CaptchaServlet.CAPTCHA_KEY);
+		String generatedCode = (String) request.getAttribute(CaptchaService.CAPTCHA_KEY);
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		
