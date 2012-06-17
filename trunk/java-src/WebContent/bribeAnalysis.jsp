@@ -13,7 +13,7 @@
 <div>
 <div class="analytics_div_report line">
 <div><span class="ana_color">Bribe Reports</span> <%=analysis.get(0).getBribeReportsCount() %> <span
-	class="ana_color">Value</span> KES. <%=analysis.get(0).getTotalAmount() %></div>
+	class="ana_color">Value</span> GHS. <%=analysis.get(0).getTotalAmount() %></div>
 </div>
 <div class="analytics_div_report"><span class="ana_color">Top
 5</span> Counties(Bribe amount in '00 GHS)</div>

@@ -1,139 +1,85 @@
 package com.ipablive.vo;
 
+import java.util.ArrayList;
+
 public class MailBean 
 {
-	private String userName = "";
-	private String password = "'";
-	private String firstName="";
-	private String lastName="";
-	private String email="";
-	private String randomNumber="";
-	private String subjectName="";
-	private String feesPaid="";
-	private String examDate="";
-	private String score="";
-	private String examResult="";
-	private String activationLink = "";
+	String mailFrom = "";
+	String mailSubject = "";
+	ArrayList<String> toRecipients = new ArrayList<String>();
+	ArrayList<String> ccRecipients = new ArrayList<String>();
+	ArrayList<String> bccRecipients = new ArrayList<String>();
+	String msgContent = "";
+	ArrayList<String> mailAttachments = new ArrayList<String>();
 	
-	public String getUserName()
+	public String getMailFrom()
 	{
-		return userName;
+		return mailFrom;
+	}
+	public void setMailFrom(String from)
+	{
+		if(from == null || from.length()==0)
+		{
+			this.mailFrom = "info.onlineexam@gmail.com";
+		}
+		else
+		{
+			this.mailFrom = from;
+		}
 	}
 	
-	public void setUserName(String userName)
+	public String getMailSubject()
 	{
-		this.userName = userName;
+		return mailSubject;
+	}
+	public void setMailSubject(String subject)
+	{
+		mailSubject = subject;
 	}
 	
-	public String getPassword()
+	public ArrayList<String> getToRecipients()
 	{
-		return password;
+		return toRecipients;
+	}
+	public void setToRecipients(ArrayList<String> value)
+	{
+		toRecipients = value;
 	}
 	
-	public void setPassword(String password)
+	public ArrayList<String> getCCRecipients()
 	{
-		this.password = password;
+		return ccRecipients;
+	}
+	public void setCCRecipients(ArrayList<String> value)
+	{
+		ccRecipients = value;
 	}
 	
-	public String getFirstName()
+	public ArrayList<String> getBCCRecipients()
 	{
-		return firstName;
+		return bccRecipients;
+	}
+	public void setBCCRecipients(ArrayList<String> value)
+	{
+		bccRecipients = value;
 	}
 	
-	public void setFirstName(String firstName)
+	public String getMsgContent()
 	{
-		this.firstName = firstName;
+		return msgContent;
+	}
+	public void setMsgContent(String value)
+	{
+		msgContent = value;
 	}
 	
-	public String getLastName()
+	public ArrayList<String> getMailAttachments()
 	{
-		return lastName;
+		return mailAttachments;
 	}
-	
-	public void setLastName(String lastName)
+	public void setMailAttachments(ArrayList<String> value)
 	{
-		this.lastName = lastName;
+		mailAttachments = value;
 	}
-	
-	public String getEmail()
-	{
-		return email;
-	}
-	
-	public void setEmail(String email)
-	{
-		this.email = email;
-	}
-	
-	public String getRandomNumber()
-	{
-		return randomNumber;
-	}
-	
-	public void setRandomNumber(String randomNumber)
-	{
-		this.randomNumber = randomNumber;
-	}
-	
-	public String getSubjectName()
-	{
-		return subjectName;
-	}
-	
-	public void setSubjectName(String subjectName)
-	{
-		this.subjectName = subjectName;
-	}
-	
-	public String getFeesPaid()
-	{
-		return feesPaid;
-	}
-	
-	public void setFeesPaid(String feesPaid)
-	{
-		this.feesPaid = feesPaid;
-	}
-	
-	public String getExamDate()
-	{
-		return examDate;
-	}
-	
-	public void setExamDate(String examDate)
-	{
-		this.examDate = examDate;
-	}
-	
-	public String getScore()
-	{
-		return score;
-	}
-	
-	public void setScore(String score)
-	{
-		this.score = score;
-	}
-	
-	public String getExamResult()
-	{
-		return examResult;
-	}
-	
-	public void setExamResult(String examResult)
-	{
-		this.examResult = examResult;
-	}
-	
-	public String getActivationLink()
-	{
-		return activationLink;
-	}
-	
-	public void setActivationLink(String activationLink)
-	{
-		this.activationLink = activationLink;
-	}
-	
 	
 }

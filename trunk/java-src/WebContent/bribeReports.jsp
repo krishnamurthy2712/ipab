@@ -14,7 +14,7 @@
 <div style="display: block;" id="tab1" class="tab_content">
 <div class="bribeReports">
 <div class="bribeItems">
-<div class="popularCity">From Nakuru | About <a
+<div class="popularCity">From Accra | About <a
 	href="http://www.ipaidabribe.or.ke/sforms/view_reports_paid?c_dept=27&amp;CSRF_TOKEN=">Judiciary</a></div>
 <div class="popularDate"><span>9 hours | 23 Views | 2
 Comments</span></div>
@@ -24,30 +24,30 @@ A court clerk was highly amused when he asked me for a bribe to go look
 for my court file and make sure my matter was pr </a></div>
 </div>
 <div class="bribeItems">
-<div class="popularCity">From Nairobi | About <a
+<div class="popularCity">From Agogo | About <a
 	href="http://www.ipaidabribe.or.ke/sforms/view_reports_paid?c_dept=14&amp;CSRF_TOKEN=">Police</a></div>
 <div class="popularDate"><span>1 day | 10 Views | 1
 Comments</span></div>
 <div class="popularTitle"><a
 	href="http://www.ipaidabribe.or.ke/sforms/view_comments_paid?id=805&amp;CSRF_TOKEN=">
-Stopped by traffic cop for riding on the back of a bodaboda without a
+Stopped by traffic cop for riding on the back of a Agogo without a
 helmet. Told we were under arrest, were asked who </a></div>
 </div>
 <div class="bribeItems">
-<div class="popularCity">From Garissa | About <a
+<div class="popularCity">From Akim Oda | About <a
 	href="http://www.ipaidabribe.or.ke/sforms/view_reports_paid?c_dept=38&amp;CSRF_TOKEN=">Lands</a></div>
 <div class="popularDate"><span>1 day | 5 Views </span></div>
 <div class="popularTitle"><a
 	href="http://www.ipaidabribe.or.ke/sforms/view_comments_paid?id=804&amp;CSRF_TOKEN=">
-Paid 5000 in Garissa (Dept: Lands). </a></div>
+Paid 5000 in Akim Oda (Dept: Lands). </a></div>
 </div>
 <div class="bribeItems">
-<div class="popularCity">From Nairobi | About <a
+<div class="popularCity">From Assin Fosu | About <a
 	href="http://www.ipaidabribe.or.ke/sforms/view_reports_paid?c_dept=14&amp;CSRF_TOKEN=">Police</a></div>
 <div class="popularDate"><span>1 day | 6 Views </span></div>
 <div class="popularTitle"><a
 	href="http://www.ipaidabribe.or.ke/sforms/view_comments_paid?id=803&amp;CSRF_TOKEN=">
-Paid 500 in Nairobi (Dept: police). </a></div>
+Paid 500 in Assin Fosu (Dept: police). </a></div>
 </div>
 </div>
 <div class="seeAllList">
@@ -78,7 +78,7 @@ Services</a> | <a
 <div style="display: none;" id="tab2" class="tab_content">
 <div class="bribeReports">
 <div class="bribeItems">
-<div class="popularCity">From Nakuru | About <a
+<div class="popularCity">From Ashiaman | About <a
 	href="http://www.ipaidabribe.or.ke/sforms/view_reports_paid?c_dept=27&amp;CSRF_TOKEN=">Judiciary</a></div>
 <div class="popularDate"><span>9 hours | 23 Views | 2
 Comments</span></div>
@@ -88,7 +88,7 @@ A court clerk was highly amused when he asked me for a bribe to go look
 for my court file and make sure my matter was pr </a></div>
 </div>
 <div class="bribeItems">
-<div class="popularCity">From Nairobi | About <a
+<div class="popularCity">From Awoshie | About <a
 	href="http://www.ipaidabribe.or.ke/sforms/view_reports_paid?c_dept=14&amp;CSRF_TOKEN=">Police</a></div>
 <div class="popularDate"><span>1 day | 10 Views | 1
 Comments</span></div>
@@ -98,20 +98,20 @@ Stopped by traffic cop for riding on the back of a bodaboda without a
 helmet. Told we were under arrest, were asked who </a></div>
 </div>
 <div class="bribeItems">
-<div class="popularCity">From Garissa | About <a
+<div class="popularCity">From Kade | About <a
 	href="http://www.ipaidabribe.or.ke/sforms/view_reports_paid?c_dept=38&amp;CSRF_TOKEN=">Lands</a></div>
 <div class="popularDate"><span>1 day | 5 Views </span></div>
 <div class="popularTitle"><a
 	href="http://www.ipaidabribe.or.ke/sforms/view_comments_paid?id=804&amp;CSRF_TOKEN=">
-Paid 5000 in Garissa (Dept: Lands). </a></div>
+Paid 5000 in Kade (Dept: Lands). </a></div>
 </div>
 <div class="bribeItems">
-<div class="popularCity">From Nairobi | About <a
+<div class="popularCity">From Sakumono | About <a
 	href="http://www.ipaidabribe.or.ke/sforms/view_reports_paid?c_dept=14&amp;CSRF_TOKEN=">Police</a></div>
 <div class="popularDate"><span>1 day | 6 Views </span></div>
 <div class="popularTitle"><a
 	href="http://www.ipaidabribe.or.ke/sforms/view_comments_paid?id=803&amp;CSRF_TOKEN=">
-Paid 500 in Nairobi (Dept: police). </a></div>
+Paid 500 in Sakumono (Dept: police). </a></div>
 </div>
 </div>
 <div class="seeAllList">
