@@ -92,7 +92,7 @@
                                                                 <div class='bribeItems'>
                                         <div class='popularCity'>
                                             <div class="contentLables">
-                                                <div class='cites'><a href='/sforms/view_reports_paid?c_city=28'>Nairobi</a></div>
+                                                <div class='cites'><a href='/sforms/view_reports_paid?c_city=28'>Nsuatre</a></div>
                                                 <div class="reports"><span>209</span></div>
                                                 <div class="amount">736479</div>
                                             </div>
@@ -102,7 +102,7 @@
                                                                       <div class='bribeItems'>
                                         <div class='popularCity'>
                                             <div class="contentLables">
-                                                <div class='cites'><a href='/sforms/view_reports_paid?c_city=26'>Mombasa</a></div>
+                                                <div class='cites'><a href='/sforms/view_reports_paid?c_city=26'>Sakumono</a></div>
                                                 <div class="reports"><span>37</span></div>
                                                 <div class="amount">1621500</div>
                                             </div>
@@ -122,7 +122,7 @@
                                                                       <div class='bribeItems'>
                                         <div class='popularCity'>
                                             <div class="contentLables">
-                                                <div class='cites'><a href='/sforms/view_reports_paid?c_city=12'>Kiambu</a></div>
+                                                <div class='cites'><a href='/sforms/view_reports_paid?c_city=12'>Madina</a></div>
                                                 <div class="reports"><span>30</span></div>
                                                 <div class="amount">114250</div>
                                             </div>
@@ -132,7 +132,7 @@
                                                                       <div class='bribeItems'>
                                         <div class='popularCity'>
                                             <div class="contentLables">
-                                                <div class='cites'><a href='/sforms/view_reports_paid?c_city=16'>Kisumu</a></div>
+                                                <div class='cites'><a href='/sforms/view_reports_paid?c_city=16'>Winneba</a></div>
                                                 <div class="reports"><span>18</span></div>
                                                 <div class="amount">81950</div>
                                             </div>
