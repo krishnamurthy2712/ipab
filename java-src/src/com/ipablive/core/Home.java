@@ -4,10 +4,13 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 
 import com.ipablive.datasource.ConnectionFactory;
+import com.ipablive.utils.BribeUtils;
 import com.ipablive.vo.BribeAnalysisVO;
 import com.ipablive.vo.BribeCategoriesVO;
+import com.ipablive.vo.BribeFighterVO;
 import com.ipablive.vo.BribeReportsVO;
 import com.ipablive.vo.NewsVO;
 import com.ipablive.vo.TopCitiesVO;
@@ -111,10 +114,12 @@ public class Home
 		  try
 		  {
 			  Statement stmt = conn.createStatement();
+			  Statement stmt1 = conn.createStatement();
 			  ResultSet rs = stmt.executeQuery("SELECT bc.*,bc.count as tot_view, ct.city_name AS c_city, bd.dept_name, bt.trans_name " +
 			  		"FROM bd_paid_bribe bc, bd_dept bd, bd_transactions bt, bd_city ct" +
 			  		" WHERE bc.c_dept=bd.id AND bc.c_transaction=bt.id AND bc.approved=1 AND " +
 			  		"bc.c_city=ct.Id ORDER BY bc.id DESC LIMIT 4");
+			  
 			  while(rs.next())
 			  {
 				  BribeReportsVO brv = new BribeReportsVO();
@@ -122,10 +127,25 @@ public class Home
 				  brv.setCName(rs.getString(2));
 				  brv.setCAmountPaid(rs.getInt(7));
 				  brv.setCAdditionalInfo(rs.getString(11));
-				  brv.setTotalView(rs.getInt(20));
+				  brv.setTotalViews(rs.getInt(20));
 				  brv.setCCity(rs.getString(21));
-				  brv.setCDept(rs.getString(22));
+				  brv.setCDeptName(rs.getString(22));
 				  brv.setCTransaction(rs.getString(23));
+				  //store "created"
+				  brv.setCreated(rs.getDate(14));
+				  //store "friendlyTime" - friendlyTime = BribeUtils.getFriendlyTime(create);
+				  Date timeDisp = (Date) rs.getDate(14);
+				  brv.setFriendlyTime(BribeUtils.getFriendlyTime(timeDisp));
+				  /*comments count*/
+				  ResultSet rs2 = stmt1.executeQuery("SELECT COUNT(1) AS cnt FROM bd_vote_comments WHERE TYPE='paid' AND type_id="+rs.getInt(1)+" AND published=1");
+				  if(rs2.next())
+				  {
+					  brv.setCommentsCount(rs2.getInt(1));
+				  }
+				  else
+				  {
+					  brv.setCommentsCount(0);
+				  }
 				  
 				  bribeReports.add(brv);
 			  }
@@ -145,17 +165,17 @@ public class Home
 		  try
 		  {
 			  Statement stmt = conn.createStatement();
-			  ResultSet rs = stmt.executeQuery("SELECT sum( 'count' ) AS totalviews," +
-			  		" bd_dept.dept_name, 'c_dept' FROM 'bd_paid_bribe' , bd_dept WHERE " +
-			  		"bd_dept.id = bd_paid_bribe.c_dept and c_dept > 0 GROUP BY c_dept ORDER BY " +
-			  		"totalviews DESC LIMIT 5 ");
+			  ResultSet rs = stmt.executeQuery("SELECT sum( bp.count ) AS totalviews, " +
+			  		"bd.dept_name, bp.c_dept FROM bd_paid_bribe bp , bd_dept as bd " +
+			  		"WHERE bd.id = bp.c_dept and bp.c_dept > 0 GROUP BY bp.c_dept ORDER BY " +
+			  		"totalviews DESC LIMIT 5;");
 			  
 			  while(rs.next())
 			  {
 				  BribeCategoriesVO bcv = new BribeCategoriesVO();
 				  bcv.setTotalviews(rs.getInt(1));
 				  bcv.setDeptName(rs.getString(2));
-				  bcv.setCDept(rs.getString(3));
+				  bcv.setCDept(rs.getInt(3));
 				  
 				  bribeCategories.add(bcv);
 			  }
@@ -228,6 +248,45 @@ public class Home
 		  }
 		  
 		  return news;
+	  }
+	  
+	  public ArrayList<BribeFighterVO> getBribeFighters()
+	  {
+		  ArrayList<BribeFighterVO> fighters = new ArrayList<BribeFighterVO>();
+		  
+		  String query = "SELECT bc.*, bc.count as tot_view, ct.city_name AS c_city, bd.dept_name, " +
+		  		"bt.trans_name FROM bd_dint_bribe bc, bd_dept bd, bd_transactions bt, bd_city ct " +
+		  		"WHERE bc.c_dept=bd.id AND bc.c_transaction=bt.id AND bc.approved=1 AND bc.c_city=ct.Id AND " +
+		  		"bc.created >= DATE_SUB(NOW(),INTERVAL 50 DAY) ORDER BY bc.count DESC LIMIT 8";
+		  
+		  try
+		  {
+			  Statement stmt = conn.createStatement();
+			  Statement stmt1 = conn.createStatement();
+			  ResultSet rs = stmt.executeQuery(query);
+			  
+			  while(rs.next())
+			  {
+				  BribeFighterVO bfVo = new BribeFighterVO();
+				  
+				  
+				  ResultSet rs2 = stmt1.executeQuery("SELECT COUNT(1) AS cnt FROM bd_vote_comments WHERE TYPE='notpaid' AND type_id="+0+" AND published=1");
+				  if(rs2.next())
+				  {
+				  }
+				  else
+				  {
+					 // bfVo.setCommentsCount(0);
+				  }
+				  fighters.add(bfVo);
+			  }
+		  }
+		  catch(Exception e)
+		  {
+			  e.printStackTrace();
+		  }
+		  
+		  return fighters;
 	  }
 	  
 }

@@ -1,5 +1,4 @@
 
-<%@page import="com.ipablive.core.CaptchaServlet"%>
 <%
 	String code = request.getParameter("code");
 	
