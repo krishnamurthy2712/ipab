@@ -1,10 +1,22 @@
+<%@page import="com.ipablive.vo.BribeFighterVO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.ipablive.core.Home"%>
 <div class="grid">
         <div class="bribeFighters">
-        <h2 class="home_bribeFighters_h2"><img src="${pageContext.request.contextPath}/theme/images/bribe.png" align="absmiddle">ribe <span>Fighters</span></h2>
+        <h2 class="home_bribeFighters_h2"><img src="${pageContext.request.contextPath}/theme/images/bribe.png" align="middle">ribe <span>Fighters</span></h2>
         	<div class="bribeFightersContent">
             	<div class="bribeReports">
 					                            
-                            
+            <%
+           	Home home1 = Home.getInstance();	
+		 	ArrayList<BribeFighterVO> fighters = home1.getBribeFighters();
+		 
+		 	if(fighters.size()>0)
+		 	{
+		 		for(int i=0;i<fighters.size();i++)
+		 		{
+		 			BribeFighterVO fighter = fighters.get(i);
+            %>                
                                     <div class="bribeItems">
                                         <div class="popularCity">From Winneba | About <a href="http://www.ipaidabribe.or.ke/sforms/view_reports_didnt_pay?c_dept=27&amp;CSRF_TOKEN=">Judiciary</a></div>
                                         <div class="popularDate"><span>1 hour ago  </span></div>
@@ -17,44 +29,21 @@ mention, the file disappears. B
                                         </div>
                                     </div>
                                                         
-                            
-                                    <div class="bribeItems">
-                                        <div class="popularCity">From Takoradi | About <a href="http://www.ipaidabribe.or.ke/sforms/view_reports_didnt_pay?c_dept=14&amp;CSRF_TOKEN=">Police</a></div>
-                                        <div class="popularDate"><span>1 week ago | 137 Views | 6 Comments</span></div>
-                                        <div class="popularTitle">
-                                            <a href="http://www.ipaidabribe.or.ke/sforms/view_comments_didnt_pay?id=1768&amp;CSRF_TOKEN=">
-                                                Today.. i stood up for 
-my fellow citizens, today, i said NO. I invoked the spirit of our 
-collective energy and activism                                         
-   </a>
-                                        </div>
-                                    </div>
-                                                        
-                            
-                                    <div class="bribeItems">
-                                        <div class="popularCity">From Sunyani | About <a href="http://www.ipaidabribe.or.ke/sforms/view_reports_didnt_pay?c_dept=2&amp;CSRF_TOKEN=">Passports &amp; IDs</a></div>
-                                        <div class="popularDate"><span>3 weeks ago | 65 Views | 1 Comments</span></div>
-                                        <div class="popularTitle">
-                                            <a href="http://www.ipaidabribe.or.ke/sforms/view_comments_didnt_pay?id=1766&amp;CSRF_TOKEN=">
-                                                I have heard various 
-horrors stories about Nyayo house and what happens when you lose your 
-passport or want to renew one                                         
-  </a>
-                                        </div>
-                                    </div>
-                                                        
-                            
-                                    <div class="bribeItems">
-                                        <div class="popularCity">From Sunyani | About <a href="http://www.ipaidabribe.or.ke/sforms/view_reports_didnt_pay?c_dept=14&amp;CSRF_TOKEN=">Police</a></div>
-                                        <div class="popularDate"><span>4 weeks ago | 107 Views </span></div>
-                                        <div class="popularTitle">
-                                            <a href="http://www.ipaidabribe.or.ke/sforms/view_comments_didnt_pay?id=1765&amp;CSRF_TOKEN=">
-                                                I was following up on my
- accident insurance early this year and had to get a P3 form signed at 
-the Traffic police along                                            </a>
-                                        </div>
-                                    </div>
-                                               	</div>
+      <% 
+      		
+		 			
+		 		}
+		 	}
+		 	else
+		 	{
+		 		%>
+		 		
+		 		<%
+		 	}
+		 
+      %>                      
+                                   
+</div>
                         <div class="seeAllList">
                         	<ul>
                             	<li><a title="View more" href="http://www.ipaidabribe.or.ke/sforms/view_reports_didnt_pay?CSRF_TOKEN=">See all</a></li>

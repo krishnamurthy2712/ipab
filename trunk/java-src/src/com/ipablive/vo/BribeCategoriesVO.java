@@ -11,7 +11,7 @@ public class BribeCategoriesVO
 {
 	private int totalviews;
 	private String deptName;
-	private String cDept;
+	private int cDept;
 	
 	public int getTotalviews() 
 	{
@@ -31,11 +31,11 @@ public class BribeCategoriesVO
 		this.deptName = deptName;
 	}
 	
-	public String getCDept() 
+	public int getCDept() 
 	{
 		return cDept;
 	}
-	public void setCDept(String dept) 
+	public void setCDept(int dept) 
 	{
 		cDept = dept;
 	}

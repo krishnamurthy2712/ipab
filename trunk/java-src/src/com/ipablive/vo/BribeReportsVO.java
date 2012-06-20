@@ -14,14 +14,18 @@ public class BribeReportsVO
 	private int id;
 	private String cName;
 	private String cCity;
-	private String cDept;
+	private String cDeptName;
 	private String cTransaction;
 	private String otherTransaction;
 	private int cAmountPaid;
 	private Date cDatePaid;
 	private String cBribeType;
-	private int totalView;
+	private int totalViews;
 	private String cAdditionalInfo;
+	private int deptId;
+	private int commentsCount;
+	private String friendlyTime;
+	private Date created;
 	
 	public int getId() 
 	{
@@ -50,13 +54,13 @@ public class BribeReportsVO
 		cCity = city;
 	}
 	
-	public String getCDept() 
+	public String getCDeptName() 
 	{
-		return cDept;
+		return cDeptName;
 	}
-	public void setCDept(String dept) 
+	public void setCDeptName(String dept) 
 	{
-		cDept = dept;
+		cDeptName = dept;
 	}
 	
 	public String getCTransaction() 
@@ -104,13 +108,13 @@ public class BribeReportsVO
 		cBribeType = bribeType;
 	}
 	
-	public int getTotalView() 
+	public int getTotalViews() 
 	{
-		return totalView;
+		return totalViews;
 	}
-	public void setTotalView(int totalView) 
+	public void setTotalViews(int totalViews) 
 	{
-		this.totalView = totalView;
+		this.totalViews = totalViews;
 	}
 	
 	public String getCAdditionalInfo() 
@@ -122,9 +126,40 @@ public class BribeReportsVO
 		cAdditionalInfo = additionalInfo;
 	}
 	
+	public int getDeptId() 
+	{
+		return deptId;
+	}
+	public void setDeptId(int deptId) 
+	{
+		this.deptId = deptId;
+	}
 	
+	public int getCommentsCount() 
+	{
+		return commentsCount;
+	}
+	public void setCommentsCount(int commentsCount) 
+	{
+		this.commentsCount = commentsCount;
+	}
 	
+	public String getFriendlyTime() 
+	{
+		return friendlyTime;
+	}
+	public void setFriendlyTime(String friendlyTime) 
+	{
+		this.friendlyTime = friendlyTime;
+	}
 	
-	
+	public Date getCreated() 
+	{
+		return created;
+	}
+	public void setCreated(Date created) 
+	{
+		this.created = created;
+	}
 
 }

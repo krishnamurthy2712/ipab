@@ -605,6 +605,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover,html ul.new li.active, ht
 }
 .bribeFighters .popularCity, .bribeFighters .popularTitle a {
 	color: #4b1b05;
+	text-decoration: none;
 }
 .bribeFighters .popularTitle, .tab_container .popularTitle {
 	font-size: 12px;
