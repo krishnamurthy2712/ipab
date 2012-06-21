@@ -13,7 +13,7 @@ public class PaidBribesVO
 {
 	private int id;
 	private String cCity;
-	private String cDept;
+	private int cDept;
 	private String othersTransaction;
 	private int cAmountPaid;
 	private Date cPaidDate;
@@ -26,6 +26,8 @@ public class PaidBribesVO
 	private String deptName;
 	private String transName;
 	private String cName;
+	private int cTrans;
+	private Date createdDate;
 	
 	public int getId() 
 	{
@@ -45,11 +47,11 @@ public class PaidBribesVO
 		cCity = city;
 	}
 	
-	public String getCDept() 
+	public int getCDept() 
 	{
 		return cDept;
 	}
-	public void setCDept(String dept) 
+	public void setCDept(int dept) 
 	{
 		cDept = dept;
 	}
@@ -160,6 +162,24 @@ public class PaidBribesVO
 	public void setCName(String name) 
 	{
 		cName = name;
+	}
+	
+	public int getCTrans() 
+	{
+		return cTrans;
+	}
+	public void setCTrans(int trans) 
+	{
+		cTrans = trans;
+	}
+	
+	public Date getCreatedDate() 
+	{
+		return createdDate;
+	}
+	public void setCreatedDate(Date createdDate) 
+	{
+		this.createdDate = createdDate;
 	}
 	
 	

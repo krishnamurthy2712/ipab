@@ -158,7 +158,7 @@ function show_more(num)
 			<div class="report_reg_more">
             <a href="#" class="rad" onclick="show_more(''); return false;">Read More</a> 
             <a href="#">Add Comment</a> 
-            <a href="#"><?php echo $num_comment;?> Comments</a>
+            <a href="${pageContext.request.contextPath}/comments/viewCommentsPaid.jsp?id=<%=pbVo.getId() %>"><%=ipab.getNumComments("paid",pbVo.getId()) %> Comments</a>
             <a href="http://www.facebook.com/share.php?u=" target="_blank" class="facebook_share_view"></a>
             <a href="http://twitter.com/share?url=" target="_blank" class="tweet_share_view"></a>
             <!--<span id="count<?php echo $row->id;?>_1"><?php echo $row->count;?></span> views-->

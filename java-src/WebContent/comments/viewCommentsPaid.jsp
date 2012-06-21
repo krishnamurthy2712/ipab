@@ -3,7 +3,10 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.ipablive.vo.CityVO"%>
 <%@page import="com.ipablive.vo.DepartmentVO"%>
-<%@page import="com.ipablive.commons.CommonOperations"%><html>
+<%@page import="com.ipablive.commons.CommonOperations"%>
+<%@page import="com.ipablive.core.IPaidBribe"%>
+<%@page import="com.ipablive.vo.PaidBribesVO"%>
+<%@page import="java.text.SimpleDateFormat"%><html>
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     <title>Bribes Registered</title>
@@ -39,35 +42,54 @@
 <div id="blog">
 <div class="blog_container">
            
-<p><a href="#" class="yellow_box">&lt;&lt; Back To Reports</a></p>
+<p><a href="${pageContext.request.contextPath}/readbribestory/ipaid.jsp" class="yellow_box">&lt;&lt; Back To Reports</a></p>
 <br />
-<h3>c_name;</h3>
+<%
+	String strId = request.getParameter("id");
+
+	if(strId != null)
+	{
+		int id = Integer.parseInt(strId);
+		IPaidBribe ipab = IPaidBribe.getInstance();
+		PaidBribesVO pbVO = ipab.viewDetailPaidBribes(id);
+		SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy - hh:mm"); 
+%>
+<h3><%=pbVO.getCName() %></h3>
 <div class="report_reg">
-        Reported : date 
-        | City : city
-        | Paid On : paid 
-        | dept
+        Reported : <%=sdf.format(pbVO.getCreatedDate()) %> 
+        | City : <%=pbVO.getCCity() %>
+        | Paid On : <%=sdf.format(pbVO.getCPaidDate()) %> 
+        | <%=pbVO.getDeptName() %>
 </div>
+<br>
 <div class="clear"></div>
 <div class="report_reg">
 <table class="details_table" width="100%" summary="this table has the details for a certain report.">
     <tr>
         <th width="20%"><span class="desc_lebel">Department:</span></th>
-        <td>dept name</td>
+        <td><%=pbVO.getDeptName() %></td>
     </tr>
     <tr>
         <th><span class="desc_lebel">Transaction:</span></th>
-        <td>transaction</td>
+        <td><%=pbVO.getTransName() %></td>
     </tr>    
     <tr>
         <th><span class="desc_lebel">Bribe Type:</span></th>
-        <td>c_bribe_type</td>
+        <td><%=pbVO.getCBribeType() %></td>
     </tr>
     <tr>
         <th><span class="desc_lebel">Details:</span></th>
-        <td>c_addi_info</td>
+        <td><%=pbVO.getCAdditionalInfo() %></td>
     </tr>
 </table>
+	<%}
+	else
+	{
+		%>
+		asdf
+		<%
+	}
+	%>
 <div class="clear"></div>
 </div>
 

@@ -63,7 +63,7 @@ if(bribeReports.size()>0)
 				}
 			%>
 			<div class="popularTitle">
-				<a href="#"><%=complaintName %> </a>
+				<a href="${pageContext.request.contextPath}/comments/viewCommentsPaid.jsp?id=<%=bribeReport.getId() %>"><%=complaintName %> </a>
 			</div>
 		</div>
 

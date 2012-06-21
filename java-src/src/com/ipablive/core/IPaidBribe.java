@@ -71,8 +71,7 @@ public class IPaidBribe
 				  pbv.setId(rs.getInt(1));
 				  pbv.setCName(rs.getString(2));
 				  //3
-				  pbv.setCDept(rs.getString(4));
-				  //4
+				  pbv.setCDept(rs.getInt(4));
 				  //5
 				  pbv.setOthersTransaction(rs.getString(6));
 				  pbv.setCAmountPaid(rs.getInt(7));
@@ -82,7 +81,7 @@ public class IPaidBribe
 				  pbv.setCAdditionalInfo(rs.getString(11));
 				  //12
 				  pbv.setOtherDept(rs.getString(13));
-				  //14
+				  //14 creation date
 				  pbv.setOtherLocation(rs.getString(15));
 				  //16,17,18
 				  pbv.setCount(rs.getInt(19));
@@ -210,24 +209,26 @@ public class IPaidBribe
 			  while(rs.next())
 			  {
 				  pbVo.setId(rs.getInt(1));
-				  //2
-				  pbVo.setCDept(rs.getString(3));
-				  //4
-				  pbVo.setOthersTransaction(rs.getString(5));
-				  pbVo.setCAmountPaid(rs.getInt(6));
-				  pbVo.setCPaidDate(rs.getDate(7));
-				  pbVo.setCBribeType(rs.getString(8));
-				  pbVo.setCValTran(rs.getString(9));
-				  pbVo.setCAdditionalInfo(rs.getString(10));
-				  //11
-				  pbVo.setOtherDept(rs.getString(12));
-				  //13
-				  pbVo.setOtherLocation(rs.getString(14));
-				  //15,16,17
-				  pbVo.setCount(rs.getInt(18));
-				  pbVo.setCCity(rs.getString(19));
-				  pbVo.setDeptName(rs.getString(20));
-				  pbVo.setTransName(rs.getString(21));
+				  pbVo.setCName(rs.getString(2));
+				  //3
+				  pbVo.setCDept(rs.getInt(4));
+				  pbVo.setCTrans(rs.getInt(5));
+				  pbVo.setOthersTransaction(rs.getString(6));
+				  pbVo.setCAmountPaid(rs.getInt(7));
+				  pbVo.setCPaidDate(rs.getDate(8));
+				  pbVo.setCBribeType(rs.getString(9));
+				  pbVo.setCValTran(rs.getString(10));
+				  pbVo.setCAdditionalInfo(rs.getString(11));
+				  //12
+				  pbVo.setOtherDept(rs.getString(13));
+				  pbVo.setCreatedDate(rs.getDate(14));
+				  pbVo.setOtherLocation(rs.getString(15));
+				  //16 - ip
+				  //17,18
+				  pbVo.setCount(rs.getInt(19));
+				  pbVo.setCCity(rs.getString(20));
+				  pbVo.setDeptName(rs.getString(21));
+				  pbVo.setTransName(rs.getString(22));
 			  }
 		  }catch(Exception e)
 		  {
@@ -252,6 +253,26 @@ public class IPaidBribe
 				  count.setBribeReportsCount(rs.getInt(1));
 				  count.setTotalCity(rs.getInt(2));
 				  count.setTotalAmount(rs.getInt(3));
+			  }
+		  }catch(Exception e)
+		  {
+			  e.printStackTrace();
+		  }
+		  
+		  return count;
+	  }
+	  
+	  public int getNumComments(String type, int id)
+	  {
+		  int count = 0;
+		  
+		  try
+		  {
+			  Statement stmt = conn.createStatement();
+			  ResultSet rs = stmt.executeQuery("SELECT count(1) as cnt from bd_vote_comments where type='"+type+"' and type_id='"+id+"' and published=1");
+			  if(rs.next())
+			  {
+				  count = rs.getInt(1);
 			  }
 		  }catch(Exception e)
 		  {
