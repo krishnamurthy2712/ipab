@@ -279,7 +279,7 @@ background-position: 10px center;
 }
 
 .grid {
-	width:300px;
+	width:315px;
 	margin:15px 0px 0px 19px;
 	float:left;
 }
@@ -373,8 +373,8 @@ background-position: 10px center;
 	float: right;
 }
 .analytics_div_report, .analytics .graph h4, .analytics_div_report_top5 {
-	padding-bottom: 5px;
-	margin-bottom: 5px;
+	padding-bottom: 2px;
+	margin-bottom: 2px;
 }
 .analytics .line {
 	border-bottom: 1px dashed #1f110a;

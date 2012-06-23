@@ -1,4 +1,7 @@
 
+<%@page import="org.jfree.ui.VerticalAlignment"%>
+<%@page import="org.jfree.ui.RectangleEdge"%>
+<%@page import="org.jfree.chart.title.LegendTitle"%>
 <%@page import="java.awt.Font"%>
 <%@page import="org.jfree.chart.labels.ItemLabelPosition"%>
 <%@page import="org.jfree.chart.labels.ItemLabelAnchor"%>
@@ -70,8 +73,13 @@
 				);
 		
 		chart.setBackgroundPaint(new Color(237, 194, 90));
-		chart.setPadding(new RectangleInsets(-28, 0,0, 0));
+		chart.setPadding(new RectangleInsets(-28, -18,0, 0));
 		
+		LegendTitle legend  = chart.getLegend();
+        legend.setPosition(RectangleEdge.RIGHT);
+        legend.setVerticalAlignment(VerticalAlignment.BOTTOM);
+        legend.setBackgroundPaint(new Color(237, 194, 90));
+        
 		CategoryPlot plot = chart.getCategoryPlot();
 		plot.setBackgroundPaint(new Color(126, 150, 206));
 		
@@ -98,7 +106,7 @@
 		File image = File.createTempFile("image", "tmp");
 		domainAxis.setTickMarksVisible(true);  
 		// Assume that we have the chart
-		ChartUtilities.saveChartAsPNG(image, chart,310, 220,info,true,0);
+		ChartUtilities.saveChartAsPNG(image, chart,310, 140,info,true,0);
 
 		FileInputStream fileInStream = new FileInputStream(image);
 		OutputStream outStream = response.getOutputStream();
