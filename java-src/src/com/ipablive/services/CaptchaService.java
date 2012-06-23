@@ -55,7 +55,6 @@ import javax.servlet.http.HttpSession;
 	    
 	    BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB); 
 	    Graphics2D graphics2D = image.createGraphics();
-	    Hashtable map = new Hashtable();
 	    Random r = new Random();
 	    String token = Long.toString(Math.abs(r.nextLong()), 36);
 	    String ch = token.substring(0,6);
@@ -67,7 +66,7 @@ import javax.servlet.http.HttpSession;
 	    graphics2D.drawString(ch,2,20);
 	    graphics2D.dispose();
 	    
-	    HttpSession session = req.getSession(true);
+	    HttpSession session = req.getSession();
 	    session.setAttribute("Code",ch);
 
 	    OutputStream outputStream = response.getOutputStream();

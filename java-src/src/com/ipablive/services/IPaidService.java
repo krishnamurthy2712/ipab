@@ -1,11 +1,10 @@
 package com.ipablive.services;
 
 import java.io.IOException;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
+
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -35,6 +34,7 @@ public class IPaidService extends HttpServlet
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@SuppressWarnings("deprecation")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		String cCity = request.getParameter("cCity");
@@ -47,18 +47,16 @@ public class IPaidService extends HttpServlet
 		String c_payment_method = request.getParameter("c_payment_method");
 		String c_name = request.getParameter("c_name");
 		String c_addi_info = request.getParameter("c_addi_info");
-		String others_dept = request.getParameter("others_dept");
-		String others_transaction = request.getParameter("others_transaction");
+		String others_dept = request.getParameter("otherDept");
+		String others_transaction = request.getParameter("othersTransaction");
 		String ip = BribeUtils.getClientIpAddr(request);
 		
 		Date result = new Date();
-		DateFormat formatter;
+		SimpleDateFormat formatter;
 		try 
 		{
-			formatter = new SimpleDateFormat("dd-mm-yyyy hh:mm");
+			formatter = new SimpleDateFormat("dd-mm-yyyy");
 			result = (Date) formatter.parse(c_date_paid);
-
-
 			
 		} catch (ParseException e) 
 		{
@@ -79,6 +77,7 @@ public class IPaidService extends HttpServlet
 		ipVO.setCDatePaid(result);
 		ipVO.setOfficeLocation(office_location);
 		ipVO.setCAddiInfo(c_addi_info);
+		ipVO.setIpAddress(ip);
 		
 		Boolean isSuccess = iPaid.storePaidBribeComplaint(ipVO);
 		ServletContext context = getServletContext();
@@ -91,5 +90,18 @@ public class IPaidService extends HttpServlet
 			context.getRequestDispatcher("/errors/ErrorsDisplay.jsp").forward(request, response);
 		}
 	}
+	
+	private java.sql.Date modifyDateLayout(String inputDate){
+        try {
+            //inputDate = "2010-01-04 01:32:27 UTC";
+        	SimpleDateFormat ts= new SimpleDateFormat("yyyy-MM-dd");
+        	java.sql.Date sqlToday = new java.sql.Date(ts.parse(inputDate).getTime());
+            return sqlToday;
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 
 }

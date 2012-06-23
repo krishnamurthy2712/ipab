@@ -41,8 +41,8 @@ public class IDidnotPaidService extends HttpServlet
 		String c_bribe_type = request.getParameter("c_bribe_type");
 		String c_name = request.getParameter("c_name");
 		String c_addi_info = request.getParameter("c_addi_info");
-		String others_dept = request.getParameter("others_dept");
-		String others_transaction = request.getParameter("others_transaction");
+		String others_dept = request.getParameter("otherDept");
+		String others_transaction = request.getParameter("otherTransaction");
 		String ip = BribeUtils.getClientIpAddr(request);
 		
 		IDidnotPaid iDidNtPaid = IDidnotPaid.getInstance();
@@ -57,6 +57,7 @@ public class IDidnotPaidService extends HttpServlet
 		dpbVO.setOtherTransaction(others_transaction);
 		dpbVO.setCName(c_name);
 		dpbVO.setCAddiInfo(c_addi_info);
+		dpbVO.setIpAddress(ip);
 		
 		Boolean isSuccess = iDidNtPaid.storeDidNotPaidComplaint(dpbVO);
 		

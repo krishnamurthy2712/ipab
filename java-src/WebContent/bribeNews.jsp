@@ -1,69 +1,100 @@
+
+<%@page import="com.ipablive.core.Home"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.ipablive.vo.NewsVO"%>
+<%@page import="com.ipablive.vo.ExpertSpeakVo"%>
+<script type="text/javascript" src="${pageContext.request.contextPath}/theme/js/jcarousellite.js"></script>
+<script type="text/javascript">
+$(document).ready(
+		function()
+		{
+	$(".news_box").jCarouselLite({
+		vertical: true,
+		hoverPause:true,
+		auto:500,
+		speed:2000
+	});
+});
+</script>
 <div class="grid">
-<h2 class="home_h2">Expert <span>Speak</span></h2>
-<div class="news_box">
-<ul>
-	<li>
-	<div class="newsSub"><span> Global Integrity, CIPE</span> | April
-	24</div>
-
-	<div class="newsTitle"><a
-		href="http://www.ipaidabribe.or.ke/content/kenya-city-integrity-report?CSRF_TOKEN=">
-	The Kenya City Integrity Report </a></div>
-	</li>
-	<li>
-	<div class="newsSub"><span> The New York Times</span> | March 8</div>
-
-	<div class="newsTitle"><a
-		href="http://www.ipaidabribe.or.ke/content/website-shines-light-petty-bribery?CSRF_TOKEN=">
-	WEBSITE SHINES LIGHT ON PETTY BRIBERY </a></div>
-	</li>
-	<li>
-	<div class="newsSub"><span> Washington Post</span> | February 10</div>
-
-	<div class="newsTitle"><a
-		href="http://www.ipaidabribe.or.ke/content/website-strives-fight-corruption?CSRF_TOKEN=">
-	Website Strives to fight Corruption </a></div>
-	</li>
-</ul>
-<div class="seeAll"><a
-	href="http://www.ipaidabribe.or.ke/sforms/ipab_in_the_press?CSRF_TOKEN="
-	title="View more">See all</a></div>
-</div>
-
-<div class="clear"></div>
-
 <h2 class="home_h2 news_box_title">I Paid a Bribe in the <span>News!</span></h2>
+<%
+	Home myHome = Home.getInstance();
+	ArrayList<NewsVO> news = myHome.getNews();
+%>
 
-<div
-	style="visibility: visible; overflow: hidden; position: relative; z-index: 2; left: 0px; height: 504px;"
-	class="thought_box2">
-<ul
-	style="margin: 0pt; padding: 0pt; position: relative; list-style-type: none; z-index: 1; height: 1152px; top: -261.117px;">
-	<li style="overflow: hidden; float: none; width: 991px; height: 72px;">
-	</li>
 
-	<li style="overflow: hidden; float: none; width: 991px; height: 72px;">
-	<div class="newsSub" onclick="aptesting('aG9tZXBhZ2Uy','Mg==')"><span>By
-	FRANKLINE SUNDAY</span> | April 19</div>
-	<div onclick="aptesting('aG9tZXBhZ2Uy','Mg==')">
-	<p><a
-		href="http://www.businessdailyafrica.com/War+on+corruption+now+picks+pace+online+with+new+portal++/-/1248928/1389126/-/qqj3h0/-/index.html"
-		target="_blank" class="newsTitleb">War on corruption now picks
-	pace online with new portal</a></p>
-	</div>
-	<div class="clear"></div>
-	</li>
-</ul>
-</div>
-<div style="background: #eadacd; margin-bottom: 20px; padding: 10px;">
-<div class="seeAll"><a
-	href="http://www.ipaidabribe.or.ke/sforms/news_for_thought?CSRF_TOKEN="
-	title="View more">See all</a></div>
-</div>
-<br>
-<div class="clear"></div>
+<div class="news_box">
+                <ul>
+					<%
+		if(news.size()>0)
+		{
+			for (int i=0;i<news.size();i++)
+			{
+				
+				NewsVO newsObj = news.get(i);
+	%>
+                    <li>
+                        <div class="newsSub"><span>
+						<%=newsObj.getNewsSourceValue() %></a></span> | <%=newsObj.getNewsCreated() %></a></div>
+				
+                        <div class="newsTitle">
+                        		<a href="<%=newsObj.getNewsDst() %>"  >
+							<%=newsObj.getNewsTitle() %>
+                            </a>
+                        </div>
+
+                    </li>
+<%
+							}
+			
+			}else
+			{
+				out.println("No News to share.");
+			}%>
+                </ul>
+				<% if( news.size()>0 ) {%>
+                	<div class="seeAll"><a href="<?php echo url('sforms/ipab_in_the_press');?>" title="View more">See all</a></div>
+				<%} %>
+            </div>
 <!----- Break ----->
 
-
+ <h2 class="home_h2">Expert <span>Speak</span></h2>
+            <div class="news_box">
+                <ul >
+                
+					<%
+					ArrayList<ExpertSpeakVo> experts = myHome.getExpertSpeak();
+					
+		if(experts.size()>0)
+		{
+			for (int i=0;i<experts.size();i++)
+			{
+				
+				ExpertSpeakVo esObj = experts.get(i);
+	%>
+                    <li>
+                        <div class="newsSub" onclick="aptesting('<?php echo base64_encode('homepage2'); ?>','<?php echo  base64_encode('2'); ?>')"><span><%=esObj.getAuthorName() %> | <%=esObj.getCreated() %></a></div>
+                       <?php /*?> <div class="newsTitle"><?php echo $row->body ?></div><?php */?>
+                         <div  onclick="#"><p><a href="<%=esObj.getFieldTitleURL() %>" target="_blank" class="newsTitleb" ><%=esObj.getTitle() %></a></p></div>
+                        <div class="clear"></div>      
+                    </li>
+					<%=esObj.getAuthorName() %>             
+                
+                 </ul>
+            </div>
+				<%
+							}
+			
+			}else
+			{
+				out.println("No data to display now.");
+			}%>
+                </ul>
+				<% if( experts.size()>0 ) {%>
+                	<div class="seeAll"><a href="<?php echo url('sforms/ipab_in_the_press');?>" title="View more">See all</a></div>
+				<%} %>   
+                 <br />        
+            <div class="clear"></div>
 </div>
 <!--#End Gird 3-->

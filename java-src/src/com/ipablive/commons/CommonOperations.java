@@ -3,10 +3,24 @@
  */
 package com.ipablive.commons;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GradientPaint;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import com.ipablive.datasource.ConnectionFactory;
 import com.ipablive.vo.CityVO;
 import com.ipablive.vo.DepartmentVO;
@@ -124,5 +138,41 @@ public class CommonOperations
 		
 		return transactions;
 	}
-
+	
+	public int getHits()
+	{
+		int pageVisists = 0;
+		try 
+        {
+            String sql = "SELECT pagevisit FROM bd_analytics";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()) 
+            {
+            	pageVisists = rs.getInt(1);
+            	updateHitCounter();
+            }
+        } 
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+        } 
+		
+		return pageVisists;
+	}
+	
+	private void updateHitCounter() 
+	{
+        Connection connection = ConnectionFactory.getConnection();
+        try 
+        {
+            String sql = "UPDATE bd_analytics SET pagevisit = pagevisit + 1";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.executeUpdate();          
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        } 
+    }
 }

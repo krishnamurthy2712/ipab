@@ -1,4 +1,5 @@
-<style type="text/css">
+
+<%@page import="com.ipablive.commons.CommonOperations"%><style type="text/css">
 * { margin:5;
     padding:5;
 }
@@ -14,6 +15,7 @@ div#copyright a:hover { color:#222; }
 	String logo = "/theme/images/logo.png";
 %>
 <img src="${pageContext.request.contextPath}<%=logo %>" height="50">
+<div id="counter"><input type="hidden" name="counter-value" value="2" /></div>
 
 <div id="menu">
     <ul class="menu">

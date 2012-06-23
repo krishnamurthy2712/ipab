@@ -10,7 +10,7 @@ form .big,.form-item{width:525px; margin-bottom:13px;}
 	float: left; 
 	width: 590px;
 	height:100%;
-	margin: 0px 0px 10px 10px;
+	margin: 0px 5px 10px 5px;
 	padding-top: 5px; 
 	padding-right: 5px; 
 	padding-bottom: 5px; 
@@ -285,7 +285,7 @@ background-position: 10px center;
 }
 .longGrid{
 	width:619px;
-	margin:15px 0px 0px 19px;
+	margin:5px 0px 0px 5px;
 	float:left;
 	background: url(http://localhost:8080/ipab-java/theme/images/bgLongGrid.png) no-repeat;
 }
@@ -345,7 +345,7 @@ background-position: 10px center;
 .analytics {
 	height: 281px;
 	width: 295px;
-	padding: 10px 5px 10px 10px;
+	padding: 5px 5px 5px 5px;
 	text-align: center;
 }
 .analytics .graph {
@@ -629,6 +629,16 @@ html ul.tabs li.active, html ul.tabs li.active a:hover,html ul.new li.active, ht
 .moreAnalysis a {
 	color: #9B1B1A;
 }
+
+.home_All_h2 {
+	font-size:20px;
+	height:20px;
+	color: #ffffff;
+	margin-bottom: 5px;
+	background: #271911;
+	padding: 6px 10px;
+}
+
 .bribeFighters .all_categories .categoryHead {
 	margin-bottom: 8px;
 	font-weight: bold;
@@ -2531,6 +2541,16 @@ background:#FFF0EB!important;
 .anna .yw_div_bottom {
 	margin-top: 0;
 }
+
+.yw_div_bottom
+{
+	border-bottom: #b40000 6px solid;
+	border-top: #b40000 6px solid;
+	width: 100%;
+	height: 30px;
+	background: #e7ad23;
+}
+
 .awards .banner-img img {
 	margin-bottom: -2px;
 }
@@ -2993,3 +3013,94 @@ color:#FFF!important;
 	color: #924233;
 	text-decoration: none;
 }
+
+
+#jCarouselLiteDemo .carousel  {
+    padding: 10px 0 0 0;
+    margin: 0 0 20px 10px;
+    position: relative;     
+}
+    #jCarouselLiteDemo .digg {
+        position: absolute;
+        left: 610px;
+        top: 110px;
+    }
+    #jCarouselLiteDemo .main {
+        margin-left: 40px;
+    }
+
+    #jCarouselLiteDemo .demo em {
+        color: #FF3300;
+        font-weight: bold;
+        font-size: 60%;        
+        font-style: normal;
+    }
+    #jCarouselLiteDemo .carousel button { /*Don't remove this. we still use this for individual demos. only the front pages use images as of now*/
+        float: left;
+    }              
+    #jCarouselLiteDemo .carousel a.prev, #jCarouselLiteDemo .carousel a.next {
+        display: block;
+        float: left;
+        width: 30px;
+        height: 143px;
+        text-decoration: none;
+        background: url("/image/imageNavLeft.gif") left 60px no-repeat;
+    }
+        #jCarouselLiteDemo .carousel a.next {
+            background: url("/image/imageNavRight.gif") right 60px no-repeat;
+        }
+            #jCarouselLiteDemo .carousel a.next:hover {
+                background-image: url("/image/imageNavRightHover.gif");
+            }
+            #jCarouselLiteDemo .carousel a.prev:hover {
+                background-image: url("/image/imageNavLeftHover.gif");
+            }    
+            #jCarouselLiteDemo .carousel a:hover, #jCarouselLiteDemo .carousel a:active {
+                border: none;
+                outline: none;
+            }                 
+    #jCarouselLiteDemo .carousel .jCarouselLite {
+        border: 1px solid black;
+        float: left;
+        background-color: #dfdfdf;
+        
+        /* Needed for rendering without flicker */
+        position: relative;
+        visibility: hidden;
+        left: -5000px;
+    }
+        #jCarouselLiteDemo .carousel ul {
+            margin: 0;
+        }
+        #jCarouselLiteDemo .carousel li img, 
+        #jCarouselLiteDemo .carousel li p {
+            background-color: #fff;
+            width: 150px;
+            height: 118px;
+            margin: 10px;
+        }
+        
+        #jCarouselLiteDemo .widget img {
+            cursor: pointer;
+        }
+            #jCarouselLiteDemo .mid {
+                margin-left: 80px;
+                width: 400px;
+                height: 300px;
+            }
+            #jCarouselLiteDemo .vertical {
+                margin-left: 170px;
+            }
+                #jCarouselLiteDemo .vertical .jCarouselLite {   /* so that in IE 6, the carousel div doesnt expand to fill the space */
+                    width: 170px;
+                }
+            #jCarouselLiteDemo .imageSlider li img, 
+            #jCarouselLiteDemo .imageSlider li p, 
+            #jCarouselLiteDemo .imageSliderExt li img , 
+            #jCarouselLiteDemo .imageSliderExt li p {
+                width: 400px;
+                height: 300px;
+            }
+            
+/*_____________________________________________ End - Projects - jCarouselLiteDemo _____________________________________________*/
+

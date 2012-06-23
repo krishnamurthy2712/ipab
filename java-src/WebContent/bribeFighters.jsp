@@ -18,13 +18,36 @@
 		 			BribeFighterVO fighter = fighters.get(i);
             %>                
                                     <div class="bribeItems">
-                                        <div class="popularCity">From Winneba | About <a href="http://www.ipaidabribe.or.ke/sforms/view_reports_didnt_pay?c_dept=27&amp;CSRF_TOKEN=">Judiciary</a></div>
-                                        <div class="popularDate"><span>1 hour ago  </span></div>
-                                        <div class="popularTitle">
-                                            <a href="http://www.ipaidabribe.or.ke/sforms/view_comments_didnt_pay?id=1770&amp;CSRF_TOKEN=">
-                                                A close relative has had
- an issue in court. Everytime the matter is about to come up for 
-mention, the file disappears. B                                        
+                                        <div class="popularCity">From <%=fighter.getCCity() %> | About <a href="#"><%=fighter.getCDeptName() %></a></div>
+                                        <div class="popularDate"><span><%=fighter.getFriendlyTime() %>  </span></div>
+                                        <%
+				String complaintName = "";
+			
+				if(fighter.getCAdditionalInfo().equals(""))
+				{
+					if(fighter.getCName().length()>120)
+					{
+						complaintName = fighter.getCName().substring(0, 116) + " ...";
+					}
+					else
+					{
+						complaintName = fighter.getCName();
+					}
+				}
+				else
+				{
+					if(fighter.getCAdditionalInfo().length()>120)
+					{
+						complaintName = fighter.getCAdditionalInfo().substring(0, 116)+" ...";
+					}
+					else
+					{
+						complaintName = fighter.getCAdditionalInfo();
+					}
+				}
+			%>
+										<div class="popularTitle">
+                                            <a href="#"><%=complaintName %>                                   
     </a>
                                         </div>
                                     </div>
@@ -89,14 +112,14 @@ mention, the file disappears. B
 		<div id="videowrapper"></div>
         <div class="clear"></div>
                     <script type="text/javascript">
-						updatesSlider();
+						
 					</script>
         <!---- Break ---->
 
         	<h2 class="home_h2">What is your <span>CQ?</span></h2>
         <div class="cq_box">
         	<div class="cq_box_content">"You pay 2,000/- to get a driving license without taking a driving test. Would you consider this a bribe?"
-				<a href="http://www.ipaidabribe.or.ke/sforms/corruption_quiz?CSRF_TOKEN=">Take the quiz, check your Corruption Quotient</a>
+				<a href="${pageContext.request.contextPath}/quiz/quiz.jsp">Take the quiz, check your Corruption Quotient</a>
             </div>
         </div>
                 

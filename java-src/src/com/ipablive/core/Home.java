@@ -12,7 +12,10 @@ import com.ipablive.vo.BribeAnalysisVO;
 import com.ipablive.vo.BribeCategoriesVO;
 import com.ipablive.vo.BribeFighterVO;
 import com.ipablive.vo.BribeReportsVO;
+import com.ipablive.vo.ExpertSpeakVo;
 import com.ipablive.vo.NewsVO;
+import com.ipablive.vo.OptionsVO;
+import com.ipablive.vo.QuizVo;
 import com.ipablive.vo.TopCitiesVO;
 
 public class Home 
@@ -195,18 +198,21 @@ public class Home
 		  try
 		  {
 			  Statement stmt = conn.createStatement();
-			  ResultSet rs = stmt.executeQuery("SELECT n.nid, n.title,nv.body, " +
-			  		"ua.dst FROM node n, node_revisions nv, url_alias ua WHERE n.type = 'on_air' " +
-			  		"AND n.status = 1 AND n.nid=nv.nid and ua.src= concat('node/',n.nid) " +
-			  		"ORDER BY n.sticky DESC, n.created DESC LIMIT 3");
+			  ResultSet rs = stmt.executeQuery("SELECT n.nid, DATE(FROM_UNIXTIME( n.created))as created, " +
+			  		"n.title, fu.field_news_source_value, ua.dst  FROM node n, " +
+			  		" content_type_press  fu, url_alias ua WHERE n.type = 'press' AND n.status = 1 and " +
+			  		"fu.nid = n.nid and ua.src= concat('node/',n.nid) ORDER BY n.sticky DESC, " +
+			  		"n.created DESC limit 3");
 			  
 			  while(rs.next())
 			  {
 				  NewsVO nVo = new NewsVO();
 				  nVo.setNewsId(rs.getInt(1));
-				  nVo.setNewsTitle(rs.getString(2));
-				  nVo.setNewsBody(rs.getString(3));
-				  nVo.setNewsDst(rs.getString(4));
+				  nVo.setNewsCreated(rs.getString(2));
+				  nVo.setNewsTitle(rs.getString(3));
+				 // nVo.setNewsBody(rs.getString(3));
+				  nVo.setNewsSourceValue(rs.getString(4));
+				  nVo.setNewsDst(rs.getString(5));
 				  
 				  news.add(nVo);
 			  }
@@ -219,9 +225,9 @@ public class Home
 		  return news;
 	  }
 	  
-	  public ArrayList<NewsVO> getExpertSpeak()
+	  public ArrayList<ExpertSpeakVo> getExpertSpeak()
 	  {
-		  ArrayList<NewsVO> news = new ArrayList<NewsVO>();
+		  ArrayList<ExpertSpeakVo> news = new ArrayList<ExpertSpeakVo>();
 		  
 		  try
 		  {
@@ -233,11 +239,14 @@ public class Home
 			  
 			  while(rs.next())
 			  {
-				  NewsVO nVo = new NewsVO();
-				  nVo.setNewsId(rs.getInt(1));
-				  nVo.setNewsTitle(rs.getString(2));
-				  nVo.setNewsBody(rs.getString(3));
-				  nVo.setNewsDst(rs.getString(4));
+				  ExpertSpeakVo nVo = new ExpertSpeakVo();
+				  nVo.setAuthorName(rs.getString(1));
+				  nVo.setEpId(rs.getInt(2));
+				  nVo.setTitle(rs.getString(3));
+				  nVo.setFieldTitleURL(rs.getString(4));
+				  nVo.setCreated(rs.getDate(5));
+				  nVo.setBody(rs.getString(6));
+				  nVo.setDst(rs.getString(7));
 				  
 				  news.add(nVo);
 			  }
@@ -269,15 +278,35 @@ public class Home
 			  {
 				  BribeFighterVO bfVo = new BribeFighterVO();
 				  
-				  
-				  ResultSet rs2 = stmt1.executeQuery("SELECT COUNT(1) AS cnt FROM bd_vote_comments WHERE TYPE='notpaid' AND type_id="+0+" AND published=1");
+				  bfVo.setId(rs.getInt(1));
+				  bfVo.setCName(rs.getString(2));
+				  //3,4,5
+				  bfVo.setOtherTransaction(rs.getString(6));
+				  bfVo.setCBribeResistedBy(rs.getString(7));
+				  bfVo.setCAdditionalInfo(rs.getString(8));
+				  //store "created"
+				  bfVo.setCreated(rs.getDate(9));
+				  //10,11,12,13,14
+				  bfVo.setTotalViews(rs.getInt(15));
+				  bfVo.setCCity(rs.getString(16));
+				  bfVo.setCDeptName(rs.getString(17));
+				  bfVo.setCTransaction(rs.getString(18));
+				 
+				  //store "friendlyTime" - friendlyTime = BribeUtils.getFriendlyTime(create);
+				  Date timeDisp = (Date) rs.getDate(9);
+				  bfVo.setFriendlyTime(BribeUtils.getFriendlyTime(timeDisp));
+				  /*comments count*/
+				  ResultSet rs2 = stmt1.executeQuery("SELECT COUNT(1) AS cnt FROM bd_vote_comments WHERE TYPE='notpaid' AND type_id="+rs.getInt(1)+" AND published=1");
 				  if(rs2.next())
 				  {
+					  bfVo.setCommentsCount(rs2.getInt(1));
 				  }
 				  else
 				  {
-					 // bfVo.setCommentsCount(0);
+					  bfVo.setCommentsCount(0);
 				  }
+				  
+				 
 				  fighters.add(bfVo);
 			  }
 		  }
@@ -287,6 +316,46 @@ public class Home
 		  }
 		  
 		  return fighters;
+	  }
+	  
+	  public ArrayList<QuizVo> getQuizQuestions()
+	  {
+		  ArrayList<QuizVo> quiz = new ArrayList<QuizVo>();
+		  
+		  try
+		  {
+			  Statement stmt = conn.createStatement();
+			  Statement stmt1 = conn.createStatement();
+			  ResultSet rs = stmt.executeQuery("select q_id, q_description from bd_quiz_questions");
+			  
+			  while(rs.next())
+			  {
+				  QuizVo questions = new QuizVo();
+				  questions.setqId(rs.getInt(1));
+				  questions.setqDescription(rs.getString(2));
+				  
+				  ArrayList<OptionsVO> options = new ArrayList<OptionsVO>();
+				  
+				  ResultSet rs2 = stmt1.executeQuery("select ans_id,q_id,ans_value,ans_description from bd_quiz_answers where q_id = "+ rs.getInt(1));
+				  while(rs2.next())
+				  {
+					  OptionsVO option = new OptionsVO();
+					  option.setAnsId(rs2.getInt(1));
+					  option.setAnsValue(rs2.getString(2));
+					  option.setAnsDescription(rs2.getString(3));
+					  
+					  options.add(option);
+				  }
+				  
+				  quiz.add(questions);
+			  }
+		  }
+		  catch(Exception e)
+		  {
+			  e.printStackTrace();
+		  }
+		  
+		  return quiz;
 	  }
 	  
 }

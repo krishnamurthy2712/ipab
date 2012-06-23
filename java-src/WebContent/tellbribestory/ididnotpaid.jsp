@@ -46,6 +46,7 @@
 			    // successful request; do something with the data
 			    //$('#transactionsDisplay').empty();
 			    $('#transactionsDisplay').html(response);
+			    checkDeptOthers();
 			  },
 			  error:function(){
 			    // failed request; give feedback to user
@@ -68,21 +69,6 @@
 		bribeResisted = $('#c_bribe_resisted_by').val();
 		securityCode = $('#security_code').val();
 
-		if($('#cTransactions').length>0)
-		{
-			transaction = $('#cTransactions').val();
-
-			if(myTrim(transaction)==0)
-			{
-				$('#validationErrors').html("<center>Please select Transaction</center>");
-				$('#cTransactions').css('background',_errorColor);
-				return false;
-			}else
-			{
-				$('#cTransactions').css('background',_noErrorColor);
-			}
-		}
-		
 		if(myTrim(county).length<=0)
 		{
 			$('#validationErrors').html("<center>Please select county</center>");
@@ -93,14 +79,48 @@
 			$('#cCity').css('background',_noErrorColor);
 		}
 		
-		if(myTrim(dept).length<=0)
+		if($('#cDept').length>0) 
 		{
-			$('#validationErrors').html("<center>Please select department</center>");
-			$('#cDept').css('background',_errorColor);
-			return false;
-		}else
+			if(myTrim(dept) == 0)
+			{
+				var otherDept = $('#otherDept').val();
+				if(myTrim(otherDept).length == 0)
+				{
+					$('#validationErrors').html("<center>Please enter Department</center>");
+					$('#otherDept').css('background',_errorColor);
+					return false;
+				}else
+				{
+					$('#otherDept').css('background',_noErrorColor);
+				}
+			}else
+			{
+				if(myTrim(dept).length<=0)
+				{
+					$('#validationErrors').html("<center>Please select department</center>");
+					$('#cDept').css('background',_errorColor);
+					return false;
+				}else
+				{
+					$('#cDept').css('background',_noErrorColor);
+				}
+			}
+		}
+
+		if($('#cTransactions').length>0)
 		{
-			$('#cDept').css('background',_noErrorColor);
+			transaction = $('#cTransactions').val();
+
+			if(myTrim(transaction) == 0)
+			{
+				var otherTransaction = $('#othersTransaction').val();
+				if(myTrim(otherTransaction).length == 0)
+				{
+					$('#validationErrors').html("<center>Please enter Transaction</center>");
+					$('#cTransactions').css('background',_errorColor);
+					return false;
+				}
+			}
 		}
 
 		if(myTrim(bribeType).length<=0)
@@ -130,6 +150,7 @@
 			return false;
 		}else
 		{
+			validateSecurityCode();
 			$('#security_code').css('background',_noErrorColor);
 		}
 
@@ -156,26 +177,45 @@
 
 	function validateSecurityCode()
 	{
-		
-		var code = $('#security_code').val();
-		$.ajax({
-			  type: 'GET',
-			  url: 'validateCode.jsp',
-			  data: "code=" + code,
-			  beforeSend:function(){
-			    // this is where we append a loading image
-			    $('#secCodeError').html('<div class="loading"><img src="${pageContext.request.contextPath}/theme/images/loading.gif" alt="Validating code..." /></div>');
-			  },
-			  success:function(response){
-			    // successful request; do something with the data
-			    //$('#transactionsDisplay').empty();
-			    $('#secCodeError').html(response);
-			  },
-			  error:function(){
-			    // failed request; give feedback to user
-			    $('#secCodeError').html('<p><font color="red"><strong>Oops!</strong> Unable to validate code.</font></p>');
-			  }
-		 });
+		var enteredCode = $('#security_code').val();
+		var generatedCode = $('#secErr').val();
+
+		if(enteredCode == generatedCode)
+		{
+		  return true;
+	  	}else
+	  	{
+	  		$('#validationErrors').html("<center>Please enter valid security code</center>");
+	  		$('#security_code').css('background',_errorColor);
+	  	}
+	  	return false;
+	}
+
+	function checkDeptOthers()
+	{
+		if($('#cDept').val()==0)
+		{
+			$('#otherDept').fadeIn();
+			$('#othersTransaction').fadeIn();
+			$('#cTransactions').html("<option value='0'>Others</option>");
+		}
+		else
+		{
+			$('#otherDept').fadeOut();
+			$('#othersTransaction').fadeOut();
+		}
+	}
+
+	function checkOthers()
+	{
+		if($('#cTransactions').val()==0)
+		{
+			$('#othersTransaction').fadeIn();
+		}
+		else
+		{
+			$('#othersTransaction').fadeOut();
+		}
 	}
 	
 	
@@ -225,7 +265,9 @@
 		<%
 	 }
 %>
-</select></div>
+</select>
+<input type="text" name="otherDept" id="otherDept" style="display:none;"  value="" />
+</div>
 <div class="divContent"><label for="cTransaction">Transactions </label>
 <div id="transactionsDisplay"></div>
 </div>
@@ -258,7 +300,7 @@ code</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img
 	src="${pageContext.request.contextPath}/getCaptcha.do" id="captcha">
 <input type="text" name="security_code" id="security_code" value=""
 	class="securityCode" onblur="validateSecurityCode()"/>
-<span id="secCodeError"></span>
+<span id="secCodeError"></span><input type="hidden" id="secErr" value="<%= (String) session.getAttribute("Code")%>"/>
 </div>
 
 <div class="divContent"><input name="t_and_c" id="t_and_c" type="checkbox"

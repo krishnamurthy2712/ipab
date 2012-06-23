@@ -12,7 +12,7 @@ public class NewsVO
 	private int newsId;
 	private String newsCreated;
 	private String newsTitle;
-	private String newsBody;
+	//private String newsBody;
 	private String newsDst;
 	private String newsSourceValue;
 	
@@ -43,14 +43,14 @@ public class NewsVO
 		this.newsTitle = newsTitle;
 	}
 	
-	public String getNewsBody() 
-	{
-		return newsBody;
-	}
-	public void setNewsBody(String newsBody) 
-	{
-		this.newsBody = newsBody;
-	}
+//	public String getNewsBody() 
+//	{
+//		return newsBody;
+//	}
+//	public void setNewsBody(String newsBody) 
+//	{
+//		this.newsBody = newsBody;
+//	}
 	
 	public String getNewsDst() 
 	{

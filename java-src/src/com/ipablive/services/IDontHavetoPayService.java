@@ -40,8 +40,8 @@ public class IDontHavetoPayService extends HttpServlet
 		String c_bribe_type = request.getParameter("c_bribe_type");
 		String c_name = request.getParameter("c_name");
 		String c_addi_info = request.getParameter("c_addi_info");
-		String others_dept = request.getParameter("others_dept");
-		String others_transaction = request.getParameter("others_transaction");
+		String others_dept = request.getParameter("otherDept");
+		String others_transaction = request.getParameter("othersTransaction");
 		String ip = BribeUtils.getClientIpAddr(request);
 		
 		IDontHavetoPay idP = IDontHavetoPay.getInstance();
@@ -56,6 +56,7 @@ public class IDontHavetoPayService extends HttpServlet
 		didntHaveToPay.setCAddiInfo(c_addi_info);
 		didntHaveToPay.setOtherDept(others_dept);
 		didntHaveToPay.setOtherTransaction(others_transaction);
+		didntHaveToPay.setIpAddress(ip);
 		
 		Boolean isSuccess = idP.storeDintHaveToPayBribeComplaint(didntHaveToPay);
 		
