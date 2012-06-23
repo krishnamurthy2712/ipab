@@ -26,5 +26,5 @@
 		
 	}
 	out.write("</select>");
-	out.write(" <input type='text' name='others_transaction' style='display:none;' id='others_transaction_cont' value=''/>");
+	out.write(" <input type='text' name='othersTransaction' style='display:none;' id='othersTransaction' value=''/>");
 %>

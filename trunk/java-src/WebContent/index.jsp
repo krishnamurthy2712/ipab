@@ -13,6 +13,18 @@
 <link type="text/css"
 	href="${pageContext.request.contextPath}/theme/css/style.css"
 	rel="stylesheet" />
+<script src="${pageContext.request.contextPath}/theme/js/jquery.flipCounter.js" type="text/javascript"></script>
+<%
+CommonOperations comm = CommonOperations.getInstance();
+int pageHits = comm.getHits();
+%>
+<script type="text/javascript">
+	$(document).ready(
+		function()
+		{
+	    $("#counter").flipCounter("setNumber",<%=pageHits%>);            
+	});
+</script>
 </head>
 <body>
 <%@include file="header.jsp"%>

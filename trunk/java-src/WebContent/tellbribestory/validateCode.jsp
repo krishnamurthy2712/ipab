@@ -9,12 +9,12 @@
 	
 	if(code.equals(generatedCode))
 	{
-		out.println("");
+		out.println("SUCCESS");
 		System.out.println("Security code validated.");
 	}
 	else
 	{
-		out.println("Please enter valid code.");
+		out.println("FAIL");
 		System.out.println("Error in validating security code. "+code + "  << >>"+generatedCode);
 	}
 %>

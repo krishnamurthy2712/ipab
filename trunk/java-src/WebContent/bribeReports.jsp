@@ -8,9 +8,9 @@
 <div style="float: left">
 <div class="tabcontent">
 <ul class="tabs">
-	<li class="active"><a href="#tab1?CSRF_TOKEN="
+	<li class="active"><a href="#tab1"
 		title="Latest Reports">Latest</a></li>
-	<li class="last"><a href="#tab2?CSRF_TOKEN="
+	<li class="last"><a href="#tab2"
 		title="Popular Reports">Most Popular</a></li>
 </ul>
 
