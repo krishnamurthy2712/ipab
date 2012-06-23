@@ -175,6 +175,7 @@ function show_more(num)
 <div align="center"><span><font color="red"><b>Unable to display data.</b></font></span></div>
 <br><br><br>
 <%} %>
+
 </div>
 <div><%@include file="sideContents.jsp"%></div>
 

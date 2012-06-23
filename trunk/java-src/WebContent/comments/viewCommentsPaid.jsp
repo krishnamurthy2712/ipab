@@ -29,6 +29,16 @@
 	<link type="text/css"
 		href="${pageContext.request.contextPath}/theme/css/style.css"
 		rel="stylesheet" />
+<script type="text/javascript">
+function addComment(typeId,type,subject)
+{
+	var url = "/addComment.jsp?typeId="+typeId+"&type="+type+"&subject="+subject;
+	alert(url);
+	//newwindow = window.open(url,subject,'height=400,width=480,resizable=0');
+	//if (window.focus) {newwindow.focus();}
+	
+}
+</script>
 </head>
 <body>
 <%@include file="../header.jsp" %>
@@ -81,6 +91,8 @@
         <th><span class="desc_lebel">Details:</span></th>
         <td><%=pbVO.getCAdditionalInfo() %></td>
     </tr>
+<tr><td>   </td></tr>
+<tr><td><div class="report_reg"><a onclick="addComment(<%=strId %>,'paid',<%=pbVO.getCName() %>)" href="#" class="yellow_box">Add a comment</a></div></td></tr>
 </table>
 	<%}
 	else
@@ -93,15 +105,8 @@
 <div class="clear"></div>
 </div>
 
-<div class="report_reg">
-<a href="addComment" class="yellow_box">Add a comment</a>
-<br /><br />
-</div>
-
 </div><!-- # eof blog -->
 </div><!-- #eof blog_container -->
-
-
 </div> <!-- #eof blog_container -->
 <%@include file="../footer.jsp" %>
 </body>
