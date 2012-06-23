@@ -405,7 +405,7 @@ code</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img
 	target="_blank"> terms and conditions</a></div>
 
 <div><input type="submit" value="Submit" disabled="disabled"
-	name="submit" id="submit" onclick="return validateSubmission();">
+	name="submit" id="submit" >
 </div>
 </form>
 
