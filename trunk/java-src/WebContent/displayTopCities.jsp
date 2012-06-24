@@ -1,4 +1,5 @@
-<%@page import="com.ipablive.utils.CustomToolTipGenerator"%>
+
+<%@page import="com.ipablive.utils.LabelGenerator"%><%@page import="com.ipablive.utils.CustomToolTipGenerator"%>
 <%@page import="org.jfree.chart.labels.CategoryToolTipGenerator"%>
 <%@page import="org.jfree.ui.VerticalAlignment"%>
 <%@page import="org.jfree.ui.RectangleEdge"%>
@@ -68,18 +69,18 @@
 				"", // range axis label
 				dataset, // data
 				PlotOrientation.HORIZONTAL, // orientation
-				true, // include legend
-				true, // tooltips?
+				false, // include legend
+				false, // tooltips?
 				true // URLs?
 				);
 		
 		chart.setBackgroundPaint(new Color(237, 194, 90));
-		chart.setPadding(new RectangleInsets(-28, -18,0, 0));
+		chart.setPadding(new RectangleInsets(-28, -22,0, -8));
 		
-		LegendTitle legend  = chart.getLegend();
+		/*LegendTitle legend  = chart.getLegend();
         legend.setPosition(RectangleEdge.RIGHT);
         legend.setVerticalAlignment(VerticalAlignment.BOTTOM);
-        legend.setBackgroundPaint(new Color(237, 194, 90));
+        legend.setBackgroundPaint(new Color(237, 194, 90));*/
         
 		CategoryPlot plot = chart.getCategoryPlot();
 		plot.setBackgroundPaint(new Color(237, 194, 90));
@@ -95,11 +96,11 @@
 		//GradientPaint gradientpaint0 = new GradientPaint(0.0F, 0.0F,new Color(209, 228, 246), 0.0F, 0.0F, new Color(82, 141, 201));
 		BarRenderer r = (BarRenderer)chart.getCategoryPlot().getRenderer();
 		//r.setSeriesPaint(0, gradientpaint0);
-		r.setBaseItemLabelGenerator(new StandardCategoryItemLabelGenerator());
+		r.setBaseItemLabelGenerator(new LabelGenerator());
 		r.setBaseItemLabelsVisible(true);
 		r.setBaseItemLabelFont(new Font("SanSerif", Font.PLAIN, 9)); 
-	    //r.setPositiveItemLabelPosition(new ItemLabelPosition(ItemLabelAnchor.CENTER, TextAnchor.TOP_CENTER));
-	    r.setItemLabelAnchorOffset(5);
+	    //r.setPositiveItemLabelPosition(new ItemLabelPosition(ItemLabelAnchor.INSIDE12, TextAnchor.CENTER_RIGHT));
+	    r.setItemLabelAnchorOffset(2);
 	    r.setItemLabelPaint(Color.BLACK);
 	    r.setSeriesToolTipGenerator(0,new CustomToolTipGenerator());
 
@@ -110,7 +111,7 @@
 		File image = File.createTempFile("image", "tmp");
 		domainAxis.setTickMarksVisible(true);  
 		// Assume that we have the chart
-		ChartUtilities.saveChartAsPNG(image, chart,310, 140,info,true,0);
+		ChartUtilities.saveChartAsPNG(image, chart,310, 145,info,true,0);
 
 		FileInputStream fileInStream = new FileInputStream(image);
 		OutputStream outStream = response.getOutputStream();

@@ -64,7 +64,7 @@ BlogPostDetailsVO post = blogs.getBlogPostDetails(postId);
 			
 				if(comments.size()>0)
 				{
-					for(int i=0;i<comments.size();i++);
+					for(int i = 0;i<comments.size();i++);
 					{
 						BlogCommentVO comment = comments.get(i);
 						%>
