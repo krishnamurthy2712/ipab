@@ -1,4 +1,5 @@
-
+<%@page import="com.ipablive.utils.CustomToolTipGenerator"%>
+<%@page import="org.jfree.chart.labels.CategoryToolTipGenerator"%>
 <%@page import="org.jfree.ui.VerticalAlignment"%>
 <%@page import="org.jfree.ui.RectangleEdge"%>
 <%@page import="org.jfree.chart.title.LegendTitle"%>
@@ -81,7 +82,8 @@
         legend.setBackgroundPaint(new Color(237, 194, 90));
         
 		CategoryPlot plot = chart.getCategoryPlot();
-		plot.setBackgroundPaint(new Color(126, 150, 206));
+		plot.setBackgroundPaint(new Color(237, 194, 90));
+		plot.setBackgroundAlpha(0);
 		
 		plot.setDomainGridlinesVisible(false);
 		plot.setRangeGridlinesVisible(false);
@@ -89,6 +91,7 @@
 		//plot.setWeight(10);
 		
 		CategoryAxis domainAxis = plot.getDomainAxis();
+		
 		//GradientPaint gradientpaint0 = new GradientPaint(0.0F, 0.0F,new Color(209, 228, 246), 0.0F, 0.0F, new Color(82, 141, 201));
 		BarRenderer r = (BarRenderer)chart.getCategoryPlot().getRenderer();
 		//r.setSeriesPaint(0, gradientpaint0);
@@ -98,6 +101,7 @@
 	    //r.setPositiveItemLabelPosition(new ItemLabelPosition(ItemLabelAnchor.CENTER, TextAnchor.TOP_CENTER));
 	    r.setItemLabelAnchorOffset(5);
 	    r.setItemLabelPaint(Color.BLACK);
+	    r.setSeriesToolTipGenerator(0,new CustomToolTipGenerator());
 
 		ChartRenderingInfo info = null;
 		info = new ChartRenderingInfo(new StandardEntityCollection());

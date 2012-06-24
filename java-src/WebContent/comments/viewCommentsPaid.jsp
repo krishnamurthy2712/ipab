@@ -30,18 +30,17 @@
 		href="${pageContext.request.contextPath}/theme/css/style.css"
 		rel="stylesheet" />
 <script type="text/javascript">
-function addComment(typeId,type,subject)
+function addComment(typeId,type)
 {
-	var url = "/addComment.jsp?typeId="+typeId+"&type="+type+"&subject="+subject;
-	alert(url);
-	//newwindow = window.open(url,subject,'height=400,width=480,resizable=0');
-	//if (window.focus) {newwindow.focus();}
+	//var url = "/addComment.jsp?typeId="+typeId+"&type="+type+"&subject="+subject;
+	var url = "${pageContext.request.contextPath}/comments/addComment.jsp?tId=1&t="+type;
+	window.location.href = url;
 	
 }
 </script>
 </head>
 <body>
-<%@include file="../header.jsp" %>
+<%@include file="../header.jsp" %> 
 <div class="pageHeader">
 <center><br>
 <h2 class="pageHeaderH2">Bribes Registered</h2>
@@ -92,7 +91,7 @@ function addComment(typeId,type,subject)
         <td><%=pbVO.getCAdditionalInfo() %></td>
     </tr>
 <tr><td>   </td></tr>
-<tr><td><div class="report_reg"><a onclick="addComment(<%=strId %>,'paid',<%=pbVO.getCName() %>)" href="#" class="yellow_box">Add a comment</a></div></td></tr>
+<tr><td><div class="report_reg"><a href="javaScript: addComment('','paid')" class="yellow_box">Add a comment</a></div></td></tr>
 </table>
 	<%}
 	else

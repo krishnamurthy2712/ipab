@@ -30,7 +30,7 @@
 		rel="stylesheet" />
 </head>
 <body>
-<%@include file="../header.jsp" %>
+<%@include file="../../header.jsp" %>
 <div class="pageHeader">
 <center><br>
 <h2 class="pageHeaderH2">Blog</h2>
@@ -49,28 +49,7 @@ if(blogPosts.size()>0)
 %>
 	<div class="node">
 	<h2><%=post.getPostTitle() %></h2>
-	<div class="submitted">
-        Submitted by <span class="user_text"><%=post.getPostedBy() %></span> on <%=post.getPostCreatedDate() %>
-    </div>
-	<div class="blog_content">
-	    <%
-	    	String postContent = post.getPostContent();
-	    	if(postContent.length()>200)
-	    	{
-	    		postContent = postContent.substring(1,197) +"...";
-	    	}
-	    	
-	    	out.println(postContent);
-	    %>
-	  </div>
-	<table>
-		<tr>
-			<td><%=post.getCommentCount() %> comments.</td>
-			<td><%=post.getTotalViews() %> views.</td>
-			<td><a href="${pageContext.request.contextPath}/blog/addBlogComments.jsp?p=<%=post.getPostId() %>">Add Comment</a></td>
-			<td><a href="${pageContext.request.contextPath}/blog/blogPostDetails.jsp?p=<%=post.getPostId() %>">Read More</a></td>
-		</tr>
-	</table>
+
 	</div>
 
 <%
@@ -86,6 +65,6 @@ else
 
 
 </div>
-<%@include file="../footer.jsp" %>
+<%@include file="../../footer.jsp" %>
 </body>
 </html>
