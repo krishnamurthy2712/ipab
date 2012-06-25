@@ -63,6 +63,24 @@
 		<servlet-class>
 		com.ipablive.services.RegisterUpdatesServices</servlet-class>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>
+		AddCommentService</display-name>
+		<servlet-name>AddCommentService</servlet-name>
+		<servlet-class>
+		com.ipablive.services.AddCommentService</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>
+		BlogPostService</display-name>
+		<servlet-name>BlogPostService</servlet-name>
+		<servlet-class>
+		com.ipablive.services.BlogPostService</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>CaptchaServlet</servlet-name>
 		<url-pattern>/getCaptcha.do</url-pattern>
@@ -90,6 +108,14 @@
 	<servlet-mapping>
 		<servlet-name>RegisterUpdatesServices</servlet-name>
 		<url-pattern>/registerUpdates.do</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddCommentService</servlet-name>
+		<url-pattern>/storeComment.do</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>BlogPostService</servlet-name>
+		<url-pattern>/storePost.do</url-pattern>
 	</servlet-mapping>
 	
 	<welcome-file-list>
