@@ -51,7 +51,6 @@ BlogPostDetailsVO post = blogs.getBlogPostDetails(postId);
 %>
 	<div class="node">
 		<h2><%=post.getPostTitle() %></h2>
-		<h2><%=post.getPostTitle() %></h2>
 		<div class="submitted">
 	        Submitted by <span class="user_text"><%=post.getPostedBy() %></span> on <%=post.getPostCreatedDate() %>
 	    </div>
@@ -64,7 +63,7 @@ BlogPostDetailsVO post = blogs.getBlogPostDetails(postId);
 			
 				if(comments.size()>0)
 				{
-					for(int i = 0;i<comments.size();i++);
+					for(int i=0 ;i<comments.size();i++)
 					{
 						BlogCommentVO comment = comments.get(i);
 						%>
