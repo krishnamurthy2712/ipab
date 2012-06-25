@@ -38,7 +38,7 @@ public class AddCommentService extends HttpServlet
 		String subject = request.getParameter("subject");
 		String comment = request.getParameter("comment");
 		String supportURL = request.getParameter("supportURL");
-		String pid = request.getParameter("postId");
+		String pid = request.getParameter("p");
 		
 		int postId = Integer.parseInt(pid);
 		
@@ -55,13 +55,17 @@ public class AddCommentService extends HttpServlet
 		Blogs blog = Blogs.getInstance();
 		Boolean isStored = blog.storeBlogComment(commentVo);
 		ServletContext ctx = getServletContext();
+		String contextRoot = request.getContextPath();
+		
+		String successURL = contextRoot+"/blog/blogPostDetails.jsp";
+		String failureURL = contextRoot+"/errors/ErrorsDisplay.jsp";
 		
 		if(isStored)
 		{
-			ctx.getRequestDispatcher("/blogPostDetails.jsp").forward(request, response);
+			ctx.getRequestDispatcher(successURL).forward(request, response);
 		}else
 		{
-			ctx.getRequestDispatcher("./errors/ErrorsDisplay.jsp").forward(request, response);
+			ctx.getRequestDispatcher(failureURL).forward(request, response);
 		}
 		
 	}

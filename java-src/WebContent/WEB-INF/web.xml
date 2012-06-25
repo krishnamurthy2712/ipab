@@ -111,11 +111,11 @@
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>AddCommentService</servlet-name>
-		<url-pattern>/storeComment.do</url-pattern>
+		<url-pattern>/blog/storeComment.do</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>BlogPostService</servlet-name>
-		<url-pattern>/storePost.do</url-pattern>
+		<url-pattern>/blog/admin/storePost.do</url-pattern>
 	</servlet-mapping>
 	
 	<welcome-file-list>
@@ -125,10 +125,10 @@
 	<session-config>
     	<session-timeout>20</session-timeout>
     </session-config>
-    <error-page>
-    	<error-code>404</error-code>
-    	<location>/errors/Error404.jsp</location>
-    </error-page>
+<!--    <error-page>-->
+<!--    	<error-code>404</error-code>-->
+<!--    	<location>/errors/Error404.jsp</location>-->
+<!--    </error-page>-->
      <error-page>
     	<error-code>500</error-code>
     	<location>/errors/Error500.jsp</location>

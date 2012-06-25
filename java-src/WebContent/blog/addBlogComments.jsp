@@ -157,8 +157,8 @@ BlogPostDetailsVO post = blogs.getBlogPostDetails(postId);
 	</div>
 	
 	<h2 class="c_head">Add a Comment</h2>
-	<div id="validation_errors" style="display:none">
-	<form method="post" action="/storeComment.do" onsubmit="return validateCommentForm();">
+	<div id="validation_errors" style="display:block;">
+	<form method="post" action="storeComment.do" onsubmit="return validateCommentForm();">
 	<table>
 		<tr>
 	    	<td colspan="2">

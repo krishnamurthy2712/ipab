@@ -34,7 +34,7 @@
 
 	<script type="text/javascript">
 
-	function validateCommentForm()
+	function validatePostsForm()
 	{
 		var postCon,name,title,securityCode,secCode;
 		$('#validationErrors').empty();
@@ -129,23 +129,23 @@
 <div id="mainContent" class="mainContent">
 	
 	<h2 class="c_head">Add a Post</h2>
-	<div id="validation_errors" style="display:none">
-	<form method="post" action="/storePost.do" onsubmit="return validateCommentForm();">
+	<div id="validation_errors" style="display:block;">
+	<form method="post" action="storePost.do" onsubmit="return validatePostsForm();">
 	<table>
 		<tr>
 	    	<td colspan="2">
-	        <label for="subject">Name</label><em>*</em><<br />
+	        <label for="subject">Name</label><br />
 	        <input type="text" name="name" size="84" value="" id="name" /></td>
 	    </tr>
 		<tr>
 	    	<td colspan="2">
-	        <label for="subject">Title</label><em>*</em><<br />
+	        <label for="subject">Title</label><br />
 	        <input type="text" name="subject" size="84" value="" id="subject" /></td>
 	    </tr>
 		<tr>
 	    	<td colspan="2">
 	        <br />
-	        <label for="postContent">Details</label><em>*</em><br />
+	        <label for="postContent">Details</label><br />
 	        <textarea rows="5" cols="40" name="postContent" id="postContent"></textarea>
 	        </td>
 	    </tr>    
@@ -157,7 +157,7 @@
 	    </tr> 
 		<tr>
 	    <td colspan="2">
-	    <label for="security_code">Please enter the security code</label><em>*</em><
+	    <label for="security_code">Please enter the security code</label>
 	    <p><img src="${pageContext.request.contextPath}/getCaptcha.do?type=num" alt="captcha" /></p>
 	    <input type="text" name="security_code" id="security_code" value="" onblur="validateSecurityCode()"/>   
 		<input type="hidden" id="secErr" value="<%= (String) session.getAttribute("Code")%>"/> 
