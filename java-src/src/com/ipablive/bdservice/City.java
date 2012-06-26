@@ -11,7 +11,6 @@ import com.ipablive.utils.BribeConstants;
 import com.ipablive.vo.CityVO;
 
 /**
- *  README for sample service
  *
  *  This generated sample service contains functions that illustrate typical service operations.
  *  Use these functions as a starting point for creating your own service implementation. Modify the 
@@ -106,7 +105,7 @@ public class City
 		  {
 			  Statement stmt = conn.createStatement();
 			  ResultSet rs = stmt.executeQuery(BribeConstants.GET_CITY_BY_ID + itemID);
-			  while(rs.next())
+			  if(rs.next())
 			  {
 				  cVo.setId(rs.getInt(1));
 				  cVo.setState(rs.getInt(2));
