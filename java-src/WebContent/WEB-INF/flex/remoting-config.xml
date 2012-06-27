@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service id="remoting-service"
+	class="flex.messaging.services.RemotingService"
+	messageTypes="flex.messaging.services.RemotingMessage">
+
+	<adapters>
+		<adapter-definition id="java-object"
+			class="flex.messaging.services.remoting.adapters.JavaAdapter"
+			default="true" />
+	</adapters>
+
+
+	<default-channels>
+		<channel ref="my-polling-amf" />
+		<channel ref="my-amf" />
+	</default-channels>
+	 
+	<destination id="bdCityService">
+        <properties>
+            <source>com.ipablive.bdservice.City</source>
+		</properties>
+	</destination>
+    <destination id="bdDeptService">
+        <properties>
+            <source>com.ipablive.bdservice.Department</source>
+		</properties>
+	</destination>
+	<destination id="bdDintBribeService">
+        <properties>
+            <source>com.ipablive.bdservice.BdDidntBribe</source>
+		</properties>
+	</destination>
+	<destination id="bdDintHaveToBribeService">
+        <properties>
+            <source>com.ipablive.bdservice.DidntHaveToBribe</source>
+		</properties>
+	</destination>
+	<destination id="bdPaidBribeService">
+        <properties>
+            <source>com.ipablive.bdservice.BdPaidBribe</source>
+		</properties>
+	</destination>
+	<destination id="bdStateService">
+        <properties>
+            <source>com.ipablive.bdservice.State</source>
+		</properties>
+	</destination>
+</service>

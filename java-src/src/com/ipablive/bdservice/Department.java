@@ -34,7 +34,7 @@ public class Department
 	  private static Department _deptInstance;
 
 	  //Prevent direct access to the constructor
-	  private Department() 
+	  public Department() 
 	  {
 	    super();
 	    if(conn == null)
@@ -44,7 +44,7 @@ public class Department
 	  }
 
 
-	  public static Department getInstance() 
+	  /*public static Department getInstance() 
 	  {
 
 	    if (_deptInstance == null) 
@@ -62,7 +62,7 @@ public class Department
 
 	    }
 	    return _deptInstance;
-	  }
+	  }*/
 	  
 	  public ArrayList<DepartmentVO> getAllBdDept()
 	  {
