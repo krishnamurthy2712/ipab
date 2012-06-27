@@ -28,7 +28,7 @@ public class City
 	  private static City _cityInstance;
 
 	  //Prevent direct access to the constructor
-	  private City() 
+	  public City() 
 	  {
 	    super();
 	    if(conn == null)
@@ -38,7 +38,7 @@ public class City
 	  }
 
 
-	  public static City getInstance() 
+	  /*public static City getInstance() 
 	  {
 
 	    if (_cityInstance == null) 
@@ -56,7 +56,7 @@ public class City
 
 	    }
 	    return _cityInstance;
-	  }
+	  }*/
 	  
 	  /**
 		 * Returns all the rows from the table.
@@ -272,14 +272,14 @@ public class City
 	  // please comment main after testing. This is test Purpose ONLY.
 	  public static void main(String[] args) 
 	  {
-		City s = City.getInstance();
+		//City s = City.getInstance();
 		//ArrayList<CityVO> cities = s.getAllBdCities();
 		//System.out.println(cities.size() + "  SIZE");
 		//=====================================
 		//CityVO cv = s.getBdCityByID(1);
 		//System.out.println("City Name :: "+cv.getCityName());
 		//=====================================
-		ArrayList<MostBribeCityVO> count = s.getMostBribed();
-		System.out.println(count.size() + "" );
+		//ArrayList<MostBribeCityVO> count = s.getMostBribed();
+		//System.out.println(count.size() + "" );
 	}
 }

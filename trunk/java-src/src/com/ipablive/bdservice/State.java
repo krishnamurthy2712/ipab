@@ -33,7 +33,7 @@ public class State
 	  private static State _stateInstance;
 
 	  //Prevent direct access to the constructor
-	  private State() 
+	  public State() 
 	  {
 	    super();
 	    if(conn == null)
@@ -43,7 +43,7 @@ public class State
 	  }
 
 
-	  public static State getInstance() 
+	 /* public static State getInstance() 
 	  {
 
 	    if (_stateInstance == null) 
@@ -61,7 +61,7 @@ public class State
 
 	    }
 	    return _stateInstance;
-	  }
+	  }*/
 	  
 	  public ArrayList<StateVO> getAllBdStates()
 	  {
