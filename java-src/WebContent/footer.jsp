@@ -12,7 +12,7 @@
 		<a class="youtube_bot" href="http://www.youtube.com/user/" target="_blank" title="You Tube"></a>
 		<a class="orkut_bot" href="http://www.orkut.co.in/Main#Community?cmm=" target="_blank" title="Orkut"></a>
        
-       	<p>&copy; 2011,  All rights Reserved<br />I Paid A Bribe</p>
+       	<p>&copy; <%= new java.util.Date().getYear() + 1900 %>,  All rights Reserved<br />I Paid A Bribe</p>
 		<p id="bookmarkIpab"></p><br>
 	   </div>
 </div>
