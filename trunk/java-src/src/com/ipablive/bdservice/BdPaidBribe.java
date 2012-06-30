@@ -236,7 +236,7 @@ public class BdPaidBribe
 		  return count;
 	  }
 	  
-	  public ArrayList<YearlyDistrubutionVO> getYearlyDistribution(Boolean type, int cCity,int cDept)
+	  public ArrayList<YearlyDistrubutionVO> getYearlyDistribution(Boolean type, int qId)
 	  {
 		  ArrayList<YearlyDistrubutionVO> distrubution = new ArrayList<YearlyDistrubutionVO>();
 		  
@@ -247,7 +247,7 @@ public class BdPaidBribe
 			  		"EXTRACT( YEAR FROM c_date_paid ) AS dateOrder2, " +
 			  		"COUNT( id ) AS BribedCount, AVG( c_amt_paid ) AS BribedAverage, " +
 			  		"SUM( c_amt_paid ) AS BribedTotal, DATE_FORMAT( c_date_paid,  '%e %b, %y' ) AS dateName " +
-			  		"FROM bd_paid_bribe WHERE c_city ="+cCity+" AND c_date_paid " +
+			  		"FROM bd_paid_bribe WHERE c_city ="+qId+" AND c_date_paid " +
 			  		"IS NOT NULL AND approved =1 GROUP BY dateOrder, dateOrder2 " +
 			  		"ORDER BY dateOrder2 DESC , dateOrder DESC LIMIT 10";
 		  }
@@ -257,7 +257,7 @@ public class BdPaidBribe
 			  		" EXTRACT( YEAR FROM c_date_paid ) AS dateOrder2," +
 			  		" COUNT( id ) AS BribedCount, AVG( c_amt_paid ) AS BribedAverage, " +
 			  		"SUM( c_amt_paid ) AS BribedTotal, DATE_FORMAT( c_date_paid,  '%e %b, %y' ) AS dateName " +
-			  		"FROM bd_paid_bribe WHERE c_dept = "+cDept+" AND c_date_paid " +
+			  		"FROM bd_paid_bribe WHERE c_dept = "+qId+" AND c_date_paid " +
 			  		"IS NOT NULL AND approved =1 GROUP BY dateOrder, dateOrder2 " +
 			  		"ORDER BY dateOrder2 DESC , dateOrder DESC LIMIT 10";
 		  }
@@ -270,12 +270,12 @@ public class BdPaidBribe
 			  while(rs.next())
 			  {
 				  YearlyDistrubutionVO ytd = new YearlyDistrubutionVO();
-				  ytd.setDateOrder(rs.getDate(1));
-				  ytd.setDateOrder2(rs.getDate(2));
+				  ytd.setDateOrder(rs.getInt(1));
+				  ytd.setDateOrder2(rs.getInt(2));
 				  ytd.setBribedCount(rs.getInt(3));
 				  ytd.setBribedAverage(rs.getInt(4));
 				  ytd.setBribedTotal(rs.getInt(5));
-				  ytd.setDateName(rs.getDate(6));
+				  ytd.setDateName(rs.getString(6));
 				  
 				  distrubution.add(ytd);
 				  

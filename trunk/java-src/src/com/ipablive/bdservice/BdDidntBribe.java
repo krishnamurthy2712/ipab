@@ -27,9 +27,6 @@ public class BdDidntBribe
 {
 	Connection conn=null;
 	
-	 /* Here is the instance of the Singleton */
-	  private static BdDidntBribe _didntPaidBribeInstance;
-
 	  //Prevent direct access to the constructor
 	  public BdDidntBribe() 
 	  {
@@ -39,27 +36,6 @@ public class BdDidntBribe
 	    	conn = ConnectionFactory.getConnection();
 	    }
 	  }
-
-
-	 /* public static BdDidntBribe getInstance() 
-	  {
-
-	    if (_didntPaidBribeInstance == null) 
-	    {
-
-	      synchronized(BdDidntBribe.class) 
-	      {
-
-	        if (_didntPaidBribeInstance == null) 
-	        {
-	        	_didntPaidBribeInstance = new BdDidntBribe();
-	        }
-
-	      }
-
-	    }
-	    return _didntPaidBribeInstance;
-	  }*/
 	  
 	  public ArrayList<DidntBribeVO> getAllBdDintBribe() 
 	  {
@@ -199,7 +175,7 @@ public class BdDidntBribe
 		  return count;
 	  }
 	  
-	  public ArrayList<YearlyDistrubutionVO> getYearlyDistribution(Boolean type, int cCity,int cDept)
+	  public ArrayList<YearlyDistrubutionVO> getYearlyDistribution(Boolean type, int qId)
 	  {
 		  ArrayList<YearlyDistrubutionVO> distrubution = new ArrayList<YearlyDistrubutionVO>();
 		  
@@ -210,7 +186,7 @@ public class BdDidntBribe
 			  		"EXTRACT( YEAR FROM c_date_paid ) AS dateOrder2, " +
 			  		"COUNT( id ) AS BribedCount, AVG( c_amt_paid ) AS BribedAverage, " +
 			  		"SUM( c_amt_paid ) AS BribedTotal, DATE_FORMAT( c_date_paid,  '%e %b, %y' ) AS dateName " +
-			  		"FROM bd_dint_bribe WHERE c_city ="+cCity+" AND c_date_paid " +
+			  		"FROM bd_dint_bribe WHERE c_city ="+qId+" AND c_date_paid " +
 			  		"IS NOT NULL AND approved =1 GROUP BY dateOrder, dateOrder2 " +
 			  		"ORDER BY dateOrder2 DESC , dateOrder DESC LIMIT 10";
 		  }
@@ -220,7 +196,7 @@ public class BdDidntBribe
 			  		" EXTRACT( YEAR FROM c_date_paid ) AS dateOrder2," +
 			  		" COUNT( id ) AS BribedCount, AVG( c_amt_paid ) AS BribedAverage, " +
 			  		"SUM( c_amt_paid ) AS BribedTotal, DATE_FORMAT( c_date_paid,  '%e %b, %y' ) AS dateName " +
-			  		"FROM bd_dint_bribe WHERE c_dept = "+cDept+" AND c_date_paid " +
+			  		"FROM bd_dint_bribe WHERE c_dept = "+qId+" AND c_date_paid " +
 			  		"IS NOT NULL AND approved =1 GROUP BY dateOrder, dateOrder2 " +
 			  		"ORDER BY dateOrder2 DESC , dateOrder DESC LIMIT 10";
 		  }
@@ -233,12 +209,12 @@ public class BdDidntBribe
 			  while(rs.next())
 			  {
 				  YearlyDistrubutionVO ytd = new YearlyDistrubutionVO();
-				  ytd.setDateOrder(rs.getDate(1));
-				  ytd.setDateOrder2(rs.getDate(2));
-				  ytd.setBribedCount(rs.getInt(3));
+				  ytd.setDateOrder(rs.getInt(1));
+				  ytd.setDateOrder2(rs.getInt(2));
+				  ytd.setNotBribed(rs.getInt(3));
 				  ytd.setBribedAverage(rs.getInt(4));
 				  ytd.setBribedTotal(rs.getInt(5));
-				  ytd.setDateName(rs.getDate(6));
+				  ytd.setDateName(rs.getString(6));
 				  
 				  distrubution.add(ytd);
 				  

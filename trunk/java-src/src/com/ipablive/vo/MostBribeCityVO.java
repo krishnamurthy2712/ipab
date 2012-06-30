@@ -10,7 +10,7 @@ package com.ipablive.vo;
 public class MostBribeCityVO 
 {
 	private int id;
-	private String cityName;
+	private String name;
 	private int bribedCount;
 	private int bribedTotal;
 	private int bribedAverage;
@@ -26,13 +26,13 @@ public class MostBribeCityVO
 		this.id = id;
 	}
 	
-	public String getCityName() 
+	public String getName() 
 	{
-		return cityName;
+		return name;
 	}
-	public void setCityName(String cityName) 
+	public void setName(String cityName) 
 	{
-		this.cityName = cityName;
+		this.name = cityName;
 	}
 	
 	public int getBribedCount() 

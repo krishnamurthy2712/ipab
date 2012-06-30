@@ -3,36 +3,35 @@
  */
 package com.ipablive.vo;
 
-import java.util.Date;
-
-
 /**
  * @author 
  *
  */
 public class YearlyDistrubutionVO 
 {
-	private Date dateOrder;
-	private Date dateOrder2;
+	private int dateOrder;
+	private int dateOrder2;
 	private int bribedCount;
 	private int bribedAverage;
 	private int bribedTotal;
-	private Date dateName;
+	private String dateName;
+	private int notBribed;
+	private int noBribes;
 	
-	public Date getDateOrder() 
+	public int getDateOrder() 
 	{
 		return dateOrder;
 	}
-	public void setDateOrder(Date dateOrder) 
+	public void setDateOrder(int dateOrder) 
 	{
 		this.dateOrder = dateOrder;
 	}
 	
-	public Date getDateOrder2()
+	public int getDateOrder2()
 	{
 		return dateOrder2;
 	}
-	public void setDateOrder2(Date dateOrder2) 
+	public void setDateOrder2(int dateOrder2) 
 	{
 		this.dateOrder2 = dateOrder2;
 	}
@@ -64,12 +63,30 @@ public class YearlyDistrubutionVO
 		this.bribedTotal = bribedTotal;
 	}
 	
-	public Date getDateName() 
+	public String getDateName() 
 	{
 		return dateName;
 	}
-	public void setDateName(Date dateName) 
+	public void setDateName(String dateName) 
 	{
 		this.dateName = dateName;
+	}
+	
+	public int getNotBribed() 
+	{
+		return notBribed;
+	}
+	public void setNotBribed(int notBribed) 
+	{
+		this.notBribed = notBribed;
+	}
+	
+	public int getNoBribes() 
+	{
+		return noBribes;
+	}
+	public void setNoBribes(int noBribes) 
+	{
+		this.noBribes = noBribes;
 	}
 }

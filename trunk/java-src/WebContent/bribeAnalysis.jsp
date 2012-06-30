@@ -28,7 +28,7 @@
 <div class="clear"></div>
 </div>
 <p><b><a
-	href="#">Detailed
+	href="${pageContext.request.contextPath}/bribepatterns/index.jsp">Detailed
 analysis of the bribes reported so far</a></b></p>
 </div>
 </div>
