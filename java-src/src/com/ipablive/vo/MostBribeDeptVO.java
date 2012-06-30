@@ -10,7 +10,7 @@ package com.ipablive.vo;
 public class MostBribeDeptVO 
 {
 	private int id;
-	private String deptName;
+	private String name;
 	private int bribedCount;
 	private int bribedTotal;
 	private int bribedAverage;
@@ -26,13 +26,13 @@ public class MostBribeDeptVO
 		this.id = id;
 	}
 	
-	public String getDeptName() 
+	public String getName() 
 	{
-		return deptName;
+		return name;
 	}
-	public void setDeptName(String deptName) 
+	public void setName(String deptName) 
 	{
-		this.deptName = deptName;
+		this.name = deptName;
 	}
 	
 	public int getBribedCount() 

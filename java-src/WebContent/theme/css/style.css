@@ -4,6 +4,10 @@ form .big,.form-item{width:525px; margin-bottom:13px;}
 {
 	width: 100px;
 }
+
+.clear{
+	clear:both;
+}
 	
 .mainContent
 {
@@ -31,6 +35,24 @@ form .big,.form-item{width:525px; margin-bottom:13px;}
 	padding-left: 5px; 
 	border: 1px solid;
 	background-color: #DBD7D7;
+}
+
+.headerLables {
+	color: #4B1B05;
+}
+.headerLables div, .contentLables div {
+	float: left;
+    margin: 0 2px;
+}
+.reports, .amount {
+	width: 65px;
+}
+.headerLables div.departments, .contentLables div.departments, .headerLables div.cites, .contentLables div.cites {
+	width: 130px;	
+}
+.bribeReports
+{
+	margin: 0 2px;
 }
 
 .sideContent
@@ -1033,11 +1055,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover, html ul.new li.active, h
     margin-bottom: 20px;
     margin-top: 6px;
 }
-.bribeFighters .bribeItems {
-    border-bottom: 1px dashed #644E3C;
-    margin-bottom: 10px;
-    padding-bottom: 5px;
-}
+
 .bribeFighters .popularCity, .bribeFighters .popularTitle a {
     color: #4B1B05;
 }

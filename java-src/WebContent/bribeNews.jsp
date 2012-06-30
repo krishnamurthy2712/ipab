@@ -16,7 +16,7 @@ $(document).ready(
 	});
 });
 </script>
-<div class="grid">
+
 <h2 class="home_h2 news_box_title">I Paid a Bribe in the <span>News!</span></h2>
 <%
 	Home myHome = Home.getInstance();
@@ -57,44 +57,4 @@ $(document).ready(
                 	<div class="seeAll"><a href="<?php echo url('sforms/ipab_in_the_press');?>" title="View more">See all</a></div>
 				<%} %>
             </div>
-<!----- Break ----->
 
- <h2 class="home_h2">Expert <span>Speak</span></h2>
-            <div class="news_box">
-                <ul >
-                
-					<%
-					ArrayList<ExpertSpeakVo> experts = myHome.getExpertSpeak();
-					
-		if(experts.size()>0)
-		{
-			for (int i=0;i<experts.size();i++)
-			{
-				
-				ExpertSpeakVo esObj = experts.get(i);
-	%>
-                    <li>
-                        <div class="newsSub" onclick="aptesting('<?php echo base64_encode('homepage2'); ?>','<?php echo  base64_encode('2'); ?>')"><span><%=esObj.getAuthorName() %> | <%=esObj.getCreated() %></a></div>
-                       <?php /*?> <div class="newsTitle"><?php echo $row->body ?></div><?php */?>
-                         <div  onclick="#"><p><a href="<%=esObj.getFieldTitleURL() %>" target="_blank" class="newsTitleb" ><%=esObj.getTitle() %></a></p></div>
-                        <div class="clear"></div>      
-                    </li>
-					<%=esObj.getAuthorName() %>             
-                
-                 </ul>
-            </div>
-				<%
-							}
-			
-			}else
-			{
-				out.println("No data to display now.");
-			}%>
-                </ul>
-				<% if( experts.size()>0 ) {%>
-                	<div class="seeAll"><a href="<?php echo url('sforms/ipab_in_the_press');?>" title="View more">See all</a></div>
-				<%} %>   
-                 <br />        
-            <div class="clear"></div>
-</div>
-<!--#End Gird 3-->

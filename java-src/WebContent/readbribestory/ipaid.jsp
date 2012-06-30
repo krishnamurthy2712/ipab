@@ -31,46 +31,64 @@
 		rel="stylesheet" />
 
 <script type="text/javascript">
+	$(document).ready(function() {
+	
+	    //Default Action
+	    $(".tab_content").hide(); //Hide all content
+	    $("ul.tabs li:first").addClass("active").show(); //Activate first tab
+	    $(".tab_content:first").show(); //Show first tab content
+	    
+	    //On Click Event
+	    $("ul.tabs li").click(function() {
+	        $("ul.tabs li").removeClass("active"); //Remove any "active" class
+	        $(this).addClass("active"); //Add "active" class to selected tab
+	        $(".tab_content").hide(); //Hide all tab content
+	        var activeTab = $(this).find("a").attr("href"); //Find the rel attribute value to identify the active tab + content
+	        $(activeTab).fadeIn(); //Fade in the active content
+	        return false;
+	    });
+	
+	});
+		     
+	function getTransactions()
+	{
+	     // get the form values
+	     var dept = $('#cDept').val();
+		 $.ajax({
+			  type: 'GET',
+			  url: 'getTransactions.jsp',
+			  data: "dept=" + dept,
+			  beforeSend:function(){
+			    // this is where we append a loading image
+			    $('#transactionsDisplay').html('<div class="loading"><img src="${pageContext.request.contextPath}/theme/images/loading.gif" alt="Loading..." /></div>');
+			  },
+			  success:function(response){
+			    // successful request; do something with the data
+			    //$('#transactionsDisplay').empty();
+			    $('#transactionsDisplay').html(response);
+			  },
+			  error:function(){
+			    // failed request; give feedback to user
+			    $('#transactionsDisplay').html('<p><font color="red"><strong>Oops!</strong> Unable to load transactions.</font></p>');
+			  }
+		 });
+	}
 
-function getTransactions()
-{
-     // get the form values
-     var dept = $('#cDept').val();
-	 $.ajax({
-		  type: 'GET',
-		  url: 'getTransactions.jsp',
-		  data: "dept=" + dept,
-		  beforeSend:function(){
-		    // this is where we append a loading image
-		    $('#transactionsDisplay').html('<div class="loading"><img src="${pageContext.request.contextPath}/theme/images/loading.gif" alt="Loading..." /></div>');
-		  },
-		  success:function(response){
-		    // successful request; do something with the data
-		    //$('#transactionsDisplay').empty();
-		    $('#transactionsDisplay').html(response);
-		  },
-		  error:function(){
-		    // failed request; give feedback to user
-		    $('#transactionsDisplay').html('<p><font color="red"><strong>Oops!</strong> Unable to load transactions.</font></p>');
-		  }
-	 });
-}
+	function show_less(num)
+	{
+		$('#more_link'+num).css('display','block');
+		$('#less_link'+num).css('display','none');		
+		$('#more_d_'+num).css('display','none');
+		$('#less_d_'+num).fadeIn();
+	}
 
-function show_less(num)
-{
-	$('#more_link'+num).css('display','block');
-	$('#less_link'+num).css('display','none');		
-	$('#more_d_'+num).css('display','none');
-	$('#less_d_'+num).fadeIn();
-}
-
-function show_more(num)
-{
-	$('#less_link'+num).css('display','block');
-	$('#more_link'+num).css('display','none');			
-	$('#less_d_'+num).css('display','none');
-	$('#more_d_'+num).fadeIn();
-}	
+	function show_more(num)
+	{
+		$('#less_link'+num).css('display','block');
+		$('#more_link'+num).css('display','none');			
+		$('#less_d_'+num).css('display','none');
+		$('#more_d_'+num).fadeIn();
+	}	
 </script>
 
 </head>

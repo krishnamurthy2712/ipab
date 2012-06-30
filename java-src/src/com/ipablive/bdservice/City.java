@@ -133,7 +133,7 @@ public class City
 		  try
 		  {
 			  Statement stmt = conn.createStatement();
-			  ResultSet rs = stmt.executeQuery(BribeConstants.GET_CITY_COUNT);
+			  ResultSet rs = stmt.executeQuery("SELECT COUNT( * ) FROM bd_city WHERE (SELECT COUNT( * ) FROM bd_paid_bribe WHERE c_city = bd_city.Id AND approved =1 ) >0");
 			  while(rs.next())
 			  {
 				  count = rs.getInt(1);
@@ -199,7 +199,7 @@ public class City
 			  {
 				  MostBribeCityVO mbVO = new MostBribeCityVO();
 				  mbVO.setId(rs.getInt(1));
-				  mbVO.setCityName(rs.getString(2));
+				  mbVO.setName(rs.getString(2));
 				  mbVO.setBribedCount(rs.getInt(3));
 				  mbVO.setBribedTotal(rs.getInt(4));
 				  mbVO.setBribedAverage(rs.getInt(5));
@@ -224,21 +224,21 @@ public class City
 		  return analysis;
 	  }
 	  
-	  public MostBribeCityVO getBribedByDept(int deptID) 
+	  public ArrayList<MostBribeCityVO> getBribedByDept(int deptID) 
 	  {
-		  MostBribeCityVO mcVo = new MostBribeCityVO();
+		  ArrayList<MostBribeCityVO> depts = new ArrayList<MostBribeCityVO>();
 		  try
 		  {
-			  String query = "SELECT Id as id, city_name as name, " + 
-						"(SELECT COUNT(id) FROM bd_paid_bribe where c_dept = "+deptID+" and c_city = bd_city.Id AND approved = 1) AS BribedCount" +
-						"FROM bd_city ORDER BY BribedCount DESC";
+			  String query = "SELECT Id as id, city_name as name, (SELECT COUNT(id) FROM bd_paid_bribe where c_dept = "+deptID+" and c_city = bd_city.Id AND approved = 1) AS BribedCount FROM bd_city ORDER BY BribedCount DESC";
 			  Statement stmt = conn.createStatement();
 			  ResultSet rs = stmt.executeQuery(query);
 			  while(rs.next())
 			  {
+				  MostBribeCityVO mcVo = new MostBribeCityVO();
 				  mcVo.setId(rs.getInt(1));
-				  mcVo.setCityName(rs.getString(2));
+				  mcVo.setName(rs.getString(2));
 				  mcVo.setBribedCount(rs.getInt(3));
+				  depts.add(mcVo);
 			  }
 		  }
 		  catch(SQLException e)
@@ -254,7 +254,7 @@ public class City
 			  closeConnection();
 		  }
 		  
-		  return mcVo;
+		  return depts;
 	  }
 	  
 	  private void closeConnection()

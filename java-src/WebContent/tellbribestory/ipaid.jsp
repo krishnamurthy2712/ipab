@@ -33,7 +33,6 @@
 			{
 				// binds form submission and fields to the validation engine
 				$( "#c_date_paid" ).datepicker({dateFormat: 'dd-mm-y',buttonImage: "/images/datepicker.gif"});
-				
 			}
 	);
 

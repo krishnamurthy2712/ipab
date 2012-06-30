@@ -11,8 +11,6 @@ import java.util.ArrayList;
 
 import com.ipablive.datasource.ConnectionFactory;
 import com.ipablive.utils.BribeConstants;
-import com.ipablive.vo.DepartmentVO;
-import com.ipablive.vo.MostBribeDeptVO;
 import com.ipablive.vo.StateVO;
 
 /**
@@ -69,7 +67,7 @@ public class State
 		  try
 		  {
 			  Statement stmt = conn.createStatement();
-			  ResultSet rs = stmt.executeQuery(BribeConstants.GET_ALL_STATES);
+			  ResultSet rs = stmt.executeQuery("SELECT bd_state.State, bd_state.Id, SUM( bd_paid_bribe.c_amt_paid ) AS BribeTotal, COUNT( bd_paid_bribe.c_amt_paid ) AS BribeCount FROM bd_state LEFT OUTER JOIN bd_city ON bd_state.Id = bd_city.state	AND bd_state.Id = bd_city.state LEFT OUTER JOIN bd_paid_bribe ON bd_city.Id = bd_paid_bribe.c_city AND bd_paid_bribe.c_city = bd_city.Id AND bd_paid_bribe.approved =1 GROUP BY bd_state.State");
 			  while(rs.next())
 			  {
 				  StateVO state = new StateVO();
@@ -106,10 +104,11 @@ public class State
 			  ResultSet rs = stmt.executeQuery(BribeConstants.GET_STATE_BY_ID + stateId);
 			  if(rs.next())
 			  {
-				  state.setStateName(rs.getString(1));
-				  state.setId(rs.getInt(2));
-				  state.setBribeTotal(rs.getInt(3));
-				  state.setBribeCount(rs.getInt(4));
+				  
+				  state.setId(rs.getInt(1));
+				  state.setStateName(rs.getString(2));
+				  //state.setBribeTotal(rs.getInt(3));
+				  //state.setBribeCount(rs.getInt(4));
 			  }
 		  }
 		  catch(SQLException e)

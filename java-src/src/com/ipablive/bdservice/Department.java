@@ -195,7 +195,7 @@ public class Department
 			  {
 				  MostBribeDeptVO mbVO = new MostBribeDeptVO();
 				  mbVO.setId(rs.getInt(1));
-				  mbVO.setDeptName(rs.getString(2));
+				  mbVO.setName(rs.getString(2));
 				  mbVO.setBribedCount(rs.getInt(3));
 				  mbVO.setBribedTotal(rs.getInt(4));
 				  mbVO.setBribedAverage(rs.getInt(5));
@@ -220,9 +220,9 @@ public class Department
 		  return analysis;
 	  }
 	  
-	  public MostBribeDeptVO getBribedByCity(int cityId) 
+	  public ArrayList<MostBribeCityVO> getBribedByCity(int cityId) 
 	  {
-		  MostBribeDeptVO mcVo = new MostBribeDeptVO();
+		  ArrayList<MostBribeCityVO> cities = new ArrayList<MostBribeCityVO>();
 		  try
 		  {
 			  String query = "SELECT id, dept_name as name, (SELECT COUNT(id) FROM bd_paid_bribe " +
@@ -232,9 +232,12 @@ public class Department
 			  ResultSet rs = stmt.executeQuery(query);
 			  while(rs.next())
 			  {
+				  MostBribeCityVO mcVo = new MostBribeCityVO();
 				  mcVo.setId(rs.getInt(1));
-				  mcVo.setDeptName(rs.getString(2));
+				  mcVo.setName(rs.getString(2));
 				  mcVo.setBribedCount(rs.getInt(3));
+				  
+				  cities.add(mcVo);
 			  }
 		  }
 		  catch(SQLException e)
@@ -250,7 +253,7 @@ public class Department
 			  closeConnection();
 		  }
 		  
-		  return mcVo;
+		  return cities;
 	  }
 	  
 	  
