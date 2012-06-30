@@ -2496,7 +2496,7 @@ background:#FFF0EB!important;
 	color: #9b1c20;
 }
 #awards-section #button-table-container {
-	background: url(theme/images/bg_button-blocks.png) no-repeat;
+	background: url(http://localhost:8080/ipab-java/theme/images/bg_button-blocks.png) no-repeat;
 	width: 732px;
 	height: 146px;
 	padding: 15px;

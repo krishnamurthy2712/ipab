@@ -17,6 +17,8 @@
 		src="${pageContext.request.contextPath}/theme/js/jquery.ui.core.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/theme/js/jquery.ui.widget.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/theme/js/jquery.ui.datepicker.js"></script>
 	
 	<link type="text/css"
 		href="${pageContext.request.contextPath}/theme/css/menu.css"
@@ -29,8 +31,6 @@
 	<link href="${pageContext.request.contextPath}/theme/css/SpryTabbedPanels.css" rel="stylesheet" type="text/css">
 
 <script type="text/javascript">
-var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
-
 function titles(){
 	if(document.searchs.title.value == "Search Title......." )
 		{
@@ -124,15 +124,35 @@ departments and work to get them implemented.</p>
    
 <div id="TabbedPanels1" class="TabbedPanels">
   <ul class="TabbedPanelsTabGroup">
-    <li class="TabbedPanelsTab">Latest</li>
-      <li class="TabbedPanelsTab">Most Popular</li>
-    <li class="TabbedPanelsTab">Department</li>
+    <li class="TabbedPanelsTab TabbedPanelsTabFocused TabbedPanelsTabSelected" tabindex="0">Latest</li>
+      <li class="TabbedPanelsTab" tabindex="1">Most Popular</li>
+    <li class="TabbedPanelsTab" tabindex="2">Department</li>
   </ul>
   <div class="TabbedPanelsContentGroup">
-    <div class="TabbedPanelsContent"><%@ include file="latest.jsp" %></div>
-    <div class="TabbedPanelsContent"><%@  include file="mostpopular.jsp"  %></div>
-     <div class="TabbedPanelsContent"><%@ include file="deptwise.jsp"  %></div>
-  </div>
+    <div style="display: block;" class="TabbedPanelsContent TabbedPanelsContentVisible">
+
+<div id="listImg">
+	<div class="teaser-list-Img floating-left">
+		<a href="#">
+				 <img src="default_smj_small.jpg" height="126" width="220">
+			</a></div><a href="#">
+	
+	</a><div class="teaser-list-text floating-left"><a href="#">
+		<div class="votes-row"><div class="total-votes floating-left"><span>Total Votes:&nbsp;</span></div><div id="vote2873" class="vote-count floating-left">0</div><div class="clear"></div></div></a><div><a href="#"></a>
+				</a><a href="#">
+				<img src="thums-up.png"></a>
+			</div>
+				<div id="vote-img-dull2873" style="display:none;" class="vote-icon floating-left">
+			<img src="thums-up-dis.png">
+		</div>
+		<div class="floating-right social-icons">
+			<a href="http://www.facebook.com/share.php?u=" target="_blank" class="facebook_share_view"></a>
+			&nbsp;<a href="http://twitter.com/share?url=" target="_blank" class="tweet_share_view"></a>
+			<a href="#"><img src="email.png" alt="Mail" title="Mail" class="mail-me"></a>
+			<a href="#" title="View more services" class="addthis_button_more at300b"><span><img src="add_more.png" class="add-more" align="absmiddle"></span></a>
+		</div>
+	</div>
+    <div class="clear"></div>
 </div>
 
 
@@ -140,7 +160,9 @@ departments and work to get them implemented.</p>
 <!-- awards-section ends here -->
               
 </div>
-
+</div>
+</div>
+</div>
 <br>
 <%@include file="../footer.jsp" %>
 </body>
