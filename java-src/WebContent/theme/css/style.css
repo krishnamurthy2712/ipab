@@ -67,6 +67,19 @@ form .big,.form-item{width:525px; margin-bottom:13px;}
 	background-color: #DBD7D7;
 }
 
+.viewall{
+		font-family:Verdana, Geneva, sans-serif;
+	font-size:12px;
+	font-weight:bold;
+	margin:20px;
+	float:right;
+	color:#000;
+}
+
+.viewall a{
+color:#000;
+}
+
 .privacyContent
 {
 	float: left; 
@@ -2239,7 +2252,7 @@ background:#FFF0EB!important;
 	background-position:0 -15px;
 }
 .tweet_share_view{
-	background:url(theme/images/f_t_share.jpg) no-repeat;
+	background:url(http://localhost:8080/ipab-java/theme/images/f_t_share.jpg) no-repeat;
 	background-position:0 -30px;
 	padding:1px 23px 1px 22px;
 	font-size:11px;
