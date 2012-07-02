@@ -29,6 +29,8 @@ package com.ipablive.services;
 	 */
 	private static final long serialVersionUID = 1L;
 	private static final String CAPCHA_TYPE_NUMBER = "num";
+	private static final String CAPCHA_TYPE_ALPHANUM = "alphanum";
+	private static final String CAPCHA_TYPE_ALPHA = "alpha";
 	    
 	  public static String CAPTCHA_KEY = "";
 
@@ -70,6 +72,7 @@ package com.ipablive.services;
 		    width=78;
 	    }
 	    
+	    System.out.println("Generated code  :: "+ ch);
 	    
 	    BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB); 
 	    Graphics2D graphics2D = image.createGraphics();
@@ -82,14 +85,12 @@ package com.ipablive.services;
 	    graphics2D.drawString(ch,3,25);
 	    graphics2D.dispose();
 	    
-	    HttpSession session = req.getSession();
+	    HttpSession session = req.getSession(true);
 	    session.setAttribute("Code",ch);
-
+	    System.out.println(session.getMaxInactiveInterval() +" <>  "+ session.getCreationTime());
 	    OutputStream outputStream = response.getOutputStream();
-	    ImageIO.write(image, "jpeg", outputStream);
+	    ImageIO.write(image, "png", outputStream);
 	    outputStream.close();
-
-
 
 	 }
 
