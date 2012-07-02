@@ -144,7 +144,7 @@ public class IDontHavetoPay
 	  
 	  public DontHavetoPayVO viewDetailDintHaveToPay(int id)
 	  {
-		  String query = "SELECT bc.*,ct.city_name AS c_city,  bd.dept_name, bt.trans_name FROM bd_dint_bribe bc, bd_dept bd, bd_transactions bt, bd_city ct WHERE bc.c_dept=bd.id AND bc.c_transaction=bt.id and bc.id='"+id+"' AND bc.c_city=ct.Id";
+		  String query = "SELECT bc.*,ct.city_name AS c_city,  bd.dept_name, bt.trans_name FROM bd_dint_have_to_bribe bc, bd_dept bd, bd_transactions bt, bd_city ct WHERE bc.c_dept=bd.id AND bc.c_transaction=bt.id and bc.id='"+id+"' AND bc.c_city=ct.Id";
 	
 		  DontHavetoPayVO dhpbv = new DontHavetoPayVO();
 		  
