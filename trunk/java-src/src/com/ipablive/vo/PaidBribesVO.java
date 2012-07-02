@@ -28,6 +28,7 @@ public class PaidBribesVO
 	private String cName;
 	private int cTrans;
 	private Date createdDate;
+	private int numComments;
 	
 	public int getId() 
 	{
@@ -180,6 +181,15 @@ public class PaidBribesVO
 	public void setCreatedDate(Date createdDate) 
 	{
 		this.createdDate = createdDate;
+	}
+	
+	public int getNumComments() 
+	{
+		return numComments;
+	}
+	public void setNumComments(int numComments) 
+	{
+		this.numComments = numComments;
 	}
 	
 	

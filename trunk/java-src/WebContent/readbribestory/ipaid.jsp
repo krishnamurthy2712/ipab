@@ -89,8 +89,16 @@
 		$('#less_d_'+num).css('display','none');
 		$('#more_d_'+num).fadeIn();
 	}	
-</script>
 
+	function addComment(typeId,type)
+	{
+		//var url = "/addComment.jsp?typeId="+typeId+"&type="+type+"&subject="+subject;
+		var url = "${pageContext.request.contextPath}/comments/addComment.jsp?p="+typeId+"&t="+type;
+		window.location.href = url;
+		
+	}
+	
+</script>
 </head>
 <body>
 <% CommonOperations ipb = CommonOperations.getInstance(); 
@@ -152,18 +160,35 @@
 </fieldset>
 </form>
 <br><br>
+
 <% ArrayList<PaidBribesVO> pbVOs = ipab.viewPaidBribes("ALL");
   if(pbVOs.size()>0)
   {
+	  String display = "";
+	  String readMore = "";
+	  
+	  
 	for(int i=0;i<pbVOs.size();i++)
 	{
 		PaidBribesVO pbVo = pbVOs.get(i);
+		
+		if(i==0)	
+		{
+			display = "style='display:block;'";
+			readMore = "style='display:none;'";
+		}
+		else
+		{
+			display = "style='display:none;'";
+			readMore = "style='display:block;'";
+		}
 %>
+
 
 <div class="report_reg">
 	<h2><%= pbVo.getCName() %></h2>
 	<div class="report_reg_det">
-		<strong>Reported :</strong> <%=pbVo.getCPaidDate() %> 
+		<strong>Reported :</strong> <%=pbVo.getCreatedDate() %> 
 		| <strong>City :</strong> <%=pbVo.getCCity() %>
            <br /><strong>Paid On :</strong> <%=pbVo.getCCity() %> 
 		| <strong><%=pbVo.getDeptName() %></strong>
@@ -172,16 +197,58 @@
 	<div class="report_reg_paid">PAID<span><%=pbVo.getCAmountPaid() %></span></div>
 
     <div class="clear"></div>
-		<div id="more_link">
+		<div id="more_link<%=pbVo.getId() %>" <%=readMore %>>
 			<div class="report_reg_more">
-            <a href="#" class="rad" onclick="show_more(''); return false;">Read More</a> 
-            <a href="#">Add Comment</a> 
-            <a href="${pageContext.request.contextPath}/comments/viewCommentsPaid.jsp?id=<%=pbVo.getId() %>"><%=ipab.getNumComments("paid",pbVo.getId()) %> Comments</a>
-            <a href="http://www.facebook.com/share.php?u=" target="_blank" class="facebook_share_view"></a>
-            <a href="http://twitter.com/share?url=" target="_blank" class="tweet_share_view"></a>
-            <!--<span id="count<?php echo $row->id;?>_1"><?php echo $row->count;?></span> views-->
+	            <a href="#" class="rad" onclick="show_more('<%=pbVo.getId() %>'); return false;">Read More</a> 
+	            <a href="javaScript: addComment('<%=pbVo.getId() %>','paid')">Add Comment</a> 
+	            <a href="${pageContext.request.contextPath}/comments/viewCommentsPaid.jsp?id=<%=pbVo.getId() %>"><%=pbVo.getNumComments() %> Comments</a>
+	            <a href="http://www.facebook.com/share.php?u=" target="_blank" class="facebook_share_view"></a>
+	            <a href="http://twitter.com/share?url=" target="_blank" class="tweet_share_view"></a>
+	            <!--<span id="count<?php echo $row->id;?>_1"><?php echo $row->count;?></span> views-->
             </div>
 		</div>
+
+		<div id="more_d_<%=pbVo.getId() %>" <%=display %> >
+				<table class="details_table" width="100%" summary="this table has the details for a certain report.">
+					<tr>
+				    	<th width="20%"><span class="desc_lebel">Department:</span></th>
+				        <td><%=pbVo.getDeptName() %></td>
+				    </tr>
+					<tr>
+				    	<th><span class="desc_lebel">Office Location:</span></th>
+				        <td><%=pbVo.getOtherLocation()%></td>
+				    </tr>
+					<tr>
+				    	<th><span class="desc_lebel">Transaction:</span></th>
+				        <td><%=pbVo.getTransName() %></td>
+				    </tr>    
+					<tr>
+				    	<th><span class="desc_lebel">Bribe Type:</span></th>
+				        <td><%=pbVo.getCBribeType() %></td>
+				    </tr>
+					<tr>
+				    	<th><span class="desc_lebel">Details:</span></th>
+				        <td><%=pbVo.getCAdditionalInfo() %></td>
+				    </tr>
+				</table>
+                <div class="clear"></div>
+
+				<div class="share_tool_d">
+				<div id="less_link<%=pbVo.getId() %>">
+				<div class="report_reg_more">
+					<a href="#" class="rad" onclick="show_less('<%=pbVo.getId() %>'); return false;">Read less...</a> 
+					<a href="javaScript: addComment('<%=pbVo.getId() %>','paid')">Add Comment</a> 
+		            <a href="${pageContext.request.contextPath}/comments/viewCommentsPaid.jsp?id=<%=pbVo.getId() %>"><%=pbVo.getNumComments() %> Comments</a>
+		            <a href="http://www.facebook.com/share.php?u=" target="_blank" class="facebook_share_view"></a>
+		            <a href="http://twitter.com/share?url=" target="_blank" class="tweet_share_view"></a>
+		            <!--<span id="count<?php echo $row->id;?>_1"><?php echo $row->count;?></span> views-->
+				</div>
+				</div>
+	</div>
+</div>
+
+	<div class="clear"></div>
+
 	</div>
 <div class="clear"></div>
 <br>
@@ -193,7 +260,6 @@
 <div align="center"><span><font color="red"><b>Unable to display data.</b></font></span></div>
 <br><br><br>
 <%} %>
-
 </div>
 <div><%@include file="sideContents.jsp"%></div>
 

@@ -3,6 +3,8 @@
  */
 package com.ipablive.vo;
 
+import java.util.Date;
+
 /**
  * @author 
  *
@@ -23,6 +25,8 @@ public class DontHavetoPayVO
 	private String cTransaction;
 	private String cBribeResistedBy;
 	private String cBribeType;
+	private int numComments;
+	private Date createdDate;
 	
 	public int getId() 
 	{
@@ -148,5 +152,23 @@ public class DontHavetoPayVO
 	public void setCBribeType(String bribeType) 
 	{
 		cBribeType = bribeType;
+	}
+	
+	public int getNumComments() 
+	{
+		return numComments;
+	}
+	public void setNumComments(int numComments) 
+	{
+		this.numComments = numComments;
+	}
+	
+	public Date getCreatedDate()
+	{
+		return createdDate;
+	}
+	public void setCreatedDate(Date createdDate) 
+	{
+		this.createdDate = createdDate;
 	}
 }

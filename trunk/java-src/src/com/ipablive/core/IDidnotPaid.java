@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.ipablive.datasource.ConnectionFactory;
+import com.ipablive.vo.CommentVO;
 import com.ipablive.vo.DidNotPaidBribesVO;
 import com.ipablive.vo.IDidnotPaidComplaintVO;
 import com.ipablive.vo.PaidBribesVO;
@@ -22,6 +23,7 @@ import com.ipablive.vo.ReportsCountVO;
 public class IDidnotPaid 
 {
 	Connection conn=null;
+	private static final String TYPE = "notpaid";
 	
 	 /* Here is the instance of the Singleton */
 	  private static IDidnotPaid _didntBribeInstance;
@@ -90,6 +92,8 @@ public class IDidnotPaid
 				  dpbv.setCCity(rs.getString(15));
 				  dpbv.setDeptName(rs.getString(16));
 				  dpbv.setTransName(rs.getString(17));
+				  int numComments = getNumComments(rs.getInt(1));
+				  dpbv.setNumComments(numComments);
 				  
 				  didnotPayBribes.add(dpbv);
 			  }
@@ -145,11 +149,13 @@ public class IDidnotPaid
 		  {
 			  Statement stmt = conn.createStatement();
 			  ResultSet rs = stmt.executeQuery(query);
-			  while(rs.next())
+			  if(rs.next())
 			  {
 				  pbVo.setId(rs.getInt(1));
 				  pbVo.setCDept(rs.getString(3));
 				  pbVo.setOthersTransaction(rs.getString(5));
+				  pbVo.setCBribeResistedBy(rs.getString(7));
+				  pbVo.setCreatedDate(rs.getDate(9));
 				  pbVo.setCAdditionalInfo(rs.getString(10));
 				  pbVo.setOtherDept(rs.getString(12));
 				  pbVo.setOtherLocation(rs.getString(14));
@@ -157,6 +163,8 @@ public class IDidnotPaid
 				  pbVo.setCCity(rs.getString(19));
 				  pbVo.setDeptName(rs.getString(20));
 				  pbVo.setTransName(rs.getString(21));
+				  int numComments = getNumComments(rs.getInt(1));
+				  pbVo.setNumComments(numComments);
 			  }
 		  }catch(Exception e)
 		  {
@@ -188,5 +196,50 @@ public class IDidnotPaid
 		  }
 		  
 		  return count;
+	  }
+	  
+	  public int getNumComments( int id)
+	  {
+		  int count = 0;
+		  
+		  try
+		  {
+			  Statement stmt = conn.createStatement();
+			  ResultSet rs = stmt.executeQuery("SELECT count(1) as cnt from bd_vote_comments where type='"+TYPE+"' and type_id='"+id+"' and published=1");
+			  if(rs.next())
+			  {
+				  count = rs.getInt(1);
+			  }
+		  }catch(Exception e)
+		  {
+			  e.printStackTrace();
+		  }
+		  
+		  return count;
+	  }
+	  
+	  public ArrayList<CommentVO> viewVoteComments(int id)
+	  {
+		  ArrayList<CommentVO> comments = new ArrayList<CommentVO>();
+		 
+		  try
+		  {
+			  Statement stmt = conn.createStatement();
+			  ResultSet rs = stmt.executeQuery("SELECT * from bd_vote_comments where type='"+TYPE+"' and type_id='"+id+"' and published=1");
+			  while(rs.next())
+			  {
+				  CommentVO comment = new CommentVO();
+				  comment.setId(rs.getInt(1));
+				  comment.setSubject(rs.getString(3));
+				  comment.setComment(rs.getString(4));
+				 
+				  comments.add(comment);
+			  }
+		  }catch(Exception e)
+		  {
+			  e.printStackTrace();
+		  }
+		  
+		  return comments;
 	  }
 }

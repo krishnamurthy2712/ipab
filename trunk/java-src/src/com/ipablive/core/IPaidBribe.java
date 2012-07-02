@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import com.ipablive.bdservice.City;
 import com.ipablive.datasource.ConnectionFactory;
+import com.ipablive.vo.CommentVO;
 import com.ipablive.vo.IPaidComplaintVO;
 import com.ipablive.vo.PaidBribesVO;
 import com.ipablive.vo.ReportsCountVO;
@@ -15,6 +16,7 @@ import com.ipablive.vo.ReportsCountVO;
 public class IPaidBribe 
 {
 	 Connection conn=null;
+	 private static final String TYPE = "paid";
 		
 	 /* Here is the instance of the Singleton */
 	  private static IPaidBribe _bribeInstance;
@@ -88,6 +90,9 @@ public class IPaidBribe
 				  pbv.setCCity(rs.getString(20));
 				  pbv.setDeptName(rs.getString(21));
 				  pbv.setTransName(rs.getString(22));
+				  
+				  int numComments = getNumComments(rs.getInt(1));
+				  pbv.setNumComments(numComments);
 				  
 				  paidBribes.add(pbv);
 			  }
@@ -174,6 +179,7 @@ public class IPaidBribe
 	  		"other_location,IP,filtered,approved) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		  try
 		  {
+			  java.sql.Date sqlDate = new java.sql.Date(data.getCDatePaid().getTime());
 			  pstmt = conn.prepareStatement(query);
 			  pstmt.setString(1, data.getCName());
 			  pstmt.setString(2, data.getCCity());
@@ -182,7 +188,7 @@ public class IPaidBribe
 			  pstmt.setString(5, data.getCTransaction());
 			  pstmt.setString(6, data.getOtherTransaction());
 			  pstmt.setInt(7, data.getCAmtPaid());
-			  pstmt.setDate(8, null); //set it later
+			  pstmt.setDate(8, sqlDate); //set it later
 			  pstmt.setString(9, data.getCBribeType());
 			  pstmt.setString(10, data.getCAddiInfo());
 			  pstmt.setString(11, data.getOfficeLocation());
@@ -229,6 +235,9 @@ public class IPaidBribe
 				  pbVo.setCCity(rs.getString(20));
 				  pbVo.setDeptName(rs.getString(21));
 				  pbVo.setTransName(rs.getString(22));
+				  
+				  int numComments = getNumComments(rs.getInt(1));
+				  pbVo.setNumComments(numComments);
 			  }
 		  }catch(Exception e)
 		  {
@@ -262,14 +271,14 @@ public class IPaidBribe
 		  return count;
 	  }
 	  
-	  public int getNumComments(String type, int id)
+	  public int getNumComments(int id)
 	  {
 		  int count = 0;
 		  
 		  try
 		  {
 			  Statement stmt = conn.createStatement();
-			  ResultSet rs = stmt.executeQuery("SELECT count(1) as cnt from bd_vote_comments where type='"+type+"' and type_id='"+id+"' and published=1");
+			  ResultSet rs = stmt.executeQuery("SELECT count(1) as cnt from bd_vote_comments where type='"+TYPE+"' and type_id='"+id+"' and published=1");
 			  if(rs.next())
 			  {
 				  count = rs.getInt(1);
@@ -280,5 +289,29 @@ public class IPaidBribe
 		  }
 		  
 		  return count;
+	  }
+	  
+	  public ArrayList<CommentVO> viewVoteComments( int id)
+	  {
+		  ArrayList<CommentVO> comments = new ArrayList<CommentVO>();
+		  try
+		  {
+			  Statement stmt = conn.createStatement();
+			  ResultSet rs = stmt.executeQuery("SELECT * from bd_vote_comments where type='"+TYPE+"' and type_id='"+id+"' and published=1");
+			  while(rs.next())
+			  {
+				  CommentVO comment = new CommentVO();
+				  comment.setId(rs.getInt(1));
+				  comment.setSubject(rs.getString(3));
+				  comment.setComment(rs.getString(4));
+				 
+				  comments.add(comment);
+			  }
+		  }catch(Exception e)
+		  {
+			  e.printStackTrace();
+		  }
+		  
+		  return comments;
 	  }
 }

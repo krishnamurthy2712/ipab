@@ -6,7 +6,13 @@
 <%@page import="com.ipablive.commons.CommonOperations"%>
 <%@page import="com.ipablive.core.IPaidBribe"%>
 <%@page import="com.ipablive.vo.PaidBribesVO"%>
-<%@page import="java.text.SimpleDateFormat"%><html>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
+<%@page import="com.ipablive.vo.CommentVO"%>
+<%@page import="com.ipablive.core.IDidnotPaid"%>
+<%@page import="com.ipablive.vo.DidNotPaidBribesVO"%>
+<%@page import="com.ipablive.core.IDontHavetoPay"%>
+<%@page import="com.ipablive.vo.DontHavetoPayVO"%><html>
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     <title>Bribes Registered</title>
@@ -30,27 +36,32 @@
 		href="${pageContext.request.contextPath}/theme/css/style.css"
 		rel="stylesheet" />
 <%
-String postId = "";
-String type = "";
+String postId = request.getParameter("p");
+String type = request.getParameter("t");;
+String redurl = "";
+String subj = " -NA- ";
+
+String sec = (String) session.getAttribute("Code");
+out.println("Code "+ sec);
 
 if(type.equals("paid"))
 {
-    //$redurl = 'sforms/view_reports_paid';
+	redurl = request.getContextPath() + "/readbribestory/ipaid.jsp";
   //  $head_img = 'reg.png';
 }
 else if(type.equals("notpaid"))
 {
-    //$redurl = 'sforms/view_reports_didnt_pay';
+	redurl = request.getContextPath() + "/readbribestory/ididnotpaid.jsp";
     //$head_img = 'reg.png';
 }
 else if(type.equals("dinthvtopay"))
 {
-   // $redurl = 'sforms/view_reports_didnt_have_to_pay';
+	redurl = request.getContextPath() + "/readbribestory/donthavetopaid.jsp";
    // $head_img = 'reg.png';
 }
 else if(type.equals("govt_promises"))
 {
-    //$redurl = 'sforms/govt_promises';
+	redurl = "";
    // $head_img = 'govt_promises.png';
 }
 
@@ -67,8 +78,9 @@ function validateCommentForm()
 
 	comment = $('#comment').val();
 	securityCode = $('#security_code').val();
-	secCode = $('#secErr').val(); 
-
+	secCode = $('#secCode').val(); 
+	alert(securityCode.length);
+	
 	if(myTrim(comment).length==0)
 	{
 		$('#validationErrors').html("<center>Please enter comment</center>");
@@ -76,18 +88,16 @@ function validateCommentForm()
 		return false;
 	}else
 	{
-		validateSecurityCode();
 		$('#comment').css('background',_noErrorColor);
 	}
 	
-	if(myTrim(securityCode).length==0)
+	if(securityCode.length == 0)
 	{
 		$('#validationErrors').html("<center>Please enter valid security code</center>");
 		$('#security_code').css('background',_errorColor);
 		return false;
 	}else
 	{
-		validateSecurityCode();
 		$('#security_code').css('background',_noErrorColor);
 	}
 	
@@ -102,18 +112,35 @@ function myTrim (str)
 function validateSecurityCode()
 {
 	var enteredCode = $('#security_code').val();
-	var generatedCode = $('#secErr').val();
+	var generatedCode = $('#secCode').val();
 
 	if(enteredCode == generatedCode)
 	{
+		alert(generatedCode +"  " +enteredCode);
 		$('#security_code').css('background',_noErrorColor);
-	  return true;
+		disableSubmit("NO");
+	  	return true;
   	}else
   	{
+  		alert(generatedCode +"  " +enteredCode);
   		$('#validationErrors').html("<center>Please enter valid security code</center>");
+  		disableSubmit("YES");
   		$('#security_code').css('background',_errorColor);
   	}
   	return false;
+}
+
+function disableSubmit(val)
+{
+	alert(val);
+	  if(val=="NO")
+	  {
+		  document.forms['fm'].elements['submit'].disabled = false;
+	  }
+	  else
+	  {
+	      document.forms['fm'].elements['submit'].disabled = true;
+	  }
 }
 
 </script>
@@ -129,123 +156,210 @@ function validateSecurityCode()
 </div>
 <div id="mainContent" class="mainContent">
 <div class="blog_container divtab">
-<p><a href="#" class="yellow_box">&lt;&lt; Back To </a></p>
+<p><a href="<%=redurl %>" class="yellow_box">&lt;&lt; Back To </a></p>
 <br />
 <%
+int id = Integer.parseInt(postId);
+SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy - hh:mm"); 
+
 if(type.equals("paid"))
 {
+	IPaidBribe ipab = IPaidBribe.getInstance();
+	PaidBribesVO pbVO = ipab.viewDetailPaidBribes(id);
+	subj = pbVO.getCName();
 	%>
-    <h3>CName</h3>
+    <h3><%=pbVO.getCName() %></h3>
     <div class="report_reg">
-            Reported : created 
-            | City : ccity
-            | Paid On : cdatepaid
-            | dept
+            Reported : <%=sdf.format(pbVO.getCreatedDate()) %>
+            | City : <%=pbVO.getCCity() %>
+	        | Paid On : <%=sdf.format(pbVO.getCPaidDate()) %> 
+	        | <%=pbVO.getDeptName() %>
     </div>
     <div class="report_reg">
     <table class="details_table" width="100%" summary="this table has the details for a certain report.">
         <tr>
-            <th width="20%"><span class="desc_lebel">Department:</span></th>
-            <td>dept</td>
-        </tr>
-        <tr>
-            <th><span class="desc_lebel">Transaction:</span></th>
-            <td>trans</td>
-        </tr>    
-        <tr>
-            <th><span class="desc_lebel">Bribe Type:</span></th>
-            <td>bribeType</td>
-        </tr>
-        <tr>
-            <th><span class="desc_lebel">Details:</span></th>
-            <td>additional info</td>
-        </tr>
+	        <th width="20%"><span class="desc_lebel">Department:</span></th>
+	        <td><%=pbVO.getDeptName() %></td>
+	    </tr>
+	    <tr>
+	        <th><span class="desc_lebel">Transaction:</span></th>
+	        <td><%=pbVO.getTransName() %></td>
+	    </tr>    
+	    <tr>
+	        <th><span class="desc_lebel">Bribe Type:</span></th>
+	        <td><%=pbVO.getCBribeType() %></td>
+	    </tr>
+	    <tr>
+	        <th><span class="desc_lebel">Details:</span></th>
+	        <td><%=pbVO.getCAdditionalInfo() %></td>
+	    </tr>
     </table>
+<div class="clear"></div>
     </div>
-    <%
+<br>
+<%
+			ArrayList<CommentVO> comments = ipab.viewVoteComments(id );
+			if(comments.size()>0)
+			{
+				for(int j=0; j<comments.size();j++)
+				{
+					CommentVO comment = comments.get(j);
+			%>
+			<div class="vote_comment" <%=(comments.size()>0)? "style='border-top:1px solid #E8AD04;margin-top:10px;'":"" %>>
+				<h2><%=comment.getSubject() %></h2>
+				<p><%=comment.getComment() %></p>
+			</div>
+			<br><br>
+			
+			
+				<%
+				}
+			}else
+			{
+				%>
+					<center><b> No Comments found.</b></center>
+					
+				<%
+			}
 }
 else if(type.equals("notpaid"))
 {
+	IDidnotPaid ipab = IDidnotPaid.getInstance();
+	DidNotPaidBribesVO dpbVO = ipab.viewDetailPaidBribes(id);
 	 %>
-	<h3>cname</h3>
+	<h3><%=dpbVO.getCName() %></h3>
     
     <div class="report_reg">
-Reported : date | City : ccity | dept
+Reported : <%=sdf.format(dpbVO.getCreatedDate()) %> | City : <%=dpbVO.getCCity() %> | <%=dpbVO.getDeptName() %>
 
 		<table class="details_table">
 			<tr>
 		    	<th width="20%"><span class="desc_lebel">Department:</span></th>
-		        <td>dept</td>
+		        <td><%=dpbVO.getDeptName() %></td>
 		    </tr>
 			<tr>
 		    	<th><span class="desc_lebel">Transaction:</span></th>
-		        <td>transaction</td>
+		        <td><%=dpbVO.getTransName() %></td>
 		    </tr>    
 			<tr>
 		    	<th><span class="desc_lebel">Reason:</span></th>
 		        <td>
-<!--                <?php -->
-<!--                    if($row_det->c_bribe_resisted_by=='govt')-->
-<!--                    {-->
-<!--                        echo 'Came accross an honest govt official';-->
-<!--                    }-->
-<!--                    else-->
-<!--                    {-->
-<!--                        echo 'Resisted by '.$row_det->c_bribe_resisted_by;-->
-<!--                    }-->
-<!--                ?>-->
+<%
+		if(dpbVO.getCBribeResistedBy().equalsIgnoreCase("govt"))
+		{
+			out.println("Came accross an honest govt official");
+		}
+	    else
+	    {
+	           out.println("Resisted by "+dpbVO.getCBribeResistedBy());
+	    }
+%>
                 </td>
 		    </tr>
 			<tr>
 		    	<th><span class="desc_lebel">Details:</span></th>
-		        <td>add info
+		        <td><%=dpbVO.getCAdditionalInfo()%>
 		</td>
 		    </tr>
 		</table>
-    </div>     
+    </div>    
+ 
     <%
+    
+    ArrayList<CommentVO> comments = ipab.viewVoteComments(id);
+	if(comments.size()>0)
+	{
+		for(int j=0; j<comments.size();j++)
+		{
+			CommentVO comment = comments.get(j);
+	%>
+	<div class="vote_comment" <%=(comments.size()>0)? "style='border-top:1px solid #E8AD04;margin-top:10px;'":"" %>>
+		<h2><%=comment.getSubject() %></h2>
+		<p><%=comment.getComment() %></p>
+	</div>
+	<br><br>
+	
+	
+		<%
+		}
+	}else
+	{
+		%>
+			<center><b> No Comments found.</b>
+		<%
+	}
+    
+    
 }
 else if(type.equals("dinthvtopay"))
 {
+	IDontHavetoPay idontHavepay = IDontHavetoPay.getInstance();
+	DontHavetoPayVO dbVO = idontHavepay.viewDetailDintHaveToPay(id);
 	 %>
-	<h3>cname</h3>
+	<h3><%=dbVO.getCName() %></h3>
     
     <div class="report_reg">
-City : ccity | dept
+Reported : <%=sdf.format(dbVO.getCreatedDate()) %> 
+        | City : <%=dbVO.getCCity() %>
+        | <%=dbVO.getDeptName() %>
 
     
     <table class="details_table">
 			<tr>
 		    	<th width="20%"><span class="desc_lebel">Department:</span></th>
-		        <td>dept</td>
+		        <td><%=dbVO.getDeptName() %></td>
 		    </tr>
 			<tr>
 		    	<th><span class="desc_lebel">Transaction:</span></th>
-		        <td>transaction</td>
+		        <td><%=dbVO.getTransName() %></td>
 		    </tr>    
 			<tr>
 		    	<th><span class="desc_lebel">Reason:</span></th>
 		        <td>
-<!--                <?php -->
-<!--                    if($row_det->c_bribe_resisted_by=='govt')-->
-<!--                    {-->
-<!--                        echo 'Came accross an honest govt official';-->
-<!--                    }-->
-<!--                    else-->
-<!--                    {-->
-<!--                        echo 'Resisted by '.$row_det->c_bribe_resisted_by;-->
-<!--                    }-->
-<!--                ?>-->
+<%
+		if(dbVO.getCBribeResistedBy().equalsIgnoreCase("govt"))
+		{
+			out.println("Came accross an honest govt official");
+		}
+	    else
+	    {
+	           out.println("Resisted by "+dbVO.getCBribeResistedBy());
+	    }
+%>
                 </td>
 		    </tr>
 			<tr>
 		    	<th><span class="desc_lebel">Details:</span></th>
-		        <td>add info
-		</td>
+		        <td><%=dbVO.getCAdditionalInfo() %></td>
 		    </tr>
 		</table>
         </div>    
     <%
+    
+    ArrayList<CommentVO> comments = idontHavepay.viewVoteComments(id );
+	if(comments.size()>0)
+	{
+		for(int j=0; j<comments.size();j++)
+		{
+			CommentVO comment = comments.get(j);
+	%>
+	<div class="vote_comment" <%=(comments.size()>0)? "style='border-top:1px solid #E8AD04;margin-top:10px;'":"" %>>
+		<h2><%=comment.getSubject() %></h2>
+		<p><%=comment.getComment() %></p>
+	</div>
+	<br><br>
+	
+	
+		<%
+		}
+	}else
+	{
+		%>
+			<center><b> No Comments found.</b>
+			<br>Be the first person to <a href="javaScript: addComment('<%=dbVO.getId() %>','paid')">Comment</a>.</center>
+		<%
+	}
+    
 }
 else if(type.equals("govt_promises"))
 {
@@ -262,21 +376,21 @@ else if(type.equals("govt_promises"))
     <%
 }
  %>
-
-<div style="clear:both;"></div>
-<div id="validation_errors" style="display:<?php echo (empty($msg))?'none':'block';?>;">
+<div class="clear"></div>
+<div class="clear"></div>
+<div id="validation_errors">
 </div>
 
-<h1 class="c_head">Add comment</h1>
+<h1>Add comment</h1>
 <div class="error">
 <div id="validationErrors"></div>
 </div>
-<form method="post" action="" onsubmit="return validateCommentForm();">
+<form method="post" action="comment" onsubmit="return validateCommentForm()" id="fm">
 <table>
 	<tr>
     	<td colspan="2">
         <label for="subject">Subject</label><br />
-        <input type="hidden" name="subject" size="84" value="" id="subject" />subject</td>
+        <input type="hidden" name="subject" size="84" value="" id="subject" /><%=subj %></td>
     </tr>
 	<tr>
     	<td colspan="2">
@@ -288,9 +402,9 @@ else if(type.equals("govt_promises"))
 	<tr>
     <td colspan="2">
     <label for="security_code">Please enter the security code</label>
-    <p><img src="${pageContext.request.contextPath}/getCaptcha.do?type=num" alt="captcha" /></p>
+    <p><img src="${pageContext.request.contextPath}/getCaptcha.do?type=num&time=<%=new Date().getTime() %>" alt="captcha" /></p>
     <input type="text" name="security_code" id="security_code" value="" onblur="validateSecurityCode()"/>   
-	<input type="hidden" id="secErr" value="<%= (String) session.getAttribute("Code")%>"/> 
+	<input type="hidden" id="secCode" value="<%= (String) session.getAttribute("Code")%>"/> 
     </td>
     </tr>
 	<tr>    	

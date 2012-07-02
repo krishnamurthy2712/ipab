@@ -7,7 +7,9 @@
 <%@page import="com.ipablive.core.IPaidBribe"%>
 <%@page import="com.ipablive.vo.PaidBribesVO"%>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="com.ipablive.vo.CommentVO"%><html>
+<%@page import="com.ipablive.vo.CommentVO"%>
+<%@page import="com.ipablive.core.IDontHavetoPay"%>
+<%@page import="com.ipablive.vo.DontHavetoPayVO"%><html>
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     <title>Bribes Registered</title>
@@ -34,7 +36,7 @@
 function addComment(typeId,type)
 {
 	//var url = "/addComment.jsp?typeId="+typeId+"&type="+type+"&subject="+subject;
-	var url = "${pageContext.request.contextPath}/comments/addComment.jsp?p="+typeId+"&t="+type;
+	var url = "${pageContext.request.contextPath}/comments/addComment.jsp?p=1&t="+type;
 	window.location.href = url;
 	
 }
@@ -52,7 +54,7 @@ function addComment(typeId,type)
 <div id="blog">
 <div class="blog_container">
            
-<p><a href="${pageContext.request.contextPath}/readbribestory/ipaid.jsp" class="yellow_box">&lt;&lt; Back To Reports</a></p>
+<p><a href="${pageContext.request.contextPath}/readbribestory/donthavetopaid.jsp" class="yellow_box">&lt;&lt; Back To Reports</a></p>
 <br />
 <%
 	String strId = request.getParameter("id");
@@ -60,16 +62,15 @@ function addComment(typeId,type)
 	if(strId != null)
 	{
 		int id = Integer.parseInt(strId);
-		IPaidBribe ipab = IPaidBribe.getInstance();
-		PaidBribesVO pbVO = ipab.viewDetailPaidBribes(id);
+		IDontHavetoPay idontHavepay = IDontHavetoPay.getInstance();
+		DontHavetoPayVO dbVO = idontHavepay.viewDetailDintHaveToPay(id);
 		SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy - hh:mm"); 
 %>
-<h3><%=pbVO.getCName() %></h3>
+<h3><%=dbVO.getCName() %></h3>
 <div class="report_reg">
-        Reported : <%=sdf.format(pbVO.getCreatedDate()) %> 
-        | City : <%=pbVO.getCCity() %>
-        | Paid On : <%=sdf.format(pbVO.getCPaidDate()) %> 
-        | <%=pbVO.getDeptName() %>
+        Reported : <%=sdf.format(dbVO.getCreatedDate()) %> 
+        | City : <%=dbVO.getCCity() %>
+        | <%=dbVO.getDeptName() %>
 </div>
 <br>
 <div class="clear"></div>
@@ -77,51 +78,67 @@ function addComment(typeId,type)
 <table class="details_table" width="100%" summary="this table has the details for a certain report.">
     <tr>
         <th width="20%"><span class="desc_lebel">Department:</span></th>
-        <td><%=pbVO.getDeptName() %></td>
+        <td><%=dbVO.getDeptName() %></td>
     </tr>
     <tr>
         <th><span class="desc_lebel">Transaction:</span></th>
-        <td><%=pbVO.getTransName() %></td>
+        <td><%=dbVO.getTransName() %></td>
     </tr>    
     <tr>
-        <th><span class="desc_lebel">Bribe Type:</span></th>
-        <td><%=pbVO.getCBribeType() %></td>
-    </tr>
+		    	<th><span class="desc_lebel">Reason:</span></th>
+		        <td>
+<%
+		if(dbVO.getCBribeResistedBy().equalsIgnoreCase("govt"))
+		{
+			out.println("Came accross an honest govt official");
+		}
+	    else
+	    {
+	           out.println("Resisted by "+dbVO.getCBribeResistedBy());
+	    }
+%>
+                </td>
+		    </tr>
     <tr>
         <th><span class="desc_lebel">Details:</span></th>
-        <td><%=pbVO.getCAdditionalInfo() %></td>
+        <td><%=dbVO.getCAdditionalInfo() %></td>
     </tr>
 <tr><td>   </td></tr>
-<tr><td><div class="report_reg"><a href="javaScript: addComment('<%=pbVO.getId() %>','paid')" class="yellow_box">Add a comment</a></div></td></tr>
+<tr><td><div class="report_reg"><a href="javaScript: addComment('<%=dbVO.getId() %>','dinthvtopay')" class="yellow_box">Add a comment</a></div></td></tr>
 </table>
 <div class="clear"></div>
 </div>
-<br>
-<%
-			ArrayList<CommentVO> comments = ipab.viewVoteComments(id );
-			if(comments.size()>0)
-			{
-				for(int j=0; j<comments.size();j++)
-				{
-					CommentVO comment = comments.get(j);
-			%>
-			<div class="vote_comment" <%=(comments.size()>0)? "style='border-top:1px solid #E8AD04;margin-top:10px;'":"" %>>
-				<h2><%=comment.getSubject() %></h2>
-				<p><%=comment.getComment() %></p>
-			</div>
-			<br><br>
-			
-			
-				<%
-				}
-			}else
-			{
-				%>
-					<center><b> No Comments found.</b>
-					<br>Be the first person to <a href="javaScript: addComment('<%=pbVO.getId() %>','paid')">Comment</a>.</center>
-				<%
-			}
+	<%
+	ArrayList<CommentVO> comments = idontHavepay.viewVoteComments(id );
+	if(comments.size()>0)
+	{
+		for(int j=0; j<comments.size();j++)
+		{
+			CommentVO comment = comments.get(j);
+	%>
+	<div class="vote_comment" <%=(comments.size()>0)? "style='border-top:1px solid #E8AD04;margin-top:10px;'":"" %>>
+		<h2><%=comment.getSubject() %></h2>
+		<p><%=comment.getComment() %></p>
+	</div>
+	<br><br>
 	
+	
+		<%
+		}
+	}else
+	{
+		%>
+			<center><b> No Comments found.</b>
+			<br>Be the first person to <a href="javaScript: addComment('<%=dbVO.getId() %>','dinthvtopay')">Comment</a>.</center>
+		<%
+	}
+	
+	}
+	else
+	{
+		%>
+		asdf
+		<%
 	}
 	%>
 

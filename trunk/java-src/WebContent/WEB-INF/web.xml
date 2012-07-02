@@ -67,10 +67,10 @@
 		<description>
 		</description>
 		<display-name>
-		AddCommentService</display-name>
-		<servlet-name>AddCommentService</servlet-name>
+		AddBlogCommentService</display-name>
+		<servlet-name>AddBlogCommentService</servlet-name>
 		<servlet-class>
-		com.ipablive.services.AddCommentService</servlet-class>
+		com.ipablive.services.AddBlogCommentService</servlet-class>
 	</servlet>
 	<servlet>
 		<description>
@@ -110,7 +110,7 @@
 		<url-pattern>/registerUpdates.do</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>AddCommentService</servlet-name>
+		<servlet-name>AddBlogCommentService</servlet-name>
 		<url-pattern>/blog/storeComment.do</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
@@ -144,6 +144,15 @@
 		</init-param>        
         <load-on-startup>10</load-on-startup>
     </servlet>
+    <servlet>
+    	<description>
+    	</description>
+    	<display-name>
+    	AddCommentService</display-name>
+    	<servlet-name>AddCommentService</servlet-name>
+    	<servlet-class>
+    	com.ipablive.services.AddCommentService</servlet-class>
+    </servlet>
 
     <servlet-mapping id="RDS_DISPATCH_MAPPING">
         <servlet-name>RDSDispatchServlet</servlet-name>
@@ -154,6 +163,10 @@
     <servlet-mapping>
         <servlet-name>MessageBrokerServlet</servlet-name>
         <url-pattern>/messagebroker/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>AddCommentService</servlet-name>
+    	<url-pattern>/comments/comment</url-pattern>
     </servlet-mapping>
 	
 	

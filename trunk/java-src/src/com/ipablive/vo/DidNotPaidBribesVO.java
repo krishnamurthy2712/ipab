@@ -1,5 +1,7 @@
 package com.ipablive.vo;
 
+import java.util.Date;
+
 
 public class DidNotPaidBribesVO 
 {
@@ -16,6 +18,8 @@ public class DidNotPaidBribesVO
 	private String cName;
 	private String cTransaction;
 	private String cBribeResistedBy;
+	private Date createdDate;
+	private int numComments;
 	
 	public int getId() 
 	{
@@ -132,5 +136,23 @@ public class DidNotPaidBribesVO
 	public void setCBribeResistedBy(String bribeResistedBy) 
 	{
 		cBribeResistedBy = bribeResistedBy;
+	}
+	
+	public Date getCreatedDate() 
+	{
+		return createdDate;
+	}
+	public void setCreatedDate(Date createdDate) 
+	{
+		this.createdDate = createdDate;
+	}
+	
+	public int getNumComments() 
+	{
+		return numComments;
+	}
+	public void setNumComments(int numComments) 
+	{
+		this.numComments = numComments;
 	}
 }

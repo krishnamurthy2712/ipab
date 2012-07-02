@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.ipablive.datasource.ConnectionFactory;
+import com.ipablive.vo.CommentVO;
 import com.ipablive.vo.DidNotPaidBribesVO;
 import com.ipablive.vo.DidnotHaveToPayComplaintVO;
 import com.ipablive.vo.DontHavetoPayVO;
@@ -22,6 +23,7 @@ import com.ipablive.vo.ReportsCountVO;
 public class IDontHavetoPay 
 {
 	Connection conn=null;
+	private static final String TYPE = "dinthvtopay";
 	
 	 /* Here is the instance of the Singleton */
 	  private static IDontHavetoPay _dontHavetoInstance;
@@ -83,13 +85,16 @@ public class IDontHavetoPay
 				  dhpbv.setCBribeType(rs.getString(6));
 				  dhpbv.setCBribeResistedBy(rs.getString(7));
 				  dhpbv.setCAdditionalInfo(rs.getString(8));
-				  //9,10,11,12
+				  dhpbv.setCreatedDate(rs.getDate(9));
+				  //10,11,12
 				  dhpbv.setOthersTransaction(rs.getString(13));
 				  dhpbv.setOtherDept(rs.getString(14));
 				  dhpbv.setCount(rs.getInt(15));
 				  dhpbv.setCCity(rs.getString(16));
 				  dhpbv.setDeptName(rs.getString(17));
 				  dhpbv.setTransName(rs.getString(18));
+				  int numComments = getNumComments(rs.getInt(1));
+				  dhpbv.setNumComments(numComments);
 				  
 				  dontHavetoPayBribes.add(dhpbv);
 			  }
@@ -137,7 +142,7 @@ public class IDontHavetoPay
 		  return isStored;
 	  }
 	  
-	  public DontHavetoPayVO viewDetailPaidBribes(int id)
+	  public DontHavetoPayVO viewDetailDintHaveToPay(int id)
 	  {
 		  String query = "SELECT bc.*,ct.city_name AS c_city,  bd.dept_name, bt.trans_name FROM bd_dint_bribe bc, bd_dept bd, bd_transactions bt, bd_city ct WHERE bc.c_dept=bd.id AND bc.c_transaction=bt.id and bc.id='"+id+"' AND bc.c_city=ct.Id";
 	
@@ -157,12 +162,15 @@ public class IDontHavetoPay
 				  dhpbv.setCBribeType(rs.getString(6));
 				  dhpbv.setCBribeResistedBy(rs.getString(7));
 				  dhpbv.setCAdditionalInfo(rs.getString(8));
+				  dhpbv.setCreatedDate(rs.getDate(9));
 				  dhpbv.setOthersTransaction(rs.getString(13));
 				  dhpbv.setOtherDept(rs.getString(14));
 				  dhpbv.setCount(rs.getInt(15));
 				  dhpbv.setCCity(rs.getString(16));
 				  dhpbv.setDeptName(rs.getString(17));
 				  dhpbv.setTransName(rs.getString(18));
+				  int numComments = getNumComments(rs.getInt(1));
+				  dhpbv.setNumComments(numComments);
 			  }
 		  }catch(Exception e)
 		  {
@@ -195,5 +203,53 @@ public class IDontHavetoPay
 		  
 		  return count;
 	  }
+	  
+	  public int getNumComments(int id)
+	  {
+		  int count = 0;
+		  
+		  try
+		  {
+			  Statement stmt = conn.createStatement();
+			  ResultSet rs = stmt.executeQuery("SELECT count(1) as cnt from bd_vote_comments where type='"+TYPE+"' and type_id='"+id+"' and published=1");
+			  if(rs.next())
+			  {
+				  count = rs.getInt(1);
+			  }
+		  }catch(Exception e)
+		  {
+			  e.printStackTrace();
+		  }
+		  
+		  return count;
+	  }
+	  
+	  public ArrayList<CommentVO> viewVoteComments(int id)
+	  {
+		  ArrayList<CommentVO> comments = new ArrayList<CommentVO>();
+		  String type = "dinthvtopay";
+		  
+		  try
+		  {
+			  Statement stmt = conn.createStatement();
+			  ResultSet rs = stmt.executeQuery("SELECT * from bd_vote_comments where type='"+type+"' and type_id='"+id+"' and published=1");
+			  while(rs.next())
+			  {
+				  CommentVO comment = new CommentVO();
+				  comment.setId(rs.getInt(1));
+				  comment.setSubject(rs.getString(3));
+				  comment.setComment(rs.getString(4));
+				 
+				  comments.add(comment);
+			  }
+		  }catch(Exception e)
+		  {
+			  e.printStackTrace();
+		  }
+		  
+		  return comments;
+	  }
+	  
+	  
 	  
 }
