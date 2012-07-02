@@ -85,7 +85,7 @@ public class IDidnotPaid
 				  dpbv.setOthersTransaction(rs.getString(6));
 				  dpbv.setCBribeResistedBy(rs.getString(7));
 				  dpbv.setCAdditionalInfo(rs.getString(8));
-				  //9
+				  dpbv.setCreatedDate(rs.getDate(9));
 				  dpbv.setOtherDept(rs.getString(10));
 				  //11,12,13
 				  dpbv.setCount(rs.getInt(14));
