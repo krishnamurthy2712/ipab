@@ -3,7 +3,8 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.ipablive.vo.CityVO"%>
 <%@page import="com.ipablive.vo.DepartmentVO"%>
-<%@page import="com.ipablive.commons.CommonOperations"%><html>
+<%@page import="com.ipablive.commons.CommonOperations"%>
+<%@page import="com.ipablive.core.Awards"%><html>
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     <title>Awards</title>
@@ -30,13 +31,16 @@
 
 <script type="text/javascript">
 
-function titles(){
+function titles()
+{
 	if(document.searchs.title.value == "Search Title......." )
-		{
-			document.searchs.title.value="";
-		}
+	{
+		document.searchs.title.value="";
+	}
 }
-function titles1(){
+
+function titles1()
+{
 		if(document.searchs.title.value == "")
 		{
 			document.searchs.title.value="Search Title.......";
@@ -45,7 +49,8 @@ function titles1(){
 }
 </script>
 <style>
-.inputbox {
+.inputbox 
+{
 	background-color: #f8e7ba;
 	border: 1px solid #f4ae00;
 }
@@ -60,6 +65,10 @@ function titles1(){
 <h2 class="pageHeaderH2">Awards</h2>
 </center>
 </div>
+<%
+	Awards awardPage = Awards.getInstance();
+	int cnt = awardPage.getAwardsCount();
+%>
 <div id="awards-section">
 <div class="clear" style="height: 20px;"></div>
 <div id="main-header-container">
@@ -109,7 +118,7 @@ departments and work to get them implemented.</p>
 		                 <div class="footer-lable">
 <form method="post" action="#" name="searchs" id="searchs"><table border="0" cellpadding="0" cellspacing="0" width="746">
   <tbody><tr>
-    <td width="500">Entries <span>till date: 26 and counting...</span></td>
+    <td width="500">Entries <span>till date: <%=cnt %> and counting...</span></td>
     <td width="146">
       <input name="title" id="title" class="inputbox" value="Search Title......." onfocus="titles()" onblur="titles1()" onclick="titles()" type="text"></td>
     <td align="center" width="4">&nbsp;</td>

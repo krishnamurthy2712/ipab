@@ -13,10 +13,14 @@ import com.ipablive.vo.BribeCategoriesVO;
 import com.ipablive.vo.BribeFighterVO;
 import com.ipablive.vo.BribeReportsVO;
 import com.ipablive.vo.ExpertSpeakVo;
+import com.ipablive.vo.MostPopularReportsVO;
 import com.ipablive.vo.NewsVO;
 import com.ipablive.vo.OptionsVO;
 import com.ipablive.vo.QuizVo;
 import com.ipablive.vo.TopCitiesVO;
+import com.ipablive.vo.TopFiveCitiesVO;
+import com.ipablive.vo.TopFiveDeptsVO;
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 public class Home 
 {
@@ -356,6 +360,131 @@ public class Home
 		  }
 		  
 		  return quiz;
+	  }
+	  
+	  public ArrayList<MostPopularReportsVO> getMostPopularReports()
+	  {
+		  ArrayList<MostPopularReportsVO> popular = new ArrayList<MostPopularReportsVO>();
+		  String query = "SELECT bc.*, bc.count as tot_view, ct.city_name AS c_city, " +
+		  		"bd.dept_name, bt.trans_name FROM bd_paid_bribe bc, bd_dept bd, bd_transactions bt," +
+		  		" bd_city ct WHERE bc.c_dept=bd.id AND bc.c_transaction=bt.id AND bc.approved=1 " +
+		  		"AND bc.c_city=ct.Id AND bc.created >= DATE_SUB(NOW(),INTERVAL 5 DAY) " +
+		  		"ORDER BY bc.count DESC LIMIT 4";
+		  try
+		  {
+			  Statement stmt = conn.createStatement();
+			  ResultSet rs = stmt.executeQuery(query);
+			  while(rs.next())
+			  {
+				  MostPopularReportsVO pVo = new MostPopularReportsVO();
+				  pVo.setId(rs.getInt(1));
+				  pVo.setCName(rs.getString(2));
+				  pVo.setCCity(rs.getInt(3));
+				  pVo.setCDept(rs.getInt(4));
+				  //5
+				  pVo.setOtherTrans(rs.getString(6));
+				  pVo.setCAmtPaid(rs.getInt(7));
+				  //8
+				  pVo.setBribeType(rs.getString(9));
+				  //10
+				  pVo.setAddInfo(rs.getString(11));
+				  //12,13
+				  pVo.setCreated(rs.getDate(14));
+				  pVo.setOtherLocation(rs.getString(15));
+				  //16,17,18,19
+				  pVo.setTotalViews(rs.getInt(20));
+				  pVo.setCityName(rs.getString(21));
+				  pVo.setDeptName(rs.getString(22));
+				  pVo.setTransName(rs.getString(23));
+				 
+				  //store "friendlyTime" - friendlyTime = BribeUtils.getFriendlyTime(create);
+				  Date timeDisp = (Date) rs.getDate(14);
+				  pVo.setFriendlyTime(BribeUtils.getFriendlyTime(timeDisp));
+				  
+				  int comments = getNumComments(rs.getInt(1),"paid");
+				  pVo.setCommentsCount(comments);
+				  
+				  popular.add(pVo);
+				  
+			  }
+		  }catch(Exception e)
+		  {
+			  e.printStackTrace();
+		  }
+		  
+		  return popular;
+	  }
+	  
+	  public ArrayList<TopFiveCitiesVO> getTopFiveCities()
+	  {
+		  ArrayList<TopFiveCitiesVO> cities = new ArrayList<TopFiveCitiesVO>();
+		  
+		  String query = "SELECT count(1) AS totalRec, SUM(bc.c_amt_paid) AS total_amount, bc.c_city, ct.city_name FROM bd_paid_bribe bc, bd_dept bd, bd_transactions bt, bd_city ct WHERE bc.c_dept = bd.id AND bc.c_transaction = bt.id AND bc.approved =1 AND bc.c_city = ct.Id AND c_dept = bd.id group by c_city ORDER BY Totalrec DESC limit 5";
+		  try
+		  {
+			  Statement stmt = conn.createStatement();
+			  ResultSet rs = stmt.executeQuery(query);
+			  while(rs.next())
+			  {
+				  TopFiveCitiesVO city = new TopFiveCitiesVO();
+				  city.setTotalRecs(rs.getInt(1));
+				  city.setTotalAmount(rs.getInt(2));
+				  city.setCityId(rs.getInt(3));
+				  city.setCityName(rs.getString(4));
+				  
+				  cities.add(city);
+				  
+			  }
+		  }catch(Exception e)
+		  {
+			  e.printStackTrace();
+		  }
+		  return cities;
+	  }
+	  
+	  public ArrayList<TopFiveDeptsVO> getTopFiveDepartments()
+	  {
+		  ArrayList<TopFiveDeptsVO> depts = new ArrayList<TopFiveDeptsVO>();
+		  String query = "SELECT count(1) AS totalRec, SUM(bc.c_amt_paid) AS total_amount, bd.dept_name, bc.c_dept FROM bd_paid_bribe bc, bd_dept bd, bd_transactions bt, bd_city ct WHERE bc.c_dept = bd.id AND bc.c_transaction = bt.id AND bc.approved =1 AND bc.c_city = ct.Id AND c_dept = bd.id group by c_dept ORDER BY Totalrec DESC limit 5";
+		  try
+		  {
+			  Statement stmt = conn.createStatement();
+			  ResultSet rs = stmt.executeQuery(query);
+			  while(rs.next())
+			  {
+				  TopFiveDeptsVO dept = new TopFiveDeptsVO();
+				  dept.setTotalRecs(rs.getInt(1));
+				  dept.setTotalAmount(rs.getInt(2));
+				  dept.setDeptName(rs.getString(3));
+				  dept.setDeptId(rs.getInt(4));
+				  
+				  depts.add(dept);
+			  }
+		  }catch(Exception e)
+		  {
+			  e.printStackTrace();
+		  }
+		  return depts;
+	  }
+	  
+	  public int getNumComments(int id, String type)
+	  {
+		  int count = 0;
+		  
+		  try
+		  {
+			  Statement stmt = conn.createStatement();
+			  ResultSet rs = stmt.executeQuery("SELECT count(1) as cnt from bd_vote_comments where type='"+type+"' and type_id='"+id+"' and published=1");
+			  if(rs.next())
+			  {
+				  count = rs.getInt(1);
+			  }
+		  }catch(Exception e)
+		  {
+			  e.printStackTrace();
+		  }
+		  
+		  return count;
 	  }
 	  
 }

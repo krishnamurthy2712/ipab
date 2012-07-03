@@ -64,11 +64,11 @@ function addComment(typeId,type)
 		int id = Integer.parseInt(strId);
 		IDontHavetoPay idontHavepay = IDontHavetoPay.getInstance();
 		DontHavetoPayVO dbVO = idontHavepay.viewDetailDintHaveToPay(id);
-		SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy - hh:mm"); 
+		//SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy - hh:mm"); 
 %>
 <h3><%=dbVO.getCName() %></h3>
 <div class="report_reg">
-        Reported : <%=sdf.format(dbVO.getCreatedDate()) %> 
+        Reported : <%=dbVO.getCreatedDate() %> 
         | City : <%=dbVO.getCCity() %>
         | <%=dbVO.getDeptName() %>
 </div>
