@@ -1,0 +1,27 @@
+<data>
+	<dataItem>
+		<part1>Lay</part1>
+		<part2>40000000</part2>
+		<part3>KMs of Asphalt Road</part3>
+	</dataItem>
+	<dataItem>
+		<part1>Lay</part1>
+		<part2>120000000</part2>
+		<part3>KMs of Flyover</part3>
+	</dataItem>
+	<dataItem>
+		<part1>Set Up</part1>
+		<part2>200000000</part2>
+		<part3>Solar Power Generating Unit(s)</part3>
+	</dataItem>
+	<dataItem>
+		<part1>Install</part1>
+		<part2>250000000</part2>
+		<part3>Small Garbage Segregation and Disposal Unit</part3>
+	</dataItem>
+	<dataItem>
+		<part1>Lay</part1>
+		<part2>1910000000</part2>
+		<part3>KMs of Metro Rail</part3>
+	</dataItem>
+</data>
