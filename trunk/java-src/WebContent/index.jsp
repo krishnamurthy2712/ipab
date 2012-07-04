@@ -60,7 +60,7 @@ int pageHits = comm.getHits();
         <!----- Break ----->
         <%@include file="highlights.jsp" %>
         <div class="clear"></div>
-</div>
+	</div>
 </div>
 <!-- bottom -->
 <div class="wraperBottom">
