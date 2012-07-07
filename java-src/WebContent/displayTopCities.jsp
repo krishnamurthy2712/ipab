@@ -74,7 +74,7 @@
 				true // URLs?
 				);
 		
-		chart.setBackgroundPaint(new Color(237, 194, 90));
+		chart.setBackgroundPaint(new Color(255, 255, 255));
 		chart.setPadding(new RectangleInsets(-28, -22,0, -8));
 		
 		/*LegendTitle legend  = chart.getLegend();
@@ -111,10 +111,17 @@
 		File image = File.createTempFile("image", "tmp");
 		domainAxis.setTickMarksVisible(true);  
 		// Assume that we have the chart
-		ChartUtilities.saveChartAsPNG(image, chart,310, 145,info,true,0);
+		ChartUtilities.saveChartAsPNG(image, chart,380, 175,info,true,0);
 
+		OutputStream outStream = null;
 		FileInputStream fileInStream = new FileInputStream(image);
-		OutputStream outStream = response.getOutputStream();
+		try{
+			outStream= response.getOutputStream();
+		}
+		catch(Exception e)
+		{
+			
+		}
 
 		long fileLength;
 		byte[] byteStream;
@@ -132,7 +139,7 @@
 		fileInStream.close();
 		outStream.write(byteStream);
 		outStream.flush();
-		//outStream.close();
+		outStream.close();
 
 	} catch (IOException e) {
 		System.err.println("Problem occurred creating chart.");
