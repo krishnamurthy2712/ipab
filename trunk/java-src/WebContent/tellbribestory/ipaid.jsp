@@ -7,12 +7,8 @@
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <title>I Paid a Bribe</title>
 
-<script src="${pageContext.request.contextPath}/theme/js/jquery.js"
-	type="text/javascript">
+<script src="${pageContext.request.contextPath}/theme/js/jquery.js"	type="text/javascript">
 	</script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/theme/js/menu.js"></script>
-
 <script
 	src="${pageContext.request.contextPath}/theme/js/jquery.ui.core.js"></script>
 <script
@@ -24,7 +20,7 @@
 	href="${pageContext.request.contextPath}/theme/css/menu.css"
 	rel="stylesheet" />
 <link type="text/css"
-	href="${pageContext.request.contextPath}/theme/css/style.css"
+	href="${pageContext.request.contextPath}/theme/css/newstyles.css"
 	rel="stylesheet" />
 
 <script type="text/javascript">
@@ -32,7 +28,7 @@
 			function()
 			{
 				// binds form submission and fields to the validation engine
-				$( "#c_date_paid" ).datepicker({dateFormat: 'dd-mm-y',buttonImage: "/images/datepicker.gif"});
+				$( "#c_date_paid" ).datepicker({dateFormat: 'dd-mm-y'});
 			}
 	);
 
@@ -43,7 +39,7 @@
 
         $.ajax({
 			  type: 'GET',
-			  url: 'getTransactions.jsp',
+			  url: "tellbribestory/getTransactions.jsp",
 			  data: "dept=" + dept,
 			  beforeSend:function(){
 			    // this is where we append a loading image
@@ -55,11 +51,12 @@
 			    $('#transactionsDisplay').html(response);
 			    checkDeptOthers();
 			  },
-			  error:function(){
+			  error:function(jqXHR, textStatus, errorThrown){
 			    // failed request; give feedback to user
 			    $('#transactionsDisplay').html('<p><font color="red"><strong>Oops!</strong> Unable to load transactions.</font></p>');
 			  }
 		 });
+
 	}
 
 
@@ -86,10 +83,12 @@
 		{
 			$('#validationErrors').html("<center>Please select county</center>");
 			$('#cCity').css('background',_errorColor);
+			$('#errors').fadeIn();
 			return false;
 		}else
 		{
 			$('#cCity').css('background',_noErrorColor);
+			$('#errors').fadeOut();
 		}
 		
 		if($('#cDept').length>0) 
@@ -101,9 +100,11 @@
 				{
 					$('#validationErrors').html("<center>Please enter Department</center>");
 					$('#otherDept').css('background',_errorColor);
+					$('#errors').fadeIn();
 					return false;
 				}else
 				{
+					$('#errors').fadeOut();
 					$('#otherDept').css('background',_noErrorColor);
 				}
 			}else
@@ -112,9 +113,11 @@
 				{
 					$('#validationErrors').html("<center>Please select department</center>");
 					$('#cDept').css('background',_errorColor);
+					$('#errors').fadeIn();
 					return false;
 				}else
 				{
+					$('#errors').fadeOut();
 					$('#cDept').css('background',_noErrorColor);
 				}
 			}
@@ -131,6 +134,7 @@
 				{
 					$('#validationErrors').html("<center>Please enter Transaction</center>");
 					$('#cTransactions').css('background',_errorColor);
+					$('#errors').fadeIn();
 					return false;
 				}
 			}
@@ -141,11 +145,13 @@
 		if(myTrim(amount).length<=0)
 		{
 			$('#validationErrors').html("<center>Please enter amount</center>");
-			$('#cCity').css('background',_errorColor);
+			$('#c_amt_paid').css('background',_errorColor);
+			$('#errors').fadeIn();
 			return false;
 		}else
 		{
-			$('#cTransactions').css('background',_noErrorColor);
+			$('#c_amt_paid').css('background',_noErrorColor);
+			$('#errors').fadeOut();
 		}
 
 		if($('#c_amt_paid').val() != "") 
@@ -156,10 +162,12 @@
 		    {
 		    	$('#validationErrors').html("<center>The entered amount must be numeric.</center>");
 		    	$('#c_amt_paid').css('background',_errorColor);
+		    	$('#errors').fadeIn();
 		       return false;
 		    }else
 			{
 				$('#c_amt_paid').css('background',_noErrorColor);
+				$('#errors').fadeOut();
 			}
 		}
 
@@ -173,49 +181,59 @@
 		{
 			$('#validationErrors').html("<center>Please enter office location</center>");
 			$('#office_location').css('background',_errorColor);
+			$('#errors').fadeIn();
 			return false;
 		}else
 		{
 			$('#office_location').css('background',_noErrorColor);
+			$('#errors').fadeOut();
 		}
 
 		if(myTrim(bribeType).length<=0)
 		{
 			$('#validationErrors').html("<center>Please enter office location</center>");
 			$('#c_bribe_type').css('background',_errorColor);
+			$('#errors').fadeIn();
 			return false;
 		}else
 		{
 			$('#c_bribe_type').css('background',_noErrorColor);
+			$('#errors').fadeOut();
 		}
 
 		if(myTrim(payMode).length<=0)
 		{
 			$('#validationErrors').html("<center>Please enter office location</center>");
 			$('#c_payment_method').css('background',_errorColor);
+			$('#errors').fadeIn();
 			return false;
 		}else
 		{
 			$('#c_payment_method').css('background',_noErrorColor);
+			$('#errors').fadeOut();
 		}
 
 		if(myTrim(title).length<=0)
 		{
 			$('#validationErrors').html("<center>Please enter title</center>");
 			$('#c_name').css('background',_errorColor);
+			$('#errors').fadeIn();
 			return false;
 		}else
 		{
 			$('#c_name').css('background',_noErrorColor);
+			$('#errors').fadeOut();
 		}
 
 		if(myTrim(addInfo).length<=0)
 		{
 			$('#validationErrors').html("<center>Please enter additional information</center>");
 			$('#c_addi_info').css('background',_errorColor);
+			$('#errors').fadeIn();
 			return false;
 		}else
 		{
+			$('#errors').fadeOut();
 			$('#c_addi_info').css('background',_noErrorColor);
 		}
 
@@ -223,10 +241,12 @@
 		{
 			$('#validationErrors').html("<center>Please enter valid security code</center>");
 			$('#security_code').css('background',_errorColor);
+			$('#errors').fadeIn();
 			return false;
 		}else
 		{
 			validateSecurityCode();
+			$('#errors').fadeOut();
 			$('#security_code').css('background',_noErrorColor);
 		}
 
@@ -237,6 +257,7 @@
 		return true;
 	}
 
+
 	function myTrim (str) 
 	{
 		return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
@@ -244,7 +265,8 @@
 
 	function privacyChecked()
 	{
-		var cbs = document.forms['fm'].elements['t_and_c'];
+		var cbs = document.forms['fm'].elements['t_and_c'];;
+		alert(cbs.checked);
 		  if(cbs.checked)
 		  {
 			  document.forms['fm'].elements['submit'].disabled = false;
@@ -297,26 +319,37 @@
 			$('#othersTransaction').fadeOut();
 		}
 	}
+
+	function onKeyDown()
+	{
+		$('#errors').fadeOut();
+	}
 	
 	</script>
 </head>
 <body>
 <%@include file="../header.jsp"%>
-<div class="pageHeader">
+<div class="clear"></div>
+<div id="bg-wrapper">
+<div class="breadcrumb">
 <center><br>
 <h2 class="pageHeaderH2">I Paid a Bribe</h2>
 </center>
 </div>
-<div id="mainContent" class="mainContent">
+
 <% CommonOperations ipb = CommonOperations.getInstance(); 
 	%>
-<div class="error">
+
+<div class="complaint-block-box" id="complaint-block-box">
+<div class="clear"></div>
+<div id="errors">
 <div id="validationErrors"></div>
 </div>
+
 <form id="fm" method="post" action="RegisterIPaidComplaint.do"
-	onsubmit="return validateSubmission();">
+	 class="ipabforms" onsubmit="return validateSubmission();">
 <div class="divContent"><label for="cCity">County </label> <select name="cCity"
-	class="sleft" id="cCity">
+	 id="cCity">
 	<option value="">Select County</option>
 	<%
 
@@ -330,9 +363,10 @@
 		<%
 	 }
 %>
-</select></div>
-<div class="divContent"><label for="cDept" >Department </label> <select
-	onchange="getTransactions()" id="cDept" name="cDept" class="sleft">
+</select>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<label for="cDept" >Department </label> <select
+	onchange="getTransactions()" id="cDept" name="cDept">
 	<option value="">Select Department</option>
 	<%
 	ArrayList<DepartmentVO> depts = ipb.getDepartments();
@@ -345,33 +379,29 @@
 	 }
 %>
 </select>
-    
-<input type="text" name="otherDept" id="otherDept" style="display:none;"  value="" />
+&nbsp;&nbsp;&nbsp;&nbsp;    
+<input type="text" name="otherDept" id="otherDept" style="display:none;"  value="" onkeydown="onKeyDown()"/>
 </div>
 <div class="divContent"><label for="cTransaction">Transactions </label>
 <div id="transactionsDisplay"></div>
 </div>
-
-<div class="divContent"><label for="c_amt_paid">Amount Paid</label> <input
-	type="text" name="c_amt_paid" id="c_amt_paid" value="" class="sleft" />
-</div>
-
-<div class="divContent"><label for="c_date_paid">Date </label> <input value=""
+<div class="divContent">
+<label for="c_date_paid">Date </label> <input value=""
 	class="text-input datepicker" type="text" name="c_date_paid"
-	id="c_date_paid" /></div>
-
-<div class="divContent"><label for="office_location">Office Location</label> <input
-	type="text" name="office_location" id="office_location" value=""
-	class="sleft" /></div>
+	id="c_date_paid" />
+&nbsp;&nbsp;&nbsp;&nbsp;
+<label for="office_location">Office Location</label> <input
+	type="text" name="office_location" id="office_location" value="" onkeydown="onKeyDown()"
+	 /></div>
 
 <div class="divContent"><label for="c_bribe_type">Bribe Type</label> <select
-	class="sleft" name="c_bribe_type" id="c_bribe_type">
+	 name="c_bribe_type" id="c_bribe_type">
 	<option value="personal">Personal</option>
 	<option value="corporate">Corporate</option>
-</select></div>
-
-<div class="divContent"><label for="c_payment_method">Payment Method</label> <select
-	class="sleft" name="c_payment_method" id="c_payment_method">
+</select>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<label for="c_payment_method">Payment Method</label> <select
+	 name="c_payment_method" id="c_payment_method">
 	<option value="" selected="selected">Select Option</option>
 	<option value="cash">Cash</option>
 	<option value="mpesa">M-Pesa</option>
@@ -383,17 +413,18 @@
 </select></div>
 
 <div class="divContent"><label for="c_name">Title your story</label><br>
-<textarea class="big" name="c_name" id="c_name" rows="2"
+<textarea class="big" name="c_name" id="c_name" rows="2" onkeydown="onKeyDown()"
 	style="height: 20px;" cols="4"></textarea></div>
 <div class="divContent"><label for="c_addi_info">Tell us your story</label><br>
 Please do NOT report names." We aim to change processes not target
 individuals<br>
-<textarea class="big" name="c_addi_info" id="c_addi_info" rows="10"
+<textarea class="big" name="c_addi_info" id="c_addi_info" rows="10" onkeydown="onKeyDown()"
 	cols="4"></textarea></div>
 <div class="divContent"><label for="security_code">Please enter the security
-code</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img
+code</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br><img
 	src="${pageContext.request.contextPath}/getCaptcha.do" id="captcha">
-<input type="text" name="security_code" id="security_code" value=""
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="text" name="security_code" id="security_code" value="" onkeydown="onKeyDown()"
 	class="securityCode" onblur="validateSecurityCode()"/>
 <span id="secCodeError"></span><input type="hidden" id="secErr" value="<%= (String) session.getAttribute("Code")%>"/>
 </div>
@@ -407,10 +438,25 @@ code</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img
 	name="submit" id="submit" >
 </div>
 </form>
+</div>
+
+<div class="sidebar">
+<div id="toolkit"> <h3>Tool kit</h3>
+<div class="clear"></div>
+<A class=a href="#">Post a report</A> 
+<div class="clear"></div>
+<A class=b href="#">Read reports</A> 
+<div class="clear"></div>
+<A class=a href="#">Report an honest official</A>
+</div>
+<div class="clear"></div>
+
+<div id="toolkit-bg">
 
 </div>
-<div><%@include file="sideContents.jsp"%></div>
+</div>
 
 <%@include file="../footer.jsp"%>
+</div>
 </body>
 </html>

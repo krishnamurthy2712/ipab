@@ -11,11 +11,11 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/theme/js/menu.js"></script>
 <link type="text/css"
-	href="${pageContext.request.contextPath}/theme/css/style.css"
+	href="${pageContext.request.contextPath}/theme/css/newstyles.css"
 	rel="stylesheet" />
 </head>
 <body>
-<%@include file="header.jsp"%>
+<%@include file="../header.jsp"%>
 <div class="pageHeader"><center><br><h2 class="pageHeaderH2">I Paid a Bribe</h2></center></div>
 <div id="privacyContent" class="privacyContent">
 
@@ -57,6 +57,6 @@
 
 
 </div> 
-<%@include file="footer.jsp"%>
+<%@include file="../footer.jsp"%>
 </body>
 </html>

@@ -1,24 +1,40 @@
 <div class="footer">
-	<ul id="footer_links">
-        <li><a href="${pageContext.request.contextPath}/aboutus.jsp" title="About Us">About Us</a></li>
-        <li><a href="${pageContext.request.contextPath}/contactus.jsp" title="Contact Us">Contact Us</a></li>
-        <li><a href="${pageContext.request.contextPath}/privacyPolicy.jsp" title="Privacy Policy">Privacy Policy</a></li>
-        <li><a href="${pageContext.request.contextPath}/registerupdates.jsp" title="Register for Updates">Register for Updates</a></li>
-       </ul>
-       
-       <div class="copyrights" >
-		<a href="http://www.facebook.com/ipabkenya" target="_blank" title="Facebook"></a>
-		<a class="twitter_bot" href="http://twitter.com/ipaidabribe_ke" target="_blank" title="Twitter"></a>
-		<a class="youtube_bot" href="http://www.youtube.com/user/" target="_blank" title="You Tube"></a>
-		<a class="orkut_bot" href="http://www.orkut.co.in/Main#Community?cmm=" target="_blank" title="Orkut"></a>
-       
-       	<p>&copy; <%= new java.util.Date().getYear() + 1900 %>,  All rights Reserved<br />I Paid A Bribe</p>
-		<p id="bookmarkIpab"></p><br>
-	   </div>
+	<div class="footer-content">
+		<table border=0 cellSpacing=0 cellPadding=0>	
+			<tr>
+				<td>
+					<ul><strong>About</strong><br><br>
+					<li><a href="${pageContext.request.contextPath}/aboutus.jsp" title="About Us">About Us</a></li>
+			        <li><a href="${pageContext.request.contextPath}/contactus.jsp" title="Contact Us">Contact Us</a></li>
+			        <li><a href="${pageContext.request.contextPath}/content/disclaimer.jsp" title="Disclaimer">Disclaimer</a></li>
+					<li><a href="${pageContext.request.contextPath}/content/privacyPolicy.jsp" title="Privacy Policy">Privacy Policy</a></li>
+			        <li><a href="${pageContext.request.contextPath}/registerupdates.jsp" title="Register for Updates">Register for Updates</a></li></ul>
+				</td>
+	
+				<td>
+				<div class="shareurls">
+					<ul><strong>Share</strong><br><br>
+					<a href="http://www.facebook.com/ipabkenya" target="_blank" title="Facebook"></a>
+					<a class="twitter_bot" href="http://twitter.com/ipaidabribe_ke" target="_blank" title="Twitter"></a>
+					<a class="youtube_bot" href="http://www.youtube.com/user/" target="_blank" title="You Tube"></a>
+					<a class="orkut_bot" href="http://www.orkut.co.in/Main#Community?cmm=" target="_blank" title="Orkut"></a>
+				</div>
+				</td>
+				<td align="right">
+					<ul><b>Contact</b><br><br>
+					<li><A href="mailto:info@ipaidabribe.com?subject=Email us" target=_blank jQuery1341645713794="105">Email us</A></li>
+					<li><A href="mailto:feedback@ipaidabribe.com?subject=Feedback" jQuery1341645713794="106">Send Feedback</A></li></ul>
+				</td>
+	
+			</tr>
+			<tr><td colspan="4" align="center">
+				<p class="copyright">&copy; <%= new java.util.Date().getYear() + 1900 %>,  All rights Reserved <strong>I Paid A Bribe</strong></p>
+			</td></tr>
+		</table>
+	</div>
 </div>
 
-
-<!-- Stack tool bar -->
+<!-- Stack tool bar 
    
 <div class="stack addthis_toolbox">
     <img src="${pageContext.request.contextPath}/theme/images/stack/stack.png" alt="stack"/>
@@ -36,7 +52,7 @@
         <li><a class="addthis_button_facebook"><span>Facebook</span>
         <img src="${pageContext.request.contextPath}/theme/images/stack/facebook.png" alt="Share to Facebook" /></a></li>
      </ul>
-</div>    
+</div>    -->
 
 <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js"></script>
 <script type="text/javascript">

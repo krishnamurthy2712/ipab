@@ -1,41 +1,85 @@
 
-<%@page import="com.ipablive.commons.CommonOperations"%><style type="text/css">
-* { margin:5;
-    padding:5;
-}
-body { background:rgb(74,81,85); }
-div#menu { margin-left:10px auto; margin-right:10px auto;}
-
-div#copyright a { color:#000; }
-div#copyright a:hover { color:#222; }
-</style>
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;
+<%@page import="com.ipablive.commons.CommonOperations"%>
 <%
 	String logo = "/theme/images/logo.png";
+	String flag = "/theme/images/Ghana_Flag.png";
 %>
-<img src="${pageContext.request.contextPath}<%=logo %>" height="50">
-<div id="counter"><input type="hidden" name="counter-value" value="2" /></div>
+<div class="clear"></div>
+<div style="margin: 10px;"><img
+	src="${pageContext.request.contextPath}<%=logo %>" height="50">
+<div id="counter"><input type="hidden" name="counter-value"
+	value="2" /></div>
+</div>
+<div class="clear"></div>
 
-<div id="menu">
-    <ul class="menu">
-        <li><a href="${pageContext.request.contextPath}/index.jsp"><span>Home</span></a></li>
-        <li><a class="parent"><span>Tell Us Your Bribe Story</span></a>
-            <ul>
-                 <li><a href="${pageContext.request.contextPath}/tellbribestory/ipaid.jsp"><span>I paid a bribe</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/tellbribestory/ididnotpaid.jsp"><span>I didn't pay a bribe</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/tellbribestory/donthavetopaid.jsp"><span>I didn't have to pay a bribe</span></a></li>
-            </ul>
-        </li>
-		<li><a class="parent"><span>Read Bribe Stories</span></a>
-            <ul>
-                <li><a href="${pageContext.request.contextPath}/readbribestory/ipaid.jsp"><span>I paid a bribe</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/readbribestory/ididnotpaid.jsp"><span>I didn't pay a bribe</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/readbribestory/donthavetopaid.jsp"><span>I didn't have to pay a bribe</span></a></li>
-            </ul>
-        </li>
-		<li><a href="${pageContext.request.contextPath}/blog/blog.jsp"><span>Blog</span></a></li>
-		<li><a href="${pageContext.request.contextPath}/faqs/faqs.jsp"><span>FAQs</span></a></li>
-        <li><a href="${pageContext.request.contextPath}/awards/awards.jsp"><span>Awards</span></a></li>
-    </ul>
+<div>
+<ul id="menu_new">
+	<li><a href="${pageContext.request.contextPath}">
+	<div class="ghana"><img src="${pageContext.request.contextPath}<%=flag %>" alt="ipaidabribe ghana" />&nbsp;<strong>Ghana</strong></div>
+	</a></li>
+
+	<li style="margin-left: 5px !important;"><a
+		href="#">
+	<div class="ipaidabribe"><strong>I Paid A</strong> Bribe</div>
+	</a>
+	<ul style="width: 110px !important;">
+		<li><a href="${pageContext.request.contextPath}/complaint?t=paid">Post Report</a></li>
+		<li><a href="${pageContext.request.contextPath}/reports?t=paid">Read
+		Report</a></li>
+	</ul>
+	</li>
+
+	<li style="margin-left: 5px !important;"><a
+		href="#">
+	<div class="iddintpayabribe"><span
+		style="display: block; line-height: 12px !important; padding-top: 4px;"><strong>I
+	Didn't</strong> </span><span><strong> Pay A</strong> Bribe</span></div>
+	</a>
+	<ul style="width: 100px !important;">
+		<li><a href="${pageContext.request.contextPath}/complaint?t=notpaid">Post Report</a></li>
+		<li><a href="${pageContext.request.contextPath}/reports?t=notpaid">Read
+		Report</a></li>
+	</ul>
+	</li>
+
+	<!--  <li style="margin-left: 5px !important;">
+	<div class="idontwanttopayabribe "><span style="line-height: 12px !important; display:  block; padding-top:  4px"><strong>I
+	Don't Want To</strong> </span><span><strong>Pay A</strong> Bribe</span></div>
+	</a>
+	<ul style="width:  120px !important">
+		<li><a href="#">Post Report</a></li>
+		<li><a href="#">Read Reports</a></li>
+	</ul>
+	</li>-->
+
+	<li style="margin-left: 5px !important;"><a
+		href="#">
+	<div class="ididnthavetopaybribe"><span
+		style="display: block; line-height: 12px !important; padding-top: 4px;"><strong>I
+	DIDN'T HAVE TO</strong> </span><span><strong> PAY A</strong> BRIBE</span></div>
+	</a>
+	<ul style="width: 120px !important;">
+		<li><a href="${pageContext.request.contextPath}/complaint?t=notasked">Post Report</a></li>
+		<li><a href="${pageContext.request.contextPath}/reports?t=notasked">Read
+		Report</a></li>
+	</ul>
+	</li>
+
+
+	<li style="margin-left: 5px !important;"><a href="/bribe-central">
+	<div class="allreports">ALL REPORTS</div>
+	</a></li>
+	<li style="margin-left: 5px !important;"><a href="/news-central">
+	<div class="indthenewstoday ">IN THE NEWS TODAY</div>
+	</a>
+	<ul style="width: 146px !important;">
+		<li><a href="http://ipaidabribe.com/poll">POLLS</a></li>
+		<li><a href="http://ipaidabribe.com/blog?p=videos">VIDEOS</a></li>
+
+
+	</ul>
+	</li>
+
+</ul>
+<br>
 </div>
