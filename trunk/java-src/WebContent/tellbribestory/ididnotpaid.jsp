@@ -36,7 +36,7 @@
          var dept = $('#cDept').val();
 		 $.ajax({
 			  type: 'GET',
-			  url: 'getTransactions.jsp',
+			  url: 'tellbribestory/getTransactions.jsp',
 			  data: "dept=" + dept,
 			  beforeSend:function(){
 			    // this is where we append a loading image
@@ -223,15 +223,20 @@
 </head>
 <body>
 <%@include file="../header.jsp"%>
-<div class="pageHeader">
-<center><br>
-<h2 class="pageHeaderH2">I Didn't Pay A Bribe</h2>
-</center>
-</div>
-<div id="mainContent" class="mainContent">
+<div class="clear"></div>
+<div id="bg-wrapper">
+	<div class="breadcrumb">
+		<div class="clear"></div>
+		<a href="${pageContext.request.contextPath}" style="text-decoration: none;">Home</a> > Post a Report
+	<center><br>
+	<h2 class="pageHeaderH2">I Didn't Pay A Bribe</h2>
+	</center>
+	</div>
 <% CommonOperations ipb = CommonOperations.getInstance(); 
 	%>
-<div class="error">
+<div class="complaint-block-box" id="complaint-block-box">
+<div class="clear"></div>
+<div id="errors">
 <div id="validationErrors"></div>
 </div>
 <form id="fm" method="post" action="RegisterIDintPaidComplaint.do"
@@ -268,7 +273,7 @@
 </select>
 <input type="text" name="otherDept" id="otherDept" style="display:none;"  value="" />
 </div>
-<div class="divContent"><label for="cTransaction">Transactions </label>
+<div class="divContent" style="height: 20px"><label for="cTransaction">Transactions </label>
 <div id="transactionsDisplay"></div>
 </div>
 
@@ -312,9 +317,10 @@ code</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img
 	name="submit" id="submit" onclick="return validateSubmission();">
 </div>
 </form>
-
 </div>
 
+
 <%@include file="../footer.jsp"%>
+</div>
 </body>
 </html>

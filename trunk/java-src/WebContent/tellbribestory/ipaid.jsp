@@ -332,6 +332,8 @@
 <div class="clear"></div>
 <div id="bg-wrapper">
 <div class="breadcrumb">
+	<div class="clear"></div>
+		<a href="${pageContext.request.contextPath}" style="text-decoration: none;">Home</a> > Post a Report
 <center><br>
 <h2 class="pageHeaderH2">I Paid a Bribe</h2>
 </center>
@@ -349,7 +351,7 @@
 <form id="fm" method="post" action="RegisterIPaidComplaint.do"
 	 class="ipabforms" onsubmit="return validateSubmission();">
 <div class="divContent"><label for="cCity">County </label> <select name="cCity"
-	 id="cCity">
+	 id="cCity" style="width: 130px;">
 	<option value="">Select County</option>
 	<%
 
@@ -366,7 +368,7 @@
 </select>
 &nbsp;&nbsp;&nbsp;&nbsp;
 <label for="cDept" >Department </label> <select
-	onchange="getTransactions()" id="cDept" name="cDept">
+	onchange="getTransactions()" id="cDept" name="cDept" style="width: 200px;">
 	<option value="">Select Department</option>
 	<%
 	ArrayList<DepartmentVO> depts = ipb.getDepartments();
@@ -379,11 +381,16 @@
 	 }
 %>
 </select>
-&nbsp;&nbsp;&nbsp;&nbsp;    
+&nbsp;&nbsp;   
 <input type="text" name="otherDept" id="otherDept" style="display:none;"  value="" onkeydown="onKeyDown()"/>
 </div>
-<div class="divContent"><label for="cTransaction">Transactions </label>
+<div class="clear"></div>
+<div class="divContent">
+<label for='cTransaction'>Transactions </label>
 <div id="transactionsDisplay"></div>
+</div>
+<div class="divContent">
+<label for='c_amt_paid'>Amount Paid</label> <input type='text' name='c_amt_paid' id='c_amt_paid' value='' onkeydown='onKeyDown()'/>
 </div>
 <div class="divContent">
 <label for="c_date_paid">Date </label> <input value=""
