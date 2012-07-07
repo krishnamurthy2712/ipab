@@ -33,7 +33,7 @@
 		href="${pageContext.request.contextPath}/theme/css/menu.css"
 		rel="stylesheet" />
 	<link type="text/css"
-		href="${pageContext.request.contextPath}/theme/css/style.css"
+		href="${pageContext.request.contextPath}/theme/css/newstyles.css"
 		rel="stylesheet" />
 <%
 String postId = request.getParameter("p");

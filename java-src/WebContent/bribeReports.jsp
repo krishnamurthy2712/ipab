@@ -5,7 +5,7 @@
 <%@page import="com.ipablive.vo.TopCitiesVO"%>
 <%@page import="com.ipablive.vo.BribeCategoriesVO"%>
 <%@page import="com.ipablive.vo.MostPopularReportsVO"%><div class="grid">
-<h2 class="home_h2">Bribe <span>Reports</span></h2>
+<h2 class="home_h2" align="center">Bribe <span>Reports</span></h2>
 <div style="float: left">
 <div class="tabcontent">
 <ul class="tabs">
@@ -66,6 +66,7 @@ if(bribeReports.size()>0)
 			<div class="popularTitle">
 				<a href="${pageContext.request.contextPath}/comments/viewCommentsPaid.jsp?id=<%=bribeReport.getId() %>"><%=complaintName %> </a>
 			</div>
+<div class="clear"></div>
 		</div>
 
 		<%
@@ -91,7 +92,7 @@ else
 </ul>
 </div>
 <div class="clear"></div>
-
+<div class="clear"></div>
 <!-- All -->
 
 <div class="all_categories">
@@ -157,7 +158,7 @@ if(popular.size()>0)
 </ul>
 </div>
 <div class="clear"></div>
-
+<div class="clear"></div>
 <div class="all_categories">
 <div class="categoryHead">Top Bribe Categories:</div>
 <div class="categoryList">
@@ -183,16 +184,12 @@ if(topCategories.size()>0)
 </div>
 </div>
 </div>
-</div>
-</div>
 
 </div>
-
 <div class="clear"></div>
-<!----- Break -----> <!--<div class="ask_box">
-        <h2 class="home_h2"></h2>
-     
-    </div>-->
+</div>
+</div>
+
 <div class="clear"></div>
 
 </div>

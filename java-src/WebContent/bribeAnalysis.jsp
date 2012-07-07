@@ -9,7 +9,8 @@
 <%@page import="com.ipablive.vo.BribeAnalysisVO"%>
 <%@page import="com.ipablive.vo.TopCitiesVO"%>
 <%@page import="java.util.Date"%><div class="bribe_box analytics">
-<center><font color="#003322" size="7"><b>Bribe Analytics</b></font></center><br>
+<div class="clear"></div>
+<center><font color="#003322"><b>Bribe Analytics</b></font></center><br>
 <div class="analytics_div">
 <div>
 <div class="analytics_div_report line">

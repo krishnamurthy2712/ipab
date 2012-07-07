@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
-    <title>About Us</title>
+    <title>Error</title>
 	<script src="${pageContext.request.contextPath}/theme/js/jquery.js"
 		type="text/javascript">
 		</script>
@@ -21,7 +21,7 @@
 		href="${pageContext.request.contextPath}/theme/css/menu.css"
 		rel="stylesheet" />
 	<link type="text/css"
-		href="${pageContext.request.contextPath}/theme/css/style.css"
+		href="${pageContext.request.contextPath}/theme/css/newstyles.css"
 		rel="stylesheet" />
 </head>
 <body>
