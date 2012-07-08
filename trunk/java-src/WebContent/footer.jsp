@@ -22,6 +22,7 @@
 				</td>
 				<td align="right">
 					<ul><b>Contact</b><br><br>
+					<li><a href="mailto:info@ipaidabribe.com?subject=Partner with Ipaidabribe">Partner with us</a></li>
 					<li><A href="mailto:info@ipaidabribe.com?subject=Email us" target=_blank jQuery1341645713794="105">Email us</A></li>
 					<li><A href="mailto:feedback@ipaidabribe.com?subject=Feedback" jQuery1341645713794="106">Send Feedback</A></li></ul>
 				</td>

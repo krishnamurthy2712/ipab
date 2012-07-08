@@ -26,21 +26,20 @@
 </head>
 <body>
 <%@include file="../header.jsp" %>
-<div class="pageHeader">
+<div class="clear"></div>
+<div id="bg-wrapper">
+<div class="breadcrumb">
+	<div class="clear"></div>
+		<a href="${pageContext.request.contextPath}" style="text-decoration: none;">Home</a> > Post a Report
 <center><br>
-<h2 class="pageHeaderH2">Oops.. There is an error occured.</h2>
+<h2 class="pageHeaderH2">Error occured!!!</h2>
 </center>
 </div>
-<div id="mainContent" class="mainContent">
-
-     <center>
-<br><br><br><br>
-				<b><font color="red" size="3">We are facing an issue with database server. </font></b>
-				<br>Please try again later/Contact Administrator.<br>
-<br><br><br><br>
-			</center>
-</div> <!-- #eof blog_container -->
+<div class="centered">
+error occured
+</div>
 </div>
 <%@include file="../footer.jsp" %>
+
 </body>
 </html>

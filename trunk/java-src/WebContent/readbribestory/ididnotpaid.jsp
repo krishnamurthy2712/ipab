@@ -106,24 +106,49 @@ function addComment(typeId,type)
 <% CommonOperations ipb = CommonOperations.getInstance(); 
 	%>
 <%@include file="../header.jsp" %>
-	<div class="pageHeader">
-		<center><br>
-		<h2 class="pageHeaderH2">I Din't Pay a Bribe</h2>
-		</center>
+<div class="clear"></div>
+<div id="bg-wrapper">
+	<div class="breadcrumb">
+		<div class="clear"></div>
+			<a href="${pageContext.request.contextPath}" style="text-decoration: none;">Home</a> > Bribe Report
+	<center><br>
+	<h2 class="pageHeaderH2">I Din't Pay a Bribe</h2>
+	</center>
 	</div>
-
-	<div id="mainContent" class="reportContent">
 		<% IDidnotPaid  iDidntPay = IDidnotPaid.getInstance();
 		   ReportsCountVO rptVo = iDidntPay.getReportsCount();
 		
 		%>	
-		<h1>Total reports: <%=rptVo.getBribeReportsCount() %> and counting...</h1>
-		<br>
-		<form action="" method="post" name="myform">
-		<fieldset>
-		<legend>FILTER RESULTS</legend>
-	         <div><label for="cCity">County </label> <select name="cCity"
-			class="sleft" id="cCity">
+
+<!--side contents first	-->
+<div class="clear"></div>
+<div class="reports_sidebar">
+	<div id="toolkit">
+	<h3>Tool kit</h3>
+	<div class="clear"></div>
+	<A class=a href="#">Post a report</A>
+	<div class="clear"></div>
+	<A class=b href="#">Read reports</A>
+	<div class="clear"></div>
+	<A class=a href="#">Report an honest official</A></div>
+	<div class="clear"></div>
+	<div class="clear"></div>
+	
+	<div id="toolkit_bg_reports">
+		<h3>Todays poll</h3>
+<%@include file="../polls/todayPoll.jsp" %>
+	</div>
+</div>
+
+		<!--filter box-->
+	<div class="bgbox2" id="bribe-filter-box">
+			<form action="" method="post" name="myform">
+				<div class="divContent">
+				Total reports: <strong><%=rptVo.getBribeReportsCount() %></strong> and counting...
+					<div class="clear"></div>
+			</div>	
+	         <div class="divContent"><label for="cCity">County </label> <select name="cCity"
+			 id="cCity">
 			<option value="">All</option>
 			<%
 		
@@ -137,9 +162,10 @@ function addComment(typeId,type)
 				<%
 			 }
 		%>
-		</select></div>
-		<div><label for="cDept">Department </label> <select
-			onchange="getTransactions()" id="cDept" class="sleft">
+		</select>
+&nbsp;&nbsp; 
+		<label for="cDept">Department </label> <select
+			onchange="getTransactions()" id="cDept" >
 			<option value="">All</option>
 			<%
 			ArrayList<DepartmentVO> depts = ipb.getDepartments();
@@ -151,18 +177,20 @@ function addComment(typeId,type)
 				<%
 			 }
 		%>
-		</select></div>
-		<div><label for="cTransaction">Transactions </label>
-		<div id="transactionsDisplay"></div>
-		</div>
+		</select>
+&nbsp;&nbsp; 
+		<label for="cTransaction">Transactions </label>
+		<select  id='cTransactions'><option value=''>All</option></select>
 		
-			<div class="go_report">
-				<input src="${pageContext.request.contextPath}/theme/images/go.png" name="go" value="Go" type="image">            
 			</div>
-		
-		</fieldset>
+		<div class="clear"></div>
+		<input type="submit" value="Filter">
+		<div id="transactionsDisplay"></div>
 		</form>
-		
+</div>
+
+	<!--report main content-->
+<div class="reportDisplay">	
 		<% 
 			String display = "";
 		  	String readMore = "";
@@ -184,7 +212,7 @@ function addComment(typeId,type)
 						readMore = "style='display:block;'";
 					}
 		%>
-		 <div class="report_reg">
+		 <div class="report-block-box">
 			<h2><%=bribe.getCName() %></h2>
 			<div class="report_reg_det">
 					<strong>Reported :</strong> <%=bribe.getCreatedDate() %>  
@@ -259,9 +287,10 @@ function addComment(typeId,type)
 		
 	
 </div>
-<div><%@include file="sideContents.jsp"%></div>
+
 
 
 <%@include file="../footer.jsp" %>
+</div>
 </body>
 </html>

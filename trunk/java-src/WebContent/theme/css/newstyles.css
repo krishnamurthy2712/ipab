@@ -433,8 +433,7 @@ img {
 	top: 0px;
 }
 
-#menu_new ol li,ul li,ul.menu li,.item-list
- ul li,li.leaf {
+#menu_new ol li,ul li,ul.menu li,.item-list ul li,li.leaf {
 	margin: 0px !important;
 	padding: 0px !important;
 }
@@ -685,8 +684,7 @@ Tooltip
 #bg-wrapper {
 	background-color: #e2e1e9;
 	display: block;
-	height: 100%;
-	margin: 0;
+	margin: 0px;
 }
 
 #primary-nav {
@@ -805,12 +803,11 @@ Widgets for home, paid, didnt paid etc
 }
 
 .report-block-box {
-	width: 658px !important;;
+	width: 655px !important;
 	background-color: #fff;
+	padding: 5px;
+	margin-bottom:10px;
 	display: inline-block;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	padding: 10px 25px;
 	border-top-width: 1px;
 	border-right-width: 1px;
 	border-bottom-width: 1px;
@@ -829,15 +826,16 @@ Widgets for home, paid, didnt paid etc
 /*
 Centered div for all error messages
 */
-div.centered {
+.centered {
 	display: block;
-	border: 1px;
+	border: 3px;
+	color:red;
 	border-color: red;
 	/*set the div in the center of the screen*/
-	position: absolute;
 	top: 50%;
 	left: 35%;
-	width: 350px !important;
+	width: 100% !important;
+	height: 100% !important;
 	position: absolute;
 }
 
@@ -863,8 +861,10 @@ bgbox {
 }
 
 .bgbox2 {
+	width:618px !important;
 	background: #fff;
-	margin-top: 10px;
+	margin-top: 5px;
+	margin-left: 20px;
 	border-top-width: 1px;
 	border-right-width: 1px;
 	border-bottom-width: 1px;
@@ -879,6 +879,15 @@ bgbox {
 	-o-box-shadow: inset 0 1px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
 	-webkit-box-shadow: inset 0 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
 	-moz-box-shadow: inset 0px 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+}
+
+.bgbox2 select
+{
+	width: 120px !important;
+}
+.bgbox2 label
+{
+	width: 100px !important;
 }
 
 .bgbox1 {
@@ -1223,15 +1232,56 @@ Toolkit box
 	border-bottom-color: #c2bcc5;
 }
 
+#toolkit_bg_reports {
+	width: 250px;
+	background-color: #fff;
+	FONT-FAMILY: "Century Gothic", "Helvetica Neue", Arial, Helvetica,	"Nimbus Sans L", sans-serif;
+	display: inline-block;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: solid; border-right-style : solid;
+	border-bottom-style : solid; border-top-color : #d2cfd7;
+	border-right-color : #dad8e0; border-bottom-color : #c2bcc5; 
+	box-shadow: inset 0 1px 1px #9f9d9f, 3px 0px 3px #9f9d9f; 
+	-o-box-shadow : inset 0	1px 1px #9f9d9f, 0px 3px 3px #9f9d9f; 
+	-webkit-box-shadow : inset 0 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f; 
+	-moz-box-shadow : inset 0px 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+	height: 300px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #d2cfd7;
+	border-right-color: #dad8e0;
+	border-bottom-color: #c2bcc5;
+}
+
+#toolkit_bg h3 {
+	color: #42CBEA;
+	margin-bottom: 10px;
+	padding-left: 75px;
+	font-weight: bold;
+	height: 26px;
+	margin-top: 10px;
+}
+
+#toolkit_bg_reports h3 {
+	color: #42CBEA;
+	margin-bottom: 10px;
+	padding-left: 45px;
+	font-weight: bold;
+	height: 26px;
+	margin-top: 10px;
+}
+
 
 #toolkit {
 	float: right;
-	width: 250px;
+	width: 233px;
 	height: 120px;
 	background-color: #FFF;
 	display: inline-block;
 	padding: 10px;
-	margin: 10px;
+	margin-right: 8px;
 	border-top-width: 1px;
 	border-right-width: 1px;
 	border-bottom-width: 1px;
@@ -1620,4 +1670,119 @@ Date Picker Style
     left: -4px; /*must have*/
     width: 200px; /*must have*/
     height: 200px; /*must have*/
+}
+
+/*
+Bribe filter box
+*/
+
+#bribe-filter-box {
+	width: 655px;
+	display: inline-block;
+	margin-top: 10px;
+	padding: 10px 25px;
+	box-shadow: inset 0 1px 1px #9f9d9f, 3px 0px 3px #9f9d9f;
+	-o-box-shadow: inset 0 1px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+	-webkit-box-shadow: inset 0 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+	-moz-box-shadow: inset 0px 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+}
+
+.report_reg{
+	width:auto;
+	padding-bottom:25px;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	clear:both;
+}
+
+.report_reg h2{
+width:400px;
+padding:0px;
+margin-top:20px;
+font-size:12px;
+font-weight:bold;
+color:#514040!important;
+}
+.report_reg_det{
+width:400px;
+margin-top:20px;
+font-size:12px;
+color:#514040;
+float:left;
+line-height: 20px;
+margin-bottom: 15px;
+}
+.report_reg_paid{
+width:107px;
+height:30px;
+float:left;
+margin-bottom:15px;
+padding:8px 5px 0 10px;
+font-size:10px;
+font-weight:bold;
+background:url(http://localhost:8080/ipab-java/theme/images/paid.png) no-repeat top;
+}
+.report_reg_paid span{
+	font-size:14px;
+	font-weight:bold;
+	margin-left:5px;
+}
+.report_reg_more{
+width:500px;
+margin-top:5px;
+float:left;
+}
+
+.report_reg_more a, a.yellow_box{
+font-size:12px;
+font-style:italic;
+color:#9A2A2A;
+margin:0 10px 15px 0;
+border:1px solid #e8ad04;
+padding:3px;
+text-align:center;
+}
+.report_reg_more a.facebook_share_view, .report_reg_more a.tweet_share_view {
+	padding: 1px 23px 1px 22px;
+	border: none;
+	font-size: 11px;
+}
+
+.reports_sidebar {
+	margin: 0px 10px 5em 0px;
+	width: 260px;
+	float: right;
+	z-index: 2;
+	position: relative;
+}
+
+.reportDisplay
+{
+	width: 655px !important;
+	background-color: #E2E1E9;
+	display: inline-block;
+	margin: 10px;
+	padding: 10px;
+}
+
+/*
+Share facebook and twitter views
+*/
+
+.facebook_share_view{
+	background:url(http://localhost:8080/ipab-java/theme/images/f_t_share.jpg) no-repeat;
+	padding:1px 23px 1px 22px;
+	font-size:11px;
+}
+.facebook_share_view:hover{
+	background-position:0 -15px;
+}
+.tweet_share_view{
+	background:url(http://localhost:8080/ipab-java/theme/images/f_t_share.jpg) no-repeat;
+	background-position:0 -30px;
+	padding:1px 23px 1px 22px;
+	font-size:11px;
+}
+.tweet_share_view:hover{
+	background-position:0 -45px;
 }

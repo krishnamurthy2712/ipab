@@ -152,17 +152,21 @@ public class IDidnotPaid
 			  if(rs.next())
 			  {
 				  pbVo.setId(rs.getInt(1));
-				  pbVo.setCDept(rs.getString(3));
-				  pbVo.setOthersTransaction(rs.getString(5));
+				  pbVo.setCName(rs.getString(2));
+				  //pbVo.setCCity(rs.getString(3));
+				  pbVo.setCDept(rs.getString(4));
+				  //5
+				  pbVo.setOthersTransaction(rs.getString(6));
 				  pbVo.setCBribeResistedBy(rs.getString(7));
+				  pbVo.setCAdditionalInfo(rs.getString(8));
 				  pbVo.setCreatedDate(rs.getDate(9));
-				  pbVo.setCAdditionalInfo(rs.getString(10));
-				  pbVo.setOtherDept(rs.getString(12));
+				  pbVo.setOtherDept(rs.getString(10));
+				  //11,12.13
 				  pbVo.setOtherLocation(rs.getString(14));
-				  pbVo.setCount(rs.getInt(18));
-				  pbVo.setCCity(rs.getString(19));
-				  pbVo.setDeptName(rs.getString(20));
-				  pbVo.setTransName(rs.getString(21));
+				  pbVo.setCount(rs.getInt(14));
+				  pbVo.setCCity(rs.getString(15));
+				  pbVo.setDeptName(rs.getString(16));
+				  pbVo.setTransName(rs.getString(17));
 				  int numComments = getNumComments(rs.getInt(1));
 				  pbVo.setNumComments(numComments);
 			  }
