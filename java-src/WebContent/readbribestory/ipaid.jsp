@@ -56,7 +56,7 @@
 	     var dept = $('#cDept').val();
 		 $.ajax({
 			  type: 'GET',
-			  url: 'getTransactions.jsp',
+			  url: 'readbribestory/getTransactions.jsp',
 			  data: "dept=" + dept,
 			  beforeSend:function(){
 			    // this is where we append a loading image
@@ -64,8 +64,8 @@
 			  },
 			  success:function(response){
 			    // successful request; do something with the data
-			    //$('#transactionsDisplay').empty();
-			    $('#transactionsDisplay').html(response);
+			   $('#transactionsDisplay').empty();
+			    $('#cTransactions').html(response);
 			  },
 			  error:function(){
 			    // failed request; give feedback to user
@@ -104,166 +104,196 @@
 <% CommonOperations ipb = CommonOperations.getInstance(); 
 	%>
 <%@include file="../header.jsp" %>
-<div class="pageHeader">
-<center><br>
-<h2 class="pageHeaderH2">I Paid a Bribe</h2>
-</center>
-</div>
-<div id="mainContent" class="reportContent">
-<% IPaidBribe ipab = IPaidBribe.getInstance();
-   ReportsCountVO rptVo = ipab.getReportsCount();
-
-%>
-	<h1>Total reports: <%=rptVo.getBribeReportsCount() %> and counting...</h1>
-<br>
-			<form action="" method="post" name="myform">
-			<fieldset>
-			<legend>FILTER RESULTS</legend>
-           <div><label for="cCity">County </label> <select name="cCity"
-	class="sleft" id="cCity">
-	<option value="">All</option>
-	<%
-
-	ArrayList<CityVO> counties = ipb.getCounties();
-	 for(int i=0 ;i<counties.size();i++)
-	 {	 
-		 String s = (i+1) + "";
-		 CityVO cvo = counties.get(i);
-	%>
-		<option value="<%=cvo.getId() %>"><%=cvo.getCityName()%></option>
-		<%
-	 }
-%>
-</select></div>
-<div><label for="cDept">Department </label> <select
-	onchange="getTransactions()" id="cDept" class="sleft">
-	<option value="">All</option>
-	<%
-	ArrayList<DepartmentVO> depts = ipb.getDepartments();
-	 for(int i=0 ;i<depts.size();i++)
-	 {	 
-		 DepartmentVO dVo = depts.get(i);
-	%>
-		<option value="<%=dVo.getDeptID() %>"><%=dVo.getDeptName()%></option>
-		<%
-	 }
-%>
-</select></div>
-<div><label for="cTransaction">Transactions </label>
-<div id="transactionsDisplay"></div>
-</div>
-
-	<div class="go_report">
-		<input src="${pageContext.request.contextPath}/theme/images/go.png" name="go" value="Go" type="image">            
-	</div>
-
-</fieldset>
-</form>
-<br><br>
-
-<% ArrayList<PaidBribesVO> pbVOs = ipab.viewPaidBribes("ALL");
-  if(pbVOs.size()>0)
-  {
-	  String display = "";
-	  String readMore = "";
-	  
-	  
-	for(int i=0;i<pbVOs.size();i++)
-	{
-		PaidBribesVO pbVo = pbVOs.get(i);
-		
-		if(i==0)	
-		{
-			display = "style='display:block;'";
-			readMore = "style='display:none;'";
-		}
-		else
-		{
-			display = "style='display:none;'";
-			readMore = "style='display:block;'";
-		}
-%>
-
-
-<div class="report_reg">
-	<h2><%= pbVo.getCName() %></h2>
-	<div class="report_reg_det">
-		<strong>Reported :</strong> <%=pbVo.getCreatedDate() %> 
-		| <strong>City :</strong> <%=pbVo.getCCity() %>
-           <br /><strong>Paid On :</strong> <%=pbVo.getCCity() %> 
-		| <strong><%=pbVo.getDeptName() %></strong>
-	</div>
-
-	<div class="report_reg_paid">PAID<span><%=pbVo.getCAmountPaid() %></span></div>
-
-    <div class="clear"></div>
-		<div id="more_link<%=pbVo.getId() %>" <%=readMore %>>
-			<div class="report_reg_more">
-	            <a href="#" class="rad" onclick="show_more('<%=pbVo.getId() %>'); return false;">Read More</a> 
-	            <a href="javaScript: addComment('<%=pbVo.getId() %>','paid')">Add Comment</a> 
-	            <a href="${pageContext.request.contextPath}/comments/viewCommentsPaid.jsp?id=<%=pbVo.getId() %>"><%=pbVo.getNumComments() %> Comments</a>
-	            <a href="http://www.facebook.com/share.php?u=" target="_blank" class="facebook_share_view"></a>
-	            <a href="http://twitter.com/share?url=" target="_blank" class="tweet_share_view"></a>
-	            <!--<span id="count<?php echo $row->id;?>_1"><?php echo $row->count;?></span> views-->
-            </div>
-		</div>
-
-		<div id="more_d_<%=pbVo.getId() %>" <%=display %> >
-				<table class="details_table" width="100%" summary="this table has the details for a certain report.">
-					<tr>
-				    	<th width="20%"><span class="desc_lebel">Department:</span></th>
-				        <td><%=pbVo.getDeptName() %></td>
-				    </tr>
-					<tr>
-				    	<th><span class="desc_lebel">Office Location:</span></th>
-				        <td><%=pbVo.getOtherLocation()%></td>
-				    </tr>
-					<tr>
-				    	<th><span class="desc_lebel">Transaction:</span></th>
-				        <td><%=pbVo.getTransName() %></td>
-				    </tr>    
-					<tr>
-				    	<th><span class="desc_lebel">Bribe Type:</span></th>
-				        <td><%=pbVo.getCBribeType() %></td>
-				    </tr>
-					<tr>
-				    	<th><span class="desc_lebel">Details:</span></th>
-				        <td><%=pbVo.getCAdditionalInfo() %></td>
-				    </tr>
-				</table>
-                <div class="clear"></div>
-
-				<div class="share_tool_d">
-				<div id="less_link<%=pbVo.getId() %>">
-				<div class="report_reg_more">
-					<a href="#" class="rad" onclick="show_less('<%=pbVo.getId() %>'); return false;">Read less...</a> 
-					<a href="javaScript: addComment('<%=pbVo.getId() %>','paid')">Add Comment</a> 
-		            <a href="${pageContext.request.contextPath}/comments/viewCommentsPaid.jsp?id=<%=pbVo.getId() %>"><%=pbVo.getNumComments() %> Comments</a>
-		            <a href="http://www.facebook.com/share.php?u=" target="_blank" class="facebook_share_view"></a>
-		            <a href="http://twitter.com/share?url=" target="_blank" class="tweet_share_view"></a>
-		            <!--<span id="count<?php echo $row->id;?>_1"><?php echo $row->count;?></span> views-->
-				</div>
-				</div>
-	</div>
-</div>
-
-	<div class="clear"></div>
-
-	</div>
 <div class="clear"></div>
-<br>
+<div id="bg-wrapper">
+	<div class="breadcrumb">
+		<div class="clear"></div>
+			<a href="${pageContext.request.contextPath}" style="text-decoration: none;">Home</a> > Bribe Report
+	<center><br>
+	<h2 class="pageHeaderH2">I Paid a Bribe</h2>
+	</center>
+	</div>
+	<% IPaidBribe ipab = IPaidBribe.getInstance();
+	   ReportsCountVO rptVo = ipab.getReportsCount();
+	
+	%>
+
+<!--side contents first	-->
+<div class="clear"></div>
+<div class="reports_sidebar">
+	<div id="toolkit">
+	<h3>Tool kit</h3>
+	<div class="clear"></div>
+	<A class=a href="#">Post a report</A>
+	<div class="clear"></div>
+	<A class=b href="#">Read reports</A>
+	<div class="clear"></div>
+	<A class=a href="#">Report an honest official</A></div>
+	<div class="clear"></div>
+	<div class="clear"></div>
+	
+	<div id="toolkit_bg_reports">
+		<h3>Todays poll</h3>
+<%@include file="../polls/todayPoll.jsp" %>
+	</div>
+</div>
+
+<!--filter box-->
+	<div class="bgbox2" id="bribe-filter-box">
+		
+		<form action="" method="post" name="myform" class="ipabforms">
+			 <div class="divContent">
+				Total reports: <strong><%=rptVo.getBribeReportsCount() %></strong> and counting...
+					<div class="clear"></div>
+			</div>			
+
+		     <div class="divContent"><label for="cCity">County </label> <select name="cCity" id="cCity">
+			<option value="">All</option>
+			<%
+		
+			ArrayList<CityVO> counties = ipb.getCounties();
+			 for(int i=0 ;i<counties.size();i++)
+			 {	 
+				 String s = (i+1) + "";
+				 CityVO cvo = counties.get(i);
+			%>
+				<option value="<%=cvo.getId() %>"><%=cvo.getCityName()%></option>
+				<%
+			 }
+		%>
+		</select>
+&nbsp;&nbsp; 
+		<label for="cDept">Department </label> <select	onchange="getTransactions()" id="cDept" >
+			<option value="">All</option>
+			<%
+			ArrayList<DepartmentVO> depts = ipb.getDepartments();
+			 for(int i=0 ;i<depts.size();i++)
+			 {	 
+				 DepartmentVO dVo = depts.get(i);
+			%>
+				<option value="<%=dVo.getDeptID() %>"><%=dVo.getDeptName()%></option>
+				<%
+			 }
+		%>
+		</select>
+&nbsp;&nbsp;
+		<label for="cTransaction">Transactions </label>
+		<select  id='cTransactions'><option value=''>All</option></select>
+		
+			</div>
+		<div class="clear"></div>
+		<input type="submit" value="Filter">
+		<div id="transactionsDisplay"></div>
+		</form>
+
+	</div>
+
+	<!--report main content-->
+<div class="reportDisplay">
+
+	
+		<% ArrayList<PaidBribesVO> pbVOs = ipab.viewPaidBribes("ALL");
+		  if(pbVOs.size()>0)
+		  {
+			  String display = "";
+			  String readMore = "";
+			  
+			  
+			for(int i=0;i<pbVOs.size();i++)
+			{
+				PaidBribesVO pbVo = pbVOs.get(i);
+				
+				if(i==0)	
+				{
+					display = "style='display:block;'";
+					readMore = "style='display:none;'";
+				}
+				else
+				{
+					display = "style='display:none;'";
+					readMore = "style='display:block;'";
+				}
+		%>
+		
+		
+		<div class="report-block-box">
+			<h2><%= pbVo.getCName() %></h2>
+			<div class="report_reg_det">
+				<strong>Reported :</strong> <%=pbVo.getCreatedDate() %> 
+				| <strong>City :</strong> <%=pbVo.getCCity() %>
+		           <br /><strong>Paid On :</strong> <%=pbVo.getCCity() %> 
+				| <strong><%=pbVo.getDeptName() %></strong>
+			</div>
+		
+			<div class="report_reg_paid">PAID<span><%=pbVo.getCAmountPaid() %></span></div>
+		
+		    <div class="clear"></div>
+				<div id="more_link<%=pbVo.getId() %>" <%=readMore %>>
+					<div class="report_reg_more">
+			            <a href="#" class="rad" onclick="show_more('<%=pbVo.getId() %>'); return false;">Read More</a> 
+			            <a href="javaScript: addComment('<%=pbVo.getId() %>','paid')">Add Comment</a> 
+			            <a href="${pageContext.request.contextPath}/comments/viewCommentsPaid.jsp?id=<%=pbVo.getId() %>"><%=pbVo.getNumComments() %> Comments</a>
+			            <a href="http://www.facebook.com/share.php?u=" target="_blank" class="facebook_share_view"></a>
+			            <a href="http://twitter.com/share?url=" target="_blank" class="tweet_share_view"></a>
+			            <!--<span id="count<?php echo $row->id;?>_1"><?php echo $row->count;?></span> views-->
+		            </div>
+				</div>
+				<div class="clear"></div>
+				<div id="more_d_<%=pbVo.getId() %>" <%=display %> >
+						<table class="details_table" width="100%" summary="this table has the details for a certain report.">
+							<tr>
+						    	<th width="20%"><span class="desc_lebel">Department:</span></th>
+						        <td><%=pbVo.getDeptName() %></td>
+						    </tr>
+							<tr>
+						    	<th><span class="desc_lebel">Office Location:</span></th>
+						        <td><%=pbVo.getOtherLocation()%></td>
+						    </tr>
+							<tr>
+						    	<th><span class="desc_lebel">Transaction:</span></th>
+						        <td><%=pbVo.getTransName() %></td>
+						    </tr>    
+							<tr>
+						    	<th><span class="desc_lebel">Bribe Type:</span></th>
+						        <td><%=pbVo.getCBribeType() %></td>
+						    </tr>
+							<tr>
+						    	<th><span class="desc_lebel">Details:</span></th>
+						        <td><%=pbVo.getCAdditionalInfo() %></td>
+						    </tr>
+						</table>
+		                <div class="clear"></div>
+		
+						<div class="share_tool_d">
+						<div id="less_link<%=pbVo.getId() %>">
+						<div class="report_reg_more">
+							<a href="#" class="rad" onclick="show_less('<%=pbVo.getId() %>'); return false;">Read less...</a> 
+							<a href="javaScript: addComment('<%=pbVo.getId() %>','paid')">Add Comment</a> 
+				            <a href="${pageContext.request.contextPath}/comments/viewCommentsPaid.jsp?id=<%=pbVo.getId() %>"><%=pbVo.getNumComments() %> Comments</a>
+				            <a href="http://www.facebook.com/share.php?u=" target="_blank" class="facebook_share_view"></a>
+				            <a href="http://twitter.com/share?url=" target="_blank" class="tweet_share_view"></a>
+				            <!--<span id="count<?php echo $row->id;?>_1"><?php echo $row->count;?></span> views-->
+						</div>
+						</div>
+			</div>
+		</div>
+		
+			<div class="clear"></div><div class="clear"></div>
+
+</div>
 <% }
 }else
 {
 %>
-<br><br><br>
+<div class="clear"></div>
 <div align="center"><span><font color="red"><b>Unable to display data.</b></font></span></div>
-<br><br><br>
+<div class="clear"></div>
 <%} %>
+
 </div>
-<div><%@include file="sideContents.jsp"%></div>
 
 
 <%@include file="../footer.jsp" %>
+</div>
 </body>
 </html>

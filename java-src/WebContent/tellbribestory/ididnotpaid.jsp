@@ -241,8 +241,8 @@
 </div>
 <form id="fm" method="post" action="RegisterIDintPaidComplaint.do"
 	onsubmit="return validateSubmission();">
-<div class="divContent"><label for="cCity">County </label> <select name="cCity"
-	class="sleft" id="cCity">
+<div class="divContent"><label for="cCity">County </label> <select name="cCity" style="width: 130px;"
+	 id="cCity">
 	<option value="">Select County</option>
 	<%
 
@@ -256,9 +256,10 @@
 		<%
 	 }
 %>
-</select></div>
-<div class="divContent"><label for="cDept">Department </label> <select
-	onchange="getTransactions()" id="cDept" name="cDept" class="sleft">
+</select>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<label for="cDept">Department </label> <select
+	onchange="getTransactions()" id="cDept" name="cDept" >
 	<option value="">Select Department</option>
 	<%
 	ArrayList<DepartmentVO> depts = ipb.getDepartments();
@@ -271,54 +272,76 @@
 	 }
 %>
 </select>
+&nbsp;&nbsp;&nbsp;&nbsp;
 <input type="text" name="otherDept" id="otherDept" style="display:none;"  value="" />
 </div>
-<div class="divContent" style="height: 20px"><label for="cTransaction">Transactions </label>
+<div class="clear"></div>
+<div class="divContent"><label for="cTransaction">Transactions </label>
 <div id="transactionsDisplay"></div>
 </div>
-
+<div class="clear"></div>
 <div class="divContent"><label for="c_bribe_type">Bribe Type</label> <select
-	class="sleft" name="c_bribe_type" id="c_bribe_type">
+	 name="c_bribe_type" id="c_bribe_type">
 	<option value="personal">Personal</option>
 	<option value="corporate">Corporate</option>
-</select></div>
-
-<div class="divContent"><label for="c_bribe_resisted_by">Resisted a bribe</label> <select
-	class="sleft" name="c_bribe_resisted_by" id="c_bribe_resisted_by">
+</select>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<label for="c_bribe_resisted_by">Resisted a bribe</label> <select
+	 name="c_bribe_resisted_by" id="c_bribe_resisted_by">
 	<option value="">Select</option>
 	<option value="me">Me</option>
     <option value="friend">Friend</option>
     <option value="relative">Relative</option>
 </select></div>
-
+<div class="clear"></div>
 <div class="divContent"><label for="c_name">Title your story</label><br>
 <textarea class="big" name="c_name" id="c_name" rows="2"
 	style="height: 20px;" cols="4"></textarea></div>
+<div class="clear"></div>
 <div class="divContent"><label for="c_addi_info">Tell us your story</label><br>
 Please do NOT report names." We aim to change processes not target
 individuals<br>
 <textarea class="big" name="c_addi_info" id="c_addi_info" rows="10"
 	cols="4"></textarea></div>
-
+<div class="clear"></div>
 <div class="divContent"><label for="security_code">Please enter the security
-code</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img
-	src="${pageContext.request.contextPath}/getCaptcha.do" id="captcha">
+code</label> <div class="clear"></div>
+<img src="${pageContext.request.contextPath}/getCaptcha.do" id="captcha">
+&nbsp;&nbsp;&nbsp;&nbsp;
 <input type="text" name="security_code" id="security_code" value=""
 	class="securityCode" onblur="validateSecurityCode()"/>
 <span id="secCodeError"></span><input type="hidden" id="secErr" value="<%= (String) session.getAttribute("Code")%>"/>
 </div>
 
+<div class="clear"></div>
 <div class="divContent"><input name="t_and_c" id="t_and_c" type="checkbox"
 	onchange="privacyChecked()" />&nbsp;&nbsp;&nbsp;&nbsp;I agree to the <a
 	href="${pageContext.request.contextPath}/privacyPolicy.jsp"
 	target="_blank"> terms and conditions</a></div>
-
+<div class="clear"></div>
 <div><input type="submit" value="Submit" disabled="disabled"
 	name="submit" id="submit" onclick="return validateSubmission();">
 </div>
+<div class="clear"></div>
 </form>
 </div>
 
+<!--right side bar-->
+<div class="sidebar">
+<div id="toolkit"> <h3>Tool kit</h3>
+<div class="clear"></div>
+<A class=a href="#">Post a report</A> 
+<div class="clear"></div>
+<A class=b href="#">Read reports</A> 
+<div class="clear"></div>
+<A class=a href="#">Report an honest official</A>
+</div>
+<div class="clear"></div>
+
+<div id="toolkit-bg">
+
+</div>
+</div>
 
 <%@include file="../footer.jsp"%>
 </div>

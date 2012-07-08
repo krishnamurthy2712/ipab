@@ -56,7 +56,7 @@
 		href="#">
 	<div class="ididnthavetopaybribe"><span
 		style="display: block; line-height: 12px !important; padding-top: 4px;"><strong>I
-	DIDN'T HAVE TO</strong> </span><span><strong> PAY A</strong> BRIBE</span></div>
+	Didn't Have To</strong> </span><span><strong> Pay A</strong> Bribe</span></div>
 	</a>
 	<ul style="width: 120px !important;">
 		<li><a href="${pageContext.request.contextPath}/complaint?t=notasked">Post Report</a></li>
@@ -67,14 +67,16 @@
 
 
 	<li style="margin-left: 5px !important;"><a href="/bribe-central">
-	<div class="allreports">ALL REPORTS</div>
+	<div class="allreports">All Reports</div>
 	</a></li>
 	<li style="margin-left: 5px !important;"><a href="/news-central">
-	<div class="indthenewstoday ">IN THE NEWS TODAY</div>
+	<div class="indthenewstoday ">In The News Today</div>
 	</a>
 	<ul style="width: 146px !important;">
-		<li><a href="http://ipaidabribe.com/poll">POLLS</a></li>
-		<li><a href="http://ipaidabribe.com/blog?p=videos">VIDEOS</a></li>
+		<li><a href="http://ipaidabribe.com/poll">Blogs</a></li>
+		<li><a href="http://ipaidabribe.com/poll">Correption Quiz</a></li>
+		<li><a href="http://ipaidabribe.com/poll">Polls</a></li>
+		<li><a href="http://ipaidabribe.com/blog?p=videos">Videos</a></li>
 
 
 	</ul>
