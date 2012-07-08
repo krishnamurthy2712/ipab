@@ -46,17 +46,17 @@ out.println("Code "+ sec);
 
 if(type.equals("paid"))
 {
-	redurl = request.getContextPath() + "/readbribestory/ipaid.jsp";
+	redurl = "/reports?t=paid";
   //  $head_img = 'reg.png';
 }
 else if(type.equals("notpaid"))
 {
-	redurl = request.getContextPath() + "/readbribestory/ididnotpaid.jsp";
+	redurl = "/reports?t=notpaid";
     //$head_img = 'reg.png';
 }
 else if(type.equals("dinthvtopay"))
 {
-	redurl = request.getContextPath() + "/readbribestory/donthavetopaid.jsp";
+	redurl = "/reports?t=notasked";;
    // $head_img = 'reg.png';
 }
 else if(type.equals("govt_promises"))
@@ -149,15 +149,17 @@ function disableSubmit(val)
 </head>
 <body>
 <%@include file="../header.jsp" %>
-<div class="pageHeader">
+<div class="clear"></div>
+<div id="bg-wrapper">
+<div class="breadcrumb">
+	<div class="clear"></div>
+		<a href="${pageContext.request.contextPath}" style="text-decoration: none;">Home</a> > 
+	<a href="${pageContext.request.contextPath}<%=redurl %>" style="text-decoration: none;">Bribe Report</a> > Share your thought
 <center><br>
 <h2 class="pageHeaderH2">Bribes Registered</h2>
 </center>
 </div>
-<div id="mainContent" class="mainContent">
-<div class="blog_container divtab">
-<p><a href="<%=redurl %>" class="yellow_box">&lt;&lt; Back To </a></p>
-<br />
+<div class="add_comments-block-box">
 <%
 int id = Integer.parseInt(postId);
 SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy - hh:mm"); 
@@ -285,7 +287,7 @@ Reported : <%=sdf.format(dpbVO.getCreatedDate()) %> | City : <%=dpbVO.getCCity()
 	}else
 	{
 		%>
-			<center><b> No Comments found.</b>
+			<center><b> No Comments found.</b></center>
 		<%
 	}
     
@@ -417,7 +419,7 @@ else if(type.equals("govt_promises"))
 </table>
 </form>
 </div>
-</div>
 <%@include file="../footer.jsp" %>
+</div>
 </body>
 </html>

@@ -74,7 +74,7 @@
 	</a>
 	<ul style="width: 146px !important;">
 		<li><a href="http://ipaidabribe.com/poll">Blogs</a></li>
-		<li><a href="http://ipaidabribe.com/poll">Correption Quiz</a></li>
+		<li><a href="http://ipaidabribe.com/poll">Corruption Quiz</a></li>
 		<li><a href="http://ipaidabribe.com/poll">Polls</a></li>
 		<li><a href="http://ipaidabribe.com/blog?p=videos">Videos</a></li>
 

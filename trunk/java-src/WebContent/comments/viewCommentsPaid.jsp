@@ -42,18 +42,6 @@ function addComment(typeId,type)
 </head>
 <body>
 <%@include file="../header.jsp" %> 
-<div class="pageHeader">
-<center><br>
-<h2 class="pageHeaderH2">Bribes Registered</h2>
-</center>
-</div>
-<div id="mainContent" class="mainContent">
-
-<div id="blog">
-<div class="blog_container">
-           
-<p><a href="${pageContext.request.contextPath}/readbribestory/ipaid.jsp" class="yellow_box">&lt;&lt; Back To Reports</a></p>
-<br />
 <%
 	String strId = request.getParameter("id");
 
@@ -64,6 +52,18 @@ function addComment(typeId,type)
 		PaidBribesVO pbVO = ipab.viewDetailPaidBribes(id);
 		SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy - hh:mm"); 
 %>
+<div class="clear"></div>
+<div id="bg-wrapper">
+<div class="breadcrumb">
+	<div class="clear"></div>
+		<a href="${pageContext.request.contextPath}" style="text-decoration: none;">Home</a> > 
+	<a href="${pageContext.request.contextPath}/reports?t=paid" style="text-decoration: none;">Bribe Report</a> > <%=pbVO.getCName() %>
+<center><br>
+<h2 class="pageHeaderH2">Bribes Registered</h2>
+</center>
+</div>
+<div class="comments-block-box">
+
 <h3><%=pbVO.getCName() %></h3>
 <div class="report_reg">
         Reported : <%=sdf.format(pbVO.getCreatedDate()) %> 
@@ -72,30 +72,28 @@ function addComment(typeId,type)
         | <%=pbVO.getDeptName() %>
 </div>
 <br>
-<div class="clear"></div>
-<div class="report_reg">
-<table class="details_table" width="100%" summary="this table has the details for a certain report.">
+
+<table width="100%" summary="this table has the details for a certain report.">
     <tr>
-        <th width="20%"><span class="desc_lebel">Department:</span></th>
-        <td><%=pbVO.getDeptName() %></td>
+        <th align="left" style="width: 100px;"><span>Department:</span></th>
+        <td align="left"><%=pbVO.getDeptName() %></td>
     </tr>
     <tr>
-        <th><span class="desc_lebel">Transaction:</span></th>
-        <td><%=pbVO.getTransName() %></td>
+        <th align="left" style="width: 100px;"><span>Transaction:</span></th>
+        <td align="left"><%=pbVO.getTransName() %></td>
     </tr>    
     <tr>
-        <th><span class="desc_lebel">Bribe Type:</span></th>
-        <td><%=pbVO.getCBribeType() %></td>
+        <th align="left" style="width: 100px;"><span>Bribe Type:</span></th>
+        <td align="left"><%=pbVO.getCBribeType() %></td>
     </tr>
     <tr>
-        <th><span class="desc_lebel">Details:</span></th>
-        <td><%=pbVO.getCAdditionalInfo() %></td>
+        <th align="left" style="width: 100px;"><span>Details:</span></th>
+        <td align="left"><%=pbVO.getCAdditionalInfo() %></td>
     </tr>
-<tr><td>   </td></tr>
-<tr><td><div class="report_reg"><a href="javaScript: addComment('<%=pbVO.getId() %>','paid')" class="yellow_box">Add a comment</a></div></td></tr>
 </table>
+<div align="right"><a href="javaScript: addComment('<%=pbVO.getId() %>','paid')" class="yellow_box">Add a comment</a></div>
 <div class="clear"></div>
-</div>
+
 <br>
 <%
 			ArrayList<CommentVO> comments = ipab.viewVoteComments(id );
@@ -105,30 +103,29 @@ function addComment(typeId,type)
 				{
 					CommentVO comment = comments.get(j);
 			%>
-			<div class="vote_comment" <%=(comments.size()>0)? "style='border-top:1px solid #E8AD04;margin-top:10px;'":"" %>>
+			<div class="vote_comment">
 				<h2><%=comment.getSubject() %></h2>
 				<p><%=comment.getComment() %></p>
 			</div>
-			<br><br>
-			
 			
 				<%
 				}
 			}else
 			{
 				%>
+					<div class="vote_comment">
 					<center><b> No Comments found.</b>
 					<br>Be the first person to <a href="javaScript: addComment('<%=pbVO.getId() %>','paid')">Comment</a>.</center>
+					</div>
 				<%
 			}
 	
 	}
 	%>
 
+</div>
 
-</div><!-- # eof blog -->
-</div><!-- #eof blog_container -->
-</div> <!-- #eof blog_container -->
 <%@include file="../footer.jsp" %>
+</div>
 </body>
 </html>

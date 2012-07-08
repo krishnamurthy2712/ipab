@@ -1692,7 +1692,6 @@ Bribe filter box
 	padding-bottom:25px;
 	margin-bottom: 20px;
 	margin-top: 20px;
-	clear:both;
 }
 
 .report_reg h2{
@@ -1728,8 +1727,9 @@ background:url(http://localhost:8080/ipab-java/theme/images/paid.png) no-repeat 
 	margin-left:5px;
 }
 .report_reg_more{
-width:500px;
+width:100%;
 margin-top:5px;
+padding-right:10px;
 float:left;
 }
 
@@ -1786,3 +1786,60 @@ Share facebook and twitter views
 .tweet_share_view:hover{
 	background-position:0 -45px;
 }
+
+/*
+Comments styles
+*/
+.comments-block-box {
+	width: 650px;
+	background-color: #fff;
+	FONT-FAMILY: "Century Gothic", "Helvetica Neue", Arial, Helvetica,"Nimbus Sans L", sans-serif;
+	display: inline-block;
+	margin: 10px;
+	padding: 10px 10px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #d2cfd7;
+	border-right-color: #dad8e0;
+	border-bottom-color: #c2bcc5;
+	box-shadow: inset 0 1px 1px #9f9d9f, 3px 0px 3px #9f9d9f;
+	-o-box-shadow: inset 0 1px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+	-webkit-box-shadow: inset 0 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+	-moz-box-shadow: inset 0px 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+}
+
+.vote_comment{
+	padding:10px;
+	margin-left:10px;
+	border: #e9eff3 1px solid;
+}
+.vote_comment h2{
+	color:#A04242!important;
+}
+
+.add_comments-block-box {
+	width: 650px;
+	background-color: #fff;
+	FONT-FAMILY: "Century Gothic", "Helvetica Neue", Arial, Helvetica,"Nimbus Sans L", sans-serif;
+	display: inline-block;
+	margin: 10px;
+	padding: 10px 10px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #d2cfd7;
+	border-right-color: #dad8e0;
+	border-bottom-color: #c2bcc5;
+	box-shadow: inset 0 1px 1px #9f9d9f, 3px 0px 3px #9f9d9f;
+	-o-box-shadow: inset 0 1px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+	-webkit-box-shadow: inset 0 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+	-moz-box-shadow: inset 0px 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+}
+
