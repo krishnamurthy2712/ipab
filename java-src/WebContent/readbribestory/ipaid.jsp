@@ -228,38 +228,33 @@
 			<div class="report_reg_paid">PAID<span><%=pbVo.getCAmountPaid() %></span></div>
 		
 		    <div class="clear"></div>
-				<div id="more_link<%=pbVo.getId() %>" <%=readMore %>>
+				<div id="more_link<%=pbVo.getId() %>" <%=readMore %> align="right">
 					<div class="report_reg_more">
 			            <a href="#" class="rad" onclick="show_more('<%=pbVo.getId() %>'); return false;">Read More</a> 
-			            <a href="javaScript: addComment('<%=pbVo.getId() %>','paid')">Add Comment</a> 
-			            <a href="${pageContext.request.contextPath}/comments/viewCommentsPaid.jsp?id=<%=pbVo.getId() %>"><%=pbVo.getNumComments() %> Comments</a>
-			            <a href="http://www.facebook.com/share.php?u=" target="_blank" class="facebook_share_view"></a>
-			            <a href="http://twitter.com/share?url=" target="_blank" class="tweet_share_view"></a>
-			            <!--<span id="count<?php echo $row->id;?>_1"><?php echo $row->count;?></span> views-->
 		            </div>
 				</div>
 				<div class="clear"></div>
-				<div id="more_d_<%=pbVo.getId() %>" <%=display %> >
+				<div id="more_d_<%=pbVo.getId() %>" <%=display %> align="right">
 						<table class="details_table" width="100%" summary="this table has the details for a certain report.">
 							<tr>
-						    	<th width="20%"><span class="desc_lebel">Department:</span></th>
-						        <td><%=pbVo.getDeptName() %></td>
+						    	<th align="left" style="width: 100px;"><span >Department:</span></th>
+						        <td align="left"><%=pbVo.getDeptName() %></td>
 						    </tr>
 							<tr>
-						    	<th><span class="desc_lebel">Office Location:</span></th>
-						        <td><%=pbVo.getOtherLocation()%></td>
+						    	<th align="left" style="width: 100px;"><span >Office Location:</span></th>
+						        <td align="left"><%=pbVo.getOtherLocation()%></td>
 						    </tr>
 							<tr>
-						    	<th><span class="desc_lebel">Transaction:</span></th>
-						        <td><%=pbVo.getTransName() %></td>
+						    	<th align="left" style="width: 100px;"><span >Transaction:</span></th>
+						        <td align="left"><%=pbVo.getTransName() %></td>
 						    </tr>    
 							<tr>
-						    	<th><span class="desc_lebel">Bribe Type:</span></th>
-						        <td><%=pbVo.getCBribeType() %></td>
+						    	<th align="left" style="width: 100px;"><span >Bribe Type:</span></th>
+						        <td align="left"><%=pbVo.getCBribeType() %></td>
 						    </tr>
 							<tr>
-						    	<th><span class="desc_lebel">Details:</span></th>
-						        <td><%=pbVo.getCAdditionalInfo() %></td>
+						    	<th align="left" style="width: 100px;"><span >Details:</span></th>
+						        <td align="left"><%=pbVo.getCAdditionalInfo() %></td>
 						    </tr>
 						</table>
 		                <div class="clear"></div>
@@ -269,7 +264,7 @@
 						<div class="report_reg_more">
 							<a href="#" class="rad" onclick="show_less('<%=pbVo.getId() %>'); return false;">Read less...</a> 
 							<a href="javaScript: addComment('<%=pbVo.getId() %>','paid')">Add Comment</a> 
-				            <a href="${pageContext.request.contextPath}/comments/viewCommentsPaid.jsp?id=<%=pbVo.getId() %>"><%=pbVo.getNumComments() %> Comments</a>
+				            <a href="${pageContext.request.contextPath}/comments?t=paid&id=<%=pbVo.getId() %>"><%=pbVo.getNumComments() %> Comments</a>
 				            <a href="http://www.facebook.com/share.php?u=" target="_blank" class="facebook_share_view"></a>
 				            <a href="http://twitter.com/share?url=" target="_blank" class="tweet_share_view"></a>
 				            <!--<span id="count<?php echo $row->id;?>_1"><?php echo $row->count;?></span> views-->

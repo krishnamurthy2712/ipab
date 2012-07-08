@@ -171,6 +171,15 @@
     	<servlet-class>
     	com.ipablive.services.GetBribeReports</servlet-class>
     </servlet>
+    <servlet>
+    	<description>
+    	</description>
+    	<display-name>
+    	GetCommentsService</display-name>
+    	<servlet-name>GetCommentsService</servlet-name>
+    	<servlet-class>
+    	com.ipablive.services.GetCommentsService</servlet-class>
+    </servlet>
 
     <servlet-mapping id="RDS_DISPATCH_MAPPING">
         <servlet-name>RDSDispatchServlet</servlet-name>
@@ -193,6 +202,10 @@
     <servlet-mapping>
     	<servlet-name>GetBribeReports</servlet-name>
     	<url-pattern>/reports</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>GetCommentsService</servlet-name>
+    	<url-pattern>/comments</url-pattern>
     </servlet-mapping>
 	
 	

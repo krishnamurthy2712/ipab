@@ -218,51 +218,46 @@ ReportsCountVO rptVo = ipab.getReportsCount();
 	<div class="report_reg_det">
 			<strong>Reported :</strong> <%=bribe.getCreatedDate() %>  
 			| <strong>City :</strong> <%=bribe.getCCity() %>
-			| <strong><%=bribe.getCDept() %></strong>
+			| <strong><%=bribe.getDeptName() %></strong>
 	</div>
     <div class="clear"></div>
-		<div id="more_link<%=bribe.getId() %>" <%=readMore %>>
+		<div id="more_link<%=bribe.getId() %>" <%=readMore %> align="right">
 			<div class="report_reg_more">
 	            <a href="#" class="rad" onclick="show_more('<%=bribe.getId() %>'); return false;">Read More</a> 
-	            <a href="javaScript: addComment('<%=bribe.getId() %>','dinthvtopay')">Add Comment</a> 
-	            <a href="${pageContext.request.contextPath}/comments/viewCommentsDidntHavetoPay.jsp?id=<%=bribe.getId() %>"><%=bribe.getNumComments() %> Comments</a>
-	            <a href="http://www.facebook.com/share.php?u=" target="_blank" class="facebook_share_view"></a>
-	            <a href="http://twitter.com/share?url=" target="_blank" class="tweet_share_view"></a>
-	            <!--<span id="count<?php echo $row->id;?>_1"><?php echo $row->count;?></span> views-->
             </div>
 		</div>
 
 		<div id="more_d_<%=bribe.getId() %>" <%=display %> >
 				<table class="details_table" width="100%" summary="this table has the details for a certain report.">
 					<tr>
-				    	<th width="20%"><span class="desc_lebel">Department:</span></th>
-				        <td><%=bribe.getDeptName() %></td>
+				    	<th align="left" style="width: 100px;"><span>Department:</span></th>
+				        <td align="left"><%=bribe.getDeptName() %></td>
 				    </tr>
 					<tr>
-				    	<th><span class="desc_lebel">Office Location:</span></th>
-				        <td><%=bribe.getOtherLocation()%></td>
+				    	<th align="left" style="width: 100px;"><span>Office Location:</span></th>
+				        <td align="left"><%=bribe.getOtherLocation()%></td>
 				    </tr>
 					<tr>
-				    	<th><span class="desc_lebel">Transaction:</span></th>
-				        <td><%=bribe.getTransName() %></td>
+				    	<th align="left" style="width: 100px;"><span>Transaction:</span></th>
+				        <td align="left"><%=bribe.getTransName() %></td>
 				    </tr>    
 					<tr>
-				    	<th><span class="desc_lebel">Bribe Type:</span></th>
-				        <td><%=bribe.getCBribeResistedBy() %></td>
+				    	<th align="left" style="width: 100px;"><span>Bribe Type:</span></th>
+				        <td align="left"><%=bribe.getCBribeResistedBy() %></td>
 				    </tr>
 					<tr>
-				    	<th><span class="desc_lebel">Details:</span></th>
-				        <td><%=bribe.getCAdditionalInfo() %></td>
+				    	<th align="left" style="width: 100px;"><span>Details:</span></th>
+				        <td align="left"><%=bribe.getCAdditionalInfo() %></td>
 				    </tr>
 				</table>
                 <div class="clear"></div>
 
 				<div class="share_tool_d">
 				<div id="less_link<%=bribe.getId() %>">
-				<div class="report_reg_more">
+				<div class="report_reg_more" align="right">
 					<a href="#" class="rad" onclick="show_less('<%=bribe.getId() %>'); return false;">Read less...</a> 
 					<a href="javaScript: addComment('<%=bribe.getId() %>','dinthvtopay')">Add Comment</a> 
-		            <a href="${pageContext.request.contextPath}/comments/viewCommentsDidntHavetoPay.jsp?id=<%=bribe.getId() %>"><%=bribe.getNumComments() %> Comments</a>
+		            <a href="${pageContext.request.contextPath}/comments?t=notasked&id=<%=bribe.getId() %>"><%=bribe.getNumComments() %> Comments</a>
 		            <a href="http://www.facebook.com/share.php?u=" target="_blank" class="facebook_share_view"></a>
 		            <a href="http://twitter.com/share?url=" target="_blank" class="tweet_share_view"></a>
 		            <!--<span id="count<?php echo $row->id;?>_1"><?php echo $row->count;?></span> views-->

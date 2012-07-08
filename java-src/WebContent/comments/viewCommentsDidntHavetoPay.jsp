@@ -44,18 +44,6 @@ function addComment(typeId,type)
 </head>
 <body>
 <%@include file="../header.jsp" %> 
-<div class="pageHeader">
-<center><br>
-<h2 class="pageHeaderH2">Bribes Registered</h2>
-</center>
-</div>
-<div id="mainContent" class="mainContent">
-
-<div id="blog">
-<div class="blog_container">
-           
-<p><a href="${pageContext.request.contextPath}/readbribestory/donthavetopaid.jsp" class="yellow_box">&lt;&lt; Back To Reports</a></p>
-<br />
 <%
 	String strId = request.getParameter("id");
 
@@ -66,6 +54,18 @@ function addComment(typeId,type)
 		DontHavetoPayVO dbVO = idontHavepay.viewDetailDintHaveToPay(id);
 		//SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy - hh:mm"); 
 %>
+<div class="clear"></div>
+<div id="bg-wrapper">
+<div class="breadcrumb">
+	<div class="clear"></div>
+		<a href="${pageContext.request.contextPath}" style="text-decoration: none;">Home</a> > 
+	<a href="${pageContext.request.contextPath}/reports?t=notasked" style="text-decoration: none;">Bribe Report</a> > <%=dbVO.getCName() %>
+<center><br>
+<h2 class="pageHeaderH2">Bribes Registered</h2>
+</center>
+</div>
+<div class="comments-block-box">
+
 <h3><%=dbVO.getCName() %></h3>
 <div class="report_reg">
         Reported : <%=dbVO.getCreatedDate() %> 
@@ -77,35 +77,36 @@ function addComment(typeId,type)
 <div class="report_reg">
 <table class="details_table" width="100%" summary="this table has the details for a certain report.">
     <tr>
-        <th width="20%"><span class="desc_lebel">Department:</span></th>
-        <td><%=dbVO.getDeptName() %></td>
+        <th align="left" style="width: 100px;"><span>Department:</span></th>
+        <td align="left"><%=dbVO.getDeptName() %></td>
     </tr>
     <tr>
-        <th><span class="desc_lebel">Transaction:</span></th>
-        <td><%=dbVO.getTransName() %></td>
+        <th align="left" style="width: 100px;"><span>Transaction:</span></th>
+        <td align="left"><%=dbVO.getTransName() %></td>
     </tr>    
     <tr>
-		    	<th><span class="desc_lebel">Reason:</span></th>
+		    	<th align="left" style="width: 100px;"><span>Reason:</span></th>
 		        <td>
 <%
-		if(dbVO.getCBribeResistedBy().equalsIgnoreCase("govt"))
+		if(dbVO.getCBribeResistedBy()!=null && dbVO.getCBribeResistedBy().equalsIgnoreCase("govt"))
 		{
 			out.println("Came accross an honest govt official");
 		}
 	    else
 	    {
-	           out.println("Resisted by "+dbVO.getCBribeResistedBy());
+	           out.println("Resisted by "+dbVO.getCBribeType());
 	    }
 %>
                 </td>
 		    </tr>
     <tr>
-        <th><span class="desc_lebel">Details:</span></th>
-        <td><%=dbVO.getCAdditionalInfo() %></td>
+        <th align="left" style="width: 100px;"><span>Details:</span></th>
+        <td align="left"><%=dbVO.getCAdditionalInfo() %></td>
     </tr>
-<tr><td>   </td></tr>
-<tr><td><div class="report_reg"><a href="javaScript: addComment('<%=dbVO.getId() %>','dinthvtopay')" class="yellow_box">Add a comment</a></div></td></tr>
+
 </table>
+<div class="clear"></div>
+<div class="report_reg" align="right"><a href="javaScript: addComment('<%=dbVO.getId() %>','notasked')" class="yellow_box">Add a comment</a></div>
 <div class="clear"></div>
 </div>
 	<%
@@ -116,7 +117,7 @@ function addComment(typeId,type)
 		{
 			CommentVO comment = comments.get(j);
 	%>
-	<div class="vote_comment" <%=(comments.size()>0)? "style='border-top:1px solid #E8AD04;margin-top:10px;'":"" %>>
+	<div class="vote_comment">
 		<h2><%=comment.getSubject() %></h2>
 		<p><%=comment.getComment() %></p>
 	</div>
@@ -128,8 +129,10 @@ function addComment(typeId,type)
 	}else
 	{
 		%>
+			<div class="vote_comment" align="right">
 			<center><b> No Comments found.</b>
 			<br>Be the first person to <a href="javaScript: addComment('<%=dbVO.getId() %>','dinthvtopay')">Comment</a>.</center>
+			</div>
 		<%
 	}
 	
@@ -137,15 +140,14 @@ function addComment(typeId,type)
 	else
 	{
 		%>
-		asdf
 		<%
 	}
 	%>
 
 
-</div><!-- # eof blog -->
-</div><!-- #eof blog_container -->
-</div> <!-- #eof blog_container -->
+</div>
+
 <%@include file="../footer.jsp" %>
+</div>
 </body>
 </html>
