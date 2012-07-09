@@ -97,19 +97,35 @@ function hideErrorMessage()
 }
 
 </script>
+<style type="text/css">
+.required 
+{
+	COLOR: #ff4b33; 
+	FONT-WEIGHT: bold;
+}
 
+label {
+	COLOR: #888; 
+	FONT-SIZE: 12px;
+	width: 200px;
+}
+
+</style>
 </head>
 <body>
 <%@include file="../header.jsp" %>
-<div class="pageHeader">
-<center><br>
-<h2 class="pageHeaderH2">Contact Us</h2>
-</center>
-</div>
-<div id="mainContent" class="mainContent">
-<div id="blog">
-    <div class="blog_container contact_ipab">
-<div><div class="contact">
+<div class="clear"></div>
+
+<div id="bg-wrapper" class="bg-wrapper">
+	<div class="breadcrumb">
+			<div class="clear"></div>
+				<a href="${pageContext.request.contextPath}" style="text-decoration: none;">Home</a> > Contact us
+		<center><br>
+		<h2 class="pageHeaderH2">Contact us</h2>
+		</center>
+		</div>
+<div class="about-block-box">
+
 	<p>
 		<span>I Paid A Bribe</span><br />
 		<span> xxxxxx</span></p>
@@ -121,37 +137,40 @@ function hideErrorMessage()
 		xxxxxxxx.</p>
 	<p>
 		Phone:&nbsp;&nbsp;&nbsp; +123 1234567890<br />
-		Website: <a href="http://www.ipaidabribe.or.ke" title="Website">www.ipaidabribe.or.ke</a><br />
-		Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="mailto:info@ipaidabribe.or.ke" title="E-mail">info@ipaidabribe.or.ke</a></p>
+		Website: <a href="http://www.ipaidabribe.org.gh" title="Website">www.ipaidabribe.org.gh</a><br />
+		Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="mailto:info@ipaidabribe.org.gh" title="E-mail">info@ipaidabribe.org.gh</a></p>
+<div class="clear"></div><div class="clear"></div>
+<h3>
+	You can leave a message using the contact form below.</h3>
+<div class="clear"></div><div class="clear"></div>
+<form action="contact.do"  accept-charset="UTF-8" method="post" id="contact-mail-page" class="ipabforms">
+<div class="clear"></div>
+<div id="errors">
+<div id="validationErrors"></div>
 </div>
-<h1>
-	You can leave a message using the contact form below.</h1>
-<br>
-<form action="contact.do"  accept-charset="UTF-8" method="post" id="contact-mail-page">
-<div align="center" id="validationErrors" ></div>
-<br>
-<div class="form-item" id="edit-name-wrapper">
- <label for="nameEntered">Your name: <span class="form-required" title="This field is required.">*</span></label>
- <input type="text" maxlength="255" name="name" id="nameEntered" size="60" value="" class="form-text required" onkeydown="hideErrorMessage()" />
+<div class="divContent" id="edit-name-wrapper">
+ <label for="nameEntered" style="width: 200px;">Your name: <span class="required">*</span></label>
+ <input type="text" maxlength="255" name="name" id="nameEntered" size="60" value=""  onkeydown="hideErrorMessage()" />
 </div>
-<div class="form-item" id="edit-mail-wrapper">
- <label for="emailAddr">Your e-mail address: <span class="form-required" title="This field is required.">*</span></label>
- <input type="text" maxlength="255" name="mail" id="emailAddr" size="60" value="" class="form-text required" onkeydown="hideErrorMessage()"/>
+<div class="divContent" id="edit-mail-wrapper">
+ <label for="emailAddr">Your e-mail address: <span class="required">*</span></label>
+ <input type="text" maxlength="255" name="mail" id="emailAddr" size="60" value=""  onkeydown="hideErrorMessage()"/>
 </div>
-<div class="form-item" id="edit-subject">
- <label for="mailSubject">Subject: <span class="form-required" title="This field is required.">*</span></label>
- <input type="text" maxlength="255" name="subject" id="mailSubject" size="60" value="" class="form-text required" onkeydown="hideErrorMessage()"/>
+<div class="divContent" id="edit-subject">
+ <label for="mailSubject">Subject: <span class="required">*</span></label>
+ <input type="text" maxlength="255" name="subject" id="mailSubject" size="60" value=""  onkeydown="hideErrorMessage()"/>
 </div>
-<div class="form-item" id="edit-message">
- <label for="mailBody">Message: <span class="form-required" title="This field is required.">*</span></label>
- <textarea cols="60" rows="5" name="message" id="mailBody"  class="form-textarea resizable required" onkeydown="hideErrorMessage()"></textarea>
+<div class="divContent" id="edit-message">
+ <label for="mailBody">Message: <span class="required">*</span></label>
+ <textarea cols="60" rows="5" name="message" id="mailBody" onkeydown="hideErrorMessage()"></textarea>
 </div>
 <input type="submit" value="Submit"	name="submit" id="submit" onclick="return validateSubmission();">
 <br>
-</div></form>
-</div>   
-	</div>
+</form>
+  
 </div>
+
 <%@include file="../footer.jsp" %>
+</div>
 </body>
 </html>

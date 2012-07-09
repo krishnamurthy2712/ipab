@@ -73,10 +73,10 @@
 	<div class="indthenewstoday ">In The News Today</div>
 	</a>
 	<ul style="width: 146px !important;">
-		<li><a href="http://ipaidabribe.com/poll">Blogs</a></li>
-		<li><a href="http://ipaidabribe.com/poll">Corruption Quiz</a></li>
-		<li><a href="http://ipaidabribe.com/poll">Polls</a></li>
-		<li><a href="http://ipaidabribe.com/blog?p=videos">Videos</a></li>
+		<li><a href="#">Blogs</a></li>
+		<li><a href="#">Corruption Quiz</a></li>
+		<li><a href="${pageContext.request.contextPath}/polls/polls.jsp">Polls</a></li>
+		<li><a href="#">Videos</a></li>
 
 
 	</ul>

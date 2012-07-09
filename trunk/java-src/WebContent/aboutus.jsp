@@ -29,14 +29,18 @@
 </head>
 <body>
 <%@include file="../header.jsp" %>
-<div class="pageHeader">
-<center><br>
-<h2 class="pageHeaderH2">About I Paid a Bribe</h2>
-</center>
-</div>
-<div id="mainContent" class="mainContent">
-<p >
-	<a href="http://www.ipaidabribe.or.ke/" style="text-decoration: none; font-size: 12px; color: rgb(155, 27, 27);" title="www.ipaidabribe.or.ke"><strong>www.ipaidabribe.or.ke</strong><span class="Apple-converted-space"> </span></a>is
+<div class="clear"></div>
+<div id="bg-wrapper" class="bg-wrapper">
+	<div class="breadcrumb">
+			<div class="clear"></div>
+				<a href="${pageContext.request.contextPath}" style="text-decoration: none;">Home</a> > About I Paid a Bribe
+		<center><br>
+		<h2 class="pageHeaderH2">About I Paid a Bribe</h2>
+		</center>
+		</div>
+<div class="about-block-box">
+<p style="margin: 20px; padding: 10px;" align="justify">
+	<a href="http://www.ipaidabribe.org.gh/" style="text-decoration: none; font-size: 12px; color: rgb(155, 27, 27);" title="www.ipaidabribe.org.gh"><strong>www.ipaidabribe.org.gh</strong><span class="Apple-converted-space"> </span></a>is
  Wamani Trust's unique initiative to tackle corruption by harnessing the
  collective energy of citizens. You can report on the nature, number, 
 pattern, types, location, frequency and values of actual corrupt acts on
@@ -45,18 +49,17 @@ snapshot of bribes occurring across your city. We will use them to argue
  for improving governance systems and procedures, tightening law 
 enforcement and regulation and thereby reduce the scope for corruption 
 in obtaining services from the government.</p>
-<p >
-	&nbsp;</p>
-<p >
+
+<p style="margin: 20px; padding: 10px;" align="justify">
 	We invite you to register any recent or old bribes you have paid. 
 Please tell us if you resisted a demand for a bribe, or did not have to 
 pay a bribe, because of a new procedure or an honest official who helped
  you. We do not ask for your name or phone details, so feel free to 
 report on the formats provided.</p>
-<p>
+<p style="margin: 20px; padding: 10px;" align="center">
 	<img src="${pageContext.request.contextPath}/theme/images/ipabProcess.png" title="ipab"></p>
       
-
+</div>
 </div> <!-- #eof blog_container -->
 </div>
 <%@include file="../footer.jsp" %>

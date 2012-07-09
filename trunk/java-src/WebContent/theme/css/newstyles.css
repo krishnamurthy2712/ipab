@@ -727,7 +727,7 @@ Tooltip
 Widgets for home, paid, didnt paid etc
 */
 .home-block-box {
-	width: 370px !important;
+	width: 450px !important;
 	height: 270px !important;
 	background-color: #fff;
 	display: inline-block;
@@ -748,8 +748,13 @@ Widgets for home, paid, didnt paid etc
 	-moz-box-shadow: inset 0px 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
 }
 
+.right-box
+{
+	float: right;
+}
+
 .home-block-box2 {
-	width: 370px !important;
+	width: 450px !important;
 	height: 515px !important;
 	background-color: #fff;
 	display: inline-block;
@@ -773,8 +778,7 @@ Widgets for home, paid, didnt paid etc
 .complaint-block-box {
 	width: 650px;
 	background-color: #fff;
-	FONT-FAMILY: "Century Gothic", "Helvetica Neue", Arial, Helvetica,
-		"Nimbus Sans L", sans-serif;
+	FONT-FAMILY: "Century Gothic", "Helvetica Neue", Arial, Helvetica,"Nimbus Sans L", sans-serif;
 	display: inline-block;
 	margin: 10px;
 	padding: 10px 10px;
@@ -808,6 +812,78 @@ Widgets for home, paid, didnt paid etc
 	padding: 5px;
 	margin-bottom:10px;
 	display: inline-block;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #d2cfd7;
+	border-right-color: #dad8e0;
+	border-bottom-color: #c2bcc5;
+	box-shadow: inset 0 1px 1px #9f9d9f, 3px 0px 3px #9f9d9f;
+	-o-box-shadow: inset 0 1px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+	-webkit-box-shadow: inset 0 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+	-moz-box-shadow: inset 0px 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+}
+
+.about-block-box {
+	width: 96% !important;
+	height: 100% !important;
+	background-color: #fff;
+	FONT-FAMILY: "Century Gothic", "Helvetica Neue", Arial, Helvetica,"Nimbus Sans L", sans-serif;
+	FONT-SIZE: 13px;
+	display: inline-block;
+	margin-left: 8px;
+	margin-bottom: 10px;
+	padding: 10px 10px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #d2cfd7;
+	border-right-color: #dad8e0;
+	border-bottom-color: #c2bcc5;
+	box-shadow: inset 0 1px 1px #9f9d9f, 3px 0px 3px #9f9d9f;
+	-o-box-shadow: inset 0 1px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+	-webkit-box-shadow: inset 0 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+	-moz-box-shadow: inset 0px 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+}
+
+.contactus-block-box {
+	width: 96% !important;
+	FONT-FAMILY: "Century Gothic", "Helvetica Neue", Arial, Helvetica,"Nimbus Sans L", sans-serif;
+	height: 100% !important;
+	background-color: #fff;
+	display: inline-block;
+	margin-left: 8px;
+	margin-bottom: 10px;
+	padding: 10px 10px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #d2cfd7;
+	border-right-color: #dad8e0;
+	border-bottom-color: #c2bcc5;
+	box-shadow: inset 0 1px 1px #9f9d9f, 3px 0px 3px #9f9d9f;
+	-o-box-shadow: inset 0 1px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+	-webkit-box-shadow: inset 0 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+	-moz-box-shadow: inset 0px 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+}
+
+.updates-block-box {
+	width: 400 !important;
+	height: 100% !important;
+	background-color: #fff;
+	display: inline-block;
+	margin-left: 8px;
+	margin-bottom: 10px;
+	padding: 10px 10px;
 	border-top-width: 1px;
 	border-right-width: 1px;
 	border-bottom-width: 1px;
@@ -975,7 +1051,7 @@ html ul.tabs li.active,html ul.tabs li.active a:hover,html ul.new li.active,html
 	margin-bottom: 20px;
 	background: #e2e1e9;
 	padding: 10px;
-	width: 350px !important;
+	width: 430px !important;
 	height: 320px !important;
 }
 
@@ -994,7 +1070,6 @@ html ul.tabs li.active,html ul.tabs li.active a:hover,html ul.new li.active,html
 	background-color: #fff;
 	color: #4b1b05;
 	margin-bottom: 5px;
-	position: static;
 }
 
 /*
@@ -1043,10 +1118,10 @@ Bribe items and bribe fighter styles
 */
 .bribeFighters {
 	border-top: none;
-	clear: both;
-	margin-bottom: 20px;
-	background: #ecba43;
+	margin-bottom: 50px;
+	background: #fff;
 	margin-top: 6px;
+	height: 485px;
 }
 
 .bribeFighters .bribeItems {

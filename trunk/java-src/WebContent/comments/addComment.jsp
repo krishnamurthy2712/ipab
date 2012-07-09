@@ -178,22 +178,22 @@ if(type.equals("paid"))
 	        | <%=pbVO.getDeptName() %>
     </div>
     <div class="report_reg">
-    <table class="details_table" width="100%" summary="this table has the details for a certain report.">
+    <table width="100%" summary="this table has the details for a certain report.">
         <tr>
-	        <th width="20%"><span class="desc_lebel">Department:</span></th>
-	        <td><%=pbVO.getDeptName() %></td>
+	        <th align="left" style="width: 100px;><span class="desc_lebel">Department:</span></th>
+	        <td align="left"><%=pbVO.getDeptName() %></td>
 	    </tr>
 	    <tr>
-	        <th><span class="desc_lebel">Transaction:</span></th>
-	        <td><%=pbVO.getTransName() %></td>
+	        <th align="left" style="width: 100px;><span class="desc_lebel">Transaction:</span></th>
+	        <td align="left"><%=pbVO.getTransName() %></td>
 	    </tr>    
 	    <tr>
-	        <th><span class="desc_lebel">Bribe Type:</span></th>
-	        <td><%=pbVO.getCBribeType() %></td>
+	        <th align="left" style="width: 100px;><span class="desc_lebel">Bribe Type:</span></th>
+	        <td align="left"><%=pbVO.getCBribeType() %></td>
 	    </tr>
 	    <tr>
-	        <th><span class="desc_lebel">Details:</span></th>
-	        <td><%=pbVO.getCAdditionalInfo() %></td>
+	        <th align="left" style="width: 100px;><span class="desc_lebel">Details:</span></th>
+	        <td align="left"><%=pbVO.getCAdditionalInfo() %></td>
 	    </tr>
     </table>
 <div class="clear"></div>
@@ -207,11 +207,10 @@ if(type.equals("paid"))
 				{
 					CommentVO comment = comments.get(j);
 			%>
-			<div class="vote_comment" <%=(comments.size()>0)? "style='border-top:1px solid #E8AD04;margin-top:10px;'":"" %>>
+			<div class="vote_comment">
 				<h2><%=comment.getSubject() %></h2>
 				<p><%=comment.getComment() %></p>
 			</div>
-			<br><br>
 			
 			
 				<%
@@ -219,7 +218,9 @@ if(type.equals("paid"))
 			}else
 			{
 				%>
+				<div class="vote_comment">
 					<center><b> No Comments found.</b></center>
+</div>
 					
 				<%
 			}
@@ -234,18 +235,18 @@ else if(type.equals("notpaid"))
     <div class="report_reg">
 Reported : <%=sdf.format(dpbVO.getCreatedDate()) %> | City : <%=dpbVO.getCCity() %> | <%=dpbVO.getDeptName() %>
 
-		<table class="details_table">
+		<table>
 			<tr>
-		    	<th width="20%"><span class="desc_lebel">Department:</span></th>
-		        <td><%=dpbVO.getDeptName() %></td>
+		    	<th align="left" style="width: 100px;><span class="desc_lebel">Department:</span></th>
+		        <td align="left"><%=dpbVO.getDeptName() %></td>
 		    </tr>
 			<tr>
-		    	<th><span class="desc_lebel">Transaction:</span></th>
-		        <td><%=dpbVO.getTransName() %></td>
+		    	<th align="left" style="width: 100px;><span class="desc_lebel">Transaction:</span></th>
+		        <td align="left"><%=dpbVO.getTransName() %></td>
 		    </tr>    
 			<tr>
-		    	<th><span class="desc_lebel">Reason:</span></th>
-		        <td>
+		    	<th align="left" style="width: 100px;><span class="desc_lebel">Reason:</span></th>
+		        <td align="left">
 <%
 		if(dpbVO.getCBribeResistedBy().equalsIgnoreCase("govt"))
 		{
@@ -259,9 +260,8 @@ Reported : <%=sdf.format(dpbVO.getCreatedDate()) %> | City : <%=dpbVO.getCCity()
                 </td>
 		    </tr>
 			<tr>
-		    	<th><span class="desc_lebel">Details:</span></th>
-		        <td><%=dpbVO.getCAdditionalInfo()%>
-		</td>
+		    	<th align="left" style="width: 100px;><span>Details:</span></th>
+		        <td align="left"><%=dpbVO.getCAdditionalInfo()%></td>
 		    </tr>
 		</table>
     </div>    
@@ -275,7 +275,7 @@ Reported : <%=sdf.format(dpbVO.getCreatedDate()) %> | City : <%=dpbVO.getCCity()
 		{
 			CommentVO comment = comments.get(j);
 	%>
-	<div class="vote_comment" <%=(comments.size()>0)? "style='border-top:1px solid #E8AD04;margin-top:10px;'":"" %>>
+	<div class="vote_comment">
 		<h2><%=comment.getSubject() %></h2>
 		<p><%=comment.getComment() %></p>
 	</div>
@@ -287,7 +287,9 @@ Reported : <%=sdf.format(dpbVO.getCreatedDate()) %> | City : <%=dpbVO.getCCity()
 	}else
 	{
 		%>
+			<div class="vote_comment">
 			<center><b> No Comments found.</b></center>
+			</div>
 		<%
 	}
     
@@ -308,16 +310,16 @@ Reported : <%=sdf.format(dbVO.getCreatedDate()) %>
     
     <table class="details_table">
 			<tr>
-		    	<th width="20%"><span class="desc_lebel">Department:</span></th>
-		        <td><%=dbVO.getDeptName() %></td>
+		    	<th align="left" style="width: 100px;><span class="desc_lebel">Department:</span></th>
+		        <td align="left"><%=dbVO.getDeptName() %></td>
 		    </tr>
 			<tr>
-		    	<th><span class="desc_lebel">Transaction:</span></th>
-		        <td><%=dbVO.getTransName() %></td>
+		    	<th align="left" style="width: 100px;><span class="desc_lebel">Transaction:</span></th>
+		        <td align="left"><%=dbVO.getTransName() %></td>
 		    </tr>    
 			<tr>
-		    	<th><span class="desc_lebel">Reason:</span></th>
-		        <td>
+		    	<th align="left" style="width: 100px;><span class="desc_lebel">Reason:</span></th>
+		        <td align="left">
 <%
 		if(dbVO.getCBribeResistedBy().equalsIgnoreCase("govt"))
 		{
@@ -331,8 +333,8 @@ Reported : <%=sdf.format(dbVO.getCreatedDate()) %>
                 </td>
 		    </tr>
 			<tr>
-		    	<th><span class="desc_lebel">Details:</span></th>
-		        <td><%=dbVO.getCAdditionalInfo() %></td>
+		    	<th align="left" style="width: 100px;><span class="desc_lebel">Details:</span></th>
+		        <td align="left"><%=dbVO.getCAdditionalInfo() %></td>
 		    </tr>
 		</table>
         </div>    
@@ -357,8 +359,10 @@ Reported : <%=sdf.format(dbVO.getCreatedDate()) %>
 	}else
 	{
 		%>
-			<center><b> No Comments found.</b>
-			<br>Be the first person to <a href="javaScript: addComment('<%=dbVO.getId() %>','paid')">Comment</a>.</center>
+			<div class="vote_comment">
+			<b> No Comments found.</b>
+</div>
+			
 		<%
 	}
     
@@ -366,15 +370,7 @@ Reported : <%=sdf.format(dbVO.getCreatedDate()) %>
 else if(type.equals("govt_promises"))
 {
 	 %>
-    <div class="report_reg">
-        <p class="question"><h2> title</h2></a></p>
-        <div id="ans_1" style="display:block; margin:15px 0px 0px 0px;">
-           description
-        </div>
-        <br />
-        <div><strong>Department: </strong><span style="padding-left: 10px;">deptname</span></div>
-        <div><strong>City: </strong><span style="padding-left: 68px;">cityname</span></div>
-    </div>     
+no display
     <%
 }
  %>
@@ -383,7 +379,7 @@ else if(type.equals("govt_promises"))
 <div id="validation_errors">
 </div>
 
-<h1>Add comment</h1>
+<h3>Add comment</h3>
 <div class="error">
 <div id="validationErrors"></div>
 </div>
@@ -391,8 +387,7 @@ else if(type.equals("govt_promises"))
 <table>
 	<tr>
     	<td colspan="2">
-        <label for="subject">Subject</label><br />
-        <input type="hidden" name="subject" size="84" value="" id="subject" /><%=subj %></td>
+        <input type="hidden" name="subject" size="84" value="" id="subject" /></td>
     </tr>
 	<tr>
     	<td colspan="2">
