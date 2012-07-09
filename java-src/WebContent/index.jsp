@@ -57,14 +57,14 @@ int pageHits = comm.getHits();
         </div>
 	</div>
 	
-	<div class="home-block-box bgbox">
+	<div class="home-block-box bgbox right-box">
 		<%@include file="bribeAnalysis.jsp" %>
 	</div>
 	<div class="clear"></div>
 	<div class="home-block-box2 bgbox">
 		<%@include file="bribeReports.jsp" %>
 	</div>
-<div class="home-block-box2 bgbox">
+<div class="home-block-box2 bgbox right-box">
 		<%@include file="bribeFighters.jsp" %>
 	</div>
 
