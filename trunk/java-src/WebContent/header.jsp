@@ -66,10 +66,10 @@
 	</li>
 
 
-	<li style="margin-left: 5px !important;"><a href="/bribe-central">
+	<li style="margin-left: 5px !important;"><a href="#">
 	<div class="allreports">All Reports</div>
 	</a></li>
-	<li style="margin-left: 5px !important;"><a href="/news-central">
+	<li style="margin-left: 5px !important;"><a href="#">
 	<div class="indthenewstoday ">In The News Today</div>
 	</a>
 	<ul style="width: 146px !important;">

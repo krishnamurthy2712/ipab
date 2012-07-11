@@ -41,8 +41,7 @@ BODY {
 
 /* Applied to all the forms in jsps*/
 #ipabforms LABEL {
-	FONT-FAMILY: "Century Gothic", "Helvetica Neue", Arial, Helvetica,
-		"Nimbus Sans L", sans-serif
+	FONT-FAMILY: "Century Gothic", "Helvetica Neue", "Arial, Helvetica","Nimbus Sans L", "sans-serif";
 }
 
 #ipabforms {
@@ -775,6 +774,57 @@ Widgets for home, paid, didnt paid etc
 	-moz-box-shadow: inset 0px 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
 }
 
+.videos-block-box {
+	width: 450px !important;
+	height: 185px !important;
+	background-color: #fff;
+	display: inline-block;
+	margin: 10px;
+	padding: 10px 10px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #d2cfd7;
+	border-right-color: #dad8e0;
+	border-bottom-color: #c2bcc5;
+	box-shadow: inset 0 1px 1px #9f9d9f, 3px 0px 3px #9f9d9f;
+	-o-box-shadow: inset 0 1px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+	-webkit-box-shadow: inset 0 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+	-moz-box-shadow: inset 0px 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+}
+
+.news-block-box {
+	width: 450px !important;
+	height: 185px !important;
+	background-color: #fff;
+	display: inline-block;
+	margin: 10px;
+	padding: 10px 10px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #d2cfd7;
+	border-right-color: #dad8e0;
+	border-bottom-color: #c2bcc5;
+	box-shadow: inset 0 1px 1px #9f9d9f, 3px 0px 3px #9f9d9f;
+	-o-box-shadow: inset 0 1px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+	-webkit-box-shadow: inset 0 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+	-moz-box-shadow: inset 0px 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+}
+
+.rounded-corners {
+     -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -khtml-border-radius: 20px;
+    border-radius: 20px;
+}
+
 .complaint-block-box {
 	width: 650px;
 	background-color: #fff;
@@ -1017,7 +1067,7 @@ ul.tabs li,ul.new li {
 	background: #271911;
 	overflow: hidden;
 	position: relative;
-	width: 185px;
+	width: 225px;
 	text-align: center;
 }
 
@@ -1070,6 +1120,10 @@ html ul.tabs li.active,html ul.tabs li.active a:hover,html ul.new li.active,html
 	background-color: #fff;
 	color: #4b1b05;
 	margin-bottom: 5px;
+	margin-top: 30px;
+	width: 420px;
+	margin-right: 20px;
+	margin-left: 0px;
 }
 
 /*
@@ -1077,7 +1131,7 @@ See All styles
 */
 .seeAll {
 	text-align: right;
-	padding-right: 15px;
+	padding-right: 25px;
 	margin-top: 10px;
 	font-size: 12px;
 	clear: both;
@@ -1099,7 +1153,7 @@ See All styles
 	float: right;
 	background: url(http://localhost:8080/ipab-java/theme/images/seeAll.png) 100% 4px no-repeat;
 	list-style-type: none;
-	margin: 0 10px 5px 0;
+	margin: 10px 10px 5px 10px;
 	padding: 0 15px 0 0;
 	background: url(http://localhost:8080/ipab-java/theme/images/seeAll.png) 100% 4px no-repeat;
 }
@@ -1111,6 +1165,7 @@ See All styles
 .seeAll a,.seeAllList a {
 	color: #9b1b1a;
 	font-size: 11px;
+	margin: 10px;
 }
 
 /*
@@ -1183,14 +1238,20 @@ Bribe items and bribe fighter styles
 
 .bribeFighters div.bribeFightersContent {
 	padding: 10px;
-	width: 280px;
+	width: 100%;
 }
 
-.home_bribeFighters_h2 {
+/*.home_bribeFighters_h2 {
 	font-size: 20px;
 	color: #ffffff;
 	margin-bottom: 5px;
 	background: #271911;
+	padding: 6px 10px;
+}*/
+.home_bribeFighters_h2 {
+	font-size: 20px;
+	color: #000;
+	margin-bottom: 5px;
 	padding: 6px 10px;
 }
 
@@ -1916,5 +1977,89 @@ Comments styles
 	-o-box-shadow: inset 0 1px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
 	-webkit-box-shadow: inset 0 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
 	-moz-box-shadow: inset 0px 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+}
+
+/*
+Analytics styles
+*/
+.analytics_div a 
+{
+	color:#4b1b05;
+	font-size: 11px;
+	text-decoration: none;
+	text-align: center;
+	display: block;
+	width: 100%;
+}
+.analytics 
+{
+	height: 281px;
+	width: 100%;
+	padding: 5px 5px 5px 5px;
+	text-align: center;
+}
+.analytics .graph 
+{
+	margin: 0 0 10px 0;
+}
+.analytics .analytics_div p 
+{
+	text-align: center;
+}
+
+.analytics h6, .tadaysHighlight h6 
+{
+	font-size:18px;
+	color:#4b1b05;
+}
+.analytics_div_report
+{
+	width:100%;
+	float:left;
+	font-weight:bold;
+	color: #4b1b05;
+}
+.analytics_div_report .val-1 
+{
+	float: left;
+}
+.analytics_div_report .val-2 
+{
+	float: right;
+}
+.analytics_div_report, .analytics .graph h4, .analytics_div_report_top5
+{
+	padding-bottom: 2px;
+	margin-bottom: 2px;
+}
+.analytics .line 
+{
+	border-bottom: 1px dashed #1f110a;
+}
+.analytics_div_report .ana_color, .analytics .graph span 
+{
+	color: #9b1b1a;
+}
+.ana_bold_none
+{
+	font-weight:normal;
+	color:#cebaa8;
+}
+
+.bribe_box 
+{
+	width:100%;
+	float:left;
+	color:#000;
+	margin-bottom:20px;
+}
+
+.report_bribe
+{
+	padding: 7px 15px 15px 15px;
+}
+.report_bribe b a, .analytics b, .analytics b a 
+{
+	font-size: 10px;
 }
 

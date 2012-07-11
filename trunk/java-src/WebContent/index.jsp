@@ -45,27 +45,39 @@ int pageHits = comm.getHits();
 
 <div id="bg-wrapper">
 	<div class="home-block-box bgbox">
-        <div class="bribe_box report">
-            <div class="report_bribe">
+        <div class="bribe_box">
+            <div class="report_bribe" align="center">
                 <p> 
                     <br><strong>Bribed? Didn't Bribe?<br>Victimised? Angry?</strong>
-                    <a href="${pageContext.request.contextPath}/tellbribestory/ipaid.jsp"><img src="${pageContext.request.contextPath}/theme/images/report_your_bribe_btn.png" alt="Report Your Bribe" border="0"></a>
-                <span>Tell us your story. Using your stories<br>we'll advocate with the government<br>for an improved system.</span><br><br>
-                    <b><a href="${pageContext.request.contextPath}/aboutus.jsp">What is I Paid A Bribe?</a></b>
+					<div class="clear"></div>
+                    <a href="${pageContext.request.contextPath}/complaint?t=paid">
+					<img src="${pageContext.request.contextPath}/theme/images/report_your_bribe_btn.png" alt="Report Your Bribe" border="0"></a>
+					<div class="clear" style="height: 50px;"></div><br><br>
+               		<span>Tell us your story. Using your stories we'll advocate with the government for an improved system.</span><br><br>
+					<div class="clear"></div>                 
+   					<b><a href="${pageContext.request.contextPath}/aboutus.jsp">What is I Paid A Bribe?</a></b>
                 </p>
             </div>
         </div>
 	</div>
 	
-	<div class="home-block-box bgbox right-box">
+	<div class="home-block-box bgbox right-box rounded-corners">
 		<%@include file="bribeAnalysis.jsp" %>
 	</div>
 	<div class="clear"></div>
-	<div class="home-block-box2 bgbox">
+	<div class="home-block-box2 bgbox rounded-corners" >
 		<%@include file="bribeReports.jsp" %>
 	</div>
-<div class="home-block-box2 bgbox right-box">
+	<div class="home-block-box2 bgbox right-box rounded-corners">
 		<%@include file="bribeFighters.jsp" %>
+	</div>
+
+	<div class="videos-block-box bgbox rounded-corners">
+		<%@include file="latestVideos.jsp" %>
+	</div>
+	
+	<div class="news-block-box right-box rounded-corners">
+		<%@include file="bribeNews.jsp" %>
 	</div>
 
 </div>

@@ -86,9 +86,9 @@ else
 <div class="seeAllList">
 <ul>
 	<li><a title="View more"
-		href="http://www.ipaidabribe.or.ke/sforms/view_reports_paid?c_city=28&amp;CSRF_TOKEN=">County-wise</a></li>
+		href="#">County-wise</a></li>
 	<li><a title="View more"
-		href="http://www.ipaidabribe.or.ke/sforms/view_reports_paid?c_dept=2&amp;CSRF_TOKEN=">Department-wise</a></li>
+		href="#">Department-wise</a></li>
 </ul>
 </div>
 <div class="clear"></div>
