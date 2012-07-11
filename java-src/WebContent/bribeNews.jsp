@@ -17,7 +17,7 @@ $(document).ready(
 });
 </script>
 
-<h2 class="home_h2 news_box_title">I Paid a Bribe in the <span>News!</span></h2>
+<h2 class="home_h2 news_box_title" align="center">I Paid a Bribe in the <span>News!</span></h2>
 <%
 	Home myHome = Home.getInstance();
 	ArrayList<NewsVO> news = myHome.getNews();

@@ -1,5 +1,5 @@
 
-<h2 class="home_h2">Latest <span>Videos</span></h2>
+<h2 class="home_h2" align="center">Latest <span>Videos</span></h2>
         
         <div class="latest_videos">
         	<div style="position:relative;">
@@ -20,17 +20,4 @@
 						</ul>			<div class="seeAll"><a href="http://www.ipaidabribe.or.ke/sforms/on_air?CSRF_TOKEN=" title="View more">View more</a></div>
 </div></div>
       </div>
-		<div id="videowrapper"></div>
-        <div class="clear"></div>
-                    <script type="text/javascript">
-						
-					</script>
-        <!---- Break ---->
-
-        	<h2 class="home_h2">What is your <span>CQ?</span></h2>
-        <div class="cq_box">
-        	<div class="cq_box_content">"You pay 2,000/- to get a driving license without taking a driving test. Would you consider this a bribe?"
-				<a href="${pageContext.request.contextPath}/quiz/quiz.jsp">Take the quiz, check your Corruption Quotient</a>
-            </div>
-        </div>
         

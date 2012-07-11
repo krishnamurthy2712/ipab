@@ -1,8 +1,10 @@
 <%@page import="com.ipablive.vo.BribeFighterVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.ipablive.core.Home"%>
-        <div class="bribeFighters">
-        <h2 class="home_bribeFighters_h2"><img src="${pageContext.request.contextPath}/theme/images/bribe.png" align="middle">ribe <span>Fighters</span></h2>
+        <div class="bribeFighters"  align="center">
+        <h2 class="home_bribeFighters_h2">
+<!--<img src="${pageContext.request.contextPath}/theme/images/bribe.png" align="middle">-->
+Bribe <span>Fighters</span></h2>
         	<div class="bribeFightersContent">
             	<div class="bribeReports">
 					                            
@@ -76,9 +78,9 @@
                     <div class="all_categories">
                     <div class="categoryHead">
                     Have you resisted a bribe?</div>
-                        <div class="categoryList">
+                        <div class="categoryList" align="center">
                             <a href="http://www.ipaidabribe.or.ke/sforms/register/i_didnt_pay_a_bribe?CSRF_TOKEN=">
-                            <img src="I%20PAID%20A%20BRIBE_files/tellUsHow.png" alt="REPORT YOUR BRIBE">
+                            <img src="${pageContext.request.contextPath}/theme/images/tellUsHow.png" alt="REPORT YOUR BRIBE">
                             </a>
                         </div>
                     </div>                    

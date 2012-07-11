@@ -10,8 +10,8 @@
 <%@page import="com.ipablive.vo.TopCitiesVO"%>
 <%@page import="java.util.Date"%><div class="bribe_box analytics">
 <div class="clear"></div>
-<center><font color="#003322"><b>Bribe Analytics</b></font></center><br>
-<div class="analytics_div">
+<center><font color="#003322"><strong>Bribe Analytics</strong></font></center><br>
+<div class="analytics_div" align="center">
 <div>
 <div class="analytics_div_report line">
 <div><span class="ana_color">Bribe Reports</span> <%=analysis.get(0).getBribeReportsCount() %> <span
@@ -23,10 +23,9 @@
 
 <div class="graph">
 	<%
-	String chartPath = "displayTopCities.jsp?timeStamp="+new Date().getTime();
+	String chartPath = "getTopCities?timeStamp="+new Date().getTime();
 	%>
 <img src="<%=chartPath %>" alt="topCities" style="width: 300; height: 180;">
-<div class="clear"></div>
 </div>
 <p><b><a
 	href="${pageContext.request.contextPath}/bribepatterns/index.jsp">Detailed
