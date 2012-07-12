@@ -44,7 +44,7 @@ int pageHits = comm.getHits();
 <div class="clear"></div>
 
 <div id="bg-wrapper">
-	<div class="home-block-box bgbox">
+	<div class="home-block-box bgbox rounded-corners">
         <div class="bribe_box">
             <div class="report_bribe" align="center">
                 <p> 

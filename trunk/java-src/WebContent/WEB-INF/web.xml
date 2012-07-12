@@ -189,6 +189,15 @@
     	<servlet-class>
     	com.ipablive.services.DisplayTopCitiesService</servlet-class>
     </servlet>
+    <servlet>
+    	<description>
+    	</description>
+    	<display-name>
+    	GetPollService</display-name>
+    	<servlet-name>GetPollService</servlet-name>
+    	<servlet-class>
+    	com.ipablive.services.GetPollService</servlet-class>
+    </servlet>
 
     <servlet-mapping id="RDS_DISPATCH_MAPPING">
         <servlet-name>RDSDispatchServlet</servlet-name>
@@ -219,6 +228,10 @@
     <servlet-mapping>
     	<servlet-name>DisplayTopCitiesService</servlet-name>
     	<url-pattern>/getTopCities</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>GetPollService</servlet-name>
+    	<url-pattern>/getPoll</url-pattern>
     </servlet-mapping>
 	
 	
