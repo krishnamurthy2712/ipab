@@ -136,7 +136,6 @@ ReportsCountVO rptVo = ipab.getReportsCount();
 	<div class="clear"></div>
 	
 	<div id="toolkit_bg_reports">
-		<h3>Todays poll</h3>
 <%@include file="../polls/todayPoll.jsp" %>
 	</div>
 </div>

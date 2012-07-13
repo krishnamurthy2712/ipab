@@ -1,12 +1,15 @@
 package com.ipablive.core;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 
 import com.ipablive.datasource.ConnectionFactory;
 import com.ipablive.vo.BlogPostVO;
+import com.ipablive.vo.PollResultVO;
 import com.ipablive.vo.PollVO;
 
 public class Polls 
@@ -49,10 +52,41 @@ public class Polls
 	  }
 	  
 	  public Boolean insertPolls()
-		{
-			Boolean isInserted = false;
-			return isInserted;
-		}
+	  {
+		  Boolean isInserted = false;
+		  return isInserted;
+	  }
+	  
+	  public Boolean insertPollResults(PollResultVO poll)
+	  {
+		  Boolean isInserted = false;
+		  String query = "insert into bd_poll_results (pollId,pollOption,creationDate, createdBy,ip) values (?,?,?,?,?)";
+			
+			try
+			  {
+				java.sql.Date sqlDate = new java.sql.Date(new Date().getTime());
+				PreparedStatement pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, poll.getPollId());
+				pstmt.setString(2, poll.getPollOption());
+				pstmt.setDate(3, sqlDate);
+				pstmt.setString(4, poll.getCreatedBy());
+				pstmt.setString(5, poll.getIpAddress());
+				
+				int i = pstmt.executeUpdate();
+				
+				if(i>1)
+				{
+					isInserted = true;
+				}
+				
+			  }
+			  catch(Exception e)
+			  {
+				  e.printStackTrace();
+			  }
+			
+		  return isInserted;
+	  }
 		
 		public Boolean updatePolls()
 		{
@@ -135,6 +169,63 @@ public class Polls
 			
 			return polls;
 		}
+		
+		public Boolean isPolled(String ipAddress)
+		{
+			Boolean ispolled = false;
+			String query = "SELECT count(ip) from bd_poll_results where ip='"+ipAddress+"'";
+			
+			try
+			  {
+				  Statement stmt = conn.createStatement();
+				  ResultSet rs = stmt.executeQuery(query);
+				  int count = 0;
+				  if(rs.next()) count = rs.getInt(1);
+				  
+				  if(count>1)
+				  {
+					  ispolled = true;
+				  }
+				  else
+				  {
+					  ispolled = false;
+				  }
+			  }
+			  catch(Exception e)
+			  {
+				  e.printStackTrace();
+			  }
+			return ispolled;
+		}
+		
+		public int getCount(int pollId, String pollOption)
+		{
+			int count = 0;
+			String criteria = "";
+			if(pollOption!="")
+			{
+				criteria =  " AND pollOption='"+pollOption+"'";
+			}
+			
+			String query = "SELECT count(pollOption) from bd_poll_results where pollId="+pollId+ criteria;
+			
+			try
+			  {
+				  Statement stmt = conn.createStatement();
+				  ResultSet rs = stmt.executeQuery(query);
+				  if(rs.next())
+				  {
+					  count = rs.getInt(1);
+				  }
+			  }
+			  catch(Exception e)
+			  {
+				  e.printStackTrace();
+			  }
+			return count;
+		}
+		
+		
 	  
 	  
 }
