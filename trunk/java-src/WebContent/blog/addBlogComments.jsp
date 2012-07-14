@@ -97,12 +97,15 @@
 </head>
 <body>
 <%@include file="../header.jsp" %>
-<div class="pageHeader">
-<center><br>
-<h2 class="pageHeaderH2">Blog</h2>
-</center>
-</div>
-<div id="mainContent" class="mainContent">
+<div class="clear"></div>
+<div id="bg-wrapper">
+	<div class="breadcrumb">
+		<div class="clear"></div>
+			<a href="${pageContext.request.contextPath}" style="text-decoration: none;">Home</a> > Blogs
+	<center><br>
+	<h2 class="pageHeaderH2">I Paid a Bribe</h2>
+	</center>
+	</div>
 <%
 String pid = request.getParameter("p");
 int postId = Integer.parseInt(pid);
@@ -112,16 +115,17 @@ BlogPostDetailsVO post = blogs.getBlogPostDetails(postId);
 
 
 %>
-	<div class="node">
+	<div class="blog-block-box">
 		<h2><%=post.getPostTitle() %></h2>
-		<div class="submitted">
-	        Submitted by <span class="user_text"><%=post.getPostedBy() %></span> on <%=post.getPostCreatedDate() %>
+		<div class="divContent">
+	        Submitted by <strong><%=post.getPostedBy() %></strong> on <%=post.getPostCreatedDate() %>
 	    </div>
-		<div class="blog_content">
+		<div class="divContent">
 			<%=post.getPostContent() %>
 		</div>
 		<br><br>
-		<div>
+		<div  class="divContent">
+			<h3>Comments</h3>
 			<% ArrayList<BlogCommentVO> comments = post.getPostComments();
 			
 				if(comments.size()>0)
@@ -130,6 +134,7 @@ BlogPostDetailsVO post = blogs.getBlogPostDetails(postId);
 					{
 						BlogCommentVO comment = comments.get(i);
 						%>
+<div class="vote_comment">
 						<div>
 							<%=comment.getCommentTitle() %>
 						</div>
@@ -142,12 +147,15 @@ BlogPostDetailsVO post = blogs.getBlogPostDetails(postId);
 								<td><%= BribeUtils.getFriendlyTime(comment.getCreationDate()) %></td>
 							</tr>
 						</table>
+</div>
 						<%
 					}
 				}else
 				{
 					%>
+<div class="vote_comment">
 						<center><b>No Comments Found.</b></center>
+</div>
 					<%
 				}
 			
@@ -156,6 +164,7 @@ BlogPostDetailsVO post = blogs.getBlogPostDetails(postId);
 
 	</div>
 	
+<div class="blog-block-box">
 	<h2 class="c_head">Add a Comment</h2>
 	<div id="validation_errors" style="display:block;">
 	<form method="post" action="storeComment.do" onsubmit="return validateCommentForm();">
@@ -202,6 +211,8 @@ BlogPostDetailsVO post = blogs.getBlogPostDetails(postId);
 	</form>
 </div>
 </div>
+
 <%@include file="../footer.jsp" %>
+</div>
 </body>
 </html>

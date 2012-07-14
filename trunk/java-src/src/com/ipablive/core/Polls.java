@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import com.ipablive.datasource.ConnectionFactory;
+import com.ipablive.utils.BribeUtils;
 import com.ipablive.vo.BlogPostVO;
+import com.ipablive.vo.PollCommentsVO;
 import com.ipablive.vo.PollResultVO;
 import com.ipablive.vo.PollVO;
 
@@ -87,6 +89,38 @@ public class Polls
 			
 		  return isInserted;
 	  }
+	  
+	  public Boolean insertPollComment(PollCommentsVO comments)
+	  {
+		  Boolean isInserted = false;
+		  String query = "insert into bd_poll_comments (pollId,comment,creationDate, createdBy,ip) values (?,?,?,?,?)";
+			
+			try
+			  {
+				java.sql.Date sqlDate = new java.sql.Date(new Date().getTime());
+				PreparedStatement pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, comments.getPollId());
+				pstmt.setString(2, comments.getComment());
+				pstmt.setDate(3, sqlDate);
+				pstmt.setString(4, comments.getCommentedBy());
+				pstmt.setString(5, comments.getIpAddress());
+				
+				int i = pstmt.executeUpdate();
+				
+				if(i>1)
+				{
+					isInserted = true;
+				}
+				
+			  }
+			  catch(Exception e)
+			  {
+				  e.printStackTrace();
+			  }
+			
+		  return isInserted;
+	  }
+	  
 		
 		public Boolean updatePolls()
 		{
@@ -137,6 +171,7 @@ public class Polls
 			return pVo;
 		}
 		
+		//This method is for admin activity purpose
 		public ArrayList<PollVO> getAllPolls()
 		{
 			ArrayList<PollVO> polls = new ArrayList<PollVO>();
@@ -170,10 +205,75 @@ public class Polls
 			return polls;
 		}
 		
-		public Boolean isPolled(String ipAddress)
+		public ArrayList<PollVO> getAllApprovedPolls()
+		{
+			ArrayList<PollVO> polls = new ArrayList<PollVO>();
+			
+			 String query = "SELECT * from bd_polls where approval=0";
+			  try
+			  {
+				  Statement stmt = conn.createStatement();
+				  ResultSet rs = stmt.executeQuery(query);
+				  while(rs.next())
+				  {
+					  PollVO pVo = new PollVO();
+					  pVo.setPollId(rs.getInt(1));
+					  pVo.setPollTitle(rs.getString(2));
+					  pVo.setPollDescription(rs.getString(3));
+					  pVo.setPollQuestion(rs.getString(4));
+					  pVo.setPollOptions(rs.getString(5));
+					  pVo.setPollCreationBy(rs.getString(6));
+					  pVo.setPollCreationDate(rs.getDate(7));
+					  pVo.setIsDisplayed(rs.getInt(8));
+					  pVo.setApproval(rs.getInt(9));
+					  
+					  polls.add(pVo);
+				  }
+			  }
+			  catch(Exception e)
+			  {
+				  e.printStackTrace();
+			  }
+			
+			return polls;
+		}
+		
+		public ArrayList<PollCommentsVO> getPollComments(int pollId)
+		{
+			ArrayList<PollCommentsVO> comments = new ArrayList<PollCommentsVO>();
+			
+			 String query = "SELECT * FROM bd_poll_comments b where b.pollId="+pollId;
+			  try
+			  {
+				  Statement stmt = conn.createStatement();
+				  ResultSet rs = stmt.executeQuery(query);
+				  while(rs.next())
+				  {
+					  PollCommentsVO pcVo = new PollCommentsVO();
+					  pcVo.setCommentId(rs.getInt(1));
+					  pcVo.setPollId(rs.getInt(2));
+					  pcVo.setComment(rs.getString(3));
+					  pcVo.setCommentedBy(rs.getString(4));
+					  pcVo.setCreatedDate(rs.getDate(5));
+					  String friendlyTime = BribeUtils.getFriendlyTime(rs.getDate(5));
+					  pcVo.setFriendlyDate(friendlyTime);
+					  pcVo.setIpAddress(rs.getString(6));
+					  
+					  comments.add(pcVo);
+				  }
+			  }
+			  catch(Exception e)
+			  {
+				  e.printStackTrace();
+			  }
+			
+			return comments;
+		}
+		
+		public Boolean isPolled(int pollId, String ipAddress)
 		{
 			Boolean ispolled = false;
-			String query = "SELECT count(ip) from bd_poll_results where ip='"+ipAddress+"'";
+			String query = "SELECT count(ip) from bd_poll_results where pollid="+pollId+" AND ip='"+ipAddress+"'";
 			
 			try
 			  {
