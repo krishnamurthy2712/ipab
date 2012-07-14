@@ -37,12 +37,13 @@ public class PollResultService extends HttpServlet {
 		String poll = request.getParameter("pollId");
 		String pollCreatedBy = request.getParameter("pollUser");
 		String ipAddress = BribeUtils.getClientIpAddr(request);
+		int pollId = Integer.parseInt(poll);
 		
 		PollResultVO prVo = new PollResultVO();
 		
 		prVo.setCreatedBy(pollCreatedBy);
 		prVo.setPollOption(selectedOption);
-		prVo.setPollId(Integer.parseInt(poll));
+		prVo.setPollId(pollId);
 		prVo.setIpAddress(ipAddress);
 		
 		Polls pol = Polls.getInstance();
@@ -50,7 +51,7 @@ public class PollResultService extends HttpServlet {
 		String pollUrl = "";
 		ServletContext ctx = getServletContext();
 		
-		Boolean polled = pol.isPolled(ipAddress); 
+		Boolean polled = pol.isPolled(pollId,ipAddress); 
 		
 		if(polled)
 		{

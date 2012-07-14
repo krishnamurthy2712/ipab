@@ -1,7 +1,8 @@
 <%@page import="com.ipablive.core.Polls"%>
 <%@page import="com.ipablive.vo.PollVO"%>
 <%@page import="java.util.StringTokenizer"%>
-<script type="text/javascript">
+
+<%@page import="com.ipablive.utils.BribeUtils"%><script type="text/javascript">
 function validateVoting()
 {
 	var pollAns = $('#pollAns').val();
@@ -39,6 +40,21 @@ function validateVoting()
 		 });
 	}
 
+}
+
+function viewAllPolls(id,type)
+{
+	if(id)
+	{
+		window.location.href = '${pageContext.request.contextPath}/polls/polls.jsp?p='+id;
+	}
+	else if(type)
+	{
+		window.location.href = '${pageContext.request.contextPath}/polls/polls.jsp?t='+type;
+	}else
+	{
+		alert("Unable to process your request.");
+	}
 }
 </script>
 <h3 align="center" style="width: 150px;">Todays poll</h3>
@@ -82,14 +98,32 @@ if(pVo!=null)
 <div class="clear"></div>
 <div class="divContent" align="right" >
 	<input type="hidden" value="anonymous" name="pollUser">
+	<%
+		String ipAddress = BribeUtils.getClientIpAddr(request);
+		Boolean isPolled = pollObj.isPolled(pVo.getPollId(),ipAddress);
+		if(isPolled)
+		{
+			
+		
+	%>
+		<div class="clear"></div>
+		<strong>You have already participated</strong>
+		<div class="clear"></div>
+	<%
+		}else
+		{
+	%>
 	<input type="button" value="Vote" onclick="validateVoting()">
+	<%
+		}
+	%>
 </div>
 </div>
 <div class="clear"></div>
 <div class="divContent" align="right">
 <ul style="list-style: none;margin: 5px;" >
-<li><a href="" style="text-decoration: none;">View Poll Results</a></li>
-<li><a href="" style="text-decoration: none;">View All Polls</a></li>
+<li><a href="javaScript: viewAllPolls(<%=pVo.getPollId() %>,'')" style="text-decoration: none;">View Poll Results</a></li>
+<li><a href="javaScript: viewAllPolls('','all')" style="text-decoration: none;">View All Polls</a></li>
 </ul>
 </div>
 </div>

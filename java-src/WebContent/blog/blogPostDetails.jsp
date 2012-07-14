@@ -34,12 +34,6 @@
 </head>
 <body>
 <%@include file="../header.jsp" %>
-<div class="pageHeader">
-<center><br>
-<h2 class="pageHeaderH2">Blog</h2>
-</center>
-</div>
-<div id="mainContent" class="mainContent">
 <%
 String pid = request.getParameter("p");
 int postId = Integer.parseInt(pid);
@@ -47,18 +41,32 @@ Blogs blogs = Blogs.getInstance();
 Boolean isPageVisitUpdated = blogs.updateTotalViews(postId);
 BlogPostDetailsVO post = blogs.getBlogPostDetails(postId);
 
-
 %>
-	<div class="node">
+<div class="clear"></div>
+<div id="bg-wrapper">
+	<div class="breadcrumb">
+		<div class="clear"></div>
+			<a href="${pageContext.request.contextPath}" style="text-decoration: none;">Home</a> 
+			> <a href="${pageContext.request.contextPath}/blog/blog.jsp" style="text-decoration: none;">Blogs</a> > <%=post.getPostTitle() %>
+	<center><br>
+	<h2 class="pageHeaderH2">Blogs</h2>
+	</center>
+	</div>
+
+	<div class="blog-block-box">
 		<h2><%=post.getPostTitle() %></h2>
-		<div class="submitted">
-	        Submitted by <span class="user_text"><%=post.getPostedBy() %></span> on <%=post.getPostCreatedDate() %>
+<div class="clear"></div>
+		<div class="divContent" align="right">
+	        Submitted by <strong><%=post.getPostedBy() %></strong> on <%=post.getPostCreatedDate() %>
+<div class="clear"></div><div class="clear"></div>
 	    </div>
-		<div class="blog_content">
+		<div class="divContent">
 			<%=post.getPostContent() %>
-		</div>
-		<br><br>
-		<div>
+		</div><br>
+		<div class="clear"></div>
+		<strong>Comments</strong>
+		<div class="clear"></div>
+		<div class="divContent">
 			<% ArrayList<BlogCommentVO> comments = post.getPostComments();
 			
 				if(comments.size()>0)
@@ -67,18 +75,21 @@ BlogPostDetailsVO post = blogs.getBlogPostDetails(postId);
 					{
 						BlogCommentVO comment = comments.get(i);
 						%>
-						<div>
+						<div class="vote_comment">
+						<div class="divContent">
 							<%=comment.getCommentTitle() %>
 						</div>
-						<div>
+						<div class="divContent">
 							<%=comment.getCommentContent() %>
 						</div>
+<div class="clear"></div><div class="clear"></div>
 						<table>
 							<tr>
 								<td><%=comment.getCreatedBy() %>|</td>
 								<td><%= BribeUtils.getFriendlyTime(comment.getCreationDate()) %></td>
 							</tr>
 						</table>
+						</div>
 						<%
 					}
 				}else
@@ -93,7 +104,7 @@ BlogPostDetailsVO post = blogs.getBlogPostDetails(postId);
 
 	</div>
 
-</div>
 <%@include file="../footer.jsp" %>
+</div>
 </body>
 </html>

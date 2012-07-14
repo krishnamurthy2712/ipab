@@ -31,12 +31,15 @@
 </head>
 <body>
 <%@include file="../header.jsp" %>
-<div class="pageHeader">
-<center><br>
-<h2 class="pageHeaderH2">Blog</h2>
-</center>
-</div>
-<div id="mainContent" class="mainContent">
+<div class="clear"></div>
+<div id="bg-wrapper">
+	<div class="breadcrumb">
+		<div class="clear"></div>
+			<a href="${pageContext.request.contextPath}" style="text-decoration: none;">Home</a> > Blogs
+	<center><br>
+	<h2 class="pageHeaderH2">I Paid a Bribe</h2>
+	</center>
+	</div>
 <%
 Blogs blogs = Blogs.getInstance();
 ArrayList<BlogPostVO> blogPosts = blogs.getBlogPosts();
@@ -47,28 +50,31 @@ if(blogPosts.size()>0)
 	{
 		BlogPostVO post = blogPosts.get(i);
 %>
-	<div class="node">
+	<div class="blog-block-box">
 	<h2><%=post.getPostTitle() %></h2>
-	<div class="submitted">
-        Submitted by <span class="user_text"><%=post.getPostedBy() %></span> on <%=post.getPostCreatedDate() %>
+<div class="clear"></div>
+	<div class="divContent">
+        Submitted by <strong><%=post.getPostedBy() %></strong> on <%=post.getPostCreatedDate() %>
     </div>
-	<div class="blog_content">
+<div class="clear"></div><div class="clear"></div>
+	<div class="divContent">
 	    <%
 	    	String postContent = post.getPostContent();
 	    	if(postContent.length()>200)
 	    	{
-	    		postContent = postContent.substring(1,197) +"...";
+	    		postContent = postContent.substring(0,197) +"...";
 	    	}
 	    	
 	    	out.println(postContent);
 	    %>
 	  </div>
-	<table>
+<div class="clear"></div><div class="clear"></div>
+	<table align="right">
 		<tr>
-			<td><%=post.getCommentCount() %> comments.</td>
-			<td><%=post.getTotalViews() %> views.</td>
-			<td><a href="${pageContext.request.contextPath}/blog/addBlogComments.jsp?p=<%=post.getPostId() %>">Add Comment</a></td>
-			<td><a href="${pageContext.request.contextPath}/blog/blogPostDetails.jsp?p=<%=post.getPostId() %>">Read More</a></td>
+			<td>&nbsp;&nbsp;<%=post.getCommentCount() %> comments.</td>
+			<td>&nbsp;&nbsp;<%=post.getTotalViews() %> views.</td>
+			<td>&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/blog/addBlogComments.jsp?p=<%=post.getPostId() %>">Add Comment</a></td>
+			<td>&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/blog/blogPostDetails.jsp?p=<%=post.getPostId() %>">Read More</a></td>
 		</tr>
 	</table>
 	</div>
@@ -79,13 +85,14 @@ if(blogPosts.size()>0)
 else
 {
 %>
+<div class="blog-block-box">
 	<center><font color="red"><b>Oops.. There are no posts available</b></font></center>
+</div>
 <%
 }
 %>
 
-
-</div>
 <%@include file="../footer.jsp" %>
+</div>
 </body>
 </html>
