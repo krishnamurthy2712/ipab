@@ -74,7 +74,7 @@
 	</a>
 	<ul style="width: 146px !important;">
 		<li><a href="${pageContext.request.contextPath}/blog/blog.jsp">Blogs</a></li>
-		<li><a href="#">Corruption Quiz</a></li>
+		<!--<li><a href="#">Corruption Quiz</a></li>-->
 		<li><a href="${pageContext.request.contextPath}/polls/polls.jsp">Polls</a></li>
 		<li><a href="${pageContext.request.contextPath}/videos/videos.jsp">Videos</a></li>
 
