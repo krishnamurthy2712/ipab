@@ -8,7 +8,8 @@
 <%@page import="com.ipablive.vo.PollVO"%>
 <%@page import="java.util.StringTokenizer"%>
 <%@page import="com.ipablive.utils.BribeUtils"%>
-<%@page import="com.ipablive.vo.PollCommentsVO"%><html>
+<%@page import="com.ipablive.vo.PollCommentsVO"%>
+<%@page import="java.util.Date"%><html>
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     <title>Polls</title>
@@ -199,6 +200,16 @@
 						%>
 					</div>
 					<br><br>
+					<div class="divContent">
+					<strong>Result:</strong>
+					<div class="graph">
+						<%
+						String chartPath = request.getContextPath()+"/viewPollResultChart?o="+pol.getPollOptions()+"&p="+pol.getPollId()+"&timeStamp="+new Date().getTime();
+						%>
+						<img src="<%=chartPath %>" alt="Poll Results" style="width: 100%; height: 100%;">
+					</div>
+					</div>
+					<br><br>
 					<div id="commentsArea">
 					<strong>Comments:</strong>
 					<div class="divContent">
@@ -338,6 +349,16 @@
 						<%
 							}
 						%>
+					</div>
+					<br><br>
+					<div class="divContent">
+					<strong>Result:</strong>
+					<div class="graph">
+						<%
+						String chartPath = request.getContextPath()+"/viewPollResultChart?o="+pVo.getPollOptions()+"&p="+pollId+"&timeStamp="+new Date().getTime();
+						%>
+						<img src="<%=chartPath %>" alt="Poll Results" style="width: 100%; height: 100%;">
+					</div>
 					</div>
 					<br><br>
 					<div id="commentsArea">
