@@ -1,23 +1,50 @@
 
+<%@page import="com.ipablive.core.YouTubeManager"%>
+<%@page import="com.ipablive.vo.YouTubeVideoVO"%>
+<%@page import="java.util.List"%><script type="text/javascript" src="${pageContext.request.contextPath}/theme/js/jcarousellite.js"></script>
+<script type="text/javascript">
+$(document).ready(
+		function()
+		{
+			$("#slider").jCarouselLite({
+				vertical: true,
+				hoverPause:true,
+				auto:500,
+				speed:500
+			});
+});
+</script>
+<div>
 <h2 class="home_h2" align="center">Latest <span>Videos</span></h2>
         
-        <div class="latest_videos">
-        	<div style="position:relative;">
-					<div id="video-container">                
-					                      
-                        <div style="display: none;" id="div1">
-                            <div class="update-thumbnail-img">
-                                <a href="http://www.ipaidabribe.or.ke/content/corruption-still-high-kenya?CSRF_TOKEN=" id="lcwm4yaom4w"><img src="I%20PAID%20A%20BRIBE_files/default_vid.png" class="youtube" align="absmiddle"></a>
-								<div id="video-title"><a href="http://www.ipaidabribe.or.ke/content/corruption-still-high-kenya?CSRF_TOKEN=" id="lcwm4yaom4w">Corruption Still High in Kenya</a></div>
-                            </div>
-                            <!--<div class="update-img-title"><a href="/content/corruption-still-high-kenya">Corruption Still High in Kenya</a></div>-->
-                        </div>
+ <div class="latest_videos" style="height: 200px; overflow: hidden;">
+<div id="slider">
+<ul>
+<%
+YouTubeManager ym = YouTubeManager.getInstance();
 
-											<ul>
-							<li><a href="javascript:updatesSlider(1,'img1','/sites/all/themes/ipab_client/images/circle_selected.png','/sites/all/themes/ipab_client/images/circle_over.png')?CSRF_TOKEN="><img src="I%20PAID%20A%20BRIBE_files/circle_selected.png" id="img1"></a></li>
-							<li><a href="javascript:updatesSlider(2,'img2','/sites/all/themes/ipab_client/images/circle_selected.png','/sites/all/themes/ipab_client/images/circle_over.png')?CSRF_TOKEN="><img src="I%20PAID%20A%20BRIBE_files/circle_over.png" id="img2"></a></li>
-							<li><a href="javascript:updatesSlider(3,'img3','/sites/all/themes/ipab_client/images/circle_selected.png','/sites/all/themes/ipab_client/images/circle_over.png')?CSRF_TOKEN="><img src="I%20PAID%20A%20BRIBE_files/circle_over.png" id="img3"></a></li>							
-						</ul>			<div class="seeAll"><a href="${pageContext.request.contextPath}/getBlog?t=videos" title="View more">See all</a></div></div>
+List<YouTubeVideoVO> videos = ym.retrieveVideos(2);
+
+for (YouTubeVideoVO youtubeVideo : videos) 
+{
+	String myThumbnail = "";
+    for (String thumbnail : youtubeVideo.getThumbnails()) 
+    {
+    	myThumbnail = thumbnail;
+    }
+    %>
+    <li><a href="<%=youtubeVideo.getWebPlayerUrl() %>" target="_blank"><img src="<%=myThumbnail %>" alt="Bribe videos" /></a>
+	<%=youtubeVideo.getVideoTitle() %>
+	<div class="clear"></div>
+	<%=youtubeVideo.getVideoComments().size() %> Comments.
+	</li>
+	<div class="clear" style="height: 2px;"></div>
+    <%
+}
+%>
+</ul>
 </div>
-      </div>
-        
+</div> 
+<div class="clear"></div> 
+<div class="seeAll"><a href="${pageContext.request.contextPath}/getBlog?t=videos" title="View more">See all videos</a></div> 
+ </div>    

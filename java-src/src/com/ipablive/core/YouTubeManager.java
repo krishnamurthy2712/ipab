@@ -4,12 +4,17 @@
 package com.ipablive.core;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 import com.google.gdata.client.youtube.YouTubeQuery;
 import com.google.gdata.client.youtube.YouTubeService;
+import com.google.gdata.data.TextConstruct;
+import com.google.gdata.data.extensions.Comments;
 import com.google.gdata.data.media.mediarss.MediaThumbnail;
+import com.google.gdata.data.youtube.CommentEntry;
+import com.google.gdata.data.youtube.CommentFeed;
 import com.google.gdata.data.youtube.VideoEntry;
 import com.google.gdata.data.youtube.VideoFeed;
 import com.google.gdata.data.youtube.YouTubeMediaContent;
@@ -30,6 +35,8 @@ public class YouTubeManager
 
 	/* Here is the instance of the Singleton */
 	  private static YouTubeManager _videosInstance;
+	  
+	  private YouTubeService service;
 
 	  //Prevent direct access to the constructor
 	  private YouTubeManager() 
@@ -60,7 +67,7 @@ public class YouTubeManager
 	
 	public List<YouTubeVideoVO> retrieveVideos(int maxResults) throws Exception 
 	{
-        YouTubeService service = new YouTubeService(QUERY);
+        service = new YouTubeService(QUERY);
         service.setConnectTimeout(2000); // millis
         YouTubeQuery query = new YouTubeQuery(new URL(YOUTUBE_URL));
    
@@ -87,8 +94,10 @@ public class YouTubeManager
    
         for (VideoEntry videoEntry : videos) 
         {
-    
+        	
         	YouTubeVideoVO ytv = new YouTubeVideoVO();
+        	TextConstruct tc = videoEntry.getTitle();
+        	ytv.setVideoTitle(tc.getPlainText());
     
             YouTubeMediaGroup mediaGroup = videoEntry.getMediaGroup();
             String webPlayerUrl = mediaGroup.getPlayer().getUrl();
@@ -114,6 +123,22 @@ public class YouTubeManager
                 medias.add(new YouTubeMedia(mediaContent.getUrl(), mediaContent.getType()));
             }
             ytv.setMedias(medias);
+            
+            String commentUrl = videoEntry.getComments().getFeedLink().getHref();
+            
+            try{
+	            CommentFeed commentFeed = service.getFeed(new URL(commentUrl), CommentFeed.class);
+	            ArrayList<String> videoComments = new ArrayList<String>();
+	            
+	            for(CommentEntry comment : commentFeed.getEntries()) 
+	            {
+	            	String videoComm = comment.getPlainTextContent();
+	            	videoComments.add(videoComm);
+	            }
+	            ytv.setVideoComments(videoComments);
+            }catch (Exception e) 
+            {
+			}
     
             youtubeVideosList.add(ytv);
     
@@ -131,7 +156,7 @@ public class YouTubeManager
    
         YouTubeManager ym = YouTubeManager.getInstance();
    
-        List<YouTubeVideoVO> videos = ym.retrieveVideos(0);
+        List<YouTubeVideoVO> videos = ym.retrieveVideos(2);
    
         for (YouTubeVideoVO youtubeVideo : videos) {
             System.out.println(youtubeVideo.getWebPlayerUrl());

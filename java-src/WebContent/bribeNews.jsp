@@ -34,7 +34,7 @@ $(document).ready(
 				
 				NewsVO newsObj = news.get(i);
 	%>
-                    <li>
+                    <li style="border-bottom: 1px; border-bottom-style: dashed;">
 						<div class="divContent">
 						<%
 							if(newsObj.getNewsDst().startsWith("http"))
@@ -59,6 +59,7 @@ $(document).ready(
 						By <%=newsObj.getNewsCreated() %> &nbsp;&nbsp;|&nbsp;&nbsp; <%=newsObj.getFriendlyDate() %>
 						</div>
                     </li>
+<div class="clear" style="height: 10px;"></div>
 <%
 							}
 			
