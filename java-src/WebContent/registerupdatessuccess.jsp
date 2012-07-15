@@ -30,17 +30,22 @@
 </head>
 <body>
 <%@include file="../header.jsp" %>
-<div class="pageHeader">
-<center><br>
-<h2 class="pageHeaderH2">Register for Updates on IPAB</h2>
-</center>
-</div>
-<div id="mainContent" class="mainContent">
-<<center>
+<div class="clear"></div>
+<div id="bg-wrapper" class="bg-wrapper">
+	<div class="breadcrumb">
+			<div class="clear"></div>
+				<a href="${pageContext.request.contextPath}" style="text-decoration: none;">Home</a> > Register for Updates Success
+		<center><br>
+		<h2 class="pageHeaderH2">Register for updates</h2>
+		</center>
+		</div>
+<div class="about-block-box">
+<center>
 <font color="#00FF65">You have successfully registered for updates. Thank you.</font>
 </center>
 </div>
-</div>
+
 <%@include file="../footer.jsp" %>
+</div>
 </body>
 </html>

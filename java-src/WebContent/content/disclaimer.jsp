@@ -16,14 +16,19 @@
 </head>
 <body>
 <%@include file="../header.jsp"%>
-<div class="pageHeader">
-<center><br>
-<h2 class="pageHeaderH2">I Paid a Bribe</h2>
-</center>
-</div>
+<div class="clear"></div>
+<div id="bg-wrapper" class="bg-wrapper">
+	<div class="breadcrumb">
+			<div class="clear"></div>
+				<a href="${pageContext.request.contextPath}" style="text-decoration: none;">Home</a> > About I Paid a Bribe
+		<center><br>
+		<h2 class="pageHeaderH2">About I Paid a Bribe</h2>
+		</center>
+		</div>
+<div class="about-block-box">
 <div id="privacyContent" class="privacyContent">
 
-<p>Welcome to ipaidabribe.com, a website that harnesses the power of
+<p>Welcome to ipaidabribe.org.gh, a website that harnesses the power of
 crowd sourcing to tackle corruption in the country. Description of
 service Being a community platform to reduce the scope of corruption,
 citizens can report on the nature, number, pattern, types, location,
@@ -52,8 +57,9 @@ sites. ipaidabribe does not endorse and is not affiliated with the
 linked site and is not responsible for any content of any linked site,
 or any link contained in a link site, or any changes or updates to such
 sites. ipaidabribe provides these links to citizens as convenience.</p>
-
+</div>
 </div>
 <%@include file="../footer.jsp"%>
+</div>
 </body>
 </html>
