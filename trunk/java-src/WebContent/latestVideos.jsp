@@ -17,7 +17,7 @@
 							<li><a href="javascript:updatesSlider(1,'img1','/sites/all/themes/ipab_client/images/circle_selected.png','/sites/all/themes/ipab_client/images/circle_over.png')?CSRF_TOKEN="><img src="I%20PAID%20A%20BRIBE_files/circle_selected.png" id="img1"></a></li>
 							<li><a href="javascript:updatesSlider(2,'img2','/sites/all/themes/ipab_client/images/circle_selected.png','/sites/all/themes/ipab_client/images/circle_over.png')?CSRF_TOKEN="><img src="I%20PAID%20A%20BRIBE_files/circle_over.png" id="img2"></a></li>
 							<li><a href="javascript:updatesSlider(3,'img3','/sites/all/themes/ipab_client/images/circle_selected.png','/sites/all/themes/ipab_client/images/circle_over.png')?CSRF_TOKEN="><img src="I%20PAID%20A%20BRIBE_files/circle_over.png" id="img3"></a></li>							
-						</ul>			<div class="seeAll"><a href="http://www.ipaidabribe.or.ke/sforms/on_air?CSRF_TOKEN=" title="View more">View more</a></div>
-</div></div>
+						</ul>			<div class="seeAll"><a href="${pageContext.request.contextPath}/getBlog?t=videos" title="View more">See all</a></div></div>
+</div>
       </div>
         

@@ -132,7 +132,7 @@ public class DisplayTopCitiesService extends HttpServlet
 			File image = File.createTempFile("image", "tmp");
 			domainAxis.setTickMarksVisible(true);  
 			// Assume that we have the chart
-			ChartUtilities.saveChartAsPNG(image, chart,380, 175,info,true,0);
+			ChartUtilities.saveChartAsPNG(image, chart,380, 165,info,true,0);
 
 			OutputStream outStream = null;
 			FileInputStream fileInStream = new FileInputStream(image);

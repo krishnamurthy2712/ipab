@@ -66,17 +66,17 @@
 	</li>
 
 
-	<li style="margin-left: 5px !important;"><a href="#">
+	<li style="margin-left: 5px !important;"><a href="${pageContext.request.contextPath}/reports?t=all">
 	<div class="allreports">All Reports</div>
 	</a></li>
-	<li style="margin-left: 5px !important;"><a href="#">
-	<div class="indthenewstoday ">In The News Today</div>
+	<li style="margin-left: 5px !important;"><a href="${pageContext.request.contextPath}/getBlog?t=news">
+	<div class="indthenewstoday">In The News Today</div>
 	</a>
 	<ul style="width: 146px !important;">
-		<li><a href="${pageContext.request.contextPath}/blog/blog.jsp">Blogs</a></li>
+		<li><a href="${pageContext.request.contextPath}/getBlog?t=blogs">Blogs</a></li>
 		<!--<li><a href="#">Corruption Quiz</a></li>-->
 		<li><a href="${pageContext.request.contextPath}/polls/polls.jsp?t=all">Polls</a></li>
-		<li><a href="${pageContext.request.contextPath}/videos/videos.jsp">Videos</a></li>
+		<li><a href="${pageContext.request.contextPath}/getBlog?t=videos">Videos</a></li>
 
 
 	</ul>

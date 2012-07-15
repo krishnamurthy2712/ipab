@@ -3,6 +3,8 @@
  */
 package com.ipablive.vo;
 
+import java.util.Date;
+
 /**
  * @author 
  *
@@ -12,9 +14,11 @@ public class NewsVO
 	private int newsId;
 	private String newsCreated;
 	private String newsTitle;
-	//private String newsBody;
+	private String newsBody;
 	private String newsDst;
 	private String newsSourceValue;
+	private Date newsCreatedDate;
+	private String friendlyDate;
 	
 	public int getNewsId() 
 	{
@@ -43,14 +47,14 @@ public class NewsVO
 		this.newsTitle = newsTitle;
 	}
 	
-//	public String getNewsBody() 
-//	{
-//		return newsBody;
-//	}
-//	public void setNewsBody(String newsBody) 
-//	{
-//		this.newsBody = newsBody;
-//	}
+	public String getNewsBody() 
+	{
+		return newsBody;
+	}
+	public void setNewsBody(String newsBody) 
+	{
+		this.newsBody = newsBody;
+	}
 	
 	public String getNewsDst() 
 	{
@@ -68,6 +72,24 @@ public class NewsVO
 	public void setNewsSourceValue(String newsSourceValue) 
 	{
 		this.newsSourceValue = newsSourceValue;
+	}
+	
+	public Date getNewsCreatedDate() 
+	{
+		return newsCreatedDate;
+	}
+	public void setNewsCreatedDate(Date newsCreatedDate) 
+	{
+		this.newsCreatedDate = newsCreatedDate;
+	}
+	
+	public String getFriendlyDate() 
+	{
+		return friendlyDate;
+	}
+	public void setFriendlyDate(String friendlyDate) 
+	{
+		this.friendlyDate = friendlyDate;
 	}
 	
 }

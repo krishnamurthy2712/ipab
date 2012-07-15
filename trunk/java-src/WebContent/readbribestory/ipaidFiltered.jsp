@@ -170,12 +170,12 @@
 		</select>
 &nbsp;&nbsp;
 		<label for="cTransaction">Transactions </label>
-		<select  id='cTransactions' name='cTransactions'><option value='0'>All</option></select>
+		<select  id='cTransactions' name="cTransactions"><option value='0'>All</option></select>
 		
 			</div>
 		<div class="clear"></div>
-		<input type="hidden" id="t" name="t" value="paid">
 		<input type="submit" value="Filter">
+		<input type="hidden" id="t" name="t" value="paid">
 		<div id="transactionsDisplay"></div>
 		</form>
 
@@ -185,7 +185,31 @@
 <div class="reportDisplay">
 
 	
-		<% ArrayList<PaidBribesVO> pbVOs = ipab.viewPaidBribes(0);
+		<% 
+		String city = request.getParameter("cCity");
+		String dept = request.getParameter("cDept");
+		String transaction = request.getParameter("cTransactions");
+		String searchCriteria = "";
+		
+		
+		String filterQuery = "";
+		if(dept.equalsIgnoreCase("0"))//means all (so no condition)
+		{
+			searchCriteria = "";
+		}
+		else if(transaction.equalsIgnoreCase("0"))//means all transaction under the selected department
+		{
+			searchCriteria = " AND bc.c_dept="+dept;
+		}		
+		else
+		{
+			searchCriteria = " AND bc.c_dept="+dept+" AND bc.c_transaction="+transaction;
+		}
+		
+		
+		filterQuery = "SELECT bc.*, ct.city_name AS c_city, bd.dept_name, bt.trans_name FROM bd_paid_bribe bc, bd_dept bd, bd_transactions bt, bd_city ct WHERE bc.c_dept=bd.id AND bc.c_transaction=bt.id and bc.c_city=ct.Id "+ searchCriteria +" order by bc.id desc";
+		
+		ArrayList<PaidBribesVO> pbVOs = ipab.viewFilteredPaidBribes(filterQuery);
 		  if(pbVOs.size()>0)
 		  {
 			  String display = "";
