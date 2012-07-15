@@ -123,16 +123,7 @@ function addComment(typeId,type)
 <!--side contents first	-->
 <div class="clear"></div>
 <div class="reports_sidebar">
-	<div id="toolkit">
-	<h3>Tool kit</h3>
-	<div class="clear"></div>
-	<A class=a href="#">Post a report</A>
-	<div class="clear"></div>
-	<A class=b href="#">Read reports</A>
-	<div class="clear"></div>
-	<A class=a href="#">Report an honest official</A></div>
-	<div class="clear"></div>
-	<div class="clear"></div>
+	<%@include file="../toolkit.jsp" %>
 	
 	<div id="toolkit_bg_reports">
 <%@include file="../polls/todayPoll.jsp" %>
