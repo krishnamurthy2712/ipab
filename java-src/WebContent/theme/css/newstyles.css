@@ -776,7 +776,7 @@ Widgets for home, paid, didnt paid etc
 
 .videos-block-box {
 	width: 450px !important;
-	height: 185px !important;
+	height: 325px !important;
 	background-color: #fff;
 	display: inline-block;
 	margin: 10px;
@@ -798,7 +798,28 @@ Widgets for home, paid, didnt paid etc
 
 .news-block-box {
 	width: 450px !important;
-	height: 185px !important;
+	height: 325px !important;
+	background-color: #fff;
+	display: inline-block;
+	margin: 10px;
+	padding: 10px 10px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #d2cfd7;
+	border-right-color: #dad8e0;
+	border-bottom-color: #c2bcc5;
+	box-shadow: inset 0 1px 1px #9f9d9f, 3px 0px 3px #9f9d9f;
+	-o-box-shadow: inset 0 1px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+	-webkit-box-shadow: inset 0 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+	-moz-box-shadow: inset 0px 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+}
+
+.news-block-box1 {
+	width: 650px;
 	background-color: #fff;
 	display: inline-block;
 	margin: 10px;
@@ -876,6 +897,15 @@ Widgets for home, paid, didnt paid etc
 	-o-box-shadow: inset 0 1px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
 	-webkit-box-shadow: inset 0 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
 	-moz-box-shadow: inset 0px 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+}
+
+.all-report-block-box {
+	width: 655px !important;
+	padding: 5px;
+	margin-bottom: 10px;
+	display: inline-block;
+	border-bottom-style: dashed;
+	border-bottom: 1px;
 }
 
 .about-block-box {
@@ -2172,6 +2202,27 @@ Bribe filter box
 	padding: 10px;
 }
 
+.allReportDisplay {
+	width: 655px !important;
+	background-color: #fff;
+	padding: 10px;
+	margin: 10px;
+	display: inline-block;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #d2cfd7;
+	border-right-color: #dad8e0;
+	border-bottom-color: #c2bcc5;
+	box-shadow: inset 0 1px 1px #9f9d9f, 3px 0px 3px #9f9d9f;
+	-o-box-shadow: inset 0 1px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+	-webkit-box-shadow: inset 0 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+	-moz-box-shadow: inset 0px 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+}
+
 /*
 Share facebook and twitter views
 */
@@ -2393,9 +2444,7 @@ h2.tut {
 
 #top-bar {
 	height: 45px;
-	background:
-		url(http://localhoost:8080/ipab-java/theme/images/twitter/top_bar.png)
-		repeat-x;
+	background:url(http://localhoost:8080/ipab-java/theme/images/twitter/top_bar.png) repeat-x;
 	border-bottom: 1px solid white;
 	position: relative;
 	margin-bottom: 8px;
@@ -2407,9 +2456,7 @@ h2.tut {
 	padding: 5px;
 	margin: 0 8px 8px;
 	border: 1px solid #F0F0F0;
-	background:
-		url(http://localhoost:8080/ipab-java/theme/images/twitter/transparent.png)
-		;
+	background:url(http://localhoost:8080/ipab-java/theme/images/twitter/transparent.png);
 	width: auto;
 	overflow: hidden;
 }
@@ -2473,7 +2520,7 @@ a:hover {
 	-o-box-shadow: inset 0 1px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
 	-webkit-box-shadow: inset 0 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
 	-moz-box-shadow: inset 0px 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
-	height: 420px;
+	height: 450px;
 	border-right-style: solid;
 	border-bottom-style: solid;
 	border-top-color: #d2cfd7;
@@ -2483,7 +2530,7 @@ a:hover {
 
 #tweets-bottom
 {
-	height: 60px;
+	height: 50px;
 	background-color: #42CBEA;
-	padding: 20px;
+	padding: 16px;
 }

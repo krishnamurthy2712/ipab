@@ -1,15 +1,15 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.ipablive.commons.CommonOperations"%>
 <%@page import="com.ipablive.vo.CityVO"%>
 <%@page import="com.ipablive.vo.DepartmentVO"%>
-<%@page import="com.ipablive.core.IDontHavetoPay"%>
+<%@page import="com.ipablive.commons.CommonOperations"%>
+<%@page import="com.ipablive.core.IDidnotPaid"%>
 <%@page import="com.ipablive.vo.ReportsCountVO"%>
-<%@page import="com.ipablive.vo.DontHavetoPayVO"%><html>
+<%@page import="com.ipablive.vo.DidNotPaidBribesVO"%><html>
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
-    <title>Bribe Reports: 'I Din't Have to Pay a Bribe' Reports | I PAID A BRIBE</title>
+    <title>Bribe Reports: 'I Din't Pay a Bribe' Reports | I PAID A BRIBE</title>
 	<script src="${pageContext.request.contextPath}/theme/js/jquery.js"
 		type="text/javascript">
 		</script>
@@ -112,14 +112,13 @@ function addComment(typeId,type)
 		<div class="clear"></div>
 			<a href="${pageContext.request.contextPath}" style="text-decoration: none;">Home</a> > Bribe Report
 	<center><br>
-	<h2 class="pageHeaderH2">I Din't Have to Pay a Bribe</h2>
+	<h2 class="pageHeaderH2">I Din't Pay a Bribe</h2>
 	</center>
 	</div>
-
-<%
-IDontHavetoPay ipab = IDontHavetoPay.getInstance();
-ReportsCountVO rptVo = ipab.getReportsCount();
-%>
+		<% IDidnotPaid  iDidntPay = IDidnotPaid.getInstance();
+		   ReportsCountVO rptVo = iDidntPay.getReportsCount();
+		
+		%>	
 
 <!--side contents first	-->
 <div class="clear"></div>
@@ -131,91 +130,112 @@ ReportsCountVO rptVo = ipab.getReportsCount();
 	</div>
 </div>
 
-<!--filter box-->
+		<!--filter box-->
 	<div class="bgbox2" id="bribe-filter-box">
 			<form action="" method="post" name="myform">
 				<div class="divContent">
 				Total reports: <strong><%=rptVo.getBribeReportsCount() %></strong> and counting...
 					<div class="clear"></div>
 			</div>	
-           <div class="divContent"><label for="cCity">County </label> <select name="cCity"
-	 id="cCity">
-	<option value="0">All</option>
-	<%
-
-	ArrayList<CityVO> counties = ipb.getCounties();
-	 for(int i=0 ;i<counties.size();i++)
-	 {	 
-		 String s = (i+1) + "";
-		 CityVO cvo = counties.get(i);
-	%>
-		<option value="<%=cvo.getId() %>"><%=cvo.getCityName()%></option>
-		<%
-	 }
-%>
-</select>
+	         <div class="divContent"><label for="cCity">County </label> <select name="cCity"
+			 id="cCity">
+			<option value="">All</option>
+			<%
+		
+			ArrayList<CityVO> counties = ipb.getCounties();
+			 for(int i=0 ;i<counties.size();i++)
+			 {	 
+				 String s = (i+1) + "";
+				 CityVO cvo = counties.get(i);
+			%>
+				<option value="<%=cvo.getId() %>"><%=cvo.getCityName()%></option>
+				<%
+			 }
+		%>
+		</select>
 &nbsp;&nbsp; 
-<label for="cDept">Department </label> <select
-	onchange="getTransactions()" id="cDept" name="cDept">
-	<option value="0">All</option>
-	<%
-	ArrayList<DepartmentVO> depts = ipb.getDepartments();
-	 for(int i=0 ;i<depts.size();i++)
-	 {	 
-		 DepartmentVO dVo = depts.get(i);
-	%>
-		<option value="<%=dVo.getDeptID() %>"><%=dVo.getDeptName()%></option>
-		<%
-	 }
-%>
-</select>
+		<label for="cDept">Department </label> <select
+			onchange="getTransactions()" id="cDept" name="cDept">
+			<option value="">All</option>
+			<%
+			ArrayList<DepartmentVO> depts = ipb.getDepartments();
+			 for(int i=0 ;i<depts.size();i++)
+			 {	 
+				 DepartmentVO dVo = depts.get(i);
+			%>
+				<option value="<%=dVo.getDeptID() %>"><%=dVo.getDeptName()%></option>
+				<%
+			 }
+		%>
+		</select>
 &nbsp;&nbsp; 
 		<label for="cTransaction">Transactions </label>
 		<select  id='cTransactions' name='cTransactions'><option value='0'>All</option></select>
 		
 			</div>
 		<div class="clear"></div>
-		<input type="hidden" id="t" name="t" value="notasked">
+		<input type="hidden" id="t" name="t" value="notpaid">
 		<input type="submit" value="Filter">
 		<div id="transactionsDisplay"></div>
 		</form>
 </div>
+
 	<!--report main content-->
-<div class="reportDisplay">
-
-<%
-
-	ArrayList<DontHavetoPayVO> bribes = ipab.viewDintHaveToPay(0);
-	if(bribes.size()>0)
-	{
-		String display = "";
-	  	String readMore = "";
-	  	
-		for(int i=0;i<bribes.size();i++)
-		{
-			DontHavetoPayVO bribe = bribes.get(i);
-			if(i==0)	
+<div class="reportDisplay">	
+		<% 
+			String display = "";
+		  	String readMore = "";
+		  
+		  	String city = request.getParameter("cCity");
+			String dept = request.getParameter("cDept");
+			String transaction = request.getParameter("cTransactions");
+			String searchCriteria = "";
+			
+			
+			String filterQuery = "";
+			if(dept.equalsIgnoreCase("0"))//means all (so no condition)
 			{
-				display = "style='display:block;'";
-				readMore = "style='display:none;'";
+				searchCriteria = "";
 			}
+			else if(transaction.equalsIgnoreCase("0"))//means all transaction under the selected department
+			{
+				searchCriteria = " AND bc.c_dept="+dept;
+			}		
 			else
 			{
-				display = "style='display:none;'";
-				readMore = "style='display:block;'";
+				searchCriteria = " AND bc.c_dept="+dept+" AND bc.c_transaction="+transaction;
 			}
 			
-%>
- <div class="report-block-box">
-	<h2><%=bribe.getCName() %></h2>
-	<div class="report_reg_det">
-			<strong>Reported :</strong> <%=bribe.getCreatedDate() %>  
-			| <strong>City :</strong> <%=bribe.getCCity() %>
-			| <strong><%=bribe.getDeptName() %></strong>
-	</div>
-    <div class="clear"></div>
-		<div id="more_link<%=bribe.getId() %>" <%=readMore %> align="right">
-			<div class="report_reg_more">
+			
+			filterQuery = "SELECT bc.*, ct.city_name AS c_city, bd.dept_name, bt.trans_name FROM bd_paid_bribe bc, bd_dept bd, bd_transactions bt, bd_city ct WHERE bc.c_dept=bd.id AND bc.c_transaction=bt.id and bc.c_city=ct.Id "+ searchCriteria +" order by bc.id desc";
+			
+			
+			ArrayList<DidNotPaidBribesVO> bribes = iDidntPay.viewDintPayFiltered(filterQuery);
+			if(bribes.size()>0)
+			{
+				for(int i=0;i<bribes.size();i++)
+				{
+					DidNotPaidBribesVO bribe = bribes.get(i);
+					if(i==0)	
+					{
+						display = "style='display:block;'";
+						readMore = "style='display:none;'";
+					}
+					else
+					{
+						display = "style='display:none;'";
+						readMore = "style='display:block;'";
+					}
+		%>
+		 <div class="report-block-box">
+			<h2><%=bribe.getCName() %></h2>
+			<div class="report_reg_det">
+					<strong>Reported :</strong> <%=bribe.getCreatedDate() %>  
+					| <strong>City :</strong> <%=bribe.getCCity() %> 
+					| <strong><%=bribe.getCDept() %></strong>
+			</div>
+			<div id="more_link<%=bribe.getId() %>" <%=readMore %> align="right">
+			<div class="report_reg_more" align="right">
 	            <a href="#" class="rad" onclick="show_more('<%=bribe.getId() %>'); return false;">Read More</a> 
             </div>
 		</div>
@@ -249,8 +269,8 @@ ReportsCountVO rptVo = ipab.getReportsCount();
 				<div id="less_link<%=bribe.getId() %>">
 				<div class="report_reg_more" align="right">
 					<a href="#" class="rad" onclick="show_less('<%=bribe.getId() %>'); return false;">Read less...</a> 
-					<a href="javaScript: addComment('<%=bribe.getId() %>','dinthvtopay')">Add Comment</a> 
-		            <a href="${pageContext.request.contextPath}/comments?t=notasked&id=<%=bribe.getId() %>"><%=bribe.getNumComments() %> Comments</a>
+					<a href="javaScript: addComment('<%=bribe.getId() %>','notpaid')">Add Comment</a> 
+		            <a href="${pageContext.request.contextPath}/comments?t=notpaid&id=<%=bribe.getId() %>"><%=bribe.getNumComments() %> Comments</a>
 		            <a href="http://www.facebook.com/share.php?u=" target="_blank" class="facebook_share_view"></a>
 		            <a href="http://twitter.com/share?url=" target="_blank" class="tweet_share_view"></a>
 		            <!--<span id="count<?php echo $row->id;?>_1"><?php echo $row->count;?></span> views-->
@@ -258,22 +278,24 @@ ReportsCountVO rptVo = ipab.getReportsCount();
 				</div>
 			</div>
 		</div>
-<div class="clear"></div>
+
+	<div class="clear"></div>
 
 	</div>
 <div class="clear"></div>
-<% 
-	
-	}
-	}
-	else
-	{
-	%>
-		<br><br><br>
-		<div align="center"><span><font color="red"><b>Unable to display data.</b></font></span></div>
-		<br><br><br>
-	<%} %>
 
+		<% 
+				}
+			}
+			else
+			{
+			%>
+			<br><br><br>
+			<div align="center"><span><font color="red"><b>Unable to display data.</b></font></span></div>
+			<br><br><br>
+			<%} %>
+		
+	
 </div>
 
 

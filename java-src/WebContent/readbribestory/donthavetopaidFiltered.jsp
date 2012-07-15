@@ -184,8 +184,31 @@ ReportsCountVO rptVo = ipab.getReportsCount();
 <div class="reportDisplay">
 
 <%
+	String city = request.getParameter("cCity");
+	String dept = request.getParameter("cDept");
+	String transaction = request.getParameter("cTransactions");
+	String searchCriteria = "";
+	
+	
+	String filterQuery = "";
+	if(dept.equalsIgnoreCase("0"))//means all (so no condition)
+	{
+		searchCriteria = "";
+	}
+	else if(transaction.equalsIgnoreCase("0"))//means all transaction under the selected department
+	{
+		searchCriteria = " AND bc.c_dept="+dept;
+	}		
+	else
+	{
+		searchCriteria = " AND bc.c_dept="+dept+" AND bc.c_transaction="+transaction;
+	}
+	
+	
+	filterQuery = "SELECT bc.*, ct.city_name AS c_city, bd.dept_name, bt.trans_name FROM bd_paid_bribe bc, bd_dept bd, bd_transactions bt, bd_city ct WHERE bc.c_dept=bd.id AND bc.c_transaction=bt.id and bc.c_city=ct.Id "+ searchCriteria +" order by bc.id desc";
 
-	ArrayList<DontHavetoPayVO> bribes = ipab.viewDintHaveToPay(0);
+	ArrayList<DontHavetoPayVO> bribes = ipab.viewDintHaveToPayFiltered(filterQuery);
+	
 	if(bribes.size()>0)
 	{
 		String display = "";

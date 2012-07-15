@@ -57,7 +57,7 @@ function getTransactions()
      var dept = $('#cDept').val();
 	 $.ajax({
 		  type: 'GET',
-		  url: 'getTransactions.jsp',
+		  url: 'readbribestory/getTransactions.jsp',
 		  data: "dept=" + dept,
 		  beforeSend:function(){
 		    // this is where we append a loading image
@@ -65,8 +65,8 @@ function getTransactions()
 		  },
 		  success:function(response){
 		    // successful request; do something with the data
-		    //$('#transactionsDisplay').empty();
-		    $('#transactionsDisplay').html(response);
+		    $('#transactionsDisplay').empty();
+		    $('#cTransactions').html(response);
 		  },
 		  error:function(){
 		    // failed request; give feedback to user
@@ -139,7 +139,7 @@ function addComment(typeId,type)
 			</div>	
 	         <div class="divContent"><label for="cCity">County </label> <select name="cCity"
 			 id="cCity">
-			<option value="">All</option>
+			<option value="0">All</option>
 			<%
 		
 			ArrayList<CityVO> counties = ipb.getCounties();
@@ -155,8 +155,8 @@ function addComment(typeId,type)
 		</select>
 &nbsp;&nbsp; 
 		<label for="cDept">Department </label> <select
-			onchange="getTransactions()" id="cDept" >
-			<option value="">All</option>
+			onchange="getTransactions()" id="cDept" name="cDept" >
+			<option value="0">All</option>
 			<%
 			ArrayList<DepartmentVO> depts = ipb.getDepartments();
 			 for(int i=0 ;i<depts.size();i++)
@@ -170,10 +170,11 @@ function addComment(typeId,type)
 		</select>
 &nbsp;&nbsp; 
 		<label for="cTransaction">Transactions </label>
-		<select  id='cTransactions'><option value=''>All</option></select>
+		<select  id='cTransactions' name='cTransactions'><option value='0'>All</option></select>
 		
 			</div>
 		<div class="clear"></div>
+		<input type="hidden" id="t" name="t" value="notpaid">
 		<input type="submit" value="Filter">
 		<div id="transactionsDisplay"></div>
 		</form>
@@ -185,7 +186,7 @@ function addComment(typeId,type)
 			String display = "";
 		  	String readMore = "";
 		  
-			ArrayList<DidNotPaidBribesVO> bribes = iDidntPay.viewDintPay("ALL");
+			ArrayList<DidNotPaidBribesVO> bribes = iDidntPay.viewDintPay(0);
 			if(bribes.size()>0)
 			{
 				for(int i=0;i<bribes.size();i++)

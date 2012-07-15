@@ -195,28 +195,34 @@ public class Home
 		  return bribeCategories;
 	  }
 	  
-	  public ArrayList<NewsVO> getNews()
+	  public ArrayList<NewsVO> getNews(int limit)
 	  {
 		  ArrayList<NewsVO> news = new ArrayList<NewsVO>();
+		  String searchCriteria = "";
+		  if(limit==0)
+		  {
+			  searchCriteria = " where approval=0";
+		  }else
+		  {
+			  searchCriteria = " where approval=0 limit "+limit;
+		  }
 		  
 		  try
 		  {
 			  Statement stmt = conn.createStatement();
-			  ResultSet rs = stmt.executeQuery("SELECT n.nid, DATE(FROM_UNIXTIME( n.created))as created, " +
-			  		"n.title, fu.field_news_source_value, ua.dst  FROM node n, " +
-			  		" content_type_press  fu, url_alias ua WHERE n.type = 'press' AND n.status = 1 and " +
-			  		"fu.nid = n.nid and ua.src= concat('node/',n.nid) ORDER BY n.sticky DESC, " +
-			  		"n.created DESC limit 3");
+			  ResultSet rs = stmt.executeQuery("SELECT * from bd_news"+searchCriteria);
 			  
 			  while(rs.next())
 			  {
 				  NewsVO nVo = new NewsVO();
 				  nVo.setNewsId(rs.getInt(1));
-				  nVo.setNewsCreated(rs.getString(2));
-				  nVo.setNewsTitle(rs.getString(3));
-				 // nVo.setNewsBody(rs.getString(3));
-				  nVo.setNewsSourceValue(rs.getString(4));
-				  nVo.setNewsDst(rs.getString(5));
+				  nVo.setNewsTitle(rs.getString(2));
+				  nVo.setNewsBody(rs.getString(3));
+				  nVo.setNewsDst(rs.getString(4));
+				  nVo.setNewsCreated(rs.getString(7));
+				  nVo.setNewsCreatedDate(rs.getDate(8));
+				  String fridlyTime = BribeUtils.getFriendlyTime(rs.getDate(8));
+				  nVo.setFriendlyDate(fridlyTime);
 				  
 				  news.add(nVo);
 			  }

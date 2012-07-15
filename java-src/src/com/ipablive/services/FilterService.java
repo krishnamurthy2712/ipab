@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class GetBribeReports
+ * Servlet implementation class FilterService
  */
-public class GetBribeReports extends HttpServlet 
+public class FilterService extends HttpServlet 
 {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GetBribeReports() 
+    public FilterService() 
     {
         super();
         // TODO Auto-generated constructor stub
@@ -28,11 +28,12 @@ public class GetBribeReports extends HttpServlet
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		String bribeType = request.getParameter("t");
 		String bribeTypeUrl = "";
 		String failureMessageUrl = "/errors/ErrorsDisplay.jsp";
+		
 		ServletContext ctx = getServletContext();
 		HttpSession session = request.getSession(true);
 		
@@ -40,20 +41,15 @@ public class GetBribeReports extends HttpServlet
 		{
 			if(bribeType.equalsIgnoreCase("paid"))
 			{
-				bribeTypeUrl = "/readbribestory/ipaid.jsp";
+				bribeTypeUrl = "/readbribestory/ipaidFiltered.jsp";
 				ctx.getRequestDispatcher(bribeTypeUrl).forward(request, response);
 			}else if(bribeType.equalsIgnoreCase("notpaid"))
 			{
-				bribeTypeUrl = "/readbribestory/ididnotpaid.jsp";
+				bribeTypeUrl = "/readbribestory/ididnotpaidFiltered.jsp";
 				ctx.getRequestDispatcher(bribeTypeUrl).forward(request, response);
 			}else if(bribeType.equalsIgnoreCase("notasked"))
 			{
-				bribeTypeUrl = "/readbribestory/donthavetopaid.jsp";
-				ctx.getRequestDispatcher(bribeTypeUrl).forward(request, response);
-			}
-			else if(bribeType.equalsIgnoreCase("all"))
-			{
-				bribeTypeUrl = "/readbribestory/AllReports.jsp";
+				bribeTypeUrl = "/readbribestory/donthavetopaidFiltered.jsp";
 				ctx.getRequestDispatcher(bribeTypeUrl).forward(request, response);
 			}else
 			{
@@ -67,6 +63,7 @@ public class GetBribeReports extends HttpServlet
 			session.setAttribute("ErrorMessage", "Please choose your report type.");
 			ctx.getRequestDispatcher(failureMessageUrl).forward(request, response);
 		}
+		
 	}
 
 }

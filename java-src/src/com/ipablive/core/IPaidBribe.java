@@ -52,16 +52,65 @@ public class IPaidBribe
 	    return _bribeInstance;
 	  }
 	  
-	  public ArrayList<PaidBribesVO> viewPaidBribes(String criteria)
+	  public ArrayList<PaidBribesVO> viewPaidBribes(int limit)
 	  {
 		  ArrayList<PaidBribesVO> paidBribes = new ArrayList<PaidBribesVO>();
 		  String searchCriteria="";
-		  if(criteria.equalsIgnoreCase("All"))
+		  
+		  if(limit == 0)
 		  {
 			  searchCriteria = "";
+		  }else
+		  {
+			  searchCriteria = " LIMIT "+limit;
 		  }
 		  
-		  String query = "SELECT bc.*, ct.city_name AS c_city, bd.dept_name, bt.trans_name FROM bd_paid_bribe bc, bd_dept bd, bd_transactions bt, bd_city ct WHERE bc.c_dept=bd.id AND bc.c_transaction=bt.id and bc.c_city=ct.Id "+ searchCriteria +" order by bc.id desc";
+		  String query = "SELECT bc.*, ct.city_name AS c_city, bd.dept_name, bt.trans_name FROM bd_paid_bribe bc, bd_dept bd, bd_transactions bt, bd_city ct WHERE bc.c_dept=bd.id AND bc.c_transaction=bt.id and bc.c_city=ct.Id order by bc.id desc "+ searchCriteria;
+		  
+		  try
+		  {
+			  Statement stmt = conn.createStatement();
+			  ResultSet rs = stmt.executeQuery(query);
+			  while(rs.next())
+			  {
+				  PaidBribesVO pbv = new PaidBribesVO();
+				  pbv.setId(rs.getInt(1));
+				  pbv.setCName(rs.getString(2));
+				  //3
+				  pbv.setCDept(rs.getInt(4));
+				  //5
+				  pbv.setOthersTransaction(rs.getString(6));
+				  pbv.setCAmountPaid(rs.getInt(7));
+				  pbv.setCPaidDate(rs.getDate(8));
+				  pbv.setCBribeType(rs.getString(9));
+				  //pbv.setCValTran(rs.getString(10));
+				  pbv.setCAdditionalInfo(rs.getString(11));
+				  //12
+				  pbv.setOtherDept(rs.getString(13));
+				  //14 creation date
+				  pbv.setOtherLocation(rs.getString(15));
+				  //16,17,18
+				  pbv.setCount(rs.getInt(19));
+				  pbv.setCCity(rs.getString(20));
+				  pbv.setDeptName(rs.getString(21));
+				  pbv.setTransName(rs.getString(22));
+				  
+				  int numComments = getNumComments(rs.getInt(1));
+				  pbv.setNumComments(numComments);
+				  
+				  paidBribes.add(pbv);
+			  }
+		  }catch(Exception e)
+		  {
+			  e.printStackTrace();
+		  }
+		  
+		  return paidBribes;
+	  }
+	  
+	  public ArrayList<PaidBribesVO> viewFilteredPaidBribes(String query)
+	  {
+		  ArrayList<PaidBribesVO> paidBribes = new ArrayList<PaidBribesVO>();
 		  
 		  try
 		  {
