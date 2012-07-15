@@ -29,6 +29,24 @@
 	<link type="text/css"
 		href="${pageContext.request.contextPath}/theme/css/newstyles.css"
 		rel="stylesheet" />
+<script type="text/javascript">
+function show_less(num)
+{
+	$('#more_link'+num).css('display','block');
+	$('#less_link'+num).css('display','none');		
+	$('#more_d_'+num).css('display','none');
+	$('#less_d_'+num).fadeIn();
+}
+
+function show_more(num)
+{
+	$('#less_link'+num).css('display','block');
+	$('#more_link'+num).css('display','none');			
+	$('#less_d_'+num).css('display','none');
+	$('#more_d_'+num).fadeIn();
+}	
+</script>
+
 </head>
 <body>
 <%@include file="../header.jsp" %>
@@ -44,28 +62,69 @@
 
 <%
 YouTubeManager ym = YouTubeManager.getInstance();
-
 List<YouTubeVideoVO> videos = ym.retrieveVideos(0);
+String display = "style='display:none;'";
+String readMore = "style='display:block;'";
+int count = 1;
 
 for (YouTubeVideoVO youtubeVideo : videos) 
 {
-    for (String thumbnail : youtubeVideo.getThumbnails()) 
-    {
-        System.out.println("\t" + thumbnail);
-    }
-    System.out.println(youtubeVideo.getEmbeddedWebPlayerUrl());
-    System.out.println("************************************");
-
 %>
 <div class="video-block-box">
-<h3></h3>
+<h3><%=youtubeVideo.getVideoTitle() %></h3>
 <p><object height="480" width="640">
 <param name="movie" value="<%=youtubeVideo.getEmbeddedWebPlayerUrl() %>" />
 <param name="allowFullScreen" value="true" /><param name="allowscriptaccess" value="always" />
 <embed height="480" src="<%=youtubeVideo.getEmbeddedWebPlayerUrl() %>" type="application/x-shockwave-flash" width="640"></embed>
 </object></p>
+
+<div class="clear"></div>
+				<div id="more_link<%=count %>" <%=readMore %> align="right">
+					<div class="report_reg_more">
+			            <a href="#" class="rad" onclick="show_more('<%=count %>'); return false;">Read More</a> 
+		            </div>
+				</div>
+				<div class="clear"></div>
+				<div id="more_d_<%=count %>" <%=display %>>
+				<%
+					ArrayList<String> comments = youtubeVideo.getVideoComments();
+					if(comments.size()>0)
+					{
+						for(int i=0; i<comments.size();i++)
+						{
+							%>
+							<div class="clear"></div>
+							<div class="vote_comment" align="left">
+								<%=comments.get(i) %>
+							</div>
+							<div class="clear"></div>
+							<%
+						}
+					}
+					else
+					{
+						%>
+						<div class="vote_comment" align="left">
+							<strong>No Comments to display.</strong>
+						</div>
+						<%
+					}
+				
+				%>
+				<div class="clear"></div><div class="clear"></div>
+				<div class="share_tool_d" align="right">
+					<div id="less_link<%=count %>">
+						<div class="report_reg_more">
+							<a href="#" class="rad" onclick="show_less('<%=count %>'); return false;">Read less...</a> 
+						</div>
+					</div>
+				</div>
+		</div>
+
 </div>
-<%} %>
+<%
+count++;
+} %>
 <%@include file="../footer.jsp" %>
 </div>
 </body>
