@@ -41,7 +41,8 @@ BODY {
 
 /* Applied to all the forms in jsps*/
 #ipabforms LABEL {
-	FONT-FAMILY: "Century Gothic", "Helvetica Neue", "Arial, Helvetica","Nimbus Sans L", "sans-serif";
+	FONT-FAMILY: "Century Gothic", "Helvetica Neue", "Arial, Helvetica",
+		"Nimbus Sans L", "sans-serif";
 }
 
 #ipabforms {
@@ -263,7 +264,7 @@ Bottom stack styles
 	color: #fcfcfc;
 	border-radius: 10px;
 	opacity: .85;
-	filter: alpha(opacity = 85);
+	filter: alpha(opacity =   85);
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 }
@@ -747,8 +748,7 @@ Widgets for home, paid, didnt paid etc
 	-moz-box-shadow: inset 0px 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
 }
 
-.right-box
-{
+.right-box {
 	float: right;
 }
 
@@ -819,16 +819,17 @@ Widgets for home, paid, didnt paid etc
 }
 
 .rounded-corners {
-     -moz-border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -khtml-border-radius: 20px;
-    border-radius: 20px;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	-khtml-border-radius: 20px;
+	border-radius: 20px;
 }
 
 .complaint-block-box {
 	width: 650px;
 	background-color: #fff;
-	FONT-FAMILY: "Century Gothic", "Helvetica Neue", Arial, Helvetica,"Nimbus Sans L", sans-serif;
+	FONT-FAMILY: "Century Gothic", "Helvetica Neue", Arial, Helvetica,
+		"Nimbus Sans L", sans-serif;
 	display: inline-block;
 	margin: 10px;
 	padding: 10px 10px;
@@ -860,7 +861,7 @@ Widgets for home, paid, didnt paid etc
 	width: 655px !important;
 	background-color: #fff;
 	padding: 5px;
-	margin-bottom:10px;
+	margin-bottom: 10px;
 	display: inline-block;
 	border-top-width: 1px;
 	border-right-width: 1px;
@@ -881,7 +882,8 @@ Widgets for home, paid, didnt paid etc
 	width: 96% !important;
 	height: 100% !important;
 	background-color: #fff;
-	FONT-FAMILY: "Century Gothic", "Helvetica Neue", Arial, Helvetica,"Nimbus Sans L", sans-serif;
+	FONT-FAMILY: "Century Gothic", "Helvetica Neue", Arial, Helvetica,
+		"Nimbus Sans L", sans-serif;
 	FONT-SIZE: 13px;
 	display: inline-block;
 	margin-left: 8px;
@@ -904,7 +906,8 @@ Widgets for home, paid, didnt paid etc
 
 .contactus-block-box {
 	width: 96% !important;
-	FONT-FAMILY: "Century Gothic", "Helvetica Neue", Arial, Helvetica,"Nimbus Sans L", sans-serif;
+	FONT-FAMILY: "Century Gothic", "Helvetica Neue", Arial, Helvetica,
+		"Nimbus Sans L", sans-serif;
 	height: 100% !important;
 	background-color: #fff;
 	display: inline-block;
@@ -953,7 +956,8 @@ Widgets for home, paid, didnt paid etc
 	width: 650px;
 	height: 100% !important;
 	background-color: #fff;
-	FONT-FAMILY: "Century Gothic", "Helvetica Neue", Arial, Helvetica,"Nimbus Sans L", sans-serif;
+	FONT-FAMILY: "Century Gothic", "Helvetica Neue", Arial, Helvetica,
+		"Nimbus Sans L", sans-serif;
 	display: inline-block;
 	margin: 10px;
 	padding: 10px 10px;
@@ -974,7 +978,8 @@ Widgets for home, paid, didnt paid etc
 
 .video-block-box {
 	width: 655px !important;
-	FONT-FAMILY: "Century Gothic", "Helvetica Neue", Arial, Helvetica,"Nimbus Sans L", sans-serif;
+	FONT-FAMILY: "Century Gothic", "Helvetica Neue", Arial, Helvetica,
+		"Nimbus Sans L", sans-serif;
 	height: 100% !important;
 	background-color: #fff;
 	display: inline-block;
@@ -998,7 +1003,8 @@ Widgets for home, paid, didnt paid etc
 
 .blog-block-box {
 	width: 655px !important;
-	FONT-FAMILY: "Century Gothic", "Helvetica Neue", Arial, Helvetica,"Nimbus Sans L", sans-serif;
+	FONT-FAMILY: "Century Gothic", "Helvetica Neue", Arial, Helvetica,
+		"Nimbus Sans L", sans-serif;
 	height: 100% !important;
 	background-color: #fff;
 	display: inline-block;
@@ -1035,7 +1041,7 @@ Centered div for all error messages
 .centered {
 	display: block;
 	border: 3px;
-	color:red;
+	color: red;
 	border-color: red;
 	/*set the div in the center of the screen*/
 	top: 50%;
@@ -1067,7 +1073,7 @@ bgbox {
 }
 
 .bgbox2 {
-	width:618px !important;
+	width: 618px !important;
 	background: #fff;
 	margin-top: 5px;
 	margin-left: 20px;
@@ -1087,12 +1093,11 @@ bgbox {
 	-moz-box-shadow: inset 0px 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
 }
 
-.bgbox2 select
-{
+.bgbox2 select {
 	width: 120px !important;
 }
-.bgbox2 label
-{
+
+.bgbox2 label {
 	width: 100px !important;
 }
 
@@ -1186,7 +1191,9 @@ html ul.tabs li.active,html ul.tabs li.active a:hover,html ul.new li.active,html
 }
 
 .moreAnalysis {
-	background:	url("http://localhost:8080/ipab-java/theme/images/seeAll.png") no-repeat scroll 100% 5px transparent;
+	background:
+		url("http://localhost:8080/ipab-java/theme/images/seeAll.png")
+		no-repeat scroll 100% 5px transparent;
 	margin-top: 10px;
 	padding-right: 15px;
 	text-align: right;
@@ -1215,7 +1222,8 @@ See All styles
 	margin-top: 10px;
 	font-size: 12px;
 	clear: both;
-	background: url(http://localhost:8080/ipab-java/theme/images/seeAll.png) 100% 4px no-repeat;
+	background: url(http://localhost:8080/ipab-java/theme/images/seeAll.png)
+		100% 4px no-repeat;
 }
 
 .seeAllList {
@@ -1231,11 +1239,13 @@ See All styles
 
 .seeAllList li {
 	float: right;
-	background: url(http://localhost:8080/ipab-java/theme/images/seeAll.png) 100% 4px no-repeat;
+	background: url(http://localhost:8080/ipab-java/theme/images/seeAll.png)
+		100% 4px no-repeat;
 	list-style-type: none;
 	margin: 10px 10px 5px 10px;
 	padding: 0 15px 0 0;
-	background: url(http://localhost:8080/ipab-java/theme/images/seeAll.png) 100% 4px no-repeat;
+	background: url(http://localhost:8080/ipab-java/theme/images/seeAll.png)
+		100% 4px no-repeat;
 }
 
 .seeAllList li.last {
@@ -1416,7 +1426,6 @@ Bribe items and bribe fighter styles
 /*
 Toolkit box
 */
-
 .sidebar {
 	margin: 0px 10px 5em 0px;
 	width: 260px;
@@ -1428,18 +1437,22 @@ Toolkit box
 #toolkit-bg {
 	width: 250px;
 	background-color: #fff;
-	FONT-FAMILY: "Century Gothic", "Helvetica Neue", Arial, Helvetica,	"Nimbus Sans L", sans-serif;
+	FONT-FAMILY: "Century Gothic", "Helvetica Neue", Arial, Helvetica,
+		"Nimbus Sans L", sans-serif;
 	display: inline-block;
 	border-top-width: 1px;
 	border-right-width: 1px;
 	border-bottom-width: 1px;
-	border-top-style: solid; border-right-style : solid;
-	border-bottom-style : solid; border-top-color : #d2cfd7;
-	border-right-color : #dad8e0; border-bottom-color : #c2bcc5; 
-	box-shadow: inset 0 1px 1px #9f9d9f, 3px 0px 3px #9f9d9f; 
-	-o-box-shadow : inset 0	1px 1px #9f9d9f, 0px 3px 3px #9f9d9f; 
-	-webkit-box-shadow : inset 0 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f; 
-	-moz-box-shadow : inset 0px 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #d2cfd7;
+	border-right-color: #dad8e0;
+	border-bottom-color: #c2bcc5;
+	box-shadow: inset 0 1px 1px #9f9d9f, 3px 0px 3px #9f9d9f;
+	-o-box-shadow: inset 0 1px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+	-webkit-box-shadow: inset 0 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+	-moz-box-shadow: inset 0px 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
 	height: 380px;
 	border-right-style: solid;
 	border-bottom-style: solid;
@@ -1451,18 +1464,22 @@ Toolkit box
 #toolkit_bg_reports {
 	width: 250px;
 	background-color: #fff;
-	FONT-FAMILY: "Century Gothic", "Helvetica Neue", Arial, Helvetica,	"Nimbus Sans L", sans-serif;
+	FONT-FAMILY: "Century Gothic", "Helvetica Neue", Arial, Helvetica,
+		"Nimbus Sans L", sans-serif;
 	display: inline-block;
 	border-top-width: 1px;
 	border-right-width: 1px;
 	border-bottom-width: 1px;
-	border-top-style: solid; border-right-style : solid;
-	border-bottom-style : solid; border-top-color : #d2cfd7;
-	border-right-color : #dad8e0; border-bottom-color : #c2bcc5; 
-	box-shadow: inset 0 1px 1px #9f9d9f, 3px 0px 3px #9f9d9f; 
-	-o-box-shadow : inset 0	1px 1px #9f9d9f, 0px 3px 3px #9f9d9f; 
-	-webkit-box-shadow : inset 0 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f; 
-	-moz-box-shadow : inset 0px 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #d2cfd7;
+	border-right-color: #dad8e0;
+	border-bottom-color: #c2bcc5;
+	box-shadow: inset 0 1px 1px #9f9d9f, 3px 0px 3px #9f9d9f;
+	-o-box-shadow: inset 0 1px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+	-webkit-box-shadow: inset 0 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+	-moz-box-shadow: inset 0px 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
 	height: 380px;
 	border-right-style: solid;
 	border-bottom-style: solid;
@@ -1488,7 +1505,6 @@ Toolkit box
 	height: 26px;
 	margin-top: 10px;
 }
-
 
 #toolkit {
 	float: right;
@@ -1517,7 +1533,9 @@ Toolkit box
 	color: #42CBEA;
 	margin-bottom: 10px;
 	padding-left: 45px;
-	background:	url(http://s3.ipaidabribe.com/sites/all/themes/ipab2011/images/toolkit.png)	no-repeat 0 0;
+	background:
+		url(http://s3.ipaidabribe.com/sites/all/themes/ipab2011/images/toolkit.png)
+		no-repeat 0 0;
 	font-weight: bold;
 	height: 26px;
 	margin-top: 10px;
@@ -1526,7 +1544,9 @@ Toolkit box
 #toolkit a.a {
 	color: #666;
 	display: block;
-	background:	url(http://s3.ipaidabribe.com/sites/all/themes/ipab2011/images/left_tools_icon.png)	no-repeat 0 5px;
+	background:
+		url(http://s3.ipaidabribe.com/sites/all/themes/ipab2011/images/left_tools_icon.png)
+		no-repeat 0 5px;
 	padding-left: 22px;
 	text-decoration: none;
 }
@@ -1534,7 +1554,9 @@ Toolkit box
 #toolkit a.b {
 	color: #666;
 	display: block;
-	background:	url(http://s3.ipaidabribe.com/sites/all/themes/ipab2011/images/readreports.png)	no-repeat 2px 5px;
+	background:
+		url(http://s3.ipaidabribe.com/sites/all/themes/ipab2011/images/readreports.png)
+		no-repeat 2px 5px;
 	padding-left: 22px;
 	text-decoration: none;
 }
@@ -1558,7 +1580,7 @@ Breadcrumb
 	z-index: 3;
 }
 
-body   . sidebar-first .region-footer {
+body    . sidebar-first .region-footer {
 	margin-left: -210px;
 }
 
@@ -1566,7 +1588,7 @@ body.sidebar-second .region-footer {
 	margin-right: -210px;
 }
 
-body.two-sidebars    . region-footer {
+body.two-sidebars     . region-footer {
 	margin: 0 -210px;
 }
 
@@ -1635,7 +1657,7 @@ body.fluid-width #wrapper #container {
 	margin: 0 auto;
 }
 
-#wrapper   # container #header {
+#wrapper    # container #header {
 	height: 149px;
 }
 
@@ -1733,7 +1755,7 @@ body.sidebar-first #center {
 	
 }
 
-body  . sidebar-second #center {
+body   . sidebar-second #center {
 	
 }
 
@@ -1761,7 +1783,7 @@ body.two-sidebars #squeeze {
 	position: relative;
 }
 
-#wrapper #container .sidebar   . block {
+#wrapper #container .sidebar    . block {
 	margin: 0 0 1em 0;
 }
 
@@ -1803,7 +1825,7 @@ body.two-sidebars #squeeze {
 	left: 10px;
 }
 
-#wrapper #container   . region-footer {
+#wrapper #container    . region-footer {
 	float: none;
 	clear: both;
 	text-align: center;
@@ -1817,81 +1839,244 @@ body.two-sidebars #squeeze {
 /*
 Select box styles
 */
-select
-{
+select {
 	width: 200px;
 }
-	
 
 /*
 Date Picker Style
-*/
-/* Datepicker
+*/ /* Datepicker
 ----------------------------------*/
-.ui-datepicker { width: 18em; padding: .2em .2em 0; background-color: #FFFFFF;}
-.ui-datepicker .ui-datepicker-header { position:relative; padding:.2em 0; background-color: #CCCCCC }
-.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next { position:absolute; top: 2px; width: 1.8em; height: 1.8em; }
-.ui-datepicker .ui-datepicker-prev-hover, .ui-datepicker .ui-datepicker-next-hover { top: 1px; }
-.ui-datepicker .ui-datepicker-prev { left:8px; }
-.ui-datepicker .ui-datepicker-next { right:12px;}
-.ui-datepicker .ui-datepicker-prev-hover { left:0px; }
-.ui-datepicker .ui-datepicker-next-hover { right:0px; }
-.ui-datepicker .ui-datepicker-prev span, .ui-datepicker .ui-datepicker-next span { display: block; position: absolute; left: 50%; margin-left: -8px; top: 50%; margin-top: -8px;  }
-.ui-datepicker .ui-datepicker-title { margin: 0 2.3em; line-height: 1.8em; text-align: center; }
-.ui-datepicker .ui-datepicker-title select { font-size:1em; margin:1px 0; }
-.ui-datepicker select.ui-datepicker-month-year {width: 100%;}
-.ui-datepicker select.ui-datepicker-month, 
-.ui-datepicker select.ui-datepicker-year { width: 49%;}
-.ui-datepicker table {width: 100%; font-size: .9em; border-collapse: collapse; margin:0 0 .4em; }
-.ui-datepicker th { padding: .7em .3em; text-align: center; font-weight: bold; border: 0;  }
-.ui-datepicker td { border: 0; padding: 1px; }
-.ui-datepicker td span, .ui-datepicker td a { display: block; padding: .2em; text-align: right; text-decoration: none; }
-.ui-datepicker .ui-datepicker-buttonpane { background-image: none; margin: .7em 0 0 0; padding:0 .2em; border-left: 0; border-right: 0; border-bottom: 0; }
-.ui-datepicker .ui-datepicker-buttonpane button { float: right; margin: .5em .2em .4em; cursor: pointer; padding: .2em .6em .3em .6em; width:auto; overflow:visible; }
-.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current { float:left; }
+.ui-datepicker {
+	width: 18em;
+	padding: .2em .2em 0;
+	background-color: #FFFFFF;
+}
+
+.ui-datepicker .ui-datepicker-header {
+	position: relative;
+	padding: .2em 0;
+	background-color: #CCCCCC
+}
+
+.ui-datepicker .ui-datepicker-prev,.ui-datepicker .ui-datepicker-next {
+	position: absolute;
+	top: 2px;
+	width: 1.8em;
+	height: 1.8em;
+}
+
+.ui-datepicker .ui-datepicker-prev-hover,.ui-datepicker .ui-datepicker-next-hover
+	{
+	top: 1px;
+}
+
+.ui-datepicker .ui-datepicker-prev {
+	left: 8px;
+}
+
+.ui-datepicker .ui-datepicker-next {
+	right: 12px;
+}
+
+.ui-datepicker .ui-datepicker-prev-hover {
+	left: 0px;
+}
+
+.ui-datepicker .ui-datepicker-next-hover {
+	right: 0px;
+}
+
+.ui-datepicker .ui-datepicker-prev span,.ui-datepicker .ui-datepicker-next span
+	{
+	display: block;
+	position: absolute;
+	left: 50%;
+	margin-left: -8px;
+	top: 50%;
+	margin-top: -8px;
+}
+
+.ui-datepicker .ui-datepicker-title {
+	margin: 0 2.3em;
+	line-height: 1.8em;
+	text-align: center;
+}
+
+.ui-datepicker .ui-datepicker-title select {
+	font-size: 1em;
+	margin: 1px 0;
+}
+
+.ui-datepicker select.ui-datepicker-month-year {
+	width: 100%;
+}
+
+.ui-datepicker select.ui-datepicker-month,.ui-datepicker select.ui-datepicker-year
+	{
+	width: 49%;
+}
+
+.ui-datepicker table {
+	width: 100%;
+	font-size: .9em;
+	border-collapse: collapse;
+	margin: 0 0 .4em;
+}
+
+.ui-datepicker th {
+	padding: .7em .3em;
+	text-align: center;
+	font-weight: bold;
+	border: 0;
+}
+
+.ui-datepicker td {
+	border: 0;
+	padding: 1px;
+}
+
+.ui-datepicker td span,.ui-datepicker td a {
+	display: block;
+	padding: .2em;
+	text-align: right;
+	text-decoration: none;
+}
+
+.ui-datepicker .ui-datepicker-buttonpane {
+	background-image: none;
+	margin: .7em 0 0 0;
+	padding: 0 .2em;
+	border-left: 0;
+	border-right: 0;
+	border-bottom: 0;
+}
+
+.ui-datepicker .ui-datepicker-buttonpane button {
+	float: right;
+	margin: .5em .2em .4em;
+	cursor: pointer;
+	padding: .2em .6em .3em .6em;
+	width: auto;
+	overflow: visible;
+}
+
+.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current {
+	float: left;
+}
 
 /* with multiple calendars */
-.ui-datepicker.ui-datepicker-multi { width:auto; }
-.ui-datepicker-multi .ui-datepicker-group { float:left; }
-.ui-datepicker-multi .ui-datepicker-group table { width:95%; margin:0 auto .4em; }
-.ui-datepicker-multi-2 .ui-datepicker-group { width:50%; }
-.ui-datepicker-multi-3 .ui-datepicker-group { width:33.3%; }
-.ui-datepicker-multi-4 .ui-datepicker-group { width:25%; }
-.ui-datepicker-multi .ui-datepicker-group-last .ui-datepicker-header { border-left-width:0; }
-.ui-datepicker-multi .ui-datepicker-group-middle .ui-datepicker-header { border-left-width:0; }
-.ui-datepicker-multi .ui-datepicker-buttonpane { clear:left; }
-.ui-datepicker-row-break { clear:both; width:100%; }
+.ui-datepicker.ui-datepicker-multi {
+	width: auto;
+}
+
+.ui-datepicker-multi .ui-datepicker-group {
+	float: left;
+}
+
+.ui-datepicker-multi .ui-datepicker-group table {
+	width: 95%;
+	margin: 0 auto .4em;
+}
+
+.ui-datepicker-multi-2 .ui-datepicker-group {
+	width: 50%;
+}
+
+.ui-datepicker-multi-3 .ui-datepicker-group {
+	width: 33.3%;
+}
+
+.ui-datepicker-multi-4 .ui-datepicker-group {
+	width: 25%;
+}
+
+.ui-datepicker-multi .ui-datepicker-group-last .ui-datepicker-header {
+	border-left-width: 0;
+}
+
+.ui-datepicker-multi .ui-datepicker-group-middle .ui-datepicker-header {
+	border-left-width: 0;
+}
+
+.ui-datepicker-multi .ui-datepicker-buttonpane {
+	clear: left;
+}
+
+.ui-datepicker-row-break {
+	clear: both;
+	width: 100%;
+}
 
 /* RTL support */
-.ui-datepicker-rtl { direction: rtl; }
-.ui-datepicker-rtl .ui-datepicker-prev { right: 2px; left: auto; }
-.ui-datepicker-rtl .ui-datepicker-next { left: 2px; right: auto; }
-.ui-datepicker-rtl .ui-datepicker-prev:hover { right: 1px; left: auto; }
-.ui-datepicker-rtl .ui-datepicker-next:hover { left: 1px; right: auto; }
-.ui-datepicker-rtl .ui-datepicker-buttonpane { clear:right; }
-.ui-datepicker-rtl .ui-datepicker-buttonpane button { float: left;}
-.ui-datepicker-rtl .ui-datepicker-buttonpane button.ui-datepicker-current { float:right; }
-.ui-datepicker-rtl .ui-datepicker-group { float:right; background-color: #CCCCC0;}
-.ui-datepicker-rtl .ui-datepicker-group-last .ui-datepicker-header { border-right-width:0; border-left-width:1px; }
-.ui-datepicker-rtl .ui-datepicker-group-middle .ui-datepicker-header { border-right-width:0; border-left-width:1px; }
+.ui-datepicker-rtl {
+	direction: rtl;
+}
+
+.ui-datepicker-rtl .ui-datepicker-prev {
+	right: 2px;
+	left: auto;
+}
+
+.ui-datepicker-rtl .ui-datepicker-next {
+	left: 2px;
+	right: auto;
+}
+
+.ui-datepicker-rtl .ui-datepicker-prev:hover {
+	right: 1px;
+	left: auto;
+}
+
+.ui-datepicker-rtl .ui-datepicker-next:hover {
+	left: 1px;
+	right: auto;
+}
+
+.ui-datepicker-rtl .ui-datepicker-buttonpane {
+	clear: right;
+}
+
+.ui-datepicker-rtl .ui-datepicker-buttonpane button {
+	float: left;
+}
+
+.ui-datepicker-rtl .ui-datepicker-buttonpane button.ui-datepicker-current
+	{
+	float: right;
+}
+
+.ui-datepicker-rtl .ui-datepicker-group {
+	float: right;
+	background-color: #CCCCC0;
+}
+
+.ui-datepicker-rtl .ui-datepicker-group-last .ui-datepicker-header {
+	border-right-width: 0;
+	border-left-width: 1px;
+}
+
+.ui-datepicker-rtl .ui-datepicker-group-middle .ui-datepicker-header {
+	border-right-width: 0;
+	border-left-width: 1px;
+}
 
 /* IE6 IFRAME FIX (taken from datepicker 1.5.3 */
 .ui-datepicker-cover {
-    display: none; /*sorry for IE5*/
-    display/**/: block; /*sorry for IE5*/
-    position: absolute; /*must have*/
-    z-index: -1; /*must have*/
-    filter: mask(); /*must have*/
-    top: -4px; /*must have*/
-    left: -4px; /*must have*/
-    width: 200px; /*must have*/
-    height: 200px; /*must have*/
+	display: none; /*sorry for IE5*/
+	display /**/: block; /*sorry for IE5*/
+	position: absolute; /*must have*/
+	z-index: -1; /*must have*/
+	filter: mask(); /*must have*/
+	top: -4px; /*must have*/
+	left: -4px; /*must have*/
+	width: 200px; /*must have*/
+	height: 200px; /*must have*/
 }
 
 /*
 Bribe filter box
 */
-
 #bribe-filter-box {
 	width: 655px;
 	display: inline-block;
@@ -1903,62 +2088,69 @@ Bribe filter box
 	-moz-box-shadow: inset 0px 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
 }
 
-.report_reg{
-	width:auto;
-	padding-bottom:25px;
+.report_reg {
+	width: auto;
+	padding-bottom: 25px;
 	margin-bottom: 20px;
 	margin-top: 20px;
 }
 
-.report_reg h2{
-width:400px;
-padding:0px;
-margin-top:20px;
-font-size:12px;
-font-weight:bold;
-color:#514040!important;
-}
-.report_reg_det{
-width:400px;
-margin-top:20px;
-font-size:12px;
-color:#514040;
-float:left;
-line-height: 20px;
-margin-bottom: 15px;
-}
-.report_reg_paid{
-width:107px;
-height:30px;
-float:left;
-margin-bottom:15px;
-padding:8px 5px 0 10px;
-font-size:10px;
-font-weight:bold;
-background:url(http://localhost:8080/ipab-java/theme/images/paid.png) no-repeat top;
-}
-.report_reg_paid span{
-	font-size:14px;
-	font-weight:bold;
-	margin-left:5px;
-}
-.report_reg_more{
-width:100%;
-margin-top:5px;
-padding-right:10px;
-float:left;
+.report_reg h2 {
+	width: 400px;
+	padding: 0px;
+	margin-top: 20px;
+	font-size: 12px;
+	font-weight: bold;
+	color: #514040 !important;
 }
 
-.report_reg_more a, a.yellow_box{
-font-size:12px;
-font-style:italic;
-color:#9A2A2A;
-margin:0 10px 15px 0;
-border:1px solid #e8ad04;
-padding:3px;
-text-align:center;
+.report_reg_det {
+	width: 400px;
+	margin-top: 20px;
+	font-size: 12px;
+	color: #514040;
+	float: left;
+	line-height: 20px;
+	margin-bottom: 15px;
 }
-.report_reg_more a.facebook_share_view, .report_reg_more a.tweet_share_view {
+
+.report_reg_paid {
+	width: 107px;
+	height: 30px;
+	float: left;
+	margin-bottom: 15px;
+	padding: 8px 5px 0 10px;
+	font-size: 10px;
+	font-weight: bold;
+	background: url(http://localhost:8080/ipab-java/theme/images/paid.png)
+		no-repeat top;
+}
+
+.report_reg_paid span {
+	font-size: 14px;
+	font-weight: bold;
+	margin-left: 5px;
+}
+
+.report_reg_more {
+	width: 100%;
+	margin-top: 5px;
+	padding-right: 10px;
+	float: left;
+}
+
+.report_reg_more a,a.yellow_box {
+	font-size: 12px;
+	font-style: italic;
+	color: #9A2A2A;
+	margin: 0 10px 15px 0;
+	border: 1px solid #e8ad04;
+	padding: 3px;
+	text-align: center;
+}
+
+.report_reg_more a.facebook_share_view,.report_reg_more a.tweet_share_view
+	{
 	padding: 1px 23px 1px 22px;
 	border: none;
 	font-size: 11px;
@@ -1972,8 +2164,7 @@ text-align:center;
 	position: relative;
 }
 
-.reportDisplay
-{
+.reportDisplay {
 	width: 655px !important;
 	background-color: #E2E1E9;
 	display: inline-block;
@@ -1984,23 +2175,29 @@ text-align:center;
 /*
 Share facebook and twitter views
 */
+.facebook_share_view {
+	background:
+		url(http://localhost:8080/ipab-java/theme/images/f_t_share.jpg)
+		no-repeat;
+	padding: 1px 23px 1px 22px;
+	font-size: 11px;
+}
 
-.facebook_share_view{
-	background:url(http://localhost:8080/ipab-java/theme/images/f_t_share.jpg) no-repeat;
-	padding:1px 23px 1px 22px;
-	font-size:11px;
+.facebook_share_view:hover {
+	background-position: 0 -15px;
 }
-.facebook_share_view:hover{
-	background-position:0 -15px;
+
+.tweet_share_view {
+	background:
+		url(http://localhost:8080/ipab-java/theme/images/f_t_share.jpg)
+		no-repeat;
+	background-position: 0 -30px;
+	padding: 1px 23px 1px 22px;
+	font-size: 11px;
 }
-.tweet_share_view{
-	background:url(http://localhost:8080/ipab-java/theme/images/f_t_share.jpg) no-repeat;
-	background-position:0 -30px;
-	padding:1px 23px 1px 22px;
-	font-size:11px;
-}
-.tweet_share_view:hover{
-	background-position:0 -45px;
+
+.tweet_share_view:hover {
+	background-position: 0 -45px;
 }
 
 /*
@@ -2009,7 +2206,8 @@ Comments styles
 .comments-block-box {
 	width: 650px;
 	background-color: #fff;
-	FONT-FAMILY: "Century Gothic", "Helvetica Neue", Arial, Helvetica,"Nimbus Sans L", sans-serif;
+	FONT-FAMILY: "Century Gothic", "Helvetica Neue", Arial, Helvetica,
+		"Nimbus Sans L", sans-serif;
 	display: inline-block;
 	margin: 10px;
 	padding: 10px 10px;
@@ -2028,19 +2226,21 @@ Comments styles
 	-moz-box-shadow: inset 0px 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
 }
 
-.vote_comment{
-	padding:10px;
-	margin-left:10px;
+.vote_comment {
+	padding: 10px;
+	margin-left: 10px;
 	border: #e9eff3 1px solid;
 }
-.vote_comment h2{
-	color:#A04242!important;
+
+.vote_comment h2 {
+	color: #A04242 !important;
 }
 
 .add_comments-block-box {
 	width: 650px;
 	background-color: #fff;
-	FONT-FAMILY: "Century Gothic", "Helvetica Neue", Arial, Helvetica,"Nimbus Sans L", sans-serif;
+	FONT-FAMILY: "Century Gothic", "Helvetica Neue", Arial, Helvetica,
+		"Nimbus Sans L", sans-serif;
 	display: inline-block;
 	margin: 10px;
 	padding: 10px 10px;
@@ -2062,95 +2262,228 @@ Comments styles
 /*
 Analytics styles
 */
-.analytics_div a 
-{
-	color:#4b1b05;
+.analytics_div a {
+	color: #4b1b05;
 	font-size: 11px;
 	text-decoration: none;
 	text-align: center;
 	display: block;
 	width: 100%;
 }
-.analytics 
-{
+
+.analytics {
 	height: 281px;
 	width: 100%;
 	padding: 5px 5px 5px 5px;
 	text-align: center;
 }
-.analytics .graph 
-{
+
+.analytics .graph {
 	margin: 10px 0 10px 0;
 }
-.analytics .analytics_div p 
-{
+
+.analytics .analytics_div p {
 	text-align: center;
 }
 
-.analytics h6, .tadaysHighlight h6 
-{
-	font-size:18px;
-	color:#4b1b05;
-}
-.analytics_div_report
-{
-	width:100%;
-	float:left;
-	font-weight:bold;
+.analytics h6,.tadaysHighlight h6 {
+	font-size: 18px;
 	color: #4b1b05;
 }
-.analytics_div_report .val-1 
-{
+
+.analytics_div_report {
+	width: 100%;
+	float: left;
+	font-weight: bold;
+	color: #4b1b05;
+}
+
+.analytics_div_report .val-1 {
 	float: left;
 }
-.analytics_div_report .val-2 
-{
+
+.analytics_div_report .val-2 {
 	float: right;
 }
-.analytics_div_report, .analytics .graph h4, .analytics_div_report_top5
-{
+
+.analytics_div_report,.analytics .graph h4,.analytics_div_report_top5 {
 	padding-bottom: 2px;
 	margin-bottom: 2px;
 }
-.analytics .line 
-{
+
+.analytics .line {
 	border-bottom: 1px dashed #1f110a;
 }
-.analytics_div_report .ana_color, .analytics .graph span 
-{
+
+.analytics_div_report .ana_color,.analytics .graph span {
 	color: #9b1b1a;
 }
-.ana_bold_none
-{
-	font-weight:normal;
-	color:#cebaa8;
+
+.ana_bold_none {
+	font-weight: normal;
+	color: #cebaa8;
 }
 
-.bribe_box 
-{
-	width:100%;
-	float:left;
-	color:#000;
-	margin-bottom:20px;
+.bribe_box {
+	width: 100%;
+	float: left;
+	color: #000;
+	margin-bottom: 20px;
 }
 
-.report_bribe
-{
+.report_bribe {
 	padding: 7px 15px 15px 15px;
 }
-.report_bribe b a, .analytics b, .analytics b a 
-{
+
+.report_bribe b a,.analytics b,.analytics b a {
 	font-size: 10px;
 }
 
-
-.todayPoll
-{
+.todayPoll {
 	margin: 5px;
 }
 
-.pollResults
-{
+.pollResults {
 	border: 1px;
 	border-style: dashed;
+}
+
+/*
+Twitter
+*/
+h2.tut {
+	color: black;
+	font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	padding: 12px 0 0 58px;
+	text-transform: uppercase;
+	text-shadow: 2px 1px 6px #333;
+}
+
+#twitter-ticker { /* Styling the ticker */
+	width: 100%;
+	height: 350px;
+	background:url(http://localhoost:8080/ipab-java/theme/images/twitter/slickbg.png) no-repeat #f5f5f5;
+	color: #666666;
+	display: none;
+	/* Rounded corners */
+	-moz-border-radius: 10px 10px 6px 6px;
+	-khtml-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	text-align: left;
+}
+
+#tweet-container { /* This is where the tweets are inserted */
+	position: absolute;
+	width: 235px;
+	padding-right: 5px;
+	height: 300px;
+	overflow-y: auto;
+}
+
+#twitIcon {
+	/* Positioning the icon holder absolutely and moving it to the upper-left */
+	position: absolute;
+	top: -25px;
+	left: -10px;
+	width: 64px;
+	height: 64px;
+}
+
+#top-bar {
+	height: 45px;
+	background:
+		url(http://localhoost:8080/ipab-java/theme/images/twitter/top_bar.png)
+		repeat-x;
+	border-bottom: 1px solid white;
+	position: relative;
+	margin-bottom: 8px;
+	/* Rounding the top part of the ticker, works only in Firefox unfortunately */
+	-moz-border-radius: 6px 6px 0 0;
+}
+
+.tweet { /* Affects the tweets */
+	padding: 5px;
+	margin: 0 8px 8px;
+	border: 1px solid #F0F0F0;
+	background:
+		url(http://localhoost:8080/ipab-java/theme/images/twitter/transparent.png)
+		;
+	width: auto;
+	overflow: hidden;
+}
+
+.tweet .avatar,.tweet .user,.tweet .time {
+	float: left;
+}
+
+.tweet .time {
+	text-transform: uppercase;
+	font-size: 10px;
+	color: #AAAAAA;
+	white-space: nowrap;
+}
+
+.tweet .avatar img {
+	width: 36px;
+	height: 36px;
+	border: 2px solid #eeeeee;
+	margin: 0 5px 5px 0;
+}
+
+.tweet .txt { /* Using the text container to clear the floats */
+	clear: both;
+}
+
+.tweet .user {
+	font-weight: bold;
+}
+
+a,a:visited { /* Styling the links */
+	color: #00BBFF;
+	text-decoration: none;
+	outline: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+#loading { /* The loading gif animation */
+	margin: 100px 95px;
+}
+
+#tweet-box-style {
+	width: 250px;
+	background-color: #fff;
+	FONT-FAMILY: "Century Gothic", "Helvetica Neue", Arial, Helvetica,
+		"Nimbus Sans L", sans-serif;
+	display: inline-block;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #d2cfd7;
+	border-right-color: #dad8e0;
+	border-bottom-color: #c2bcc5;
+	box-shadow: inset 0 1px 1px #9f9d9f, 3px 0px 3px #9f9d9f;
+	-o-box-shadow: inset 0 1px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+	-webkit-box-shadow: inset 0 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+	-moz-box-shadow: inset 0px 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+	height: 420px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #d2cfd7;
+	border-right-color: #dad8e0;
+	border-bottom-color: #c2bcc5;
+}
+
+#tweets-bottom
+{
+	height: 60px;
+	background-color: #42CBEA;
+	padding: 20px;
 }
