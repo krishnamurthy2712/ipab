@@ -899,6 +899,27 @@ Widgets for home, paid, didnt paid etc
 	-moz-box-shadow: inset 0px 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
 }
 
+.updates-block-box {
+	width: 655px !important;
+	background-color: #fff;
+	padding: 5px;
+	margin-bottom: 10px;
+	display: inline-block;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #d2cfd7;
+	border-right-color: #dad8e0;
+	border-bottom-color: #c2bcc5;
+	box-shadow: inset 0 1px 1px #9f9d9f, 3px 0px 3px #9f9d9f;
+	-o-box-shadow: inset 0 1px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+	-webkit-box-shadow: inset 0 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+	-moz-box-shadow: inset 0px 0px 1px #9f9d9f, 0px 3px 3px #9f9d9f;
+}
+
 .all-report-block-box {
 	width: 655px !important;
 	padding: 5px;

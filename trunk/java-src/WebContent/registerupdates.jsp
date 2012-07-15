@@ -81,13 +81,16 @@
 </head>
 <body>
 <%@include file="../header.jsp" %>
-<div class="pageHeader">
-<center><br>
-<h2 class="pageHeaderH2">Register for Updates on IPAB</h2>
-</center>
-</div>
-<div id="mainContent" class="mainContent">
-
+<div class="clear"></div>
+<div id="bg-wrapper" class="bg-wrapper">
+	<div class="breadcrumb">
+			<div class="clear"></div>
+				<a href="${pageContext.request.contextPath}" style="text-decoration: none;">Home</a> > Register for updates
+		<center><br>
+		<h2 class="pageHeaderH2">Register for updates</h2>
+		</center>
+		</div>
+<div class="updates-block-box">
 <div align="center" id="validationErrors" ></div>
 &nbsp;
 
@@ -116,9 +119,9 @@
 </form>
 
 </div><!-- eeof report form -->      
+</div>
 
-</div>
-</div>
 <%@include file="../footer.jsp" %>
+</div>
 </body>
 </html>

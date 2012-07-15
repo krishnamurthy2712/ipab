@@ -16,19 +16,28 @@
 </head>
 <body>
 <%@include file="../header.jsp"%>
-<div class="pageHeader"><center><br><h2 class="pageHeaderH2">I Paid a Bribe</h2></center></div>
+<div class="clear"></div>
+<div id="bg-wrapper" class="bg-wrapper">
+	<div class="breadcrumb">
+			<div class="clear"></div>
+				<a href="${pageContext.request.contextPath}" style="text-decoration: none;">Home</a> > Our Privacy policy
+		<center><br>
+		<h2 class="pageHeaderH2"> Our Privacy policy</h2>
+		</center>
+		</div>
+<div class="about-block-box">
 <div id="privacyContent" class="privacyContent">
 
 <h2 class="privacyHeaders">
 	Terms and Conditions</h2>
 <p class="privacyContents">
-	Remember, this website,<span class="Apple-converted-space">&nbsp;</span><a href="http://www.ipaidabribe.or.ke" style="text-decoration: none; font-size: 12px; color: rgb(155, 27, 27); " title="www.ipaidabribe.or.ke">www.ipaidabribe.or.ke</a><span class="Apple-converted-space"> </span>is a platform for you to post your reports on and comment on the blog. All viewpoints are welcome, but please be constructive.</p>
+	Remember, this website,<span class="Apple-converted-space">&nbsp;</span><a href="http://www.ipaidabribe.org.gh" style="text-decoration: none; font-size: 12px; color: rgb(155, 27, 27); " title="www.ipaidabribe.or.ke">www.ipaidabribe.org.gh</a><span class="Apple-converted-space"> </span>is a platform for you to post your reports on and comment on the blog. All viewpoints are welcome, but please be constructive.</p>
 <p class="privacyContents">
 	&nbsp;</p>
 <h2 class="privacyHeaders">
 	Privacy Policy</h2>
 <p class="privacyContents">
-	We at Wamani Trust are committed to protecting your privacy as a visitor to our website and take your personal information very seriously. By using this website, you consent to the terms of our privacy policy for the collection and use of information posted by you. We do not collect, use or disclose your personal information for any purpose other than those identified below, except with your prior consent or as required by the laws applicable in Kenya.</p>
+	We at Wamani Trust are committed to protecting your privacy as a visitor to our website and take your personal information very seriously. By using this website, you consent to the terms of our privacy policy for the collection and use of information posted by you. We do not collect, use or disclose your personal information for any purpose other than those identified below, except with your prior consent or as required by the laws applicable in Ghana.</p>
 <h2 class="privacyHeaders">
 	INFORMATION COLLECTION:</h2>
 <p class="privacyContents">
@@ -52,11 +61,12 @@
 <h2 class="privacyHeaders">
 	CHANGES TO THIS PRIVACY POLICY:</h2>
 <p class="privacyContents">
-	Any changes to the Website&rsquo;s Privacy Policy will be promptly communicated on this website. All changes to the privacy policy will be made without prior notice. You are requested to regularly visit this page to update yourself of the current and prevailing policy. If you have any questions about our privacy policy or wish to update any of the personal information you have provided to us, please contact our representative at<span class="Apple-converted-space">&nbsp;<a href="mailto:info@ipaidabribe.or.ke?subject=Privacy%20Policy" style="text-decoration:none;font-size: 12px; color: rgb(155,27,27); ">info@ipaidabribe.or.ke</a></span>.</p>
-      
+	Any changes to the Website&rsquo;s Privacy Policy will be promptly communicated on this website. All changes to the privacy policy will be made without prior notice. You are requested to regularly visit this page to update yourself of the current and prevailing policy. If you have any questions about our privacy policy or wish to update any of the personal information you have provided to us, please contact our representative at<span class="Apple-converted-space">&nbsp;<a href="mailto:info@ipaidabribe.org.gh?subject=Privacy%20Policy" style="text-decoration:none;font-size: 12px; color: rgb(155,27,27); ">info@ipaidabribe.org.gh</a></span>.</p>
+</div>      
 
 
 </div> 
 <%@include file="../footer.jsp"%>
+</div>
 </body>
 </html>
