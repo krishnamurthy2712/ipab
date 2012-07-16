@@ -229,7 +229,7 @@
 <div id="errors">
 <div id="validationErrors"></div>
 </div>
-<form id="fm" method="post" action="RegisterIDontHavePayComplaint.do"
+<form id="fm" method="post" action="storeDontHavePayComplaint"
 	onsubmit="return validateSubmission();">
 <div class="divContent"><label for="cCity">County </label> <select name="cCity" style="width: 130px;"
 	 id="cCity">

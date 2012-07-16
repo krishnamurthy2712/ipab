@@ -266,7 +266,7 @@
 	function privacyChecked()
 	{
 		var cbs = document.forms['fm'].elements['t_and_c'];;
-		alert(cbs.checked);
+		
 		  if(cbs.checked)
 		  {
 			  document.forms['fm'].elements['submit'].disabled = false;
@@ -348,7 +348,7 @@
 <div id="validationErrors"></div>
 </div>
 
-<form id="fm" method="post" action="RegisterIPaidComplaint.do"
+<form id="fm" method="post" action="storePaidComplaint"
 	 class="ipabforms" onsubmit="return validateSubmission();">
 <div class="divContent"><label for="cCity">County </label> <select name="cCity"
 	 id="cCity" style="width: 130px;">

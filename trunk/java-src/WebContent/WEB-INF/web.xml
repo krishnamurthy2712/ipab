@@ -87,7 +87,7 @@
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>IPaidService</servlet-name>
-		<url-pattern>/tellbribestory/RegisterIPaidComplaint.do</url-pattern>
+		<url-pattern>/storePaidComplaint</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ValidateSecurityCode</servlet-name>
@@ -95,11 +95,11 @@
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>IDidnotPaidService</servlet-name>
-		<url-pattern>/tellbribestory/RegisterIDintPaidComplaint.do</url-pattern>
+		<url-pattern>/storeDidnotPaidComplaint</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>IDontHavetoPayService</servlet-name>
-		<url-pattern>/tellbribestory/RegisterIDontHavePayComplaint.do</url-pattern>
+		<url-pattern>/storeDontHavePayComplaint</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ContactService</servlet-name>
