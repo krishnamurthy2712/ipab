@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 
 public class BribeUtils 
 {
+	public static final String REGISTRATION_SUBJECT = "Thank you for Registering in ipaidbribe.com";
+	
+	
     public static String getClientIpAddr(HttpServletRequest request) 
     {  
         String ip = request.getHeader("X-Forwarded-For");  

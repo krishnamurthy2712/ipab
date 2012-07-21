@@ -243,6 +243,42 @@
     	<servlet-class>
     	com.ipablive.services.BlogServices</servlet-class>
     </servlet>
+    <servlet>
+    	<description>
+    	</description>
+    	<display-name>
+    	DisplayLoginService</display-name>
+    	<servlet-name>DisplayLoginService</servlet-name>
+    	<servlet-class>
+    	com.ipablive.login.DisplayLoginService</servlet-class>
+    </servlet>
+    <servlet>
+    	<description>
+    	</description>
+    	<display-name>
+    	LoginService</display-name>
+    	<servlet-name>LoginService</servlet-name>
+    	<servlet-class>
+    	com.ipablive.login.LoginService</servlet-class>
+    </servlet>
+    <servlet>
+    	<description>
+    	</description>
+    	<display-name>
+    	ForgotPasswordService</display-name>
+    	<servlet-name>ForgotPasswordService</servlet-name>
+    	<servlet-class>
+    	com.ipablive.login.ForgotPasswordService</servlet-class>
+    </servlet>
+    <servlet>
+    	<description>
+    	</description>
+    	<display-name>
+    	ChangePasswordService</display-name>
+    	<servlet-name>ChangePasswordService</servlet-name>
+    	<servlet-class>
+    	com.ipablive.login.ChangePasswordService</servlet-class>
+    </servlet>
 
     <servlet-mapping id="RDS_DISPATCH_MAPPING">
         <servlet-name>RDSDispatchServlet</servlet-name>
@@ -297,6 +333,22 @@
     <servlet-mapping>
     	<servlet-name>BlogServices</servlet-name>
     	<url-pattern>/getBlog</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>DisplayLoginService</servlet-name>
+    	<url-pattern>/entry</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>LoginService</servlet-name>
+    	<url-pattern>/VerifyLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>ForgotPasswordService</servlet-name>
+    	<url-pattern>/forgotPwd</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>ChangePasswordService</servlet-name>
+    	<url-pattern>/changePwd</url-pattern>
     </servlet-mapping>
 	
 	
