@@ -4,14 +4,36 @@
 	String logo = "/theme/images/logo.png";
 	String flag = "/theme/images/Ghana_Flag.png";
 %>
-<div class="clear"></div>
+
+<%@page import="com.ipablive.vo.UserVO"%><div class="clear"></div>
 <div style="margin: 10px;"><img
 	src="${pageContext.request.contextPath}<%=logo %>" height="50">
 <div id="counter"><input type="hidden" name="counter-value"
 	value="2" /></div>
 </div>
 <div class="clear"></div>
-
+<div class="clear"></div>
+<div align="right">
+<%
+UserVO uvo = null;
+uvo = (UserVO) session.getAttribute("loggedInUser");
+if(uvo==null){
+	%>
+<a href="${pageContext.request.contextPath}/entry?cmd=login">Login</a>&nbsp;&nbsp; | 
+&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/entry?cmd=register">Register</a>
+<%
+}else
+{
+%>
+<a href="${pageContext.request.contextPath}/entry?cmd=<%=uvo.getUserRole() %>">Hi, <%=uvo.getLastName()%></a>&nbsp;&nbsp; | 
+&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/entry?cmd=logout">LogOut</a>
+<%
+}
+%>
+</div>
+<div class="clear"></div>
+<div class="clear"></div>
+<div class="clear"></div>
 <div>
 <ul id="menu_new">
 	<li><a href="${pageContext.request.contextPath}">
