@@ -43,7 +43,7 @@ public class ChangePasswordService extends HttpServlet
 		
 		if(isChanged)
 		{
-			redirectUrl = "/user/profile.jsp";
+			redirectUrl = "/";
 		}
 		else
 		{

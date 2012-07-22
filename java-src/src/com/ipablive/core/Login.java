@@ -188,7 +188,7 @@ public class Login
 				pstmt.setString(2, userName);
 				int i = pstmt.executeUpdate();
 				
-				if(i==0)
+				if(i>0)
 				{
 					isChanged = true;
 				}

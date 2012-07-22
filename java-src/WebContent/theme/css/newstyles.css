@@ -2653,13 +2653,23 @@ User boxes
 		"Nimbus Sans L", sans-serif;
 }
 
-.change-pwd-block-box 
+.admin-activities
 {
-	width: 380px !important;
-	height: 250px !important;
 	background-color: #fff;
 	display: inline-block;
-	margin: 20px;
+	margin: 10px;
+	padding: 10px 10px;
+	FONT-FAMILY: "Century Gothic", "Helvetica Neue", Arial, Helvetica,
+		"Nimbus Sans L", sans-serif;
+}
+
+.change-pwd-block-box 
+{
+	width: 330px !important;
+	height: 210px !important;
+	background-color: #fff;
+	display: inline-block;
+	margin: 30px;
 	padding: 10px 10px;
 	border: 1px solid #d2cfd7;
 }
