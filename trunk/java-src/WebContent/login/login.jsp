@@ -104,7 +104,7 @@
 	<input type="submit" value="Login">&nbsp;&nbsp;|&nbsp;&nbsp;
 	<a href="${pageContext.request.contextPath}/entry?cmd=forgot">Forgot Password</a>
 	<div class="clear" style="height: 20px;"></div>
-	New User? Click <a href="#">here</a> to Signup.
+	New User? Click <a href="${pageContext.request.contextPath}/entry?cmd=register">here</a> to Signup.
 </div>
 
 </form>

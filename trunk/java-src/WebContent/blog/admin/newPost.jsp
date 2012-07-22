@@ -51,10 +51,11 @@
 		{
 			$('#validationErrors').html("<center>Please enter your Name</center>");
 			$('#name').css('background',_errorColor);
+			$('#errors').fadeIn();
 			return false;
 		}else
 		{
-			validateSecurityCode();
+			$('#errors').fadeOut();
 			$('#name').css('background',_noErrorColor);
 		}
 		
@@ -62,10 +63,11 @@
 		{
 			$('#validationErrors').html("<center>Please enter title</center>");
 			$('#subject').css('background',_errorColor);
+			$('#errors').fadeIn();
 			return false;
 		}else
 		{
-			validateSecurityCode();
+			$('#errors').fadeOut();
 			$('#subject').css('background',_noErrorColor);
 		}
 
@@ -73,10 +75,11 @@
 		{
 			$('#validationErrors').html("<center>Please enter your message</center>");
 			$('#postContent').css('background',_errorColor);
+			$('#errors').fadeIn();
 			return false;
 		}else
 		{
-			validateSecurityCode();
+			$('#errors').fadeOut();
 			$('#postContent').css('background',_noErrorColor);
 		}
 		
@@ -84,10 +87,12 @@
 		{
 			$('#validationErrors').html("<center>Please enter valid security code</center>");
 			$('#security_code').css('background',_errorColor);
+			$('#errors').fadeIn();
 			return false;
 		}else
 		{
 			validateSecurityCode();
+			$('#errors').fadeOut();
 			$('#security_code').css('background',_noErrorColor);
 		}
 		
@@ -107,11 +112,13 @@
 		if(enteredCode == generatedCode)
 		{
 			$('#security_code').css('background',_noErrorColor);
+			$('#errors').fadeOut();
 		  return true;
 	  	}else
 	  	{
 	  		$('#validationErrors').html("<center>Please enter valid security code</center>");
 	  		$('#security_code').css('background',_errorColor);
+	  		$('#errors').fadeIn();
 	  	}
 	  	return false;
 	}
@@ -121,16 +128,23 @@
 </head>
 <body>
 <%@include file="../../header.jsp" %>
-<div class="pageHeader">
-<center><br>
-<h2 class="pageHeaderH2">Blog</h2>
-</center>
-</div>
-<div id="mainContent" class="mainContent">
-	
+<div class="clear"></div>
+<div id="bg-wrapper">
+	<div class="breadcrumb">
+		<div class="clear"></div>
+			<a href="${pageContext.request.contextPath}" style="text-decoration: none;">Home</a> > New Post
+	<center><br>
+	<h2 class="pageHeaderH2">New Post</h2>
+	</center>
+	</div>
+	<div class="new-blog-post">
 	<h2 class="c_head">Add a Post</h2>
-	<div id="validation_errors" style="display:block;">
+	<div class="clear"></div>
+	<div id="errors">
+	<div id="validationErrors"></div>
+	</div>
 	<form method="post" action="storePost.do" onsubmit="return validatePostsForm();">
+
 	<table>
 		<tr>
 	    	<td colspan="2">
@@ -173,5 +187,6 @@
 </div>
 </div>
 <%@include file="../../footer.jsp" %>
+</div>
 </body>
 </html>

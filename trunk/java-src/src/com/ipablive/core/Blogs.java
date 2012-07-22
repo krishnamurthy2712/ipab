@@ -308,5 +308,32 @@ public class Blogs
 		  
 		  return isUpdated;
 	  }
+	  
+	  public Boolean deletePost(int postId)
+	  {
+		  Boolean isDeleted = false;
+		  try
+			{
+				String query = "delete from bd_blog_post where postId=?";
+				PreparedStatement pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1,postId);
+				
+				int i = pstmt.executeUpdate();
+				if(i==1)
+				{
+					isDeleted = true;
+				}
+				else
+				{
+					isDeleted = false;
+				}
+				
+				
+			}catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+		  return isDeleted;
+	  }
 	   
 }

@@ -28,18 +28,6 @@
 	<link type="text/css"
 		href="${pageContext.request.contextPath}/theme/css/newstyles.css"
 		rel="stylesheet" />
-<script type="text/javascript">
-function deletePostConfirm(postId)
-{
-	var altTxt = "You are trying to delete "+postId+" post.\n Click 'OK' to continue to delete. \n Click 'Cancel' to cancel the submission. '";
-	if (confirm(altTxt))
-	{
-		window.location.href = 'DeletePost.jsp?p='+postId; 
-	}
-	else
-	{
-	}
-}
 </script>
 </head>
 <body>
@@ -48,58 +36,24 @@ function deletePostConfirm(postId)
 <div id="bg-wrapper">
 	<div class="breadcrumb">
 		<div class="clear"></div>
-			<a href="${pageContext.request.contextPath}" style="text-decoration: none;">Home</a> > Blogs
+			<a href="${pageContext.request.contextPath}" style="text-decoration: none;">Home</a> > Delete Post
 	<center><br>
 	<h2 class="pageHeaderH2">Blogs - Admin</h2>
 	</center>
 	</div>
 <%
-Blogs blogs = Blogs.getInstance();
-ArrayList<BlogPostVO> blogPosts = blogs.getBlogPosts();
-
-if(blogPosts.size()>0)
+String p = request.getParameter("p");
+int postId = Integer.parseInt(p);
+Boolean isDeleted = false;
+if(isDeleted)
 {
-	for(int i=0; i<blogPosts.size();i++)
-	{
-		BlogPostVO post = blogPosts.get(i);
-%>
-	<div class="blog-block-box">
-	<h2><%=post.getPostTitle() %></h2>
-<div class="clear"></div>
-	<div class="divContent">
-        Submitted by <strong><%=post.getPostedBy() %></strong> on <%=post.getPostCreatedDate() %>
-    </div>
-<div class="clear"></div><div class="clear"></div>
-	<div class="divContent">
-	    <%
-	    	String postContent = post.getPostContent();
-	    	if(postContent.length()>200)
-	    	{
-	    		postContent = postContent.substring(0,197) +"...";
-	    	}
-	    	
-	    	out.println(postContent);
-	    %>
-	  </div>
-		<div class="clear"></div><div class="clear"></div>
-	<div class="divContent" align="right">
-	<input type="button" value="Delete This Post" onclick="deletePostConfirm(<%=post.getPostId() %>)">
-	</div>
-	</div>
-
-<%
-	}
-}
-else
+	response.sendRedirect("./admin?cmd=blogs");
+}else
 {
-%>
-<div class="blog-block-box">
-	<center><font color="red"><b>Oops.. There are no posts available</b></font></center>
-</div>
-<%
+	out.println("<center><font color='red'><b>Unable to delete.</b></font></center>");
 }
-%>
 
+%>
 <%@include file="../../footer.jsp" %>
 </div>
 </body>
