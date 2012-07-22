@@ -279,6 +279,15 @@
     	<servlet-class>
     	com.ipablive.login.ChangePasswordService</servlet-class>
     </servlet>
+    <servlet>
+    	<description>
+    	</description>
+    	<display-name>
+    	AdminServices</display-name>
+    	<servlet-name>AdminServices</servlet-name>
+    	<servlet-class>
+    	com.ipablive.services.AdminServices</servlet-class>
+    </servlet>
 
     <servlet-mapping id="RDS_DISPATCH_MAPPING">
         <servlet-name>RDSDispatchServlet</servlet-name>
@@ -349,6 +358,10 @@
     <servlet-mapping>
     	<servlet-name>ChangePasswordService</servlet-name>
     	<url-pattern>/changePwd</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>AdminServices</servlet-name>
+    	<url-pattern>/admin</url-pattern>
     </servlet-mapping>
 	
 	
