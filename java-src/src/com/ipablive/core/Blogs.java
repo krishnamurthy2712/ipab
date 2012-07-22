@@ -89,6 +89,43 @@ public class Blogs
 		  return posts;
 	  }
 	  
+	  public ArrayList<BlogPostVO> getBlogPostsByUser(String userName)
+	  {
+		  ArrayList<BlogPostVO> posts = new ArrayList<BlogPostVO>();
+		  
+		  String query = "SELECT * from bd_blog_post where approval=0 AND postedBy='"+userName+"'";
+		  try
+		  {
+			  Statement stmt = conn.createStatement();
+			  ResultSet rs = stmt.executeQuery(query);
+			  while(rs.next())
+			  {
+				  BlogPostVO post = new BlogPostVO();
+				  post.setPostId(rs.getInt(1));
+				  post.setPostTitle(rs.getString(2));
+				  post.setPostContent(rs.getString(3));
+				  post.setDestURL(rs.getString(4));
+				  post.setIpAddress(rs.getString(5));
+				  post.setPostedBy(rs.getString(6));
+				  post.setPostCreatedDate(rs.getDate(7));
+				  post.setPostApproval(rs.getInt(8));
+				  post.setApprovedDate(rs.getDate(9));
+				  post.setTotalViews(rs.getInt(10));
+				  
+				  int commentCount = getBlogCommentCount(rs.getInt(1));
+				  post.setCommentCount(commentCount);
+				  
+				  posts.add(post);
+			  }
+		  }
+		  catch(Exception e)
+		  {
+			  e.printStackTrace();
+		  }
+		  
+		  return posts;
+	  }
+	  
 	  public BlogPostDetailsVO getBlogPostDetails(int postId)
 	  {
 		  BlogPostDetailsVO post = null ;
