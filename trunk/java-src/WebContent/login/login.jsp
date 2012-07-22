@@ -82,7 +82,6 @@
 <h2 class="pageHeaderH2">Login</h2>
 </center>
 </div>
-<div id="bg-wrapper" class="bg-wrapper">
 <div style="width: 100%">
 <div class="login-block-box" align="center">
 <div class="clear" style="height: 10px;"></div>

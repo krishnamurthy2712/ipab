@@ -30,13 +30,27 @@
 <div id="bg-wrapper">
 <div class="breadcrumb">
 	<div class="clear"></div>
-		<a href="${pageContext.request.contextPath}" style="text-decoration: none;">Home</a> > Post a Report
+		<a href="${pageContext.request.contextPath}" style="text-decoration: none;">Home</a> > Error Occured
 <center><br>
 <h2 class="pageHeaderH2">Error occured!!!</h2>
 </center>
 </div>
 <div class="centered">
-error occured
+<%
+String errorMsg = (String) session.getAttribute("ErrorMessage");
+if(errorMsg==null)
+{
+	%>
+		<center><font color="red"><strong>Error Occured. Please try again after some time.</strong></font></center>
+	<%
+}
+else
+{
+	%>
+<center><font color="red"><strong><%=errorMsg %>.</strong></font></center>
+	<%
+}
+%>
 </div>
 </div>
 <%@include file="../footer.jsp" %>

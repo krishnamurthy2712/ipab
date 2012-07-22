@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
-    <title>About Us</title>
+    <title>Oops! Error occured</title>
 	<script src="${pageContext.request.contextPath}/theme/js/jquery.js"
 		type="text/javascript">
 		</script>
@@ -26,12 +26,15 @@
 </head>
 <body>
 <%@include file="../header.jsp" %>
-<div class="pageHeader">
+<div class="clear"></div>
+<div id="bg-wrapper">
+<div class="breadcrumb">
+	<div class="clear"></div>
+		<a href="${pageContext.request.contextPath}" style="text-decoration: none;">Home</a> > Error
 <center><br>
-<h2 class="pageHeaderH2">Oops.. There is an error occured.</h2>
+<h2 class="pageHeaderH2">Error</h2>
 </center>
 </div>
-<div id="mainContent" class="mainContent">
 
      <center>
 <br><br><br><br>
@@ -41,7 +44,7 @@ Please try again later. or contact administrator.
 <br><br><br><br>
 			</center>
 </div> <!-- #eof blog_container -->
-</div>
 <%@include file="../footer.jsp" %>
+</div>
 </body>
 </html>

@@ -6,6 +6,10 @@
 <%@page import="com.ipablive.commons.CommonOperations"%>
 <%@page import="com.ipablive.core.Blogs"%>
 <%@page import="com.ipablive.vo.BlogPostVO"%><html>
+<%
+
+
+%>
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     <title>Blog</title>

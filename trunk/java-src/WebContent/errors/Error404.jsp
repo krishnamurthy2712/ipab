@@ -9,7 +9,7 @@
 		</script>
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/theme/js/menu.js"></script>
-	
+	<title>Oops! Error occured</title>
 	<script
 		src="${pageContext.request.contextPath}/theme/js/jquery.ui.core.js"></script>
 	<script
@@ -26,20 +26,23 @@
 </head>
 <body>
 <%@include file="../header.jsp" %>
-<div class="pageHeader">
+<div class="clear"></div>
+<div id="bg-wrapper">
+<div class="breadcrumb">
+	<div class="clear"></div>
+		<a href="${pageContext.request.contextPath}" style="text-decoration: none;">Home</a> > Error
 <center><br>
-<h2 class="pageHeaderH2">Oops.. There is an error occured.</h2>
+<h2 class="pageHeaderH2">Error</h2>
 </center>
 </div>
-<div id="mainContent" class="mainContent">
-
      <center>
 <br><br><br><br>
 				<b><font color="red" size="3">We are sorry. The page you are looking is not in our database.</font></b>
 <br><br><br><br>
 			</center>
-</div> <!-- #eof blog_container -->
-</div>
+</div> 
+
 <%@include file="../footer.jsp" %>
+</div>
 </body>
 </html>

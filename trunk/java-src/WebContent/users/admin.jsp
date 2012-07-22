@@ -4,7 +4,7 @@
  UserVO user = (UserVO) session.getAttribute("loggedInUser");
 if(user==null)
 {
-	response.sendRedirect("http://localhost:8080/ipab-java");
+	response.sendRedirect("http://localhost:8080/ipab-java/entry?cmd=login");
 }
 %>
 <head>
@@ -50,21 +50,33 @@ if(user==null)
 
 <div class="admin-block-box-right">
 <h3>My Activities</h3>
-<div class="clear"></div>
 <div class="admin-activities">
-Blogs
+<h3>Blogs</h3>
+<ul style="list-style: none;">
+<li>Click <a href="${pageContext.request.contextPath}/admin?cmd=blogs">here</a> to see all blogs</li>
+<li>Click <a href="${pageContext.request.contextPath}/admin?cmd=newPost">here</a> to add new post</li>
+</ul>
 </div>
-<div class="clear"></div>
 <div class="admin-activities">
-News
+<h3>News</h3>
+<ul style="list-style: none;">
+<li>Click <a href="${pageContext.request.contextPath}/admin?cmd=news">here</a> to see News</li>
+<li>Click <a href="${pageContext.request.contextPath}/admin?cmd=new">here</a> to add news</li>
+</ul>
 </div>
-<div class="clear"></div>
 <div class="admin-activities">
-Polls
+<h3>Polls</h3>
+<ul style="list-style: none;">
+<li>Click <a href="${pageContext.request.contextPath}/admin?cmd=polls">here</a> to see all polls</li>
+<li>Click <a href="${pageContext.request.contextPath}/admin?cmd=newpoll">here</a> to add new poll</li>
+</ul>
 </div>
-<div class="clear"></div>
 <div class="admin-activities">
-Videos
+<h3>Videos</h3>
+<ul style="list-style: none;">
+<li>Click <a href="${pageContext.request.contextPath}/admin?cmd=videos">here</a> to see all videos</li>
+<!--<li>Click <a href="">here</a> to add new video</li>-->
+</ul>
 </div>
 
 </div>

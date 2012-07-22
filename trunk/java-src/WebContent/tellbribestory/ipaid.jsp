@@ -438,7 +438,7 @@ code</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br><img
 
 <div class="divContent"><input name="t_and_c" id="t_and_c" type="checkbox"
 	onchange="privacyChecked()" />&nbsp;&nbsp;&nbsp;&nbsp;I agree to the <a
-	href="${pageContext.request.contextPath}/privacyPolicy.jsp"
+	href="${pageContext.request.contextPath}/content/privacyPolicy.jsp"
 	target="_blank"> terms and conditions</a></div>
 
 <div><input type="submit" value="Submit" disabled="disabled"
