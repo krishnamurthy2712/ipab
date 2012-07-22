@@ -27,7 +27,7 @@ public class AdminServices extends HttpServlet
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		String cmd = request.getParameter("cmd");
 		String redirectURL = "";
@@ -35,31 +35,31 @@ public class AdminServices extends HttpServlet
 		
 		if(cmd.equalsIgnoreCase("blogs"))
 		{
-			redirectURL = "";
+			redirectURL = "/blog/admin/blogAdmin.jsp";
 		}
 		else if(cmd.equalsIgnoreCase("newPost"))
 		{
-			redirectURL = "";
+			redirectURL = "/blog/admin/newPost.jsp";
 		}
 		else if(cmd.equalsIgnoreCase("news"))
 		{
-			redirectURL = "";
+			redirectURL = "/news/admin/news.jsp";
 		}
 		else if(cmd.equalsIgnoreCase("new"))
 		{
-			redirectURL = "";
+			redirectURL = "/news/admin/newPost.jsp";
 		}
 		else if(cmd.equalsIgnoreCase("polls"))
 		{
-			redirectURL = "";
+			redirectURL = "/polls/admin/polls.jsp";
 		}
 		else if(cmd.equalsIgnoreCase("newpoll"))
 		{
-			redirectURL = "";
+			redirectURL = "/polls/admin/AddPoll.jsp";
 		}
 		else if(cmd.equalsIgnoreCase("videos"))
 		{
-			redirectURL = "";
+			redirectURL = "/videos/videos.jsp";
 		}
 		else 
 		{
