@@ -325,7 +325,43 @@ public class Polls
 			return count;
 		}
 		
-		
+		public Boolean insertPoll(PollVO data)
+		{
+			Boolean isInserted = false;
+			  String query = "insert into bd_polls " +
+			  		"(PollTitle,pollDescription,pollQuestion, pollOptions,createdBy,creationDate,isDisplay,approval) " +
+			  		"values (?,?,?,?,?,?,?,?)";
+				
+				try
+				  {
+					java.sql.Date sqlDate = new java.sql.Date(new Date().getTime());
+					PreparedStatement pstmt = conn.prepareStatement(query);
+					pstmt.setString(1, data.getPollTitle());
+					pstmt.setString(2, data.getPollDescription());
+					pstmt.setString(3, data.getPollQuestion());
+					pstmt.setString(4, data.getPollOptions());
+					pstmt.setString(5, data.getPollCreationBy());
+					pstmt.setDate(6, sqlDate);
+					pstmt.setInt(7, 1);
+					pstmt.setInt(8, 0);
+					
+					
+					int i = pstmt.executeUpdate();
+					
+					if(i>1)
+					{
+						isInserted = true;
+					}
+					
+				  }
+				  catch(Exception e)
+				  {
+					  e.printStackTrace();
+				  }
+				
+			  return isInserted;
+			  
+		}
 	  
 	  
 }

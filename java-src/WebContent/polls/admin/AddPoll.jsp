@@ -127,21 +127,21 @@
 		</center>
 		</div>
 <div class="polls-block-box">
-	<form id="fm" onsubmit="return validateForm()">
+	<form id="fm" onsubmit="return validateForm()" action="insertPolls">
 	<div class="clear"></div>
 	<div class="divContent">
 	<label for="pollTitle" style="width: 150px;"> Poll Title </label>
-	<input type="text" id="pollTitle">
+	<input type="text" id="pollTitle" name="pollTitle">
 	</div>
 	<div class="clear"></div><div class="clear"></div>
 	<div class="divContent">
 	<label for="pollDescription" style="width: 150px;"> Poll Description </label>
-	<input type="text" id="pollDescription">
+	<input type="text" id="pollDescription" name="pollDescription">
 	</div>
 	<div class="clear"></div><div class="clear"></div>
 	<div class="divContent">
 	<label for="pollQuestion" style="width: 150px;"> Poll Question </label>
-	<input type="text" id="pollQuestion">
+	<input type="text" id="pollQuestion" name="pollQuestion" >
 	</div>
 	<div class="clear"></div><div class="clear"></div>
 	<div class="divContent">
@@ -165,7 +165,6 @@
 	<div class="divContent">
 	<INPUT type="hidden" name="pollOptions" id="pollOptions"/> 
 	<input type="hidden" id="createdBy" value="admin">
-	<input type="hidden" id="CMD" value="add">
 	<input type="submit" value="Add">
 	</div>
 	

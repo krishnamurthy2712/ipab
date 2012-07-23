@@ -14,6 +14,7 @@ public class PollVO
 	private int isDisplayed;
 	private int approval;
 	private String friendlyTime;
+	private String ipAddress;
 	
 	public int getPollId() 
 	{
@@ -102,6 +103,15 @@ public class PollVO
 	public void setFriendlyTime(String friendlyTime) 
 	{
 		this.friendlyTime = friendlyTime;
+	}
+	
+	public String getIpAddress() 
+	{
+		return ipAddress;
+	}
+	public void setIpAddress(String ipAddress)
+	{
+		this.ipAddress = ipAddress;
 	}
 	
 }
