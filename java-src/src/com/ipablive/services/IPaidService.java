@@ -84,7 +84,7 @@ public class IPaidService extends HttpServlet
 		
 		if(isSuccess)
 		{
-			context.getRequestDispatcher("/readbribestory/ipaid.jsp").forward(request, response);
+			context.getRequestDispatcher("/readbribestory/ComplaintRegistred.jsp").forward(request, response);
 		}else
 		{
 			context.getRequestDispatcher("/errors/ErrorsDisplay.jsp").forward(request, response);

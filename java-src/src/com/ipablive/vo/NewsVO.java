@@ -19,6 +19,7 @@ public class NewsVO
 	private String newsSourceValue;
 	private Date newsCreatedDate;
 	private String friendlyDate;
+	private String ipAddress;
 	
 	public int getNewsId() 
 	{
@@ -90,6 +91,15 @@ public class NewsVO
 	public void setFriendlyDate(String friendlyDate) 
 	{
 		this.friendlyDate = friendlyDate;
+	}
+	
+	public String getIpAddress()
+	{
+		return ipAddress;
+	}
+	public void setIpAddress(String ipAddress) 
+	{
+		this.ipAddress = ipAddress;
 	}
 	
 }
