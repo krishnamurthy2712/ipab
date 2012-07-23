@@ -1,9 +1,11 @@
 package com.ipablive.core;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import com.ipablive.datasource.ConnectionFactory;
@@ -491,6 +493,70 @@ public class Home
 		  }
 		  
 		  return count;
+	  }
+	  
+	  public Boolean insertNews(NewsVO data)
+	  {
+		  Boolean isInserted = false;
+		  String query = "insert into bd_news " +
+		  		"(newsTitle,newsContent,URL,ip,approval,createdBy,creationDate,approvalDate) " +
+		  		"values (?,?,?,?,?,?,?,?)";
+		  
+		  
+		  try
+		  {
+			  PreparedStatement pstmt = conn.prepareStatement(query);
+			  pstmt.setString(1, data.getNewsTitle());
+			  pstmt.setString(2, data.getNewsBody());
+			  pstmt.setString(3, data.getNewsDst());
+			  pstmt.setString(4, data.getIpAddress());
+			  pstmt.setInt(5, 0);
+			  Calendar cal = Calendar.getInstance();
+			  java.sql.Date dd = new java.sql.Date(cal.getTimeInMillis());
+			  pstmt.setString(6, data.getNewsCreated());
+			  pstmt.setDate(7, dd);
+			  pstmt.setDate(8, dd);
+			  int k = pstmt.executeUpdate();
+			  
+			  if(k>0)
+			  {
+				  isInserted = true;
+			  }
+			  
+		  }
+		  catch(Exception e)
+		  {
+			  
+		  }
+		  
+		  return isInserted;
+	  }
+	  
+	  public Boolean deleteNews(int newsId)
+	  {
+		  Boolean isDeleted = false;
+		  try
+			{
+				String query = "delete from bd_news where newsId=?";
+				PreparedStatement pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1,newsId);
+				
+				int i = pstmt.executeUpdate();
+				if(i==1)
+				{
+					isDeleted = true;
+				}
+				else
+				{
+					isDeleted = false;
+				}
+				
+				
+			}catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+		  return isDeleted;
 	  }
 	  
 }
