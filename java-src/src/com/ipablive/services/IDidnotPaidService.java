@@ -65,7 +65,7 @@ public class IDidnotPaidService extends HttpServlet
 		
 		if(isSuccess)
 		{
-			context.getRequestDispatcher("/readbribestory/ComplaintRegistred.jsp").forward(request, response);
+			context.getRequestDispatcher("/tellbribestory/ComplaintRegistred.jsp").forward(request, response);
 		}else
 		{
 			context.getRequestDispatcher("/errors/ErrorsDisplay.jsp").forward(request, response);
