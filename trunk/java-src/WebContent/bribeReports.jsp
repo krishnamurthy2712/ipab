@@ -4,7 +4,14 @@
 
 <%@page import="com.ipablive.vo.TopCitiesVO"%>
 <%@page import="com.ipablive.vo.BribeCategoriesVO"%>
-<%@page import="com.ipablive.vo.MostPopularReportsVO"%><div class="grid">
+<%@page import="com.ipablive.vo.MostPopularReportsVO"%>
+<script type="text/javascript">
+function getData(dep)
+{
+	window.location.href = "${pageContext.request.contextPath}/readbribestory/ipaidFiltered.jsp?cDept="+dep;
+}
+</script>
+<div class="grid">
 <h2 class="home_h2" align="center">Bribe <span>Reports</span></h2>
 <div style="float: left">
 <div class="tabcontent">
@@ -32,7 +39,7 @@ if(bribeReports.size()>0)
 		<div class="bribeItems">
 			<div class="popularCity">
 				From <%=bribeReport.getCCity() %> | About <a
-					href="http://www.ipaidabribe.or.ke/sforms/view_reports_paid?c_dept=27&amp;CSRF_TOKEN="><%=bribeReport.getCDeptName() %></a>
+					href="javaScript: getData(<%=bribeReport.getDeptId() %>)"><%=bribeReport.getCDeptName() %></a>
 			</div>
 			<div class="popularDate">
 				<span><%=bribeReport.getFriendlyTime() %> | <%=bribeReport.getTotalViews() %> Views | <%=bribeReport.getCommentsCount() %> Comments</span>
@@ -151,7 +158,7 @@ if(popular.size()>0)
 <div class="seeAllList">
 <ul>
 	<li><a title="View more"
-		href="http://www.ipaidabribe.or.ke/sforms/view_reports_paid?CSRF_TOKEN=">See
+		href="${pageContext.request.contextPath}/reports?t=paid">See
 	all</a></li>
 	<li><a title="View more"
 		href="http://www.ipaidabribe.or.ke/sforms/view_reports_paid?c_dept=2&amp;CSRF_TOKEN=">Department-wise</a></li>

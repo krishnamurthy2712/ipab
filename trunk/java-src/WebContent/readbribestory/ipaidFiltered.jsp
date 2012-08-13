@@ -191,6 +191,19 @@
 		String transaction = request.getParameter("cTransactions");
 		String searchCriteria = "";
 		
+		if(city==null)
+		{
+			 city = "0";
+		}
+		if(dept==null)
+		{
+			 dept = "0";
+		}
+		if(transaction==null)
+		{
+			 transaction = "0";
+		}
+		
 		
 		String filterQuery = "";
 		if(dept.equalsIgnoreCase("0"))//means all (so no condition)

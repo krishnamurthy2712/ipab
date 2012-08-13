@@ -134,6 +134,7 @@ public class Home
 				  BribeReportsVO brv = new BribeReportsVO();
 				  brv.setId(rs.getInt(1));
 				  brv.setCName(rs.getString(2));
+				  brv.setDeptId(rs.getInt(4));
 				  brv.setCAmountPaid(rs.getInt(7));
 				  brv.setCAdditionalInfo(rs.getString(11));
 				  brv.setTotalViews(rs.getInt(20));
